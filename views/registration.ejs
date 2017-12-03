@@ -7,17 +7,17 @@
 <body>
 <h1>Register now!</h1>
 <p>Type in your details and submit to register:</p>
-<form action="/registerDetails" method="get">
-    Username: <input type="text" name="uname"><br>
-    Password: <input type="text" name="pw"><br>
-    Tutor: <input type="checkbox" name="tactivation" value=1><br>
-    First name: <input type="text" name="fname"><br>
-    Last name: <input type="text" name="lname"><br>
+<form action="/registerDetails" method="POST">
+    Username: <input type="text" name="userName"><br>
+    Password: <input type="text" name="pwd"><br>
+    Tutor: <input type="checkbox" name="tutorActivation" value=1><br>
+    First name: <input type="text" name="firstName"><br>
+    Last name: <input type="text" name="lastName"><br>
     Address: <input type="text" name="address"><br>
-    Date of Birth: <input type="date" name="dob"><br>
+    Date of Birth: <input type="date" name="dateOfBirth"><br>
     Email: <input type="email" name="email"><br>
     Study institution: <input type="text" name="school"><br>
-    Student ID: <input type="text" name="sid"><br>
+    Student ID: <input type="text" name="studentId"><br>
     <input type="submit" value="Submit">
 </form>
 </body>
