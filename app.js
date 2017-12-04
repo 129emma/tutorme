@@ -10,6 +10,8 @@ const users = require('./routes/users');
 const registration = require('./routes/registration');
 const registerDetails = require('./routes/registerDetails');
 const home = require('./routes/home');
+const login = require('./routes/login');
+const loginPage = require('./routes/loginPage')
 
 
 
@@ -32,7 +34,8 @@ app.use('/users', users);
 app.use('/registration', registration);
 app.use('/registerDetails', registerDetails);
 app.use('/home', home);
-app.use('/login', login)
+app.use('/login', login);
+app.use('/loginPage', loginPage)
 
 
 // catch 404 and forward to error handler

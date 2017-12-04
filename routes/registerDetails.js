@@ -7,10 +7,11 @@ var con = require('../javascript/connection.js');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false}));
 
-
 router.post('/', function(req, res) {
 
-    con.connect(function(err){
+    const connectNow = con.method();
+
+    connectNow.connect(function(err){
         if (err) throw err;
         console.log("Connected and online!");
     });
@@ -30,8 +31,8 @@ router.post('/', function(req, res) {
 
     console.log("ready to query");
 
-    con.query("INSERT INTO tableUser (username, password, firstName, lastName, email, address, dob, studentID, studySchool, tutor_activation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [un, pwd, fn, ln, em, ad, doob, studentID, studySchool, tutor_activation], function(err, result) {
-        con.end();
+    connectNow.query("INSERT INTO tableUser (username, password, firstName, lastName, email, address, dob, studentID, studySchool, tutor_activation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [un, pwd, fn, ln, em, ad, doob, studentID, studySchool, tutor_activation], function(err, result) {
+        connectNow.end();
         if (err) throw err;
     });
 
