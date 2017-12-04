@@ -12,6 +12,7 @@ const registerDetails = require('./routes/registerDetails');
 const home = require('./routes/home');
 
 
+
 const app = express();
 
 // view engine setup
@@ -31,6 +32,7 @@ app.use('/users', users);
 app.use('/registration', registration);
 app.use('/registerDetails', registerDetails);
 app.use('/home', home);
+app.use('/login', login)
 
 
 // catch 404 and forward to error handler
