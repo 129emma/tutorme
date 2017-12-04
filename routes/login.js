@@ -4,7 +4,7 @@ const con = require('../javascript/connection.js');
 
 router.get('/', function(req, res) {
 
-    const connectMethod = con.method;
+    const connectMethod = con.method();
 
     connectMethod.connect(function(err){
         if (err) throw err;

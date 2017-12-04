@@ -22,5 +22,5 @@ function connectNow () {
 
 module.exports = {
     // "connection": con,
-    "method": connectNow()
+    "method": connectNow
 };
