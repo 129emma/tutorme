@@ -2,27 +2,18 @@ var express = require('express');
 
 var bodyParser = require('body-parser');
 var router = express.Router();
+var con = require('../javascript/connection.js');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false}));
 
-// getting the MySQL functionality
-var mysql = require('mysql');
-
-var con = mysql.createConnection({
-    host: "db.sporadic.nz",
-    port: 3306,
-    user: "tutorme",
-    password: "changeme",
-    database: "tutorme",
-});
-
-con.connect(function(err){
-    if (err) throw err;
-    console.log("Connected and online!");
-});
 
 router.post('/', function(req, res) {
+
+    con.connect(function(err){
+        if (err) throw err;
+        console.log("Connected and online!");
+    });
 
     console.log("Working");
 
@@ -44,7 +35,7 @@ router.post('/', function(req, res) {
         if (err) throw err;
     });
 
-    res.render("registeredPage", req.body);
+    res.redirect("/home");
 
 });
 
