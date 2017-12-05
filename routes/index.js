@@ -3,9 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Tutorme' });
+  res.render('index', { title: 'TutorMe' });
 });
-
 
 //
 // router.get('/registration', function(req, res) {

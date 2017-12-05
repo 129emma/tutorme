@@ -11,7 +11,7 @@ router.use(bodyParser.urlencoded({ extended: false}));
 router.post('/', function(req, res) {
 
     con.connect(function(err){
-        if (err) throw err;
+        if (err){ throw err};
         console.log("Connected and online!");
     });
 
