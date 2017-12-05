@@ -13,8 +13,10 @@ router.get('/', function(req, res) {
 
     console.log("ready to login");
 
-    const un = "jojo";
-    const pwd = "jojo321";
+    const un = req.query.userName;
+    const pwd = req.query.passWord;
+
+    // const pwd = "jojo321";
 
     // const un = req.userName;
     // const pwd = req.password;
@@ -22,11 +24,18 @@ router.get('/', function(req, res) {
     connectMethod.query("SELECT * FROM tableUser WHERE userName = ? AND password = ?  ", [un, pwd], function(err, result) {
         connectMethod.end();
 
+        // const loginObject = JSON.parse(JSON.stringify(result[0]));
+        //
+        // const username
+        //
+        // result.
+
         if (err) {
             return false;
         }
         console.log(result);
-        res.redirect("/home");
+
+        res.redirect("/home/?userName=" + un + "?passWord=" + pwd);
     });
 });
 
