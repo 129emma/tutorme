@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const con = require('../javascript/connection.js');
 
+//requiring express session module
+var session = require('express-session');
+
 router.get('/', function(req, res) {
 
     const connectMethod = con.method();
@@ -14,14 +17,14 @@ router.get('/', function(req, res) {
     console.log("ready to login");
 
     const un = req.query.userName;
-    const pwd = req.query.passWord;
+    // const pwd = req.query.passWord;
 
-    // const pwd = "jojo321";
+    const pwd = "jojo321";
 
     // const un = req.userName;
     // const pwd = req.password;
 
-    connectMethod.query("SELECT * FROM tableUser WHERE userName = ? AND password = ?  ", [un, pwd], function(err, result) {
+    connectMethod.query("SELECT * FROM tableUser WHERE userName = ? ", [un], function(err, result) {
         connectMethod.end();
 
         // const loginObject = JSON.parse(JSON.stringify(result[0]));
@@ -30,10 +33,16 @@ router.get('/', function(req, res) {
         //
         // result.
 
-        if (err) {
-            return false;
-        }
+        if (err) throw err;
+
         console.log(result);
+
+        console.log(req.session);
+
+        req.session.username = un ;
+
+        console.log(req.session.username);
+
 
         res.redirect("/home/?userName=" + un + "?passWord=" + pwd);
     });
