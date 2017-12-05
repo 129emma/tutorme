@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+
+
+    <style>
+        * {box-sizing: border-box;}
+        ul {list-style-type: none;}
+        body {font-family: Verdana, sans-serif;}
+
+        .month {
+            padding: 70px 25px;
+            width: 100%;
+            background: #1abc9c;
+            text-align: center;
+        }
+
+        .month th {
+            margin: 0;
+            padding: 0;
+        }
+
+        .month th li {
+            color: white;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .month .prev {
+            float: left;
+            padding-top: 10px;
+        }
+
+        .month .next {
+            float: right;
+            padding-top: 10px;
+        }
+
+        th {
+            margin: 0;
+            padding: 10px 0;
+            background-color: #ddd;
+        }
+
+        th li {
+            display: inline-block;
+            width: 12%;
+            color: #666;
+            text-align: center;
+        }
+
+        .hours {
+            padding: 10px 0;
+            background: #eee;
+            margin: 0;
+        }
+
+        .hours li {
+            list-style-type: none;
+            display: inline-block;
+            width: 12%;
+            text-align: center;
+            margin-bottom: 5px;
+            font-size:12px;
+            color: #777;
+        }
+
+        .hours li .available {
+            padding: 5px;
+            background: #1abc9c;
+            color: white !important
+        }
+
+        /* Add media queries for smaller screens */
+        @media screen and (max-width:720px) {
+            th li, .days li {width: 13.1%;}
+        }
+
+        @media screen and (max-width: 420px) {
+            th li, .days li {width: 12.5%;}
+            .days li .active {padding: 2px;}
+        }
+
+        @media screen and (max-width: 290px) {
+            th li, .days li {width: 12.2%;}
+        }
+    </style>
+</head>
+<body>
+
+<h1>CSS Calendar</h1>
+
+<div class="month">
+    <ul>
+        <li class="prev">&#10094;</li>
+        <li class="next">&#10095;</li>
+        <li>
+            August<br>
+            <span style="font-size:18px">2017</span>
+        </li>
+    </ul>
+</div>
+
+
+
+
+<table>
+    <tr>
+        <th>Time</th>
+        <th>Su 31/12</th>
+        <th>Mo 01/01</th>
+        <th>Tu 02/01</th>
+        <th>We 03/01</th>
+        <th>Th 04/01</th>
+        <th>Fr 05/01</th>
+        <th>Sa 06/01</th>
+    </tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+<script>
+
+    /*for (var i = 0; i < 7*10;i ++){
+        var slot = document.createElement("LI");
+        var textnode = document.createTextNode("..");
+        slot.appendChild(textnode);
+        document.getElementsByClassName('hours')[0].appendChild(slot);
+    }*/
+
+
+</script>
+
+
+</html>

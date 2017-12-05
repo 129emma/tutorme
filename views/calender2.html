@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calender2</title>
+</head>
+<body>
+
+
+<h1>CSS Calendar</h1>
+
+<div class="month">
+    <ul>
+        <li class="prev">&#10094;</li>
+        <li class="next">&#10095;</li>
+        <li>
+            August<br>
+            <span style="font-size:18px">2017</span>
+        </li>
+    </ul>
+</div>
+
+
+
+
+<table class="calender">
+    <tr>
+        <th>Time</th>
+        <th>Su 31/12</th>
+        <th>Mo 01/01</th>
+        <th>Tu 02/01</th>
+        <th>We 03/01</th>
+        <th>Th 04/01</th>
+        <th>Fr 05/01</th>
+        <th>Sa 06/01</th>
+    </tr>
+
+
+    </tr>
+</table>
+
+</body>
+
+<script>
+    var cale = document.getElementsByClassName("calender")[0];
+    for (var i = 8; i < 23; i++){
+        var newrow = document.createElement('tr');
+        newrow.appendChild(document.createElement('td').appendChild(document.createTextNode(i+':00')));
+        for(var j = 0; j <7; j++){
+
+            var newtd = document.createElement('td');
+            newtd.innerHTML = "..";
+            newrow.appendChild(newtd);
+        }
+        cale.appendChild(newrow);
+    }
+
+</script>
+</html>
