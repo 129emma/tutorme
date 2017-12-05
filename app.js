@@ -10,10 +10,13 @@ const users = require('./routes/users');
 const registration = require('./routes/registration');
 const registerDetails = require('./routes/registerDetails');
 const home = require('./routes/home');
+const login = require('./routes/login');
+const loginPage = require('./routes/loginPage')
+
 
 
 const app = express();
-app.listen(3000);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -31,7 +34,8 @@ app.use('/users', users);
 app.use('/registration', registration);
 app.use('/registerDetails', registerDetails);
 app.use('/home', home);
-//app.use('/login', login)
+app.use('/login', login);
+app.use('/loginPage', loginPage)
 
 
 // catch 404 and forward to error handler
