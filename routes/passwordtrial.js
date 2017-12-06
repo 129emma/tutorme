@@ -13,9 +13,10 @@ password('mysecret').hash(function(error, hash) {
 
     // Store hash (incl. algorithm, iterations, and salt)
     myuser.hash = hash;
+    console.log(myuser.hash);
 
     // Verifying a hash
-    password('hack').verifyAgainst(myuser.hash, function(error, verified) {
+    password('mysecret').verifyAgainst(myuser.hash, function(error, verified) {
         if(error)
             throw new Error('Something went wrong!');
         if(!verified) {
