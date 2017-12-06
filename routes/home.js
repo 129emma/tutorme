@@ -14,12 +14,11 @@ connectNow.connect(function (err) {
 console.log("ready to make query to database");
 
 const un = "jojo";
-const pwd = "jojo321";
 
 // const un = req.userName;
 // const pwd = req.password;
 
-connectNow.query("SELECT * FROM tableUser WHERE userName = ? AND password = ?  ", [un, pwd], function (err, result) {
+connectNow.query("SELECT * FROM tableUser WHERE userName = ?", [un], function (err, result) {
     connectNow.end();
     if (err) throw err;
 
