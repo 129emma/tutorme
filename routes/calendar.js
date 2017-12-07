@@ -9,34 +9,16 @@ var user = {
     "courses": ["Math", "Basketball", "Chinese literature"],
     "time": ["201712040800", "201712040900", "201712050800", "201712040800"]
     }
-}
+
 
 
 router.get('/', function(req, res) {
-
-
-
-
 
     tutorname = "Bryan";
     var firstDate;
     var timeFrame = [];
     var courses;
-    var
-
-
-
-
-
-
-
-
-
-
-
-
-
-    res.render("calendar", handsomeBryan);
+    res.render("calendar", user);
 
 });
 
