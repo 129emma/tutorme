@@ -4,17 +4,14 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-
 const index = require('./routes/index');
 const users = require('./routes/users');
 const registration = require('./routes/registration');
 const registerDetails = require('./routes/registerDetails');
 const home = require('./routes/home');
 const login = require('./routes/login');
-const loginPage = require('./routes/loginPage')
-
-
-
+const loginPage = require('./routes/loginPage');
+const calendar = require('./routes/calendar');
 const app = express();
 
 
@@ -37,7 +34,8 @@ app.use('/registration', registration);
 app.use('/registerDetails', registerDetails);
 app.use('/home', home);
 app.use('/login', login);
-app.use('/loginPage', loginPage)
+app.use('/loginPage', loginPage);
+app.use('/booking', calendar);
 
 
 // catch 404 and forward to error handler
