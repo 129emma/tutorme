@@ -32,7 +32,6 @@ connectNow.query("SELECT * FROM tableUser WHERE userName = ? AND password = ?  "
     res.render("home", homeObject);
 
 });
-
 })
 ;
 
