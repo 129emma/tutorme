@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const con = require('../javascript/connection.js');
-const password = require('password-hash-and-salt');
 
-var myuser = [];
+var bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 //requiring express session module
 var session = require('express-session');
@@ -20,42 +20,49 @@ router.get('/', function (req, res) {
     console.log("ready to login");
 
     const un = req.query.userName;
-    // const pwd = req.query.passWord;
+    const pwd = req.query.passWord;
 
-    const pwd = "jojo321";
+    // const pwd = "jojo321";
 
     // const un = req.userName;
     // const pwd = req.password;
-
-
-    // Creating hash and salt
-    var hashedPassword = password(pwd).hash(function (error, hash) {
-        if (error)
-            throw new Error('Something went wrong!');
-
-        // Store hash (incl. algorithm, iterations, and salt)
-        var hashedPassword = hash;
-        console.log(hashedPassword);
-    });
 
     connectMethod.query("SELECT * FROM tablePassword WHERE username = ? ", [un], function (err, result) {
         connectMethod.end();
 
         if (err) throw err;
 
-        // console.log(result);
-        //
-        // console.log(result[0]);
+        console.log(result);
 
         const loginObject = JSON.parse(JSON.stringify(result[0]));
 
-        console.log(loginObject.hash);
+        // Load hash from your password DB.
+        bcrypt.compare(pwd, loginObject.hash, function(err, resp) {
+            // res == true
+            if (resp){
+                console.log('your login is successful, proceeding...');
+                req.session.username = un;
+                res.redirect('/home');
 
-        myuser.hash = loginObject.hash;
+            } else {
+                console.log('Wrong password!');
+                res.redirect('/loginPage');
+            }
+        });
 
-        req.session.username = un;
-
+        // const loginObject = JSON.parse(JSON.stringify(result[0]));
     });
+
+    // // Creating hash and salt
+    // password(pwd).hash(function (error, hash) {
+    //     if (error)
+    //         throw new Error('Something went wrong!');
+    //
+    //     // Store hash (incl. algorithm, iterations, and salt)
+    //     var hashedPassword = hash;
+    //
+    //     console.log(hashedPassword);
+    // });
 });
 
 module.exports = router;

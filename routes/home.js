@@ -13,24 +13,28 @@ connectNow.connect(function (err) {
 
 console.log("ready to make query to database");
 
-const un = "jojo";
+// const un = "jojo";
+//
+// // const un = req.userName;
+// // const pwd = req.password;
 
-// const un = req.userName;
-// const pwd = req.password;
+// connectNow.query("SELECT * FROM tableUser WHERE userName = ?", [un], function (err, result) {
+//     connectNow.end();
+//     if (err) throw err;
+//
+//     console.log(result);
+//     console.log(1);
+//
+//     const homeObject = JSON.parse(JSON.stringify(result[0]));
+//
+//     console.log(homeObject);
+//     console.log(2);
+//
+//
+//
+// });
 
-connectNow.query("SELECT * FROM tableUser WHERE userName = ?", [un], function (err, result) {
-    connectNow.end();
-    if (err) throw err;
-
-    console.log(result);
-
-    const homeObject = JSON.parse(JSON.stringify(result[0]));
-
-    console.log(homeObject);
-
-    res.render("home", homeObject);
-
-});
+    res.render("home");
 
 })
 ;
