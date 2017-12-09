@@ -7,7 +7,7 @@ const router = express.Router();
 var user = {
     "username": "Bryan Chen",
     "courses": ["Math", "Basketball", "Chinese literature"],
-    "time": ["201712040800", "201712040900", "201712050800", "201712040800"]
+    "time": [["201712040800","1"]],
     }
 
 
