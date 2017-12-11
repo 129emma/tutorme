@@ -70,25 +70,24 @@
     }
 
     const AvailableCell = [<%=idAvailable%>];
-    console.log(AvailableCell);
-    AvailablesCell = AvailableCell.map(String);
-    console.log(AvailablesCell);
 
     for(i = 0; i < AvailableCell.length; i++) {
         document.getElementById(AvailableCell[i]).className = 'available';
-
     }
-
 
     const BookedCell = [<%=idBooked%>];
-    console.log(BookedCell[1]);
-
+    const info = [<%=course%>];
+    console.log(info);
     for(i = 0; i < BookedCell.length; i++) {
         document.getElementById(BookedCell[i]).className = 'booked';
+        //document.getElementById(BookedCell[i]).innerHTML = info[i];
+        console.log(info[i]);
+
     }
 
-    const info = [<%course%>];
-    console.log("course " + info);
+
+
+
 
 </script>
 </html>

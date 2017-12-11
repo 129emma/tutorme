@@ -10,7 +10,7 @@ const tutor = {
 }
 
 const availability = {
-    "time": ["12040800", "12041200", "12041300", "12041200", "12042000", "12041000"],
+    "time": ["12040800", "12041200", "12041300", "12042100", "12040900", "12041100"],
     "date": [2,3,5,6,7,4]
 
 }
@@ -47,10 +47,14 @@ router.get('/', function(req, res) {
             id2 = booking.time[i].slice(4,6);
         }
         tutor.idBooked.push(id1+"."+id2);
+        tutor.course.push(booking.course[i]);
     }
-    console.log(tutor.idAvailable);
-    console.log(toString(tutor.idAvailable))
-    console.log(tutor.idBooked);
+
+    console.log(tutor.course);
+
+
+
+
 
     res.render('tutorSchedule', tutor);
 
