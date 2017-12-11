@@ -12,7 +12,8 @@ const registerDetails = require('./routes/registerDetails');
 const home = require('./routes/home');
 const login = require('./routes/login');
 const loginPage = require('./routes/loginPage');
-const calendar = require('./routes/calendar');
+
+// const calendar = require('./routes/calendar');
 
 //requiring Mozilla session module
 var session = require('express-session');
@@ -43,7 +44,6 @@ app.use('/registerDetails', registerDetails);
 app.use('/home', home);
 app.use('/login', login);
 app.use('/loginPage', loginPage);
-app.use('/booking', calendar);
 
 // app.use(session({
 //     genid: function (req) {
