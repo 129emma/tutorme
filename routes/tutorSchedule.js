@@ -48,8 +48,15 @@ router.get('/', function(req, res) {
         }
         tutor.idBooked.push(id1+"."+id2);
     }
+    // console.log(tutor.idAvailable);
+    tutor.idAvailable = tutor.idAvailable.map(function (num) {
+        if (num.endsWith(0)){
+            console.log(num);
+            num*= 100;
+        }
+       return num;
+    });
     console.log(tutor.idAvailable);
-    console.log(toString(tutor.idAvailable))
     console.log(tutor.idBooked);
 
     res.render('tutorSchedule', tutor);
