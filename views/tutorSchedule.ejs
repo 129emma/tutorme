@@ -69,24 +69,20 @@
         cale.appendChild(newRow);
     }
 
-    const AvailableCell = [<%= idAvailable %>];
-    console.log(AvailableCell);
-    AvailablesCell = AvailableCell.map(function (num) {
+    const AvailableCell = [<%= idAvailable %>].map(function (num) {
         if (num> 99) {
             num = String(Math.round(num));
-            num = String(num);
             num = num.substr(0, 1) + "." + num.substr(1);
             return num
         }
         return String(num);
     });
-    console.log(AvailablesCell);
+    console.log(AvailableCell);
 
-    for (i = 0; i < AvailablesCell.length; i++) {
+    for (i = 0; i < AvailableCell.length; i++) {
         console.log("Getting id")
-        console.log(document.getElementById(AvailablesCell[i]))
-        document.getElementById(AvailablesCell[i]).className = 'available';
-
+        console.log(document.getElementById(AvailableCell[i]))
+        document.getElementById(AvailableCell[i]).className = 'available';
     }
 
 
@@ -97,7 +93,8 @@
         document.getElementById(BookedCell[i]).className = 'booked';
     }
 
-    const info = [<% course %>];
+    const info = ("<%= course %>").split(",")
+
     console.log("course " + info);
 
 </script>
