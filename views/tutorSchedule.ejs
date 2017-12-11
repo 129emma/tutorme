@@ -21,11 +21,11 @@
             background-color: #f2f2f2;
         }
 
-        .haha {
+        .available {
             background-color: #4CAF50;
         }
 
-        .hehe {
+        .booked {
             background-color: blue;
         }
     </style>
@@ -59,23 +59,36 @@
         fsttd.innerHTML = i + ':00';
         newRow.appendChild(document.createElement('td').appendChild(fsttd));
 
-       for(j = 1; j <8; j++){ %>
+       for(j = 1; j <8; j++){
             const newtd = document.createElement('td');
-            newtd.id = j + "."+ i;
+            newtd.id = j + "." + i;
             newtd.className = "empty";
-            newtd.innerHTML = "..";
+            newtd.innerHTML = ".."
             newRow.appendChild(newtd);
         }
         cale.appendChild(newRow);
     }
 
+    const AvailableCell = [<%=idAvailable%>];
+    console.log(AvailableCell);
+    AvailablesCell = AvailableCell.map(String);
+    console.log(AvailablesCell);
 
-    document.getElementById("6.15").className = "haha";
+    for(i = 0; i < AvailableCell.length; i++) {
+        document.getElementById(AvailableCell[i]).className = 'available';
+
+    }
 
 
+    const BookedCell = [<%=idBooked%>];
+    console.log(BookedCell[1]);
 
+    for(i = 0; i < BookedCell.length; i++) {
+        document.getElementById(BookedCell[i]).className = 'booked';
+    }
 
-
+    const info = [<%course%>];
+    console.log("course " + info);
 
 </script>
 </html>
