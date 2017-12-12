@@ -2,7 +2,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var router = express.Router();
 var con = require('../javascript/connection.js');
-const hasher = require('password-hash-and-salt');
+// const hasher = require('password-hash-and-salt');
+
+
+//setting up asynchronous hashing functionality (salt and hash) Bcrypt has been chosen due to its popularity.
+var bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false}));
@@ -28,6 +33,8 @@ router.post('/', function(req, res) {
     var studySchool = req.body.school;
     var tutor_activation = req.body.tutorActivation;
 
+    var pwd = req.body.passWord;
+
     console.log("ready to query");
 
 
@@ -37,21 +44,38 @@ router.post('/', function(req, res) {
         console.log("member registered!!");
 
         /*after user account is built create a hashed password query*/
-            var pwd = req.body.pwd;
-            hasher(pwd).hash(function(error, hash) {
-                if(error) throw new Error('Something went wrong!');
-                connectNow.query("INSERT INTO tablePassword (username, hash) VALUES(?, ?)", [un, hash], function(err, result){
-                    connectNow.end();
-                    if (err) {
-                        throw err;
-                    }
+
+            console.log(pwd);
+
+            bcrypt.genSalt(saltRounds, function(err, salt) {
+                bcrypt.hash(pwd, salt, function(err, hash) {
+                    // Store hash in your password DB.
+                    if(err) throw new Error('Something went wrong!');
+                    connectNow.query("INSERT INTO tablePassword (username, hash) VALUES(?, ?)", [un, hash], function(err, result){
+                        connectNow.end();
+                        console.log('Hallo--1');
+                        if (err) {
+                            throw err;
+                        } else {
+                            res.redirect("/home");
+                        }
+                    });
                 });
             });
-        if (err) {
-            throw err;
-        }
+
+            // hasher(pwd).hash(function(error, hash) {
+            //     if(error) throw new Error('Something went wrong!');
+            //     connectNow.query("INSERT INTO tablePassword (username, hash) VALUES(?, ?)", [un, hash], function(err, result){
+            //         connectNow.end();
+            //         if (err) {
+            //             throw err;
+            //         }
+            //     });
+            // });
+
+        if (err) throw err;
     });
-    res.redirect("/");
+
 });
 
 // router.get('/', function(req, res) {

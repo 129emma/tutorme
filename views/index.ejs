@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <head>
     <title><%= title %></title>
 </head>
+
+<!--<style>#F1A829</style>-->
 <body>
-<h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
-<p><a href="/loginPage">Login</a> </p>
-<p><a href="/registration">Register now!</a> </p>
+
+<nav class="navbar navbar-default" style="background-color: #F1A829">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Tutorme</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Page 1</a></li>
+            <li><a href="#">Page 2</a></li>
+            <li><a href="#">Page 3</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <p><a href="/loginPage">Login</a> </p>
+    <p><a href="/registration">Register now!</a> </p>
+</div>
+
 </body>
 </html>
