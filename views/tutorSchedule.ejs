@@ -14,7 +14,7 @@
             text-align: center;
             padding: 8px;
             width: 10%;
-            height: 60px;
+            height: 100px;
         }
 
         tr:nth-child(even) {
@@ -22,71 +22,80 @@
         }
 
         .available {
-            background-color: #4CAF50;
+            background-color: #666672;
+            color: white;
         }
 
         .booked {
-            background-color: blue;
+            background-color: #d14c4c;
+            color: white;
         }
     </style>
 </head>
 <body>
 <div style="overflow-x:auto;">
-<table id="scheduleTable" class= "calendar", align="center">
-    <caption><%= userName%>'s week schedule<br></caption>
+    <table id="scheduleTable" class="calendar" , align="center">
+        <caption><%= userName %>'s week schedule<br></caption>
 
-    <tr>
-        <th>Time</th>
-        <th>Monday</th>
-        <th>Tuesday</th>
-        <th>Wednesday</th>
-        <th>Thursday</th>
-        <th>Friday</th>
-        <th>Saturday</th>
-        <th>Sunday</th>
-    </tr>
+        <tr>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+        </tr>
 
-</table>
+    </table>
 </div>
 
 </body>
 <script>
 
-    const cale = document.getElementsByClassName("calendar")[0];
-    for (i = 8; i < 23; i++){
+    const calendar = document.getElementsByClassName("calendar")[0];
+    for (i = 8; i < 23; i++) {
         const newRow = document.createElement('tr');
         const fsttd = document.createElement('td');
         fsttd.innerHTML = i + ':00';
         newRow.appendChild(document.createElement('td').appendChild(fsttd));
 
-       for(j = 1; j <8; j++){
+        for (j = 1; j < 8; j++) {
             const newtd = document.createElement('td');
             newtd.id = j + "." + i;
             newtd.className = "empty";
             newtd.innerHTML = ".."
             newRow.appendChild(newtd);
         }
-        cale.appendChild(newRow);
+        calendar.appendChild(newRow);
     }
 
-    const AvailableCell = [<%=idAvailable%>];
+    const AvailableCell = [<%= idAvailable %>].map(function (num) {
+        if (num> 99) {
+            num = String(Math.round(num));
+            num = num.substr(0, 1) + "." + num.substr(1);
+            return num
+        }
+        return String(num);
+    });
 
-    for(i = 0; i < AvailableCell.length; i++) {
+    for (i = 0; i < AvailableCell.length; i++) {
+        console.log("Getting id")
+        console.log(document.getElementById(AvailableCell[i]))
         document.getElementById(AvailableCell[i]).className = 'available';
+        document.getElementById(AvailableCell[i]).innerHTML = 'Available';
     }
 
-    const BookedCell = [<%=idBooked%>];
-    const info = [<%=course%>];
-    console.log(info);
-    for(i = 0; i < BookedCell.length; i++) {
+    const BookedCell = [<%= idBooked %>];
+    const course = ("<%= course %>").split(",");
+    const tutee = ("<%= tutee %>").split(",");
+    const meetingLocation = ("<%= location %>").split(",");
+
+    for (i = 0; i < BookedCell.length; i++) {
         document.getElementById(BookedCell[i]).className = 'booked';
-        //document.getElementById(BookedCell[i]).innerHTML = info[i];
-        console.log(info[i]);
-
+        document.getElementById(BookedCell[i]).innerHTML = course[i] + "<br>" + "Tutee: " + tutee[i] + "<br>" + "Location: " +meetingLocation[i];
     }
-
-
-
 
 
 </script>
