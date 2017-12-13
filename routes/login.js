@@ -8,7 +8,14 @@ const saltRounds = 10;
 //requiring express session module
 var session = require('express-session');
 
-router.get('/', function (req, res) {
+
+/* GET login page. */
+router.get('/', function(req, res, next) {
+    res.render('login');
+});
+
+// GET logging-in functionality
+router.get('/logging', function (req, res) {
 
     const connectMethod = con.method();
 
@@ -53,16 +60,6 @@ router.get('/', function (req, res) {
         // const loginObject = JSON.parse(JSON.stringify(result[0]));
     });
 
-    // // Creating hash and salt
-    // password(pwd).hash(function (error, hash) {
-    //     if (error)
-    //         throw new Error('Something went wrong!');
-    //
-    //     // Store hash (incl. algorithm, iterations, and salt)
-    //     var hashedPassword = hash;
-    //
-    //     console.log(hashedPassword);
-    // });
 });
 
 module.exports = router;
