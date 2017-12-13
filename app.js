@@ -12,6 +12,7 @@ const registerDetails = require('./routes/registerDetails');
 const home = require('./routes/home');
 const login = require('./routes/login');
 const loginPage = require('./routes/loginPage');
+const tutorSchedule = require('./routes/tutorSchedule');
 
 // const calendar = require('./routes/calendar');
 
@@ -21,7 +22,7 @@ var session = require('express-session');
 const app = express();
 
 
-// app.listen(3000);
+app.listen(3000);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -44,13 +45,8 @@ app.use('/registerDetails', registerDetails);
 app.use('/home', home);
 app.use('/login', login);
 app.use('/loginPage', loginPage);
+app.use('/tutorSchedule', tutorSchedule);
 
-// app.use(session({
-//     genid: function (req) {
-//         return genuuid(); // use UUIDs for session IDs
-//     },
-//     secret: 'random_string_goes_here',
-// }));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
