@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<html>
+
+<!-- The included template contains all the links, JS and Styling files to be included in the pages, to alter the contents please refer to templates/included.html file -->
+<% include templates/included.html %>
+
 <head>
     <title>Registration</title>
     <link rel='stylesheet' href='/stylesheets/style.css'/>
 </head>
 <body>
-<h1>Register now!</h1>
-<p>Type in your details and submit to register:</p>
-<form action="/registerDetails" method="POST">
-    Username: <input type="text" name="userName"><br>
-    Password: <input type="text" name="passWord"><br>
-    Tutor: <input type="checkbox" name="tutorActivation" value=1><br>
-    First name: <input type="text" name="firstName"><br>
-    Last name: <input type="text" name="lastName"><br>
-    Address: <input type="text" name="address"><br>
-    Date of Birth: <input type="date" name="dateOfBirth"><br>
-    Email: <input type="email" name="email"><br>
-    Study institution: <input type="text" name="school"><br>
-    Student ID: <input type="text" name="studentId"><br>
-    <input class="button" type="submit" value="Submit">
-</form>
+<!--The navbar template included below, to alter the contents please refer to templates/navbar.html file-->
+<% include templates/navbar.html %>
+
+<div class="container">
+    <h1>Register now!</h1>
+    <p>Type in your details and submit to register:</p>
+    <form action="/registerDetails" method="POST">
+        Username: <input type="text" name="userName"><br>
+        Password: <input type="text" name="passWord"><br>
+        Tutor: <input type="checkbox" name="tutorActivation" value=1><br>
+        First name: <input type="text" name="firstName"><br>
+        Last name: <input type="text" name="lastName"><br>
+        Address: <input type="text" name="address"><br>
+        Date of Birth: <input type="date" name="dateOfBirth"><br>
+        Email: <input type="email" name="email"><br>
+        Study institution: <input type="text" name="school"><br>
+        Student ID: <input type="text" name="studentId"><br>
+        <input class="button" type="submit" value="Submit">
+
+    </form>
+</div>
+
 </body>
 </html>

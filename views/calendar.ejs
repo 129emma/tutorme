@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- The included template contains all the links, JS and Styling files to be included in the pages, to alter the contents please refer to templates/included.html file -->
+<% include templates/included.html %>
+
 <head>
     <meta charset="UTF-8">
     <title>Calender2</title>
     <style>
 
-        * {box-sizing: border-box;}
-        body {font-family: Verdana, sans-serif;}
-        table{
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+        }
+
+        table {
             border-collapse: collapse;
             width: 100%;
             text-align: center;
         }
-        tr:nth-child(even){background-color: #f2f2f2}
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
         th {
             background-color: #4CAF50;
             color: white;
         }
-        td{
+
+        td {
             height: 40px;
         }
 
@@ -49,18 +64,15 @@
             padding-top: 10px;
         }
 
-
-
-
-        .selected{
+        .selected {
             background-color: gold;
         }
 
-        .available{
+        .available {
             background-color: greenyellow;
         }
 
-        .requested{
+        .requested {
             background-color: orangered;
         }
 
@@ -76,31 +88,36 @@
 </head>
 <body>
 
+<!--The navbar template included below, to alter the contents please refer to templates/navbar.html file-->
+<% include templates/navbar.html %>
 
-<h1><%= username%>  Courses: <%= courses%> times: </h1>
+<div class="container">
 
-<div class="info">
+    <h1><%= username %> Courses: <%= courses %></h1>
+
+    <div class="info">
         <span class="prev">Prev</span>
         <span class="next">Next</span>
         <br>Bryan Chen</br>
-            <span style="font-size:18px">5 star</span>
+        <span style="font-size:18px">5 star</span>
+    </div>
+
+    <table class="calender">
+        <tr>
+            <th>Time</th>
+            <th>Mo 01/01</th>
+            <th>Tu 02/01</th>
+            <th>We 03/01</th>
+            <th>Th 04/01</th>
+            <th>Fr 05/01</th>
+            <th>Sa 06/01</th>
+            <th>Su 31/12</th>
+        </tr>
+
+
+        </tr>
+    </table>
 </div>
-
-<table class="calender">
-    <tr>
-        <th>Time</th>
-        <th>Mo 01/01</th>
-        <th>Tu 02/01</th>
-        <th>We 03/01</th>
-        <th>Th 04/01</th>
-        <th>Fr 05/01</th>
-        <th>Sa 06/01</th>
-        <th>Su 31/12</th>
-    </tr>
-
-
-    </tr>
-</table>
 
 </body>
 
@@ -127,18 +144,18 @@
         this.className = "available";
         this.addEventListener("click", select);
     }
-    
-    
+
+
     var cale = document.getElementsByClassName("calender")[0];
-    for (var i = 8; i < 23; i++){
+    for (var i = 8; i < 23; i++) {
         var newrow = document.createElement('tr');
         var fsttd = document.createElement('td');
         fsttd.innerHTML = i + ':00';
         newrow.appendChild(document.createElement('td').appendChild(fsttd));
-        for(var j = 1; j <8; j++){
+        for (var j = 1; j < 8; j++) {
 
             var newtd = document.createElement('td');
-            newtd.id = j + "."+ i;
+            newtd.id = j + "." + i;
             newtd.className = "empty";
             newtd.innerHTML = "..";
             newtd.addEventListener("click", request);
@@ -148,10 +165,6 @@
     }
     var availables = document.getElementsByClassName('available');
     availables.addEventListener("click", select);
-
-
-
-
 
 </script>
 </html>

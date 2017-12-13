@@ -39,7 +39,7 @@ router.post('/', function(req, res) {
 
 
     /* firts query to make the user in user table*/
-    connectNow.query("INSERT INTO tableUser (username, firstName, lastName, email, address, dob, studentID, studySchool, tutor_activation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    connectNow.query("INSERT INTO tableUser (userName, firstName, lastName, email, address, dob, studentID, studySchool, tutor_activation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
         , [un, fn, ln, em, ad, doob, studentID, studySchool, tutor_activation], function(err, result) {
         console.log("member registered!!");
 
@@ -51,7 +51,7 @@ router.post('/', function(req, res) {
                 bcrypt.hash(pwd, salt, function(err, hash) {
                     // Store hash in your password DB.
                     if(err) throw new Error('Something went wrong!');
-                    connectNow.query("INSERT INTO tablePassword (username, hash) VALUES(?, ?)", [un, hash], function(err, result){
+                    connectNow.query("INSERT INTO tablePassword (userName, hashKey) VALUES(?, ?)", [un, hash], function(err, result){
                         connectNow.end();
                         console.log('Hallo--1');
                         if (err) {

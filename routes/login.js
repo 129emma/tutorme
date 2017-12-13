@@ -22,12 +22,7 @@ router.get('/', function (req, res) {
     const un = req.query.userName;
     const pwd = req.query.passWord;
 
-    // const pwd = "jojo321";
-
-    // const un = req.userName;
-    // const pwd = req.password;
-
-    connectMethod.query("SELECT * FROM tablePassword WHERE username = ? ", [un], function (err, result) {
+    connectMethod.query("SELECT * FROM tablePassword WHERE userName = ? ", [un], function (err, result) {
         connectMethod.end();
 
         if (err) throw err;
@@ -36,9 +31,14 @@ router.get('/', function (req, res) {
 
         const loginObject = JSON.parse(JSON.stringify(result[0]));
 
+        console.log(pwd);
+
         // Load hash from your password DB.
-        bcrypt.compare(pwd, loginObject.hash, function(err, resp) {
+        bcrypt.compare(pwd, loginObject.hashKey, function(err, resp) {
             // res == true
+
+            console.log(pwd.hash);
+
             if (resp){
                 console.log('your login is successful, proceeding...');
                 req.session.username = un;
