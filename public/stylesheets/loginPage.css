@@ -10,3 +10,11 @@
 .column {
     max-width: 450px;
 }
+/*Form position*/
+.ui.middle.aligned.center.aligned.grid {
+    padding-top: 200px;
+}
+/*Input field*/
+.field {
+    padding: 10px;
+}
