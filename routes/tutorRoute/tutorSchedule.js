@@ -35,7 +35,7 @@ router.get('/', function (req, res) {
         } else {
             id2 = availability.time[i].slice(4, 6);
         }
-        // tutor.idAvailable.add(id1+"."+id2);
+        // tutorRoute.idAvailable.add(id1+"."+id2);
         num = id1 + "." + id2;
         if (num.endsWith(0)) {
             console.log(num);
@@ -65,7 +65,7 @@ router.get('/', function (req, res) {
     tutor.tutee = setParsing(tutor.tutee);
     tutor.location = setParsing(tutor.location)
 
-    res.render('tutorSchedule', tutor);
+    res.render('./tutorView/tutorSchedule', tutor);
 
 
 });

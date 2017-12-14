@@ -10,15 +10,13 @@ var user = {
     "time": [["201712040800","1"]],
     }
 
-
-
 router.get('/', function(req, res) {
 
     tutorname = "Bryan";
     var firstDate;
     var timeFrame = [];
     var courses;
-    res.render("calendar", user);
+    res.render("./tutorView/calendar", user);
 
 });
 

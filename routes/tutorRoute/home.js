@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const con = require('../javascript/connection.js');
+const con = require('../../javascript/connection.js');
 
 router.get('/', function (req, res){
 
@@ -13,7 +13,7 @@ connectNow.connect(function (err) {
 
 console.log("ready to make query to database");
 
-    res.render("home");
+    res.render("./tutorView/home");
 
 })
 ;

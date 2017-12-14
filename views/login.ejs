@@ -16,11 +16,11 @@
 <% include templates/navbar.html %>
 
 <div class="container">
-    <h1>Register now!</h1>
-    <p>Type in your details and submit to register:</p>
-    <form action="/login/logging" method="GET">
+    <h1>Login in to TutorMe!</h1>
+    <p>Type in your details to login:</p>
+    <form action="/login/logging" method="POST">
         Username: <input type="text" name="userName"><br>
-        Password: <input type="text" name="passWord"><br>
+        Password: <input type="password" name="passWord"><br>
         <input type="submit" value="Submit">
     </form>
 </div>

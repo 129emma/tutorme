@@ -1,9 +1,15 @@
 const express = require('express');
+var bodyParser = require('body-parser');
 const router = express.Router();
+
 const con = require('../javascript/connection.js');
 
 var bcrypt = require('bcrypt');
 const saltRounds = 10;
+
+//using body parser to ensure that POST requests work properly.
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: false}));
 
 //requiring express session module
 var session = require('express-session');
@@ -15,7 +21,7 @@ router.get('/', function(req, res, next) {
 });
 
 // GET logging-in functionality
-router.get('/logging', function (req, res) {
+router.post('/logging', function (req, res) {
 
     const connectMethod = con.method();
 
@@ -26,8 +32,8 @@ router.get('/logging', function (req, res) {
 
     console.log("ready to login");
 
-    const un = req.query.userName;
-    const pwd = req.query.passWord;
+    const un = req.body.userName;
+    const pwd = req.body.passWord;
 
     connectMethod.query("SELECT * FROM tablePassword WHERE userName = ? ", [un], function (err, result) {
         connectMethod.end();
@@ -49,11 +55,11 @@ router.get('/logging', function (req, res) {
             if (resp){
                 console.log('your login is successful, proceeding...');
                 req.session.username = un;
-                res.redirect('/home');
+                res.redirect('/tutor/home');
 
             } else {
                 console.log('Wrong password!');
-                res.redirect('/loginPage');
+                res.redirect('/login');
             }
         });
 
