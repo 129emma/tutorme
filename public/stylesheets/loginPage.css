@@ -1,0 +1,12 @@
+/*Button color*/
+.ui.fluid.large.teal.submit.button {
+    background-color: #FF6D1F;
+}
+/*Title color*/
+#title{
+    color: #FF6D1F;
+}
+/*Form size*/
+.column {
+    max-width: 450px;
+}

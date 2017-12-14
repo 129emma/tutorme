@@ -1,0 +1,19 @@
+/*Background color*/
+.ui.borderless.menu {
+    background-color: #FF6D1F;
+}
+/*Menu font color*/
+.ui.menu .item {
+    color: #FFE3C8;
+
+}
+/*Selection font style*/
+.ui.menu a.item:hover, .ui.menu .dropdown.item:hover  {
+    cursor: pointer;
+    color: #FFFFF2;
+    background-color: transparent;
+
+}
+.ui.menu a.item:hover{
+    font-size: 120%;
+}
