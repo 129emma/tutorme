@@ -65,7 +65,7 @@ router.post('/register', function(req, res) {
                         if (err) {
                             throw err;
                         } else {
-                            res.redirect("/home");
+                            res.redirect("/tutor/home");
                         }
                     });
                 });

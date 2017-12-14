@@ -4,6 +4,8 @@ const con = require('../../javascript/connection.js');
 
 router.get('/', function (req, res){
 
+    console.log(req.session.userDetails[0]);
+
 const connectNow = con.method();
 
 connectNow.connect(function (err) {
@@ -13,7 +15,7 @@ connectNow.connect(function (err) {
 
 console.log("ready to make query to database");
 
-    res.render("./tutorView/home");
+    res.render("./tutorView/home", req.session);
 
 })
 ;

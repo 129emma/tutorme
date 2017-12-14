@@ -7,7 +7,7 @@
 <% include ../templates/included.html %>
 
 <head>
-    <title>Tutor Home page</title>
+    <title>Tutor Profile page</title>
 </head>
 <body>
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
@@ -15,23 +15,9 @@
 
 <div class="container">
 
-    <h1>Welcome to your home page!</h1>
-    <p>Success!</p>
-    <p>Welcome to your new account, <%= userDetails[0].firstName %> </p>
-    <p>Username: <%= userDetails[0].userName %> </p>
-    <p>Email: <%= userDetails[0].email %> </p>
-    <p>Address: <%= userDetails[0].address %> </p>
-
+    <h1>Profile!</h1>
     <p></p>
 </div>
-
-<button onclick="myFunction()">Click to check session id</button>
-
-<script>
-    function myFunction() {
-        alert("Hello!" + session(genid));
-    }
-</script>
 
 </body>
 </html>
