@@ -12,6 +12,18 @@
         <button type="button" class="btn btn-default navbar-btn">Sign out</button>
     </ul>
 </div>
+<div class="text-center">
+    <form action="/tutorAvailableTime" method="POST">
+        Username:
+        <input type="text" name="userName">
+        Date and time:
+        <input type="datetime-local" name="dateStamp">
+        <input type="submit" value="Send">
+    </form>
+</div>
+<div>
+
+</div>
 <div id="tutorSchedule" style="overflow-x:auto;", class="table-responsive">
     <br>
     <br>

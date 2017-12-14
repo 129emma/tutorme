@@ -57,7 +57,7 @@ router.post('/', function(req, res) {
                         if (err) {
                             throw err;
                         } else {
-                            res.redirect("/home");
+                            res.render("schedule");
                         }
                     });
                 });

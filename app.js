@@ -12,7 +12,8 @@ const registerDetails = require('./routes/registerDetails');
 const home = require('./routes/home');
 const login = require('./routes/login');
 const loginPage = require('./routes/loginPage');
-const tutorSchedule = require('./routes/tutorSchedule');
+const tutorSchedule = require('./routes/schedule');
+const tutorAvailableTime = require('./routes/tutorAddAvailableTime');
 
 // const calendar = require('./routes/calendar');
 
@@ -46,6 +47,7 @@ app.use('/home', home);
 app.use('/login', login);
 app.use('/loginPage', loginPage);
 app.use('/tutorSchedule', tutorSchedule);
+app.use('/tutorAvailableTime', tutorAvailableTime);
 
 
 // catch 404 and forward to error handler
