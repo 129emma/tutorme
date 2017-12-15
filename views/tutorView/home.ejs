@@ -18,6 +18,12 @@
     <h1>Welcome to your home page!</h1>
     <p>Success!</p>
     <p>Welcome to your new account, <%= userDetails[0].firstName %> </p>
+
+    <% for (x in userDetails[0]) { %>
+        <%= x %>
+    <% } %>
+
+
     <p>Username: <%= userDetails[0].userName %> </p>
     <p>Email: <%= userDetails[0].email %> </p>
     <p>Address: <%= userDetails[0].address %> </p>
