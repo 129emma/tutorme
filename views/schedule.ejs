@@ -29,7 +29,7 @@
             text-align: center;
             padding: 8px;
             width: 10%;
-            height: 50px;
+            height: 200px;
         }
 
         /*tr:nth-child(even) {
@@ -50,12 +50,8 @@
 
 </head>
 <body>
-<h1 align="center">Tutor's weekly schedule</h1>
-<div align="center">
-    <button id="button1"> < </button>
-    <button id="button2"> > </button>
-</div>
-<br>
+<button id="button1">Click</button>
+<button id="button2">Click2</button>
 <div>
     <table id="scheduleTable" class="calendar" ,="" align="center">
         <tbody>
@@ -74,8 +70,6 @@
 </div>
 </body>
 <script>
-
-
     var cale = document.getElementsByClassName("calendar")[0];
     for (var i = 8; i < 23; i++) {
         var newrow = document.createElement('tr');
@@ -92,7 +86,6 @@
         }
         cale.appendChild(newrow);
     }
-
 
     const table = $("#scheduleTable")[0];
     console.log(table);
