@@ -25,8 +25,6 @@ router.post('/', function(req, res) {
 
     console.log(dateStamp);
 
-
-
     const connectNow = con.method();
     connectNow.connect(function (err) {
         if (err) throw err;
