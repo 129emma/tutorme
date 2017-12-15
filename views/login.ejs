@@ -12,15 +12,15 @@
 </head>
 <body>
 
-<!--The navbar template included below, to alter the contents please refer to templates/navbar.html file-->
-<% include templates/navbar.html %>
+<!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
+<% include templates/navbar.ejs %>
 
 <div class="container">
-    <h1>Register now!</h1>
-    <p>Type in your details and submit to register:</p>
-    <form action="/login" method="GET">
+    <h1>Login in to TutorMe!</h1>
+    <p>Type in your details to login:</p>
+    <form action="/login/logging" method="POST">
         Username: <input type="text" name="userName"><br>
-        Password: <input type="text" name="passWord"><br>
+        Password: <input type="password" name="passWord"><br>
         <input type="submit" value="Submit">
     </form>
 </div>
