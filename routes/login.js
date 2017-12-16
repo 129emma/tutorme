@@ -4,7 +4,7 @@ const router = express.Router();
 
 const con = require('../javascript/connection.js');
 
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 const saltRounds = 10;
 
 //using body parser to ensure that POST requests work properly.

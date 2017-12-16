@@ -63,7 +63,7 @@ router.get('/', function (req, res) {
     tutor.idAvailable = setParsing(tutor.idAvailable);
     tutor.idBooked = setParsing(tutor.idBooked);
     tutor.tutee = setParsing(tutor.tutee);
-    tutor.location = setParsing(tutor.location)
+    tutor.location = setParsing(tutor.location);
 
     res.render('./tutorView/tutorSchedule', tutor);
 
