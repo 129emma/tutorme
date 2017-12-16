@@ -4,19 +4,6 @@ var con = require('../javascript/connection.js');
 
 
 
-// const availability = {
-//     "time": ["12040800", "12041200", "12041300", "12041200", "12042000", "12041000"],
-//     "date": [2, 3, 5, 6, 7, 4]
-//
-// }
-// const booking = {
-//     "course": ["Eat", "Sleep", "Run"],
-//     "tutee": ["Lamlam", "Pikachu", "Jojo"],
-//     "time": ["12040800", "12041200", "12041300"],
-//     "date": [2, 3, 5],
-//     "location": ["OGGB", "Science Building", "Clock Tower"]
-// }
-
 router.get('/', function (req, res) {
 
     const tutor = {
@@ -43,8 +30,9 @@ router.get('/', function (req, res) {
                 const eachObject = rawOject[0];
                 const time = eachObject.timeStart.slice(11, 13).replace("0", "");
                 const date = eachObject.day;
+                var id = date + "." + time;
 
-                tutor.idAvailable.push(date + "." + time)
+                tutor.idAvailable.push(id)
                 console.log(tutor.idAvailable);
 
                 tutor.userName.push(eachObject.userName);
@@ -66,11 +54,11 @@ router.get('/', function (req, res) {
         //         id2 = availability.time[i].slice(4, 6);
         //     }
 
-        //     num = id1 + "." + id2;
-        //     if (num.endsWith(0)) {
-        //         console.log(num);
-        //         num *= 100;
-        //     }
+            // num = id1 + "." + id2;
+            // if (num.endsWith(0)) {
+            //     console.log(num);
+            //     num *= 100;
+            // }
         //
         //     tutor.idAvailable.push(num);
         // }

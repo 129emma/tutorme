@@ -20,9 +20,12 @@ const tutee = require('./routes/tutee');
 //requiring Mozilla session module
 var session = require('express-session');
 
+
+
+
 const app = express();
 
- app.listen(3000);
+app.listen(3000);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -32,6 +35,7 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
 app.use(cookieParser());
 
 app.use(session({
@@ -77,5 +81,7 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
+
 
 module.exports = app;

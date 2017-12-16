@@ -21,7 +21,6 @@
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 80%;
-
         }
 
         td, th {
@@ -45,8 +44,9 @@
 
 
 </head>
+<br>
 <body>
-<h1 align="center">Tutor's weekly schedule</h1>
+<h1 align="center"><%=userName%>'s weekly schedule</h1>
 <div align="center">
     <button id="button2"> < </button>
     <button id="button1"> > </button>
@@ -70,7 +70,9 @@
     </table>
 </div>
 </body>
+
 <script>
+
     var cale = document.getElementsByClassName("calendar")[0];
     for (var i = 8; i < 23; i++) {
         var newRow = document.createElement('tr');
@@ -124,7 +126,7 @@
                 case 0: weekDayString = "Sunday"
                     break;
             }
-            weekdays[i].innerHTML = switch7(weekDayString)+ "<br>" + counterDay.date+ "/" + counterDay.month
+            weekdays[i].innerHTML = switch7(weekDayString)+ "<br>" + counterDay.date+ "-" + counterDay.month + "-" + counterDay.year
         }
     }
     renderDays();
@@ -136,7 +138,6 @@
                 counter++;
                 day = new Date(day.getFullYear(), day.getMonth(), (day.getDate()+7));
                 renderDays();
-                console.log(day)
             })
         })
     });
@@ -159,9 +160,19 @@
                 counter++;
                 day = new Date(day.getFullYear(), day.getMonth(), (day.getDate()-7));
                 renderDays();
-                console.log(day)
             })
         })
     });
+
+
+    const idAvailable = [<%= idAvailable%>];
+    //console.log(idAvailable);
+    for(i = 0; i < idAvailable.length; i++) {
+        var id = idAvailable[i];
+        console.log("id " + id);
+
+        document.getElementById(idAvailable[i]).className = 'available';
+    }
+
 </script>
 </html>
