@@ -148,7 +148,8 @@
         $(table).fadeOut("fast", function () {
             $(table).fadeIn("fast", function () {
                 counter++;
-                day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
+                day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
+                socket.emit('today', {date: day});
                 renderDays();
                 console.log(day)
             })
@@ -173,7 +174,8 @@
         $(table).fadeOut("fast", function () {
             $(table).fadeIn("fast", function () {
                 counter++;
-                day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
+                day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
+                socket.emit('today', {date: day});
                 renderDays();
                 console.log(day)
             })
@@ -203,5 +205,6 @@
     })
     socket.on('disconnect', function () {
     });
+
 </script>
 </html>
