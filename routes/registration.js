@@ -4,7 +4,7 @@ var router = express.Router();
 var con = require('../javascript/connection.js');
 
 //setting up asynchronous hashing functionality (salt and hash) Bcrypt has been chosen due to its popularity.
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 const saltRounds = 10;
 
 router.use(bodyParser.json());

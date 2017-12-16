@@ -21,6 +21,7 @@
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 80%;
+
         }
 
         td, th {
@@ -44,12 +45,11 @@
 
 
 </head>
-<br>
 <body>
-<h1 align="center"><%=userName%>'s weekly schedule</h1>
+<h1 align="center">Tutor's weekly schedule</h1>
 <div align="center">
-    <button id="button2"> < </button>
-    <button id="button1"> > </button>
+    <button id="button2"> <</button>
+    <button id="button1"> ></button>
 
 </div>
 <br>
@@ -71,10 +71,10 @@
 </div>
 </body>
 
+<script src="/socket.io/socket.io.js"></script>
 <script>
-
     var cale = document.getElementsByClassName("calendar")[0];
-    for (var i = 8; i < 23; i++) {
+    for (var i = 1; i < 24; i++) {
         var newRow = document.createElement('tr');
         var fsttd = document.createElement('td');
         fsttd.innerHTML = i + ':00';
@@ -97,38 +97,60 @@
     const weekdays = $("tbody th");
     var counter = 0;
     const sevendays = 7;
+
     function renderDays() {
-        for(var i = 1 ; i<weekdays.length; i++){
+        // var thisWeekDays = [];
+        // document.getElementsByClassName("available").map(function (value) {
+        //     value.className = "empty";
+        // });
+        const availableTimeCells = document.getElementsByClassName("available");
+        console.log(document.getElementsByClassName("available"));
+
+        for (var aCells = 0 ;aCells <availableTimeCells.length;aCells++){
+           availableTimeCells[aCells].className = "empty";
+        }
+
+        for (var i = 1; i < weekdays.length; i++) {
             // date + i - day.weekday
-            var d =  new Date(day.getFullYear(),day.getMonth(), (day.getDate()+ i- day.getDay()));
+            var d = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + i - day.getDay()));
+            // thisWeekDays.push({year:d.getFullYear(), month: d.getMonth(), date: d.getDate()});
             var counterDay = {
                 weekDay: d.getDay(),
                 date: d.getDate(),
-                month: switch12(d.getMonth()+1),
+                month: switch12(d.getMonth() + 1),
                 year: d.getFullYear()
             };
 
             var weekDayString;
 
             switch (counterDay.weekDay) {
-                case 1: weekDayString = "Monday"
+                case 1:
+                    weekDayString = "Monday"
                     break;
-                case 2: weekDayString = "Tuesday"
+                case 2:
+                    weekDayString = "Tuesday"
                     break;
-                case 3: weekDayString = "Wednesday"
+                case 3:
+                    weekDayString = "Wednesday"
                     break;
-                case 4: weekDayString = "Thursday"
+                case 4:
+                    weekDayString = "Thursday"
                     break;
-                case 5: weekDayString = "Friday"
+                case 5:
+                    weekDayString = "Friday"
                     break;
-                case 6: weekDayString = "Saturday"
+                case 6:
+                    weekDayString = "Saturday"
                     break;
-                case 0: weekDayString = "Sunday"
+                case 0:
+                    weekDayString = "Sunday"
                     break;
             }
-            weekdays[i].innerHTML = switch7(weekDayString)+ "<br>" + counterDay.date+ "-" + counterDay.month + "-" + counterDay.year
+            weekdays[i].innerHTML = switch7(weekDayString) + "<br>" + counterDay.date + "/" + counterDay.month;
         }
+        // return thisWeekDays;
     }
+
     renderDays();
 
 
@@ -136,43 +158,63 @@
         $(table).fadeOut("fast", function () {
             $(table).fadeIn("fast", function () {
                 counter++;
-                day = new Date(day.getFullYear(), day.getMonth(), (day.getDate()+7));
+                day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
                 renderDays();
+                socket.emit('today', {date: day});
+
             })
         })
     });
 
-    function switch12 (num){
-        if (num === 0){
-            num =12
+    function switch12(num) {
+        if (num === 0) {
+            num = 12
         }
         return num;
     }
-    function switch7(num){
-        if(num===0){
+
+    function switch7(num) {
+        if (num === 0) {
             num = 7
         }
         return num;
     }
+
     $("#button2").on("click", function () {
         $(table).fadeOut("fast", function () {
             $(table).fadeIn("fast", function () {
                 counter++;
-                day = new Date(day.getFullYear(), day.getMonth(), (day.getDate()-7));
+                day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
                 renderDays();
+                socket.emit('today', {date: day});
+
             })
         })
     });
 
-
-    const idAvailable = [<%= idAvailable%>];
-    //console.log(idAvailable);
-    for(i = 0; i < idAvailable.length; i++) {
-        var id = idAvailable[i];
-        console.log("id " + id);
-
-        document.getElementById(idAvailable[i]).className = 'available';
-    }
+    //made a socket based on the http/ url address hence it is app.js
+    var socket = io('http://localhost:3000/');
+    // the on connect is going to trigger the .on('connection') for the backend IO.
+    socket.on('connect', function () {
+        console.log("connecting");
+        // this allow custom emitting based on 'today' and with a JSON. If needed use new Date +7/-7 for next or the week before.
+        socket.emit('today', {date: new Date()});
+        //this is the return emittion from the backend to client speifically named as return with JSON object.
+        socket.on('return', function (msg) {
+            msg.map(function (value) {
+                // if (thisWeekDay.includes({year:value.timeStart.year, month: value.timeStart.month, date: value.timeStart.date})){
+                //     console.log(value);
+                //     console.log("contains");
+                // }
+                console.log(value);
+                const selectedTime = document.getElementById(value.timeStart.day + "." + value.timeStart.hour);
+                selectedTime.className = "available";
+                console.log(selectedTime +"WTF");
+            })
+        })
+    })
+    socket.on('disconnect', function () {
+    });
 
 </script>
 </html>
