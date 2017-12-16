@@ -100,6 +100,16 @@
 
     function renderDays() {
         // var thisWeekDays = [];
+        // document.getElementsByClassName("available").map(function (value) {
+        //     value.className = "empty";
+        // });
+        const availableTimeCells = document.getElementsByClassName("available");
+        console.log(document.getElementsByClassName("available"));
+
+        for (var aCells = 0 ;aCells <availableTimeCells.length;aCells++){
+           availableTimeCells[aCells].className = "empty";
+        }
+
         for (var i = 1; i < weekdays.length; i++) {
             // date + i - day.weekday
             var d = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + i - day.getDay()));
@@ -148,10 +158,10 @@
         $(table).fadeOut("fast", function () {
             $(table).fadeIn("fast", function () {
                 counter++;
-                day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
-                socket.emit('today', {date: day});
+                day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
                 renderDays();
-                console.log(day)
+                socket.emit('today', {date: day});
+
             })
         })
     });
@@ -174,10 +184,10 @@
         $(table).fadeOut("fast", function () {
             $(table).fadeIn("fast", function () {
                 counter++;
-                day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
-                socket.emit('today', {date: day});
+                day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
                 renderDays();
-                console.log(day)
+                socket.emit('today', {date: day});
+
             })
         })
     });
@@ -190,16 +200,16 @@
         // this allow custom emitting based on 'today' and with a JSON. If needed use new Date +7/-7 for next or the week before.
         socket.emit('today', {date: new Date()});
         //this is the return emittion from the backend to client speifically named as return with JSON object.
-        console.log(thisWeekDay)
         socket.on('return', function (msg) {
             msg.map(function (value) {
                 // if (thisWeekDay.includes({year:value.timeStart.year, month: value.timeStart.month, date: value.timeStart.date})){
                 //     console.log(value);
                 //     console.log("contains");
                 // }
+                console.log(value);
                 const selectedTime = document.getElementById(value.timeStart.day + "." + value.timeStart.hour);
-                selectedTime.className = "available"
-                console.log(selectedTime);
+                selectedTime.className = "available";
+                console.log(selectedTime +"WTF");
             })
         })
     })
