@@ -99,11 +99,11 @@
     const sevendays = 7;
 
     function renderDays() {
-        var thisWeekDays = [];
+        // var thisWeekDays = [];
         for (var i = 1; i < weekdays.length; i++) {
             // date + i - day.weekday
             var d = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + i - day.getDay()));
-            thisWeekDays.push({year:d.getFullYear(), month: d.getMonth(), date: d.getDate()});
+            // thisWeekDays.push({year:d.getFullYear(), month: d.getMonth(), date: d.getDate()});
             var counterDay = {
                 weekDay: d.getDay(),
                 date: d.getDate(),
@@ -138,10 +138,10 @@
             }
             weekdays[i].innerHTML = switch7(weekDayString) + "<br>" + counterDay.date + "/" + counterDay.month;
         }
-        return thisWeekDays;
+        // return thisWeekDays;
     }
 
-    var thisWeekDay = renderDays();
+    renderDays();
 
 
     $("#button1").on("click", function () {
@@ -149,7 +149,7 @@
             $(table).fadeIn("fast", function () {
                 counter++;
                 day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
-               thisWeekDay = renderDays();
+                renderDays();
                 console.log(day)
             })
         })
@@ -174,7 +174,7 @@
             $(table).fadeIn("fast", function () {
                 counter++;
                 day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
-               thisWeekDay = renderDays();
+                renderDays();
                 console.log(day)
             })
         })
@@ -185,19 +185,19 @@
     // the on connect is going to trigger the .on('connection') for the backend IO.
     socket.on('connect', function () {
         console.log("connecting");
-        // this allow custom emitting based on 'hello' and with a JSON
-        socket.emit('hello', {name: "blah"});
+        // this allow custom emitting based on 'today' and with a JSON. If needed use new Date +7/-7 for next or the week before.
+        socket.emit('today', {date: new Date()});
         //this is the return emittion from the backend to client speifically named as return with JSON object.
         console.log(thisWeekDay)
         socket.on('return', function (msg) {
             msg.map(function (value) {
-                    // if (thisWeekDay.includes({year:value.timeStart.year, month: value.timeStart.month, date: value.timeStart.date})){
-                    //     console.log(value);
-                    //     console.log("contains");
-                    // }
-                   const selectedTime = document.getElementById(value.timeStart.day+"."+value.timeStart.hour);
-                   selectedTime.className = "available"
-                   console.log(selectedTime);
+                // if (thisWeekDay.includes({year:value.timeStart.year, month: value.timeStart.month, date: value.timeStart.date})){
+                //     console.log(value);
+                //     console.log("contains");
+                // }
+                const selectedTime = document.getElementById(value.timeStart.day + "." + value.timeStart.hour);
+                selectedTime.className = "available"
+                console.log(selectedTime);
             })
         })
     })

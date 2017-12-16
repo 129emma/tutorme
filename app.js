@@ -42,7 +42,8 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     secret: 'SOMERANDOMSECRETHERE',
-    cookie: {maxAge: 60000}}));
+    cookie: {maxAge: 60000}
+}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -82,7 +83,7 @@ app.use(function (err, req, res, next) {
     res.render('error');
 });
 
-const con =require("./javascript/connection.js");
+const con = require("./javascript/connection.js");
 
 //The socket's entry point the .on event is based on the other's end .emit event in this given case it is 'hello' from
 //the tutorSchedule.ejs. The .on event will be trigger by the .emit events speifically given like an eventListener
@@ -91,26 +92,47 @@ io.on('connection', function (socket) {
     //socket itself could be collected to be broadcasted, or there is an function  socket.broadcast.emit to emit to all,
     // apart from itself.
     //msg is the given JSON Object from the emitter.
-    socket.on('hello',function (msg) {
+    socket.on('today', function (msg) {
         console.log("got a message");
         console.log(msg);
+        const today = new Date(msg.date);
+        console.log(today.getFullYear());
+
         const connectNow = con.method();
         connectNow.connect(function (err) {
             if (err) throw err;
             console.log("Connected!");
-            connectNow.query("SELECT userName, timeStart, day FROM tableTime", function(err, result) {
+            var startOfWeek;
+            var endOfWeek;
+            try {
+                startOfWeek = new Date(today.getFullYear(), today.getMonth(), (today.getDate() - (today.getDay() - 2)));
+                endOfWeek = new Date(today.getFullYear(), today.getMonth(), (today.getDate() + (7 - today.getDay() + 1)));
+            }
+            catch (e) {
+                connectNow.end();
+                console.log(e);
+            }
+            console.log(startOfWeek);
+            console.log(endOfWeek);
+            connectNow.query("SELECT userName, timeStart, day FROM tableTime Where timeStart>=? AND timeStart<=?", [startOfWeek, endOfWeek], function (err, result) {
                 connectNow.end();
                 console.log('Yeah');
-                if(err) {
+                if (err) {
                     connectNow.end();
                     throw err;
                 } else {
                     rawOject = JSON.parse(JSON.stringify(result));
                     console.log(rawOject);
                     rawOject.map(function (value) {
-                        const dateTime = new Date(Date.parse((value.timeStart).replace("T"," ")));
-                        console.log(dateTime.getDay());
-                        const returnDate = {year: dateTime.getFullYear(), month: dateTime.getMonth(), date: dateTime.getDate(), day: (dateTime.getDay()==0 ? 7: dateTime.getDay()), hour: (dateTime.getHours()==0? 12: dateTime.getHours())};
+                        const dateTime = new Date(Date.parse((value.timeStart).replace("T", " ")));
+                        // console.log(dateTime.getDay());
+                        const returnDate = {
+                            year: dateTime.getFullYear(),
+                            month: dateTime.getMonth(),
+                            date: dateTime.getDate(),
+                            day: (dateTime.getDay() == 0 ? 7 : dateTime.getDay()),
+                            hour: (dateTime.getHours() == 0 ? 12 : dateTime.getHours())
+                        };
                         value.timeStart = returnDate;
                     });
                     console.log(rawOject);
