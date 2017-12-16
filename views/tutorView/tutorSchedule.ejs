@@ -105,10 +105,12 @@
         // });
         const availableTimeCells = document.getElementsByClassName("available");
         console.log(document.getElementsByClassName("available"));
-
-        for (var aCells = 0 ;aCells <availableTimeCells.length;aCells++){
-           availableTimeCells[aCells].className = "empty";
+        for (var a in availableTimeCells){
+            a.className = "empty";
         }
+        // for (var aCells = 0 ;aCells <availableTimeCells.length;aCells++){
+        //    availableTimeCells[aCells].className = "empty";
+        // }
 
         for (var i = 1; i < weekdays.length; i++) {
             // date + i - day.weekday
@@ -159,7 +161,6 @@
             $(table).fadeIn("fast", function () {
                 counter++;
                 day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
-                renderDays();
                 socket.emit('today', {date: day});
 
             })
@@ -185,7 +186,6 @@
             $(table).fadeIn("fast", function () {
                 counter++;
                 day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
-                renderDays();
                 socket.emit('today', {date: day});
 
             })
@@ -201,6 +201,11 @@
         socket.emit('today', {date: new Date()});
         //this is the return emittion from the backend to client speifically named as return with JSON object.
         socket.on('return', function (msg) {
+            renderDays();
+            const availableTimeCells = document.getElementsByClassName("available");
+            console.log("second check")
+            console.log(document.getElementsByClassName("available"));
+            console.log(msg);
             msg.map(function (value) {
                 // if (thisWeekDay.includes({year:value.timeStart.year, month: value.timeStart.month, date: value.timeStart.date})){
                 //     console.log(value);
@@ -208,6 +213,7 @@
                 // }
                 console.log(value);
                 const selectedTime = document.getElementById(value.timeStart.day + "." + value.timeStart.hour);
+
                 selectedTime.className = "available";
                 console.log(selectedTime +"WTF");
             })
