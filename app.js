@@ -99,7 +99,7 @@ io.on('connection', function (socket) {
         const presetDate = new Date(msg);
         const date = new Date(presetDate.getFullYear(),presetDate.getMonth(),(presetDate.getDate()),-11);
         console.log(date);
-        var promise = tutorSchedule.Oneweek(date,"jojo");
+        var promise = tutorSchedule.Oneweek(date,"jojo",'tableTime','timeStart');
         promise.then(function (value) {
             console.log("promising");
             console.log(value);
@@ -112,7 +112,7 @@ io.on('connection', function (socket) {
         const presetDate = new Date(msg);
         const date = new Date(presetDate.getFullYear(),presetDate.getMonth(),(presetDate.getDate()),-11);
         console.log(date);
-        var promise = tutorSchedule.Oneweek(date,"jojo");
+        var promise = tutorSchedule.Oneweek(date,"jojo",'tableTime','timeStart');
         promise.then(function (value) {
             console.log("promising");
             console.log(value);
