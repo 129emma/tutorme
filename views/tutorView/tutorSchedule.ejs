@@ -69,6 +69,7 @@
         </tbody>
     </table>
 </div>
+
 </body>
 
 <script src="/socket.io/socket.io.js"></script>
@@ -90,25 +91,101 @@
         cale.appendChild(newRow);
     }
 
-    const table = $("#scheduleTable")[0];
-    console.log(table);
     var date = new Date();
     var day = new Date(date.getFullYear(), (date.getMonth()), date.getDate());
     const weekdays = $("tbody th");
-    var counter = 0;
-    const sevendays = 7;
+    const table = $("#scheduleTable")[0];
+    const timing = ("<%= weekthis %>").split(",");
+    renderDays();
+    console.log(timing);
+    var weeklisting = preRenderWeeks(date, timing);
+
+
+
+
+    $("#button1").on("click", function () {
+
+        $(table).fadeOut("fast", function () {
+            day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
+            console.log("date : "+ day )
+            socket.emit('nextnextweek', day);
+
+            socket.on('nextnextweek', function (value) {
+                console.log(value);
+                // weeklisting.weeknext = value
+                weeklisting = preRenderWeeks(day,value.weekthis)
+                // switchingWeeks(weeklisting.weekthis)
+                $(table).fadeIn("fast", function () {
+
+            })
+
+        })
+
+        })
+    });
+
+    $("#button2").on("click", function () {
+
+        $(table).fadeOut("fast", function () {
+            day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
+            console.log("date : "+ day )
+            socket.emit('lastlastweek', day);
+            socket.on('lastlastweek', function (value) {
+                // weeklisting.weeklast = value
+                console.log(value)
+                weeklisting = preRenderWeeks(day,value.weekthis)
+                $(table).fadeIn("fast", function () {
+                    // console.log("hello there");
+                    // console.log(weeklisting)
+                    // console.log(weeklisting.weekthis)
+                    // switchingWeeks(weeklisting.weekthis)
+                })
+            })
+
+        })
+    });
+
+    function switch12(num) {
+        if (num === 0) {
+            num = 12
+        }
+        return num;
+    }
+
+    function switch7(num) {
+        if (num === 0) {
+            num = 7
+        }
+        return num;
+    }
+
+
+    function preRenderWeeks(date, timing) {
+
+        var weekListing = []
+        console.log(timing)
+
+        timing.map(function (value) {
+            value = new Date(value)
+            weekListing.push(value)
+
+        })
+        console.log(weekListing)
+        switchingWeeks(weekListing)
+        return weekListing;
+    }
 
     function renderDays() {
-        // var thisWeekDays = [];
-        // document.getElementsByClassName("available").map(function (value) {
-        //     value.className = "empty";
-        // });
-        const availableTimeCells = document.getElementsByClassName("available");
-        console.log(document.getElementsByClassName("available"));
+        var availableTimeCells = document.getElementsByClassName("available");
 
-        for (var aCells = 0 ;aCells <availableTimeCells.length;aCells++){
-           availableTimeCells[aCells].className = "empty";
+        while (availableTimeCells.length >0){
+            for (var aCells = 0; aCells < availableTimeCells.length; aCells++) {
+                    availableTimeCells[aCells].className = "empty";
+                }
+            availableTimeCells = document.getElementsByClassName("available");
+            console.log(availableTimeCells.length)
         }
+
 
         for (var i = 1; i < weekdays.length; i++) {
             // date + i - day.weekday
@@ -151,71 +228,20 @@
         // return thisWeekDays;
     }
 
-    renderDays();
-
-
-    $("#button1").on("click", function () {
-        $(table).fadeOut("fast", function () {
-            $(table).fadeIn("fast", function () {
-                counter++;
-                day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
-                socket.emit('today', {date: day});
-
-            })
+    function switchingWeeks(msg) {
+        renderDays()
+        msg.map(function (value) {
+            const selectedTime = document.getElementById(value.getDay() + "." + value.getHours());
+            selectedTime.className = "available";
         })
-    });
-
-    function switch12(num) {
-        if (num === 0) {
-            num = 12
-        }
-        return num;
+        console.log(msg)
     }
-
-    function switch7(num) {
-        if (num === 0) {
-            num = 7
-        }
-        return num;
-    }
-
-    $("#button2").on("click", function () {
-        $(table).fadeOut("fast", function () {
-            $(table).fadeIn("fast", function () {
-                counter++;
-                day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
-                socket.emit('today', {date: day});
-
-            })
-        })
-    });
 
     //made a socket based on the http/ url address hence it is app.js
     var socket = io('http://localhost:3000/');
     // the on connect is going to trigger the .on('connection') for the backend IO.
     socket.on('connect', function () {
         console.log("connecting");
-        // this allow custom emitting based on 'today' and with a JSON. If needed use new Date +7/-7 for next or the week before.
-        socket.emit('today', {date: new Date()});
-        //this is the return emittion from the backend to client speifically named as return with JSON object.
-        socket.on('return', function (msg) {
-            renderDays();
-            const availableTimeCells = document.getElementsByClassName("available");
-            console.log("second check")
-            console.log(document.getElementsByClassName("available"));
-            console.log(msg)
-            msg.map(function (value) {
-                // if (thisWeekDay.includes({year:value.timeStart.year, month: value.timeStart.month, date: value.timeStart.date})){
-                //     console.log(value);
-                //     console.log("contains");
-                // }
-                console.log(value);
-                const selectedTime = document.getElementById(value.timeStart.day + "." + value.timeStart.hour);
-
-                selectedTime.className = "available";
-                console.log(selectedTime +"WTF");
-            })
-        })
     })
     socket.on('disconnect', function () {
     });

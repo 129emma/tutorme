@@ -20,6 +20,8 @@ const tutee = require('./routes/tutee');
 //requiring Mozilla session module
 var session = require('express-session');
 
+const tutorSchedule = require('./javascript/tutorSchedule3WeekPreRendering');
+
 const app = express();
 
 //using the server for socket.io purpose and in general nothing had changed.
@@ -92,56 +94,31 @@ io.on('connection', function (socket) {
     //socket itself could be collected to be broadcasted, or there is an function  socket.broadcast.emit to emit to all,
     // apart from itself.
     //msg is the given JSON Object from the emitter.
-    socket.on('today', function (msg) {
-        console.log("got a message");
-        console.log(msg);
-        const today = new Date(msg.date);
-        console.log(today.getFullYear());
-
-        const connectNow = con.method();
-        connectNow.connect(function (err) {
-            if (err) throw err;
-            console.log("Connected!");
-            var startOfWeek;
-            var endOfWeek;
-            try {
-                startOfWeek = new Date(today.getFullYear(), today.getMonth(), (today.getDate() - (today.getDay() - 2)));
-                endOfWeek = new Date(today.getFullYear(), today.getMonth(), (today.getDate() + (7 - today.getDay() + 1)));
-            }
-            catch (e) {
-                connectNow.end();
-                console.log(e);
-            }
-            console.log(startOfWeek);
-            console.log(endOfWeek);
-            connectNow.query("SELECT userName, timeStart, day FROM tableTime Where timeStart>=? AND timeStart<=?", [startOfWeek, endOfWeek], function (err, result) {
-                connectNow.end();
-                console.log('Yeah');
-                if (err) {
-                    connectNow.end();
-                    throw err;
-                } else {
-                    rawOject = JSON.parse(JSON.stringify(result));
-                    console.log(rawOject);
-                    rawOject.map(function (value) {
-                        const dateTime = new Date(Date.parse((value.timeStart).replace("T", " ")));
-                        // console.log(dateTime.getDay());
-                        const returnDate = {
-                            year: dateTime.getFullYear(),
-                            month: dateTime.getMonth(),
-                            date: dateTime.getDate(),
-                            day: (dateTime.getDay() == 0 ? 7 : dateTime.getDay()),
-                            hour: (dateTime.getHours() == 0 ? 12 : dateTime.getHours())
-                        };
-                        value.timeStart = returnDate;
-                    });
-                    console.log(rawOject);
-                    socket.emit('return', rawOject);
-                }
-            })
+    socket.on('nextnextweek', function (msg) {
+        console.log(typeof msg);
+        const presetDate = new Date(msg);
+        const date = new Date(presetDate.getFullYear(),presetDate.getMonth(),(presetDate.getDate()),-11);
+        console.log(date);
+        var promise = tutorSchedule.Oneweek(date,"jojo");
+        promise.then(function (value) {
+            console.log("promising");
+            console.log(value);
+            socket.emit('nextnextweek', value)
         });
-        // socket.emit('return', {name:"bye"});
-    })
+
+    });
+    socket.on('lastlastweek', function (msg) {
+        console.log(typeof msg);
+        const presetDate = new Date(msg);
+        const date = new Date(presetDate.getFullYear(),presetDate.getMonth(),(presetDate.getDate()),-11);
+        console.log(date);
+        var promise = tutorSchedule.Oneweek(date,"jojo");
+        promise.then(function (value) {
+            console.log("promising");
+            console.log(value);
+            socket.emit('lastlastweek', value)
+        });
+    });
 });
 
 module.exports = app;
