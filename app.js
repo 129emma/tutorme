@@ -88,7 +88,7 @@ const con = require("./javascript/connection.js");
 //The socket's entry point the .on event is based on the other's end .emit event in this given case it is 'hello' from
 //the tutorSchedule.ejs. The .on event will be trigger by the .emit events speifically given like an eventListener
 io.on('connection', function (socket) {
-    console.log("connected");
+    //console.log("connected");
     //socket itself could be collected to be broadcasted, or there is an function  socket.broadcast.emit to emit to all,
     // apart from itself.
     //msg is the given JSON Object from the emitter.
@@ -135,7 +135,7 @@ io.on('connection', function (socket) {
                         };
                         value.timeStart = returnDate;
                     });
-                    console.log(rawOject);
+                    //console.log(rawOject);
                     socket.emit('return', rawOject);
                 }
             })
