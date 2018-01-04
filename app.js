@@ -119,6 +119,9 @@ io.on('connection', function (socket) {
             socket.emit('lastlastweek', value)
         });
     });
+    socket.on('insertTime',function (msg) {
+        console.log(msg)
+    })
 });
 
 module.exports = app;
