@@ -54,6 +54,8 @@
 </div>
 <br>
 <div>
+    <label for="time">Time entry:</label>
+    <input id="time" type="datetime-local">
     <table id="scheduleTable" class="calendar" align="center">
         <tbody>
         <tr>
@@ -74,6 +76,8 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
+
+
     var cale = document.getElementsByClassName("calendar")[0];
     for (var i = 1; i < 24; i++) {
         var newRow = document.createElement('tr');
@@ -98,28 +102,27 @@
     const timing = ("<%= weekthis %>").split(",");
     renderDays();
     console.log(timing);
+
     var weeklisting = preRenderWeeks(date, timing);
-
-
 
 
     $("#button1").on("click", function () {
 
         $(table).fadeOut("fast", function () {
             day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
-            console.log("date : "+ day )
+            console.log("date : " + day)
             socket.emit('nextnextweek', day);
 
             socket.on('nextnextweek', function (value) {
                 console.log(value);
                 // weeklisting.weeknext = value
-                weeklisting = preRenderWeeks(day,value.weekthis)
+                weeklisting = preRenderWeeks(day, value.weekthis)
                 // switchingWeeks(weeklisting.weekthis)
                 $(table).fadeIn("fast", function () {
 
-            })
+                })
 
-        })
+            })
 
         })
     });
@@ -128,12 +131,12 @@
 
         $(table).fadeOut("fast", function () {
             day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
-            console.log("date : "+ day )
+            console.log("date : " + day)
             socket.emit('lastlastweek', day);
             socket.on('lastlastweek', function (value) {
                 // weeklisting.weeklast = value
                 console.log(value)
-                weeklisting = preRenderWeeks(day,value.weekthis)
+                weeklisting = preRenderWeeks(day, value.weekthis)
                 $(table).fadeIn("fast", function () {
                     // console.log("hello there");
                     // console.log(weeklisting)
@@ -167,9 +170,11 @@
 
         timing.map(function (value) {
             value = new Date(value)
+            value.setTime( value.getTime() + value.getTimezoneOffset()*60*1000 );
             weekListing.push(value)
 
         })
+        console.log("WeekListing")
         console.log(weekListing)
         switchingWeeks(weekListing)
         return weekListing;
@@ -178,10 +183,10 @@
     function renderDays() {
         var availableTimeCells = document.getElementsByClassName("available");
 
-        while (availableTimeCells.length >0){
+        while (availableTimeCells.length > 0) {
             for (var aCells = 0; aCells < availableTimeCells.length; aCells++) {
-                    availableTimeCells[aCells].className = "empty";
-                }
+                availableTimeCells[aCells].className = "empty";
+            }
             availableTimeCells = document.getElementsByClassName("available");
             console.log(availableTimeCells.length)
         }
@@ -245,6 +250,24 @@
     })
     socket.on('disconnect', function () {
     });
-
+    $("#time").on('keypress', function (event) {
+        if (event.keyCode == 13) {
+            console.log("Entered")
+            console.log(this.value)
+            var date = new Date(this.value);
+            if (isNaN(date)) {
+                console.log("not a good date")
+            }else{
+                var r = confirm("Are you sure you would like to enter "+ date+" as ....")
+                if (r == true) {
+                    date = new Date(date.getFullYear(),date.getMonth(),date.getDate(),0);
+                    console.log(date);
+                    socket.emit("insertTime", date)
+                } else {
+                    console.log("No clicked")
+                }
+            }
+        }
+    })
 </script>
 </html>
