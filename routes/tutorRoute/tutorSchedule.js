@@ -5,7 +5,7 @@ const weekly = require("../../javascript/tutorSchedule3WeekPreRendering");
 
 router.get('/', function (req, res) {
     var tutor;
-    var promise = weekly.Oneweek(undefined, "jojo",'tableTime','timeStart');
+    var promise = weekly.Oneweek(undefined, "vanie",'tableTime','timeStart');
     promise.then(function (value) {
         console.log("rendering");
         console.log(value);
