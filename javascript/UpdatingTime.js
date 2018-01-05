@@ -26,6 +26,30 @@ function insertDate(date,username,timeTable) {
 
     });
     return promise;
-}
+};
 
-module.exports = {Insert: insertDate};
+function deleteDate(date, username, timeTable) {
+    const connectNow = con.method();
+    const promise = new Promise(function (resolve, reject) {
+        connectNow.connect(function (err) {
+            if (err) {
+                connectNow.end();
+                throw err;
+            }
+            connectNow.query(" DELETE FROM " + timeTable + " WHERE username = ? AND timeStart = ?", [username, date], function(err, result) {
+                connectNow.end();
+                if (err) {
+
+                    connectNow.end();
+                    throw err;
+                } else {
+                    console.log(result);
+                }
+                resolve(result);
+            })
+        })
+    })
+    return promise;
+};
+
+module.exports = {Insert: insertDate, Delete: deleteDate};

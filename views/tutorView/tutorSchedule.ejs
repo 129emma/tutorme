@@ -309,7 +309,10 @@
         }
         else {
             console.log("This is not empty");
-
+            socket.emit("deleteTime", {id: this.id, date: Clickdate});
+            socket.on('deleteTime', function(msg) {
+                document.getElementById(msg.id).className = 'empty';
+            })
         }
     }
 

@@ -21,7 +21,8 @@ const tutee = require('./routes/tutee');
 var session = require('express-session');
 
 const tutorSchedule = require('./javascript/tutorSchedule3WeekPreRendering');
-const InsertBooking = require('./javascript/InsertTime');
+const UpdatingTime = require('./javascript/UpdatingTime');
+
 
 
 const app = express();
@@ -125,10 +126,18 @@ io.on('connection', function (socket) {
         console.log(msg);
         const day = new Date(msg.date);
         console.log(day);
-        var promise = InsertBooking.Insert(day,"vanie","tableTime");
+        var promise = UpdatingTime.Insert(day,"vanie","tableTime");
         promise.then(function (value) {
             console.log(value);
             socket.emit('insertTime', {id:msg.id, date:value})
+        })
+    })
+    socket.on('deleteTime', function(msg) {
+        const day = new Date(msg.date);
+        var promise = UpdatingTime.Delete(day, "vanie", "tableTime");
+        promise.then(function (value) {
+            console.log("delete " + value);
+            socket.emit('deleteTime', {id:msg.id});
         })
     })
 });
