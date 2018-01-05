@@ -122,7 +122,7 @@
                 weeklisting = preRenderWeeks(day, value.weekthis)
                 // switchingWeeks(weeklisting.weekthis)
                 $(table).fadeIn("fast", function () {
-
+                    console.log("afterweek: "+day)
                 })
 
             })
@@ -293,8 +293,10 @@
         console.log(this.className)
         // console.log((date.getDate()-(date.getDay()))+classIdDay)
         console.log(day);
-        console.log(day.getDay())
-        var Clickdate = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - (day.getDay())) + classIdDay, classIdHour);
+        console.log( day.getDate() - (day.getDay()) + classIdDay*1);
+        console.log(day.getMonth());
+
+        var Clickdate = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - (day.getDay()) + classIdDay*1), classIdHour);
         console.log(Clickdate)
         Clickdate.setTime(Clickdate.getTime() - Clickdate.getTimezoneOffset() * 60 * 1000);
         console.log(Clickdate);
