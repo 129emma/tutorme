@@ -92,7 +92,7 @@
             newtd.innerHTML = "..";
 
             // newtd.onclick = onClickOfTD();
-            newtd.addEventListener("click",onClickOfTD);
+            newtd.addEventListener("click", onClickOfTD);
             newRow.appendChild(newtd);
         }
         cale.appendChild(newRow);
@@ -172,10 +172,12 @@
         console.log(timing)
 
         timing.map(function (value) {
-            value = new Date(value)
-            value.setTime( value.getTime() + value.getTimezoneOffset()*60*1000 );
-            weekListing.push(value)
-
+            console.log(typeof value);
+            if (value !== "") {
+                value = new Date(value)
+                value.setTime(value.getTime() + value.getTimezoneOffset() * 60 * 1000);
+                weekListing.push(value)
+            }
         })
         console.log("WeekListing")
         console.log(weekListing)
@@ -238,11 +240,16 @@
 
     function switchingWeeks(msg) {
         renderDays()
-        msg.map(function (value) {
-            const selectedTime = document.getElementById(value.getDay() + "." + value.getHours());
-            selectedTime.className = "available";
-        })
-        console.log(msg)
+
+        if (msg.length > 0) {
+            msg.map(function (value) {
+                console.log(value)
+                console.log(value.getDay())
+                const selectedTime = document.getElementById(((value.getDay()===0)?7:value.getDay()) + "." + value.getHours());
+                selectedTime.className = "available";
+            })
+            console.log(msg)
+        }
     }
 
     //made a socket based on the http/ url address hence it is app.js
@@ -260,13 +267,13 @@
             var date = new Date(this.value);
             if (isNaN(date)) {
                 console.log("not a good date")
-            }else{
-                var r = confirm("Are you sure you would like to enter "+ date+" as ....")
+            } else {
+                var r = confirm("Are you sure you would like to enter " + date + " as ....")
                 if (r == true) {
-                    date = new Date(date.getFullYear(),date.getMonth(),date.getDate(),date.getHours());
+                    date = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours());
                     console.log(date);
                     // date = new Date(date)
-                    date.setTime( date.getTime() - date.getTimezoneOffset()*60*1000 );
+                    date.setTime(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
                     socket.emit("insertTime", date)
                 } else {
                     console.log("No clicked")
@@ -274,20 +281,35 @@
             }
         }
     })
-    function onClickOfTD(){
+
+    function onClickOfTD() {
         console.log("Clicking")
         // console.log(this.className);
         var classname = this.className;
-        (classname === "empty")? (this.className = "available"): (this.className = "empty");
-        console.log(this.id);
-        console.log(this.className)
-        const classId= this.id.split(".")
+        const classId = this.id.split(".")
         const classIdDay = classId[0]
         const classIdHour = classId[1]
-        var Clickdate = new Date(date.getFullYear(), date.getMonth(),(date.getDate()-(date.getDay()))+classIdDay,classIdHour)
+        console.log(this.id);
+        console.log(this.className)
+        // console.log((date.getDate()-(date.getDay()))+classIdDay)
+        console.log(day);
+        console.log(day.getDay())
+        var Clickdate = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - (day.getDay())) + classIdDay, classIdHour);
+        console.log(Clickdate)
+        Clickdate.setTime(Clickdate.getTime() - Clickdate.getTimezoneOffset() * 60 * 1000);
         console.log(Clickdate);
-        Clickdate.setTime( Clickdate.getTime() - Clickdate.getTimezoneOffset()*60*1000 );
-        socket.emit("insertTime", Clickdate)
+        if (classname === "empty") {
+            socket.emit("insertTime", {id: this.id, date: Clickdate});
+            socket.on('insertTime', function (msg) {
+                console.log("in function socket respond");
+                document.getElementById(msg.id).className = "available";
+            })
+        }
+        else {
+            console.log("This is not empty");
+
+        }
     }
+
 </script>
 </html>

@@ -58,8 +58,11 @@ function renderingOneweek(date,username,timeTable,whatWanted) {
         "weekthis": []
     };
     (date === undefined) ? today = new Date() : today = new Date(date);
-    const startOfWeek = new Date(today.getFullYear(), today.getMonth(), (today.getDate() - (today.getDay() - 2)), -11);
-    const endOfWeek = new Date(today.getFullYear(), today.getMonth(), (today.getDate() + (7 - today.getDay() + 1)), -11);
+    var startOfWeek = new Date(today.getFullYear(), today.getMonth(), (today.getDate() - (today.getDay() - 2)-1));
+    // startOfWeek.setTime( startOfWeek.getTime() - startOfWeek.getTimezoneOffset()*60*1000 );
+    const endOfWeek = new Date(today.getFullYear(), today.getMonth(), (today.getDate() + (7 - today.getDay() + 1)));
+    console.log("Start date: "+ startOfWeek);
+    console.log("End date: "+ endOfWeek);
     const connectNow = con.method();
     const promise = new Promise(function (resolve, reject) {
         connectNow.connect(function (err) {
@@ -80,7 +83,7 @@ function renderingOneweek(date,username,timeTable,whatWanted) {
                         // value.timeStart = new Date(value.timeStart);
                         tutor.weekthis.push(value.timeStart)
                     });
-                    console.log(rawOject)
+                    // console.log(rawOject)
                 }
                 // console.log(tutor);
                 resolve(tutor);

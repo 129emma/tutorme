@@ -101,7 +101,7 @@ io.on('connection', function (socket) {
         const presetDate = new Date(msg);
         const date = new Date(presetDate.getFullYear(),presetDate.getMonth(),(presetDate.getDate()),-11);
         console.log(date);
-        var promise = tutorSchedule.Oneweek(date,"jojo",'tableTime','timeStart');
+        var promise = tutorSchedule.Oneweek(date,"vanie",'tableTime','timeStart');
         promise.then(function (value) {
             console.log("promising");
             console.log(value);
@@ -114,7 +114,7 @@ io.on('connection', function (socket) {
         const presetDate = new Date(msg);
         const date = new Date(presetDate.getFullYear(),presetDate.getMonth(),(presetDate.getDate()),-11);
         console.log(date);
-        var promise = tutorSchedule.Oneweek(date,"jojo",'tableTime','timeStart');
+        var promise = tutorSchedule.Oneweek(date,"vanie",'tableTime','timeStart');
         promise.then(function (value) {
             console.log("promising");
             console.log(value);
@@ -122,13 +122,13 @@ io.on('connection', function (socket) {
         });
     });
     socket.on('insertTime',function (msg) {
-        console.log(typeof msg);
-        const day = new Date(msg);
+        console.log(msg);
+        const day = new Date(msg.date);
         console.log(day);
-        var promise = InsertBooking.Insert(day,"vanie","tableTime")
+        var promise = InsertBooking.Insert(day,"vanie","tableTime");
         promise.then(function (value) {
             console.log(value);
-            
+            socket.emit('insertTime', {id:msg.id, date:value})
         })
     })
 });
