@@ -77,19 +77,22 @@ function renderingOneweek(date,username,timeTable,whatWanted) {
                     rawOject = JSON.parse(JSON.stringify(result));
                     rawOject.map(function (value) {
                         value.timeStart = new Date(value.timeStart);
-                        value.timeStart = new Date(value.timeStart);
+                        // value.timeStart = new Date(value.timeStart);
                         tutor.weekthis.push(value.timeStart)
                     });
                     console.log(rawOject)
                 }
                 // console.log(tutor);
                 resolve(tutor);
+
             })
+
         })
 
     });
     return promise;
 }
+
 
 
 module.exports = {Oneweek: renderingOneweek};

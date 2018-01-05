@@ -21,6 +21,8 @@ const tutee = require('./routes/tutee');
 var session = require('express-session');
 
 const tutorSchedule = require('./javascript/tutorSchedule3WeekPreRendering');
+const InsertBooking = require('./javascript/InsertTime');
+
 
 const app = express();
 
@@ -120,7 +122,14 @@ io.on('connection', function (socket) {
         });
     });
     socket.on('insertTime',function (msg) {
-        console.log(msg)
+        console.log(typeof msg);
+        const day = new Date(msg);
+        console.log(day);
+        var promise = InsertBooking.Insert(day,"vanie","tableTime")
+        promise.then(function (value) {
+            console.log(value);
+            
+        })
     })
 });
 
