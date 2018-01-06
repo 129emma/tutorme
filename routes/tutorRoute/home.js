@@ -4,6 +4,7 @@ const con = require('../../javascript/connection.js');
 
 router.get('/', function (req, res){
 
+
     console.log(req.session.userDetails[0]);
 
 const connectNow = con.method();

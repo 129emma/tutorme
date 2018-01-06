@@ -47,8 +47,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     secret: 'SOMERANDOMSECRETHERE',
-    cookie: {maxAge: 60000}
-}));
+    cookie: {maxAge: 60000}}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 

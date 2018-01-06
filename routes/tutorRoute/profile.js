@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.get('/', function (req, res){
 
-    res.render("./tutorView/profile");
+    res.render("./tutorView/profile", req.session);
 
 })
 ;
