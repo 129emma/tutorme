@@ -54,8 +54,6 @@
 </div>
 <br>
 <div>
-    <label for="time">Time entry:</label>
-    <input id="time" type="datetime-local">
     <table id="scheduleTable" class="calendar" align="center">
         <tbody>
         <tr>
@@ -76,8 +74,9 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-
-
+    const userName = "<%= userDetails.userName %>";
+    console.log(userName);
+    console.log(typeof userName)
     var cale = document.getElementsByClassName("calendar")[0];
     for (var i = 1; i < 24; i++) {
         var newRow = document.createElement('tr');
@@ -102,7 +101,7 @@
     var day = new Date(date.getFullYear(), (date.getMonth()), date.getDate());
     const weekdays = $("tbody th");
     const table = $("#scheduleTable")[0];
-    const timing = ("<%= weekthis %>").split(",");
+    const timing = ("<%= value.weekthis %>").split(",");
     renderDays();
     console.log(timing);
 
@@ -114,7 +113,7 @@
         $(table).fadeOut("fast", function () {
             day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
             console.log("date : " + day)
-            socket.emit('nextnextweek', day);
+            socket.emit('nextnextweek', {userName: userName,day:day});
 
             socket.on('nextnextweek', function (value) {
                 console.log(value);
@@ -135,7 +134,7 @@
         $(table).fadeOut("fast", function () {
             day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
             console.log("date : " + day)
-            socket.emit('lastlastweek', day);
+            socket.emit('lastlastweek', {userName: userName,day:day});
             socket.on('lastlastweek', function (value) {
                 // weeklisting.weeklast = value
                 console.log(value)
@@ -260,27 +259,6 @@
     })
     socket.on('disconnect', function () {
     });
-    $("#time").on('keypress', function (event) {
-        if (event.keyCode == 13) {
-            console.log("Entered")
-            console.log(this.value)
-            var date = new Date(this.value);
-            if (isNaN(date)) {
-                console.log("not a good date")
-            } else {
-                var r = confirm("Are you sure you would like to enter " + date + " as ....")
-                if (r == true) {
-                    date = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours());
-                    console.log(date);
-                    // date = new Date(date)
-                    date.setTime(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
-                    socket.emit("insertTime", date)
-                } else {
-                    console.log("No clicked")
-                }
-            }
-        }
-    })
 
     function onClickOfTD() {
         console.log("Clicking")
@@ -301,7 +279,7 @@
         Clickdate.setTime(Clickdate.getTime() - Clickdate.getTimezoneOffset() * 60 * 1000);
         console.log(Clickdate);
         if (classname === "empty") {
-            socket.emit("insertTime", {id: this.id, date: Clickdate});
+            socket.emit("insertTime", {id: this.id, date: Clickdate, userName:userName});
             socket.on('insertTime', function (msg) {
                 console.log("in function socket respond");
                 document.getElementById(msg.id).className = "available";
@@ -309,7 +287,7 @@
         }
         else {
             console.log("This is not empty");
-            socket.emit("deleteTime", {id: this.id, date: Clickdate});
+            socket.emit("deleteTime", {id: this.id, date: Clickdate, userName:userName});
             socket.on('deleteTime', function(msg) {
                 document.getElementById(msg.id).className = 'empty';
             })

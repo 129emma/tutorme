@@ -98,10 +98,11 @@ io.on('connection', function (socket) {
     //msg is the given JSON Object from the emitter.
     socket.on('nextnextweek', function (msg) {
         console.log(typeof msg);
-        const presetDate = new Date(msg);
+        console.log(msg.userName);
+        const presetDate = new Date(msg.day);
         const date = new Date(presetDate.getFullYear(),presetDate.getMonth(),(presetDate.getDate()),-11);
         console.log(date);
-        var promise = tutorSchedule.Oneweek(date,"vanie",'tableTime','timeStart');
+        var promise = tutorSchedule.Oneweek(date,String(msg.userName),'tableTime','timeStart');
         promise.then(function (value) {
             console.log("promising");
             console.log(value);
@@ -111,10 +112,10 @@ io.on('connection', function (socket) {
     });
     socket.on('lastlastweek', function (msg) {
         console.log(typeof msg);
-        const presetDate = new Date(msg);
+        const presetDate = new Date(msg.day);
         const date = new Date(presetDate.getFullYear(),presetDate.getMonth(),(presetDate.getDate()),-11);
         console.log(date);
-        var promise = tutorSchedule.Oneweek(date,"vanie",'tableTime','timeStart');
+        var promise = tutorSchedule.Oneweek(date,String(msg.userName),'tableTime','timeStart');
         promise.then(function (value) {
             console.log("promising");
             console.log(value);
@@ -125,7 +126,7 @@ io.on('connection', function (socket) {
         console.log(msg);
         const day = new Date(msg.date);
         console.log(day);
-        var promise = UpdatingTime.Insert(day,"vanie","tableTime");
+        var promise = UpdatingTime.Insert(day,String(msg.userName),"tableTime");
         promise.then(function (value) {
             console.log(value);
             socket.emit('insertTime', {id:msg.id, date:value})
@@ -133,7 +134,7 @@ io.on('connection', function (socket) {
     })
     socket.on('deleteTime', function(msg) {
         const day = new Date(msg.date);
-        var promise = UpdatingTime.Delete(day, "vanie", "tableTime");
+        var promise = UpdatingTime.Delete(day,String(msg.userName), "tableTime");
         promise.then(function (value) {
             console.log("delete " + value);
             socket.emit('deleteTime', {id:msg.id});

@@ -38,7 +38,7 @@ router.post('/register', function(req, res) {
     var studentID = req.body.studentId;
     var studySchool = req.body.school;
     var tutor_activation = req.body.tutorActivation;
-
+    console.log(typeof tutor_activation);
     var pwd = req.body.passWord;
 
     console.log("ready to query");
@@ -47,11 +47,28 @@ router.post('/register', function(req, res) {
     connectNow.query("INSERT INTO tableUser (userName, firstName, lastName, email, address, dob, studentID, studySchool, tutor_activation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
         , [un, fn, ln, em, ad, doob, studentID, studySchool, tutor_activation], function(err, result) {
             console.log("member registered!!");
-
+            if (tutor_activation === "1"){
+                connectNow.query("INSERT INTO tableTutor (userName) VALUES(?)", [un], function(err, result){
+                    console.log('This is a tutor');
+                    if (err) {
+                        connectNow.end();
+                        throw err;
+                    }
+                    else{
+                        console.log(result);
+                    }
+                });
+            }
             /*after user account is built create a hashed password query*/
 
             console.log(pwd);
-
+            // Some of the non-null elements are not required within the registration page, which causes to throw an error.
+            // plz do err processing.
+            if (err){
+                connectNow.end();
+                console.log(err);
+                throw err;
+            }
             bcrypt.genSalt(saltRounds, function(err, salt) {
                 bcrypt.hash(pwd, salt, function(err, hash) {
                     // Store hash in your password DB.
@@ -60,12 +77,22 @@ router.post('/register', function(req, res) {
                         connectNow.end();
                     }
                     connectNow.query("INSERT INTO tablePassword (userName, hashKey) VALUES(?, ?)", [un, hash], function(err, result){
-                        connectNow.end();
                         console.log('Hallo--1');
                         if (err) {
+                            connectNow.end();
                             throw err;
                         } else {
-                            res.redirect("/tutor/home");
+                            connectNow.query('SELECT * FROM tableUser WHERE userName = ? ', [un], function (err, result) {
+                                connectNow.end();
+                                if (err) {
+                                    throw err
+                                } else {
+                                    const userDetails = JSON.parse(JSON.stringify(result[0]));
+                                    req.session.userDetails = JSON.parse("[" + JSON.stringify(userDetails) + "]");
+                                    res.redirect('/tutor/home');
+                                }
+                            });
+                            // res.redirect("/tutor/home");
                         }
                     });
                 });
