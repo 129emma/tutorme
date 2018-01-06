@@ -25,7 +25,7 @@ router.get('/', function (req, res) {
     console.log("ready to query");
 
     /* first query to make the user in user table*/
-    connectNow.query("SELECT tuteeFeedback, tuteeRating FROM tableBooking WHERE complete = ? AND tutorID = ? "
+    connectNow.query("SELECT courseID, tuteeID, tuteeFeedback, tuteeRating FROM tableBooking WHERE complete = ? AND tutorID = ? "
         , [1, tutorUsername], function (err, result) {
 
             connectNow.end();
@@ -34,8 +34,10 @@ router.get('/', function (req, res) {
                 throw err
             } else {
 
-                console.log(result);
-                res.render('./tutorView/feedback', result);
+                const resultDetails = JSON.parse(JSON.stringify(result))
+
+                console.log(resultDetails);
+                res.render('./tutorView/feedback', {userDetails:resultDetails});
 
 
             }
