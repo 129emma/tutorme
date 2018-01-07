@@ -20,9 +20,19 @@ const tutee = require('./routes/tutee');
 //requiring Mozilla session module
 var session = require('express-session');
 
+const tutorSchedule = require('./javascript/tutorSchedule3WeekPreRendering');
+const UpdatingTime = require('./javascript/UpdatingTime');
+
+
+
 const app = express();
 
 // app.listen(3000);
+//using the server for socket.io purpose and in general nothing had changed.
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+
+server.listen(3000);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

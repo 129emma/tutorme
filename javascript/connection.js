@@ -16,6 +16,7 @@ function connectNow () {
         user: "tutorme",
         password: "changeme",
         database: "tutorme",
+        timezone: "utc"
     });
     return con;
 }

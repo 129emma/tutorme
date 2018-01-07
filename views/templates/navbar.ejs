@@ -21,6 +21,9 @@
             <li><a href="/tutor/profile">Profile</a></li>
             <li><a href="/tutor/feedback">Feedback</a></li>
             <li><a href="/login/logout">logout</a></li>
+            <% if(userDetails[0].tutor_activation === 1){%>
+            <li><a href="/tutor/tutorSchedule">Tutor Schedule</a></li>
+            <%}%>
             <% } %>
         </ul>
     </div>

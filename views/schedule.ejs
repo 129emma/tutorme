@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css"
+          rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 80%;
+
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+            width: 10%;
+            height: 200px;
+        }
+
+        /*tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }*/
+
+        .available {
+            background-color: #666672;
+            color: white;
+        }
+
+        .booked {
+            background-color: #d14c4c;
+            color: white;
+        }
+    </style>
+
+
+</head>
+<body>
+<button id="button1">Click</button>
+<button id="button2">Click2</button>
+<div>
+    <table id="scheduleTable" class="calendar" ,="" align="center">
+        <tbody>
+        <tr>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<script>
+    var cale = document.getElementsByClassName("calendar")[0];
+    for (var i = 8; i < 23; i++) {
+        var newrow = document.createElement('tr');
+        var fsttd = document.createElement('td');
+        fsttd.innerHTML = i + ':00';
+        newrow.appendChild(document.createElement('td').appendChild(fsttd));
+        for (var j = 1; j < 8; j++) {
+
+            var newtd = document.createElement('td');
+            newtd.id = j + "." + i;
+            newtd.className = "empty";
+            newtd.innerHTML = "..";
+            newrow.appendChild(newtd);
+        }
+        cale.appendChild(newrow);
+    }
+
+    const table = $("#scheduleTable")[0];
+    console.log(table);
+    var date = new Date();
+    var day = new Date(date.getFullYear(), (date.getMonth()), date.getDate());
+    console.log(day.getFullYear());
+    console.log(day.getMonth());
+    console.log(day.getDate());
+    console.log(day.getDay());
+    const weekdays = $("tbody th");
+    var counter = 0;
+    const sevendays = 7;
+    function renderDays() {
+        for(var i = 1 ; i<weekdays.length; i++){
+            // date + i - day.weekday
+            var d =  new Date(day.getFullYear(),day.getMonth(), (day.getDate()+ i- day.getDay()));
+            var counterDay = {
+                weekDay: d.getDay(),
+                date: d.getDate(),
+                month: switch12(d.getMonth()+1),
+                year: d.getFullYear()
+            };
+            weekdays[i].innerHTML = switch7(counterDay.weekDay)+ "<br>" + counterDay.date+ "/" + counterDay.month
+        }
+
+    }
+    renderDays();
+
+    $("#button1").on("click", function () {
+        $(table).fadeOut("slow", function () {
+            $(table).fadeIn("slow", function () {
+                counter++;
+                day = new Date(day.getFullYear(), day.getMonth(), (day.getDate()+7));
+                renderDays();
+                console.log(day)
+            })
+        })
+    });
+
+    function switch12 (num){
+        if (num === 0){
+            num =12
+        }
+        return num;
+    }
+    function switch7(num){
+        if(num===0){
+            num = 7
+        }
+        return num;
+    }
+    $("#button2").on("click", function () {
+        $(table).fadeOut("slow", function () {
+            $(table).fadeIn("slow", function () {
+                counter++;
+                day = new Date(day.getFullYear(), day.getMonth(), (day.getDate()-7));
+                renderDays();
+                console.log(day)
+            })
+        })
+    });
+</script>
+</html>

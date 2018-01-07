@@ -1,23 +1,61 @@
 <!DOCTYPE html>
-<html>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css"
+          rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 80%;
+
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+            width: 10%;
+            height: 50px;
+        }
+
+        .available {
+            background-color: #666672;
+            color: white;
+        }
+
+        .booked {
+            background-color: #d14c4c;
+            color: white;
+        }
+    </style>
+
+
 </head>
 <body>
-<div>
-    <ul class="navbar navbar-inverse" role="navigation">
-        <p class="navbar-text" href="/tutorSchedule">Home</p>
-        <p class="navbar-text" href="/registration">Profile</p>
-        <p class="navbar-text" href="/">Notification</p>
-        <button type="button" class="btn btn-default navbar-btn">Sign out</button>
-    </ul>
+<h1 align="center">Tutor's weekly schedule</h1>
+<div align="center">
+    <button id="button2"> <</button>
+    <button id="button1"> ></button>
+
 </div>
-<div id="tutorSchedule" style="overflow-x:auto;", class="table-responsive">
-    <br>
-    <br>
-    <h2 class="text-center"><%= userName %>'s week schedule</h2>
-    <br>
-    <table id="scheduleTable" class="calendar", class="table", align="center">
+<br>
+<div>
+    <table id="scheduleTable" class="calendar" align="center">
+        <tbody>
         <tr>
             <th>Time</th>
             <th>Monday</th>
@@ -28,88 +66,233 @@
             <th>Saturday</th>
             <th>Sunday</th>
         </tr>
+        </tbody>
     </table>
 </div>
 
 </body>
-<script>
 
-    const calendar = document.getElementsByClassName("calendar")[0];
-    for (i = 8; i < 23; i++) {
-        const newRow = document.createElement('tr');
-        const fsttd = document.createElement('td');
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const userName = "<%= userDetails.userName %>";
+    console.log(userName);
+    console.log(typeof userName)
+    var cale = document.getElementsByClassName("calendar")[0];
+    for (var i = 1; i < 24; i++) {
+        var newRow = document.createElement('tr');
+        var fsttd = document.createElement('td');
         fsttd.innerHTML = i + ':00';
         newRow.appendChild(document.createElement('td').appendChild(fsttd));
+        for (var j = 1; j < 8; j++) {
 
-        for (j = 1; j < 8; j++) {
-            const newtd = document.createElement('td');
+            var newtd = document.createElement('td');
             newtd.id = j + "." + i;
             newtd.className = "empty";
-            newtd.innerHTML = ".."
+            newtd.innerHTML = "..";
+
+            // newtd.onclick = onClickOfTD();
+            newtd.addEventListener("click", onClickOfTD);
             newRow.appendChild(newtd);
         }
-        calendar.appendChild(newRow);
+        cale.appendChild(newRow);
     }
 
-    const AvailableCell = [<%= idAvailable %>].map(function (num) {
-        if (num> 99) {
-            num = String(Math.round(num));
-            num = num.substr(0, 1) + "." + num.substr(1);
-            return num
-        }
-        return String(num);
+    var date = new Date();
+    var day = new Date(date.getFullYear(), (date.getMonth()), date.getDate());
+    const weekdays = $("tbody th");
+    const table = $("#scheduleTable")[0];
+    const timing = ("<%= value.weekthis %>").split(",");
+    renderDays();
+    console.log(timing);
+
+    var weeklisting = preRenderWeeks(date, timing);
+
+
+    $("#button1").on("click", function () {
+
+        $(table).fadeOut("fast", function () {
+            day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
+            console.log("date : " + day)
+            socket.emit('nextnextweek', {userName: userName,day:day});
+
+            socket.on('nextnextweek', function (value) {
+                console.log(value);
+                // weeklisting.weeknext = value
+                weeklisting = preRenderWeeks(day, value.weekthis)
+                // switchingWeeks(weeklisting.weekthis)
+                $(table).fadeIn("fast", function () {
+                    console.log("afterweek: "+day)
+                })
+
+            })
+
+        })
     });
 
-    for (i = 0; i < AvailableCell.length; i++) {
-        console.log("Getting id")
-        console.log(document.getElementById(AvailableCell[i]))
-        document.getElementById(AvailableCell[i]).className = 'available';
-        document.getElementById(AvailableCell[i]).innerHTML = 'Available';
+    $("#button2").on("click", function () {
+
+        $(table).fadeOut("fast", function () {
+            day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
+            console.log("date : " + day)
+            socket.emit('lastlastweek', {userName: userName,day:day});
+            socket.on('lastlastweek', function (value) {
+                // weeklisting.weeklast = value
+                console.log(value)
+                weeklisting = preRenderWeeks(day, value.weekthis)
+                $(table).fadeIn("fast", function () {
+                    // console.log("hello there");
+                    // console.log(weeklisting)
+                    // console.log(weeklisting.weekthis)
+                    // switchingWeeks(weeklisting.weekthis)
+                })
+            })
+
+        })
+    });
+
+    function switch12(num) {
+        if (num === 0) {
+            num = 12
+        }
+        return num;
     }
 
-    const BookedCell = [<%= idBooked %>];
-    const course = ("<%= course %>").split(",");
-    const tutee = ("<%= tutee %>").split(",");
-    const meetingLocation = ("<%= location %>").split(",");
-
-    for (i = 0; i < BookedCell.length; i++) {
-        document.getElementById(BookedCell[i]).className = 'booked';
-        document.getElementById(BookedCell[i]).innerHTML = course[i] + "<br>" + "Tutee: " + tutee[i] + "<br>" + "Location: " +meetingLocation[i];
+    function switch7(num) {
+        if (num === 0) {
+            num = 7
+        }
+        return num;
     }
 
-    document.getElementsByClassName('calendar').className = 'table-hover';
 
+    function preRenderWeeks(date, timing) {
+
+        var weekListing = []
+        console.log(timing)
+
+        timing.map(function (value) {
+            console.log(typeof value);
+            if (value !== "") {
+                value = new Date(value)
+                value.setTime(value.getTime() + value.getTimezoneOffset() * 60 * 1000);
+                weekListing.push(value)
+            }
+        })
+        console.log("WeekListing")
+        console.log(weekListing)
+        switchingWeeks(weekListing)
+        return weekListing;
+    }
+
+    function renderDays() {
+        var availableTimeCells = document.getElementsByClassName("available");
+
+        while (availableTimeCells.length > 0) {
+            for (var aCells = 0; aCells < availableTimeCells.length; aCells++) {
+                availableTimeCells[aCells].className = "empty";
+            }
+            availableTimeCells = document.getElementsByClassName("available");
+            console.log(availableTimeCells.length)
+        }
+
+
+        for (var i = 1; i < weekdays.length; i++) {
+            // date + i - day.weekday
+            var d = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + i - day.getDay()));
+            // thisWeekDays.push({year:d.getFullYear(), month: d.getMonth(), date: d.getDate()});
+            var counterDay = {
+                weekDay: d.getDay(),
+                date: d.getDate(),
+                month: switch12(d.getMonth() + 1),
+                year: d.getFullYear()
+            };
+
+            var weekDayString;
+
+            switch (counterDay.weekDay) {
+                case 1:
+                    weekDayString = "Monday"
+                    break;
+                case 2:
+                    weekDayString = "Tuesday"
+                    break;
+                case 3:
+                    weekDayString = "Wednesday"
+                    break;
+                case 4:
+                    weekDayString = "Thursday"
+                    break;
+                case 5:
+                    weekDayString = "Friday"
+                    break;
+                case 6:
+                    weekDayString = "Saturday"
+                    break;
+                case 0:
+                    weekDayString = "Sunday"
+                    break;
+            }
+            weekdays[i].innerHTML = switch7(weekDayString) + "<br>" + counterDay.date + "/" + counterDay.month;
+        }
+        // return thisWeekDays;
+    }
+
+    function switchingWeeks(msg) {
+        renderDays()
+
+        if (msg.length > 0) {
+            msg.map(function (value) {
+                console.log(value)
+                console.log(value.getDay())
+                const selectedTime = document.getElementById(((value.getDay()===0)?7:value.getDay()) + "." + value.getHours());
+                selectedTime.className = "available";
+            })
+            console.log(msg)
+        }
+    }
+
+    //made a socket based on the http/ url address hence it is app.js
+    var socket = io('http://localhost:3000/');
+    // the on connect is going to trigger the .on('connection') for the backend IO.
+    socket.on('connect', function () {
+        console.log("connecting");
+    })
+    socket.on('disconnect', function () {
+    });
+
+    function onClickOfTD() {
+        console.log("Clicking")
+        // console.log(this.className);
+        var classname = this.className;
+        const classId = this.id.split(".")
+        const classIdDay = classId[0]
+        const classIdHour = classId[1]
+        console.log(this.id);
+        console.log(this.className)
+        // console.log((date.getDate()-(date.getDay()))+classIdDay)
+        console.log(day);
+        console.log( day.getDate() - (day.getDay()) + classIdDay*1);
+        console.log(day.getMonth());
+
+        var Clickdate = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - (day.getDay()) + classIdDay*1), classIdHour);
+        console.log(Clickdate)
+        Clickdate.setTime(Clickdate.getTime() - Clickdate.getTimezoneOffset() * 60 * 1000);
+        console.log(Clickdate);
+        if (classname === "empty") {
+            socket.emit("insertTime", {id: this.id, date: Clickdate, userName:userName});
+            socket.on('insertTime', function (msg) {
+                console.log("in function socket respond");
+                document.getElementById(msg.id).className = "available";
+            })
+        }
+        else {
+            console.log("This is not empty");
+            socket.emit("deleteTime", {id: this.id, date: Clickdate, userName:userName});
+            socket.on('deleteTime', function(msg) {
+                document.getElementById(msg.id).className = 'empty';
+            })
+        }
+    }
 
 </script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-<style>
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 80%;
-
-    }
-
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: center;
-        padding: 8px;
-        width: 10%;
-        height: 200px;
-    }
-
-    /*tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }*/
-
-    .available {
-        background-color: #666672;
-        color: white;
-    }
-
-    .booked {
-        background-color: #d14c4c;
-        color: white;
-    }
-</style>
 </html>
