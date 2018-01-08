@@ -124,9 +124,13 @@ io.on('connection', function (socket) {
     });
     socket.on('insertTime',function (msg) {
         console.log(msg);
-        const day = new Date(msg.date);
-        console.log(day);
-        var promise = UpdatingTime.Insert(day,String(msg.userName),"tableTime");
+
+        for (var i = 0; i< msg.date.length; i++){
+            msg.date[i] = new Date(msg.date[i]);
+        }
+        // const day = new Date(msg.date);
+
+        var promise = UpdatingTime.Insert(msg.date,String(msg.userName),"tableTime");
         promise.then(function (value) {
             console.log(value);
             socket.emit('insertTime', {id:msg.id, date:value})
