@@ -44,11 +44,55 @@
 
             <br><br>
             <input type="submit" value="Edit">
-
         </form>
+    </div>
+    <hr>
+
+    <!--This is the section containing the course information, allowing adding further courses that the tutor is teaching, link to backend which links to Capabilities database-->
+    <div id="tutorCourseDetails">
+        <h3>Courses you can tutor</h3>
+        <div class="card" style="width: 50rem;">
+            <input type="text" id="myInput" placeholder="Course..." style="width: 40rem;">
+            <span onclick="newElement()" class="addBtn">Add</span>
+            <ul id="tutorCourseList" class="list-group list-group-flush">
+                <li class="list-group-item">Law 121</li>
+                <li class="list-group-item">Psych 109</li>
+                <li class="list-group-item">Compsci 101</li>
+            </ul>
+        </div>
     </div>
 
 </div>
+
+<script>
+    // Create a new list item when clicking on the "Add" button
+    function newElement() {
+        var li = document.createElement("li");
+        var inputValue = document.getElementById("myInput").value;
+        var t = document.createTextNode(inputValue);
+        li.setAttribute("class", "list-group-item")
+        li.appendChild(t);
+        if (inputValue === '') {
+            alert("You must write something!");
+        } else {
+            document.getElementById("tutorCourseList").appendChild(li);
+        }
+        document.getElementById("myInput").value = "";
+
+        var span = document.createElement("SPAN");
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        li.appendChild(span);
+
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function() {
+                var div = this.parentElement;
+                div.style.display = "none";
+            }
+        }
+    }
+</script>
 
 </body>
 </html>

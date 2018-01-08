@@ -37,7 +37,7 @@ router.get('/', function (req, res) {
                 const resultDetails = JSON.parse(JSON.stringify(result))
 
                 console.log(resultDetails);
-                res.render('./tutorView/feedback', {feedbackDetails:resultDetails});
+                res.render('./tutorView/feedback', {feedbackDetails: resultDetails, userDetails: req.session.userDetails});
 
 
             }
