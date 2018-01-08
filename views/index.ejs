@@ -3,20 +3,22 @@
 
 <!-- The included template contains all the links, JS and Styling files to be included in the pages, to alter the contents please refer to templates/included.html file -->
 <% include templates/included.html %>
+
 <head>
     <title><%= title %></title>
     <link rel="stylesheet" href="/stylesheets/index.css" />
 </head>
 
+<!--<style>#F1A829</style>-->
 <body>
 
-<!--The navbar template included below, to alter the contents please refer to templates/navbar.html file-->
-<% include templates/navbar.html %>
+<!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
+<% include templates/navbar.ejs %>
 
 <!--<div class="ui container">
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    <p><a href="/loginPage">Login</a> </p>
+    <p><a href="/login">Login</a> </p>
     <p><a href="/registration">Register now!</a> </p>
 </div>-->
 

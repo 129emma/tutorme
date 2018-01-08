@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css"
+          rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 80%;
+
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+            width: 10%;
+            height: 50px;
+        }
+
+        .available {
+            background-color: #666672;
+            color: white;
+        }
+
+        .editing {
+            background-color: pink;
+            color: white;
+        }
+
+        .deleting {
+            background-color: #d14c4c;
+            color: white;
+        }
+
+        .booked {
+            background-color: #d14c4c;
+            color: white;
+        }
+
+        .clickButton {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .unclickButton {
+            background-color: transparent;
+            color: black;
+        }
+    </style>
+
+
+</head>
+<body>
+<h1 align="center"><%= userDetails %>'s weekly schedule</h1>
+<div align="center">
+    <button id="button2"> <</button>
+    <button id="button1"> ></button>
+</div>
+<br>
+<div align="center">
+    <button id="edit" onclick="editCalendar()">Edit</button>
+    <button id="save" onclick="saveCalendar()">Save</button>
+</div>
+
+
+<br>
+<div>
+    <table id="scheduleTable" class="calendar" align="center">
+        <tbody>
+        <tr>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var ListToInsert = [];
+    var ListToDelete = [];
+    const userName = "<%= userDetails %>";
+    
+    
+    var cale = document.getElementsByClassName("calendar")[0];
+    for (var i = 1; i < 24; i++) {
+        var newRow = document.createElement('tr');
+        var fsttd = document.createElement('td');
+        fsttd.innerHTML = i + ':00';
+        newRow.appendChild(document.createElement('td').appendChild(fsttd));
+        for (var j = 1; j < 8; j++) {
+
+            var newtd = document.createElement('td');
+            newtd.id = j + "." + i;
+            newtd.className = "empty";
+            newtd.innerHTML = "..";
+
+            // newtd.onclick = onClickOfTD();
+            newtd.addEventListener("click", onClickOfTD);
+            newRow.appendChild(newtd);
+        }
+        cale.appendChild(newRow);
+    }
+
+    var date = new Date();
+    var day = new Date(date.getFullYear(), (date.getMonth()), date.getDate());
+    const weekdays = $("tbody th");
+    const table = $("#scheduleTable")[0];
+    const timing = ("<%= value.weekthis %>").split(",");
+    renderDays();
+    
+
+    var weeklisting = preRenderWeeks(date, timing);
+
+
+    $("#button1").on("click", function () {
+
+        $(table).fadeOut("fast", function () {
+            day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
+            
+            socket.emit('nextnextweek', {userName: userName, day: day});
+
+            socket.on('nextnextweek', function (value) {
+                
+                // weeklisting.weeknext = value
+                weeklisting = preRenderWeeks(day, value.weekthis)
+                // switchingWeeks(weeklisting.weekthis)
+                $(table).fadeIn("fast", function () {
+                    
+                })
+
+            })
+
+        })
+    });
+
+    $("#button2").on("click", function () {
+
+        $(table).fadeOut("fast", function () {
+            day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
+            
+            socket.emit('lastlastweek', {userName: userName, day: day});
+            socket.on('lastlastweek', function (value) {
+                // weeklisting.weeklast = value
+                
+                weeklisting = preRenderWeeks(day, value.weekthis)
+                $(table).fadeIn("fast", function () {
+                    // 
+                    // 
+                    // 
+                    // switchingWeeks(weeklisting.weekthis)
+                })
+            })
+
+        })
+    });
+
+    function switch12(num) {
+        if (num === 0) {
+            num = 12
+        }
+        return num;
+    }
+
+    function switch7(num) {
+        if (num === 0) {
+            num = 7
+        }
+        return num;
+    }
+
+
+    function preRenderWeeks(date, timing) {
+
+        var weekListing = []
+        
+
+        timing.map(function (value) {
+            
+            if (value !== "") {
+                value = new Date(value)
+                value.setTime(value.getTime() + value.getTimezoneOffset() * 60 * 1000);
+                weekListing.push(value)
+            }
+        })
+        
+        
+        switchingWeeks(weekListing)
+        return weekListing;
+    }
+
+    function renderDays() {
+        var availableTimeCells = document.getElementsByClassName("available");
+
+        while (availableTimeCells.length > 0) {
+            for (var aCells = 0; aCells < availableTimeCells.length; aCells++) {
+                availableTimeCells[aCells].className = "empty";
+            }
+            availableTimeCells = document.getElementsByClassName("available");
+            
+        }
+
+
+        for (var i = 1; i < weekdays.length; i++) {
+            // date + i - day.weekday
+            var d = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + i - day.getDay()));
+            // thisWeekDays.push({year:d.getFullYear(), month: d.getMonth(), date: d.getDate()});
+            var counterDay = {
+                weekDay: d.getDay(),
+                date: d.getDate(),
+                month: switch12(d.getMonth() + 1),
+                year: d.getFullYear()
+            };
+
+            var weekDayString;
+
+            switch (counterDay.weekDay) {
+                case 1:
+                    weekDayString = "Monday"
+                    break;
+                case 2:
+                    weekDayString = "Tuesday"
+                    break;
+                case 3:
+                    weekDayString = "Wednesday"
+                    break;
+                case 4:
+                    weekDayString = "Thursday"
+                    break;
+                case 5:
+                    weekDayString = "Friday"
+                    break;
+                case 6:
+                    weekDayString = "Saturday"
+                    break;
+                case 0:
+                    weekDayString = "Sunday"
+                    break;
+            }
+            weekdays[i].innerHTML = switch7(weekDayString) + "<br>" + counterDay.date + "/" + counterDay.month;
+        }
+        // return thisWeekDays;
+    }
+
+
+    function switchingWeeks(msg) {
+        renderDays()
+
+        if (msg.length > 0) {
+            msg.map(function (value) {
+                const selectedTime = document.getElementById(((value.getDay() === 0) ? 7 : value.getDay()) + "." + value.getHours());
+                selectedTime.className = "available";
+            })
+            
+        }
+    }
+
+    //made a socket based on the http/ url address hence it is app.js
+    var socket = io('http://localhost:3000/');
+    // the on connect is going to trigger the .on('connection') for the backend IO.
+    socket.on('connect', function () {
+        
+    })
+    socket.on('disconnect', function () {
+    });
+
+    var edit = false;
+
+    function editCalendar() {
+        document.getElementById('edit').className = 'clickButton';
+        edit = true;
+        
+    }
+
+    function classChanging(listOfid,className) {
+        for(var i =0; i< listOfid.length;i++){
+            var date = new Date(listOfid[i])
+            date.setTime(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
+            const id = date.getDay()+"."+ date.getHours();
+            console.log(document.getElementById(id));
+            document.getElementById(id).className = className;
+        }
+        return [];
+    }
+
+    function saveCalendar() {
+        console.log(this);
+        if (edit ===true){
+            if(ListToInsert.length > 0) {
+                //Get the List then socket emit
+                socket.emit("insertTime", {date: ListToInsert, userName:userName});
+                socket.on("insertTime",function (msg) {
+                    ListToInsert = classChanging(ListToInsert,"available");
+                })
+            }
+
+            if(ListToDelete.length > 0) {
+                socket.emit("deleteTime", {id: this.id, date: ListToDelete, userName:userName});
+
+                socket.on("deleteTime",function (msg) {
+                    //document.getElementById(msg.id).className = "empty";
+                    //Time in terms of day = ?.x,while The time in terms the hour = x.? in term of html id.
+                    ListToDelete=classChanging(ListToDelete,"empty");
+                })
+            }
+            document.getElementById('edit').className = 'unclickButton';
+            edit = false;
+
+        }
+    }
+
+    function onClickOfTD() {
+        // 
+        var classname = this.className;
+        const classId = this.id.split(".")
+        const classIdDay = classId[0]
+        const classIdHour = classId[1]
+
+        var Clickdate = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - (day.getDay()) + classIdDay * 1), classIdHour);
+        Clickdate.setTime(Clickdate.getTime() - Clickdate.getTimezoneOffset() * 60 * 1000);
+        // 
+        if (edit === true) {
+            if (classname === "empty") {
+
+                document.getElementById(this.id).className = "editing";
+                ListToInsert.push(String(Clickdate));
+                
+
+            }
+            else if (classname === "editing") {
+                document.getElementById(this.id).className = 'empty';
+                const numbering = (ListToInsert.indexOf(String(Clickdate)));
+                ListToInsert.splice(numbering, 1);
+            }
+            else if (classname === "available") {
+                
+                document.getElementById(this.id).className = 'deleting';
+                ListToDelete.push(String(Clickdate));
+
+            }
+            else if (classname === "deleting") {
+                document.getElementById(this.id).className = "available";
+                const numbering = (ListToDelete.indexOf(String(Clickdate)));
+                ListToDelete.splice(numbering, 1);
+            }
+            
+            
+        }
+    }
+
+
+</script>
+</html>
