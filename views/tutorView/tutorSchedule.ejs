@@ -52,9 +52,14 @@
             color: white;
         }
 
-        .button {
+        .clickButton {
             background-color: #4CAF50;
             color: white;
+        }
+
+        .unclickButton {
+            background-color: transparent;
+            color: black;
         }
     </style>
 
@@ -285,7 +290,7 @@
     var edit = false;
 
     function editCalendar() {
-        document.getElementById('edit').className = 'button';
+        document.getElementById('edit').className = 'clickButton';
         edit = true;
         
     }
@@ -321,7 +326,7 @@
                     ListToDelete=classChanging(ListToDelete,"empty");
                 })
             }
-
+            document.getElementById('edit').className = 'unclickButton';
             edit = false;
 
         }
