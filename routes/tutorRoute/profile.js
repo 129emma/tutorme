@@ -26,15 +26,11 @@ router.get('/', function (req, res) {
             if (err) {
                 throw err
             } else {
-
                 const resultDetails = JSON.parse(JSON.stringify(result));
                 console.log(resultDetails);
-                res.render('./tutorView/profile', {Session: req.session, Data: resultDetails
-                });
+                res.render('./tutorView/profile', {userDetails: req.session.userDetails, Data: resultDetails});
             }
         });
-
-
 
 
 /*
@@ -42,11 +38,6 @@ router.get('/', function (req, res) {
  FROM tableTutor AS tutor, tableCapabilities AS cap
  WHERE tutor.userName = 'jojo' AND tutor.userName = cap.userName
  */
-
-
-
-
-    res.render("./tutorView/profile", req.session);
 });
 
 router.get('/edit', function (req, res) {

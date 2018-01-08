@@ -36,13 +36,14 @@
             <li>Student Id: <input type="text" name="formID" value="<%= userDetails[0].studentID %>" > </li>
             <li>Study Institution: <input type="text" name="formSchool" value="<%= userDetails[0].studySchool %>"> </li>
             <li>Joined TutorMe: <input type="text" value="<%= userDetails[0].joinDate %>" disabled> </li>
-            <li>Activated as a tutor?: <input type="text" value="<% if (userDetails[0].tutor_activation === 1) { %>
+            <li>Activated as a tutor?: <input type="text" value="<% if (userDetails[0].tutor_activation === 1)   { %>
                 Yes
                 <% } else { %>
                 No
                 <% }%>" disabled> </li>
 
             <br><br>
+            <li>Introduction: <input type="text" name="formUsername" value="<%= Data[0].selfIntroduction %>" disabled></li>
             <input type="submit" value="Edit">
 
         </form>
