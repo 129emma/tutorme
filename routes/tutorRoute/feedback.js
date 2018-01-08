@@ -34,7 +34,7 @@ router.get('/', function (req, res) {
                 throw err
             } else {
 
-                const resultDetails = JSON.parse(JSON.stringify(result))
+                const resultDetails = JSON.parse(JSON.stringify(result));
 
                 console.log(resultDetails);
                 res.render('./tutorView/feedback', {feedbackDetails: resultDetails, userDetails: req.session.userDetails});
