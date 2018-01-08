@@ -95,11 +95,11 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-    var ListOfDates = [];
+    var ListToInsert = [];
     var ListToDelete = [];
     const userName = "<%= userDetails %>";
-    console.log(userName);
-    console.log(typeof userName)
+    
+    
     var cale = document.getElementsByClassName("calendar")[0];
     for (var i = 1; i < 24; i++) {
         var newRow = document.createElement('tr');
@@ -126,7 +126,7 @@
     const table = $("#scheduleTable")[0];
     const timing = ("<%= value.weekthis %>").split(",");
     renderDays();
-    console.log(timing);
+    
 
     var weeklisting = preRenderWeeks(date, timing);
 
@@ -135,16 +135,16 @@
 
         $(table).fadeOut("fast", function () {
             day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
-            console.log("date : " + day)
+            
             socket.emit('nextnextweek', {userName: userName, day: day});
 
             socket.on('nextnextweek', function (value) {
-                console.log(value);
+                
                 // weeklisting.weeknext = value
                 weeklisting = preRenderWeeks(day, value.weekthis)
                 // switchingWeeks(weeklisting.weekthis)
                 $(table).fadeIn("fast", function () {
-                    console.log("afterweek: " + day)
+                    
                 })
 
             })
@@ -156,16 +156,16 @@
 
         $(table).fadeOut("fast", function () {
             day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
-            console.log("date : " + day)
+            
             socket.emit('lastlastweek', {userName: userName, day: day});
             socket.on('lastlastweek', function (value) {
                 // weeklisting.weeklast = value
-                console.log(value)
+                
                 weeklisting = preRenderWeeks(day, value.weekthis)
                 $(table).fadeIn("fast", function () {
-                    // console.log("hello there");
-                    // console.log(weeklisting)
-                    // console.log(weeklisting.weekthis)
+                    // 
+                    // 
+                    // 
                     // switchingWeeks(weeklisting.weekthis)
                 })
             })
@@ -191,18 +191,18 @@
     function preRenderWeeks(date, timing) {
 
         var weekListing = []
-        console.log(timing)
+        
 
         timing.map(function (value) {
-            console.log(typeof value);
+            
             if (value !== "") {
                 value = new Date(value)
                 value.setTime(value.getTime() + value.getTimezoneOffset() * 60 * 1000);
                 weekListing.push(value)
             }
         })
-        console.log("WeekListing")
-        console.log(weekListing)
+        
+        
         switchingWeeks(weekListing)
         return weekListing;
     }
@@ -215,7 +215,7 @@
                 availableTimeCells[aCells].className = "empty";
             }
             availableTimeCells = document.getElementsByClassName("available");
-            console.log(availableTimeCells.length)
+            
         }
 
 
@@ -266,12 +266,10 @@
 
         if (msg.length > 0) {
             msg.map(function (value) {
-                console.log(value)
-                console.log(value.getDay())
                 const selectedTime = document.getElementById(((value.getDay() === 0) ? 7 : value.getDay()) + "." + value.getHours());
                 selectedTime.className = "available";
             })
-            console.log(msg)
+            
         }
     }
 
@@ -279,7 +277,7 @@
     var socket = io('http://localhost:3000/');
     // the on connect is going to trigger the .on('connection') for the backend IO.
     socket.on('connect', function () {
-        console.log("connecting");
+        
     })
     socket.on('disconnect', function () {
     });
@@ -289,28 +287,48 @@
     function editCalendar() {
         document.getElementById('edit').className = 'button';
         edit = true;
-        console.log("Edit is " + edit);
+        
     }
 
-    var save = false;
+    function classChanging(listOfid,className) {
+        for(var i =0; i< listOfid.length;i++){
+            var date = new Date(listOfid[i])
+            date.setTime(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
+            const id = date.getDay()+"."+ date.getHours();
+            console.log(document.getElementById(id));
+            document.getElementById(id).className = className;
+        }
+        return [];
+    }
 
     function saveCalendar() {
-        // // save = true;
-        // // edit = false;
-        // if (edit ===true){
-        //     //Get the List then socket emit
-        //     socket.emit("insertTime", {id: this.id, date: ListOfDates, userName:userName});
-        //     socket.on("insertTime",function (msg) {
-        //
-        //     })
-        //     ListOfDates = [];
-        //
-        // }
+        console.log(this);
+        if (edit ===true){
+            if(ListToInsert.length > 0) {
+                //Get the List then socket emit
+                socket.emit("insertTime", {date: ListToInsert, userName:userName});
+                socket.on("insertTime",function (msg) {
+                    ListToInsert = classChanging(ListToInsert,"available");
+                })
+            }
+
+            if(ListToDelete.length > 0) {
+                socket.emit("deleteTime", {id: this.id, date: ListToDelete, userName:userName});
+
+                socket.on("deleteTime",function (msg) {
+                    //document.getElementById(msg.id).className = "empty";
+                    //Time in terms of day = ?.x,while The time in terms the hour = x.? in term of html id.
+                    ListToDelete=classChanging(ListToDelete,"empty");
+                })
+            }
+
+            edit = false;
+
+        }
     }
 
     function onClickOfTD() {
-        console.log("Clicking")
-        // console.log(this.className);
+        // 
         var classname = this.className;
         const classId = this.id.split(".")
         const classIdDay = classId[0]
@@ -318,22 +336,22 @@
 
         var Clickdate = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - (day.getDay()) + classIdDay * 1), classIdHour);
         Clickdate.setTime(Clickdate.getTime() - Clickdate.getTimezoneOffset() * 60 * 1000);
-        // console.log(Clickdate);
+        // 
         if (edit === true) {
             if (classname === "empty") {
 
                 document.getElementById(this.id).className = "editing";
-                ListOfDates.push(String(Clickdate));
-                console.log(ListOfDates)
+                ListToInsert.push(String(Clickdate));
+                
 
             }
             else if (classname === "editing") {
                 document.getElementById(this.id).className = 'empty';
-                const numbering = (ListOfDates.indexOf(String(Clickdate)));
-                ListOfDates.splice(numbering, 1);
+                const numbering = (ListToInsert.indexOf(String(Clickdate)));
+                ListToInsert.splice(numbering, 1);
             }
             else if (classname === "available") {
-                console.log("this is available");
+                
                 document.getElementById(this.id).className = 'deleting';
                 ListToDelete.push(String(Clickdate));
 
@@ -343,8 +361,8 @@
                 const numbering = (ListToDelete.indexOf(String(Clickdate)));
                 ListToDelete.splice(numbering, 1);
             }
-            console.log(ListOfDates);
-            console.log(ListToDelete);
+            
+            
         }
     }
 
