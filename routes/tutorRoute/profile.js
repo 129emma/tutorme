@@ -8,6 +8,44 @@ router.use(bodyParser.urlencoded({extended: false}));
 
 router.get('/', function (req, res) {
 
+    const connectNow = con.method();
+
+    connectNow.connect(function (err) {
+        if (err) throw err;
+        console.log("Connected and online (feedback!");
+    });
+
+    const tutorUsername = req.session.userDetails[0].userName;
+
+    /* first query to make the user in user table*/
+
+    connectNow.query("SELECT tutor.userName, tutor.selfIntroduction, cap.courseID, cap.experience, cap.description, cap.verification, cap.grade FROM tableTutor AS tutor, tableCapabilities AS cap WHERE tutor.userName = ? AND tutor.userName = cap.userName"
+        , [tutorUsername], function (err, result) {
+            connectNow.end();
+
+            if (err) {
+                throw err
+            } else {
+
+                const resultDetails = JSON.parse(JSON.stringify(result));
+                console.log(resultDetails);
+                res.render('./tutorView/profile', {Session: req.session, Data: resultDetails
+                });
+            }
+        });
+
+
+
+
+/*
+ SELECT tutor.userName, tutor.selfIntroduction, cap.courseID, cap.experience, cap.description, cap.verification, cap.grade
+ FROM tableTutor AS tutor, tableCapabilities AS cap
+ WHERE tutor.userName = 'jojo' AND tutor.userName = cap.userName
+ */
+
+
+
+
     res.render("./tutorView/profile", req.session);
 });
 
