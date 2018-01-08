@@ -21,18 +21,18 @@
     <div>
 
         <% var cummulativeRating = 0; %>
-        <% for (var i = 0; i < userDetails.length; i++) { %>
-        <% cummulativeRating += userDetails[i].tuteeRating %>
+        <% for (var i = 0; i < feedbackDetails.length; i++) { %>
+        <% cummulativeRating += feedbackDetails[i].tuteeRating %>
         <% } %>
-        Average: <%= cummulativeRating / userDetails.length; %> / 10 from <%= userDetails.length; %> feedbacks;
+        Average: <%= cummulativeRating / feedbackDetails.length; %> / 10 from <%= feedbackDetails.length; %> feedbacks;
     </div>
 
     <div>
-        <% for (var i = 0; i < userDetails.length; i++) { %>
-    <p>Tutee = <%= userDetails[i].tuteeID %></p>
-    <p>Course = <%= userDetails[i].courseID %></p>
-    <p>Feedback <%= userDetails[i].tuteeFeedback %></p>
-    <p>Rating (out of 10) <%= userDetails[i].tuteeRating %></p>
+        <% for (var i = 0; i < feedbackDetails.length; i++) { %>
+    <p>Tutee = <%= feedbackDetails[i].tuteeID %></p>
+    <p>Course = <%= feedbackDetails[i].courseID %></p>
+    <p>Feedback <%= feedbackDetails[i].tuteeFeedback %></p>
+    <p>Rating (out of 10) <%= feedbackDetails[i].tuteeRating %></p>
     <hr>
 
     <% } %>

@@ -16,41 +16,38 @@
 
 <div class="container">
 
-    <h1>Profile!</h1>
-    <div class="table-responsive">
-        <table style= "width: 100%" class="table-bordered">
-            <tr>
-                <th>Username</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Address</th>
-                <th>Date of Birth</th>
-                <th>Student Id</th>
-                <th>Study Institution</th>
-                <th>Joined TutorMe</th>
-                <th>Activated as a tutor?</th>
-            </tr>
-            <tr>
-                <td><%= Session.userDetails[0].userName %></td>
-                <td><%= userDetails[0].firstName %></td>
-                <td><%= userDetails[0].lastName %></td>
-                <td><%= userDetails[0].email %></td>
-                <td><%= userDetails[0].address %></td>
-                <td><%= userDetails[0].dob %></td>
-                <td><%= userDetails[0].studentID %></td>
-                <td><%= userDetails[0].studySchool %></td>
-                <td><%= userDetails[0].joinDate %></td>
-                <td><% if (userDetails[0].tutor_activation === 1) { %>
-                    Yes
-                    <% } else { %>
-                    No
-                    <% }%>
-                </td>
-            </tr>
-        </table>
+    <h1>Welcome to your profile, <%= userDetails[0].firstName %></h1>
+    <div>
+        <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png" style="width: 100px;"/>
     </div>
-    <p></p>
+    <hr>
+    <!--Edit the general profile details-->
+    <div id="generalProfileDetails">
+        <h3>Edit general details</h3>
+        <p>Edit your general Profile Details</p>
+        <form action="/updateProfile">
+
+            <li>Username: <input type="text" name="formUsername" value="<%= userDetails[0].userName %>" disabled></li>
+            <li>First Name: <input type="text" name="formFirstname" value="<%= userDetails[0].firstName %>"> </li>
+            <li>Last Name: <input type="text" name="formLastname" value="<%= userDetails[0].lastName %>"> </li>
+            <li>Email: <input type="text" name="formEmail" value="<%= userDetails[0].email %>" disabled> </li>
+            <li>Address: <input type="text" name="formAddress" value="<%= userDetails[0].address %>"> </li>
+            <li>Date of Birth: <input type="date" name="formDOB" value="<%= userDetails[0].dob %>" disabled> </li>
+            <li>Student Id: <input type="text" name="formID" value="<%= userDetails[0].studentID %>" > </li>
+            <li>Study Institution: <input type="text" name="formSchool" value="<%= userDetails[0].studySchool %>"> </li>
+            <li>Joined TutorMe: <input type="text" value="<%= userDetails[0].joinDate %>" disabled> </li>
+            <li>Activated as a tutor?: <input type="text" value="<% if (userDetails[0].tutor_activation === 1) { %>
+                Yes
+                <% } else { %>
+                No
+                <% }%>" disabled> </li>
+
+            <br><br>
+            <input type="submit" value="Edit">
+
+        </form>
+    </div>
+
 </div>
 
 </body>
