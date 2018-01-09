@@ -8,13 +8,13 @@ function insertDate(date,username,timeTable) {
                 connectNow.end();
                 throw err;
             }
-            const ListToInsert = [];
+            const ListingOfInformation = [];
             for(var i = 0; i< date.length; i++){
                 const oneObject = [username, date[i],0,0,1];
-                ListToInsert.push(oneObject);
+                ListingOfInformation.push(oneObject);
             }
-            console.log(ListToInsert);
-            connectNow.query("INSERT INTO "+(String(mysql.escape(timeTable))).replace(/'/g," ")+ " (userName, timeStart, day, occupation, bookingID) VALUES ?", [ListToInsert], function (err, result) {
+            console.log(ListingOfInformation);
+            connectNow.query("INSERT INTO "+(String(mysql.escape(timeTable))).replace(/'/g," ")+ " (userName, timeStart, day, occupation, bookingID) VALUES ?", [ListingOfInformation], function (err, result) {
                 connectNow.end();
                 console.log('Yeah');
                 if (err) {
@@ -42,16 +42,15 @@ function deleteDate(date, username, timeTable) {
                 connectNow.end();
                 throw err;
             }
-
-            const ListToDelete = [];
-            for(var i = 0; i < date.length; i++) {
+            const ListToDelete =[];
+            for(var i=0; i< date.length; i++){
                 const oneObject = [username, date[i]];
-                ListToDelete.push(oneObject)
+                ListToDelete.push(oneObject);
             }
-
-            connectNow.query(" DELETE FROM " + timeTable + " WHERE (username, timeStart) IN (?)", [ListToDelete], function(err, result) {
+            connectNow.query(" DELETE FROM " + timeTable + " WHERE (username,timeStart)IN (?)", [ListToDelete], function(err, result) {
                 connectNow.end();
                 if (err) {
+
                     connectNow.end();
                     throw err;
                 } else {

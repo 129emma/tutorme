@@ -24,7 +24,8 @@ router.get('/', function (req, res) {
             const resultDetails = JSON.parse(JSON.stringify(resultTutor));
 
             if (err) {
-                throw err
+                connectNow.end();
+                throw err;
             } else {
                 // DB connection to get course list to display in dropdown
                 connectNow.query("SELECT * FROM tableCourseList"
