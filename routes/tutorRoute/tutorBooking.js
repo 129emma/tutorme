@@ -23,12 +23,12 @@ router.get('/', function(req, res) {
         }
         connectNow.query("SELECT tuteeID, courseID, desciprtion, totalPrice FROM tableBooking WHERE tutorID = ?", [tutor], function (err, result) {
             connectNow.end();
-            console.log('Database Connected!');
+            //console.log('Database Connected!');
             if (err) {
                 throw err;
             } else {
                 const booking = JSON.parse(JSON.stringify(result));
-                console.log(booking);
+                //console.log(booking);
                 res.render("./tutorView/tutorBooking", {booking: booking});
 
             }
