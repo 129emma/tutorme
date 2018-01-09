@@ -23,7 +23,7 @@
     <hr>
     <!--Edit the general profile details-->
     <div id="generalProfileDetails">
-        <h3>Edit general details</h3>
+        <h3>Edit general de  ils</h3>
         <p>Edit your general Profile Details</p>
         <form action="/tutor/profile/updateProfile" method="post">
 
@@ -43,7 +43,8 @@
                 <% }%>" disabled> </li>
 
             <br><br>
-            <li>Introduction: <input type="text" name="formUsername" value="<%= Data[0].selfIntroduction %>" disabled></li>
+            <li>Introduction: <input type="text" name="formUsername" value="<%= Data[0].selfIntroduction %>" style="width: 80%" disabled></li>
+
             <input type="submit" value="Edit">
         </form>
     </div>
@@ -53,7 +54,15 @@
     <div id="tutorCourseDetails">
         <h3>Courses you can tutor</h3>
         <div class="card" style="width: 50rem;">
-            <input type="text" id="myInput" placeholder="Course..." style="width: 40rem;">
+
+            <!--courselist generated from DB table of courseList and datalist options listed for all existing instances of courses-->
+            <input list="courses" type="text" id="myInput" placeholder="Course..." style="width: 40rem;">
+            <datalist id="courses">
+                <% for (var i = 0; i < CourseList.length; i++) { %>
+                <option value="<%= CourseList[i].courseID %>">
+                <% } %>
+            </datalist>
+
             <span onclick="newElement()" class="addBtn">Add</span>
             <ul id="tutorCourseList" class="list-group list-group-flush">
 

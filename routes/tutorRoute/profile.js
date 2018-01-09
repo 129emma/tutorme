@@ -20,15 +20,25 @@ router.get('/', function (req, res) {
     /* first query to make the user in user table*/
 
     connectNow.query("SELECT tutor.userName, tutor.selfIntroduction, cap.courseID, cap.experience, cap.description, cap.verification, cap.grade FROM tableTutor AS tutor, tableCapabilities AS cap WHERE tutor.userName = ? AND tutor.userName = cap.userName"
-        , [tutorUsername], function (err, result) {
-            connectNow.end();
+        , [tutorUsername], function (err, resultTutor) {
+            const resultDetails = JSON.parse(JSON.stringify(resultTutor));
 
             if (err) {
                 throw err
             } else {
-                const resultDetails = JSON.parse(JSON.stringify(result));
-                console.log(resultDetails);
-                res.render('./tutorView/profile', {userDetails: req.session.userDetails, Data: resultDetails});
+                // DB connection to get course list to display in dropdown
+                connectNow.query("SELECT * FROM tableCourseList"
+                    , [], function (err, resultCourse) {
+                        connectNow.end();
+
+                        if (err) {
+                            throw err
+                        } else {
+                            const courseDetails = JSON.parse(JSON.stringify(resultCourse));
+                            console.log(courseDetails);
+                            res.render('./tutorView/profile', {userDetails: req.session.userDetails, Data: resultDetails, CourseList: courseDetails});
+                        }
+                    });
             }
         });
 
