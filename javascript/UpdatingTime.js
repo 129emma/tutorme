@@ -42,10 +42,14 @@ function deleteDate(date, username, timeTable) {
                 connectNow.end();
                 throw err;
             }
-            connectNow.query(" DELETE FROM " + timeTable + " WHERE username = ? AND timeStart = ?", [username, date], function(err, result) {
+            const ListToDelete =[];
+            for(var i=0; i< date.length; i++){
+                const oneObject = [username, date[i]];
+                ListToDelete.push(oneObject);
+            }
+            connectNow.query(" DELETE FROM " + timeTable + " WHERE (username,timeStart)IN (?)", [ListToDelete], function(err, result) {
                 connectNow.end();
                 if (err) {
-
                     connectNow.end();
                     throw err;
                 } else {

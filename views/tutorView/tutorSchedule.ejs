@@ -288,8 +288,17 @@
 
     function editCalendar() {
         document.getElementById('edit').className = 'button';
-        edit = true;
+        edit = !edit;
+        if (edit){
+            document.getElementById("button2").style.display = 'none'
+            document.getElementById("button1").style.display = 'none'
+        }
+        else{
+            document.getElementById("button2").style.display = ''
+            document.getElementById("button1").style.display = ''
+        }
         console.log("Edit is " + edit);
+
     }
 
     var save = false;
@@ -297,15 +306,39 @@
     function saveCalendar() {
         // // save = true;
         // // edit = false;
-        // if (edit ===true){
-        //     //Get the List then socket emit
-        //     socket.emit("insertTime", {id: this.id, date: ListOfDates, userName:userName});
-        //     socket.on("insertTime",function (msg) {
-        //
-        //     })
-        //     ListOfDates = [];
-        //
-        // }
+        if (edit === true) {
+            //     //Get the List then socket emit
+            if (ListOfDates.length > 0) {
+                socket.emit("insertTime", {date: ListOfDates, userName: userName});
+                socket.on("insertTime", function (msg) {
+                    console.log(ListOfDates);
+                    for (var i = 0; i < ListOfDates.length; i++) {
+                        ListOfDates[i] = new Date(ListOfDates[i]);
+                        ListOfDates[i].setTime(ListOfDates[i].getTime() + ListOfDates[i].getTimezoneOffset() * 60 * 1000);
+                        const daies = (ListOfDates[i].getDay()===0)? 7: ListOfDates[i].getDay()
+                        const idClassName = daies + "." + ListOfDates[i].getHours();
+                        console.log(idClassName)
+                        document.getElementById(idClassName).className = "available";
+                    }
+                    ListOfDates = [];
+                })
+            }
+            if (ListToDelete.length > 0) {
+                socket.emit("deleteTime", {date: ListToDelete, userName: userName});
+                socket.on("deleteTime", function (msg) {
+                    for (var i = 0; i < ListToDelete.length; i++) {
+                        ListToDelete[i] = new Date(ListToDelete[i]);
+                        ListToDelete[i].setTime(ListToDelete[i].getTime() + ListToDelete[i].getTimezoneOffset() * 60 * 1000);
+                        const daies = (ListToDelete[i].getDay()===0)? 7: ListToDelete[i].getDay()
+                        const idClassName = daies + "." + ListToDelete[i].getHours();
+                        console.log(idClassName)
+                        document.getElementById(idClassName).className = "empty";
+                        console.log("deleting")
+                    }
+                    ListToDelete = [];
+                })
+            }
+        }
     }
 
     function onClickOfTD() {

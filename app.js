@@ -133,15 +133,17 @@ io.on('connection', function (socket) {
         var promise = UpdatingTime.Insert(msg.date,String(msg.userName),"tableTime");
         promise.then(function (value) {
             console.log(value);
-            socket.emit('insertTime', {id:msg.id, date:value})
+            socket.emit('insertTime', {})
         })
-    })
+    });
     socket.on('deleteTime', function(msg) {
-        const day = new Date(msg.date);
-        var promise = UpdatingTime.Delete(day,String(msg.userName), "tableTime");
+        for (var i = 0; i< msg.date.length; i++){
+            msg.date[i] = new Date(msg.date[i]);
+        }
+        var promise = UpdatingTime.Delete(msg.date,String(msg.userName), "tableTime");
         promise.then(function (value) {
             console.log("delete " + value);
-            socket.emit('deleteTime', {id:msg.id});
+            socket.emit('deleteTime', {});
         })
     })
 });
