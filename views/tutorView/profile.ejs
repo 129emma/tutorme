@@ -25,9 +25,9 @@
     <div id="generalProfileDetails">
         <h3>Edit general details</h3>
         <p>Edit your general Profile Details</p>
-        <form action="/updateProfile">
+        <form action="/tutor/profile/updateProfile" method="post">
 
-            <li>Username: <input type="text" name="formUsername" value="<%= userDetails[0].userName %>" disabled></li>
+            <li>Username: <input type="hidden" name="formUsername" value="<%= userDetails[0].userName %>"><%= userDetails[0].userName %></li>
             <li>First Name: <input type="text" name="formFirstname" value="<%= userDetails[0].firstName %>"> </li>
             <li>Last Name: <input type="text" name="formLastname" value="<%= userDetails[0].lastName %>"> </li>
             <li>Email: <input type="text" name="formEmail" value="<%= userDetails[0].email %>" disabled> </li>
@@ -56,9 +56,15 @@
             <input type="text" id="myInput" placeholder="Course..." style="width: 40rem;">
             <span onclick="newElement()" class="addBtn">Add</span>
             <ul id="tutorCourseList" class="list-group list-group-flush">
-                <li class="list-group-item">Law 121</li>
-                <li class="list-group-item">Psych 109</li>
-                <li class="list-group-item">Compsci 101</li>
+
+                <% for (var i = 0; i < Data.length; i++){ %>
+                <li class="list-group-item"><%= Data[i].courseID %></li>
+                <% } %>
+
+
+                <!--<li class="list-group-item">Law 121</li>-->
+                <!--<li class="list-group-item">Psych 109</li>-->
+                <!--<li class="list-group-item">Compsci 101</li>-->
             </ul>
         </div>
     </div>

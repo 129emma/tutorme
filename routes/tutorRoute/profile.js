@@ -45,7 +45,7 @@ router.get('/edit', function (req, res) {
     res.render("./tutorView/profileEditing", req.session);
 });
 
-router.post('/editNow', function (req, res) {
+router.post('/updateProfile', function (req, res) {
 
     const connectNow = con.method();
 
@@ -56,16 +56,27 @@ router.post('/editNow', function (req, res) {
 
     console.log("Working");
 
-    var un = req.body.userName;
-    var em = req.body.email;
-    var ad = req.body.address;
-    var studySchool = req.body.school;
+    var formUsername = req.body.formUsername;
+    var formFirstname = req.body.formFirstname;
+    var formLastname = req.body.formLastname;
+    var formAddress = req.body.formAddress;
+    var formID = req.body.formID;
+
+    console.log(formUsername);
+    console.log(formFirstname);
+    //
+    // var un = req.body.userName;
+    // var em = req.body.email;
+    // var ad = req.body.address;
+    // var studySchool = req.body.school;
 
     console.log("ready to query");
 
     /* first query to make the user in user table*/
-    connectNow.query("UPDATE tableUser SET email = ?, address = ?, studySchool = ? WHERE userName = ? "
-        , [em, ad, studySchool, un], function (err, result) {
+    connectNow.query("UPDATE tableUser SET firstName = ?, lastName = ?, address = ? WHERE userName = ? "
+        , [formFirstname, formLastname, formAddress, formUsername], function (err, result) {
+
+            connectNow.end();
             console.log("member updated!!");
 
             /*after user account is built create a hashed password query*/
@@ -74,20 +85,22 @@ router.post('/editNow', function (req, res) {
             if (err) {
                 throw err
             } else {
-                    connectMethod.query('SELECT * FROM tableUser WHERE userName = ? ', [un], function (err, result) {
-                        connectMethod.end();
-                        if (err) {
-                            throw err
-                        } else {
 
-                            const userDetails = JSON.parse(JSON.stringify(result[0]));
-
-                            req.session.userDetails = JSON.parse("[" + JSON.stringify(userDetails) + "]");
-                            res.render('/tutor/profile', req.session);
-
-                        }
-
-                    });
+                res.redirect('/tutor/profile');
+                    // connectMethod.query('SELECT * FROM tableUser WHERE userName = ? ', [un], function (err, result) {
+                    //     connectMethod.end();
+                    //     if (err) {
+                    //         throw err
+                    //     } else {
+                    //
+                    //         const userDetails = JSON.parse(JSON.stringify(result[0]));
+                    //
+                    //         req.session.userDetails = JSON.parse("[" + JSON.stringify(userDetails) + "]");
+                    //         res.render('/tutor/profile', req.session);
+                    //
+                    //     }
+                    //
+                    // });
 
                 }
         });
