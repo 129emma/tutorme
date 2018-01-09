@@ -300,7 +300,7 @@
             var date = new Date(listOfid[i])
             date.setTime(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
             const id = date.getDay()+"."+ date.getHours();
-            console.log(document.getElementById(id));
+            //console.log(document.getElementById(id));
             document.getElementById(id).className = className;
         }
         return [];
