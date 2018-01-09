@@ -77,7 +77,6 @@
     <button id="save" onclick="saveCalendar()">Save</button>
 </div>
 
-
 <br>
 <div>
     <table id="scheduleTable" class="calendar" align="center">
@@ -135,46 +134,29 @@
 
     var weeklisting = preRenderWeeks(date, timing);
 
-
     $("#button1").on("click", function () {
-
         $(table).fadeOut("fast", function () {
             day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
-
             socket.emit('nextnextweek', {userName: userName, day: day});
-
             socket.on('nextnextweek', function (value) {
-
                 // weeklisting.weeknext = value
                 weeklisting = preRenderWeeks(day, value.weekthis)
                 // switchingWeeks(weeklisting.weekthis)
                 $(table).fadeIn("fast", function () {
-
                 })
-
             })
-
         })
     });
 
     $("#button2").on("click", function () {
-
         $(table).fadeOut("fast", function () {
             day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
-
             socket.emit('lastlastweek', {userName: userName, day: day});
             socket.on('lastlastweek', function (value) {
-                // weeklisting.weeklast = value
-
                 weeklisting = preRenderWeeks(day, value.weekthis)
                 $(table).fadeIn("fast", function () {
-                    //
-                    //
-                    //
-                    // switchingWeeks(weeklisting.weekthis)
                 })
             })
-
         })
     });
 
@@ -192,11 +174,9 @@
         return num;
     }
 
-
     function preRenderWeeks(date, timing) {
 
         var weekListing = []
-
 
         timing.map(function (value) {
 
@@ -220,9 +200,7 @@
                 availableTimeCells[aCells].className = "empty";
             }
             availableTimeCells = document.getElementsByClassName("available");
-
         }
-
 
         for (var i = 1; i < weekdays.length; i++) {
             // date + i - day.weekday
@@ -262,9 +240,7 @@
             }
             weekdays[i].innerHTML = switch7(weekDayString) + "<br>" + counterDay.date + "/" + counterDay.month;
         }
-        // return thisWeekDays;
     }
-
 
     function switchingWeeks(msg) {
         renderDays()
@@ -274,7 +250,6 @@
                 const selectedTime = document.getElementById(((value.getDay() === 0) ? 7 : value.getDay()) + "." + value.getHours());
                 selectedTime.className = "available";
             })
-
         }
     }
 
@@ -282,7 +257,6 @@
     var socket = io('http://localhost:3000/');
     // the on connect is going to trigger the .on('connection') for the backend IO.
     socket.on('connect', function () {
-
     })
     socket.on('disconnect', function () {
     });
@@ -292,25 +266,15 @@
     function editCalendar() {
         document.getElementById('edit').className = 'clickButton';
         edit = !edit;
-        if (edit){
-            document.getElementById("button2").style.display = 'none'
-            document.getElementById("button1").style.display = 'none'
+        if(edit) {
+            document.getElementById("button2").style.display = 'none';
+            document.getElementById("button1").style.display = 'none';
         }
-        else{
-            document.getElementById("button2").style.display = ''
-            document.getElementById("button1").style.display = ''
-        }
-        console.log("Edit is " + edit);
-
     }
 
-    var save = false;
-
     function saveCalendar() {
-        // // save = true;
-        // // edit = false;
         if (edit === true) {
-            //     //Get the List then socket emit
+            //Get the List then socket emit
             if (ListOfDates.length > 0) {
                 socket.emit("insertTime", {date: ListOfDates, userName: userName});
                 socket.on("insertTime", function (msg) {
@@ -334,19 +298,21 @@
                         ListToDelete[i].setTime(ListToDelete[i].getTime() + ListToDelete[i].getTimezoneOffset() * 60 * 1000);
                         const daies = (ListToDelete[i].getDay()===0)? 7: ListToDelete[i].getDay()
                         const idClassName = daies + "." + ListToDelete[i].getHours();
-                        console.log(idClassName)
+                        //console.log(idClassName)
                         document.getElementById(idClassName).className = "empty";
-                        console.log("deleting")
+                        //console.log("deleting")
                     }
                     ListToDelete = [];
                 })
             }
         }
         document.getElementById('edit').className = 'unclickButton';
+        edit = false;
+        document.getElementById("button2").style.display = '';
+        document.getElementById("button1").style.display = '';
     }
 
     function onClickOfTD() {
-        //
         var classname = this.className;
         const classId = this.id.split(".")
         const classIdDay = classId[0]
@@ -357,11 +323,8 @@
         //
         if (edit === true) {
             if (classname === "empty") {
-
                 document.getElementById(this.id).className = "editing";
                 ListOfDates.push(String(Clickdate));
-
-
             }
             else if (classname === "editing") {
                 document.getElementById(this.id).className = 'empty';
@@ -369,18 +332,14 @@
                 ListOfDates.splice(numbering, 1);
             }
             else if (classname === "available") {
-
                 document.getElementById(this.id).className = 'deleting';
                 ListToDelete.push(String(Clickdate));
-
             }
             else if (classname === "deleting") {
                 document.getElementById(this.id).className = "available";
                 const numbering = (ListToDelete.indexOf(String(Clickdate)));
                 ListToDelete.splice(numbering, 1);
             }
-
-
         }
     }
 
