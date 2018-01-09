@@ -9,9 +9,8 @@ router.get('/', function(req, res) {
     const booking = {
         "tutee": [],
     };
-
     const connectNow = con.method();
-    res.render("./tutorView/tutorBooking");
+
     connectNow.connect(function (err) {
         if (err) {
             connectNow.end();
@@ -24,15 +23,17 @@ router.get('/', function(req, res) {
                 connectNow.end();
                 throw err;
             } else {
-                rawObject = JSON.parse(JSON.stringify(result));
-                            // rawObject.map(function (value) {
-                            //     booking.push(value);
-                            // });
-                            // console.log("All bookings " + booking);
-                        }
+                var rawObject = JSON.parse(JSON.stringify(result));
+                console.log('Data ' + rawObject);
+                // rawObject.map(function (value) {
+                //     booking.push(value);
+                // })
+            }
+        });
+    });
 
-
-    })
+    res.render("./tutorView/tutorBooking");
+});
     // const promise = new Promise(function (resolve, reject) {
     //     connectNow.connect(function (err) {
     //         if (err) {
@@ -62,8 +63,6 @@ router.get('/', function(req, res) {
     // promise.then(function (value) {
     //     res.render("./tutorView/tutorBooking");
     // })
-
-});
 
 
 module.exports = router;
