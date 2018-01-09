@@ -27,7 +27,7 @@ function renderingOneweek(date,username,timeTable,whatWanted) {
                 throw err;
             }
             connectNow.query("SELECT "+(String(mysql.escape(whatWanted))).replace(/'/g," ")+" FROM "+(String(mysql.escape(timeTable))).replace(/'/g," ")+" Where timeStart>=? AND timeStart<=? AND username=?", [startOfWeek, endOfWeek,username], function (err, result) {
-                connectNow.end();
+                    connectNow.end();
                 console.log('Yeah');
                 if (err) {
                     connectNow.end();

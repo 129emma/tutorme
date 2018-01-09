@@ -6,6 +6,9 @@ const weekly = require("../../javascript/tutorSchedule3WeekPreRendering");
 router.get('/', function (req, res) {
     var promise = weekly.Oneweek(undefined, "vanie",'tableTime','timeStart');
     promise.then(function (value) {
+
+
+
         res.render("./tutorView/tutorSchedule.ejs", {value:value, userDetails: "vanie"});
     })
 });
