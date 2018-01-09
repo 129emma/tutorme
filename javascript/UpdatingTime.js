@@ -50,6 +50,7 @@ function deleteDate(date, username, timeTable) {
             connectNow.query(" DELETE FROM " + timeTable + " WHERE (username,timeStart)IN (?)", [ListToDelete], function(err, result) {
                 connectNow.end();
                 if (err) {
+
                     connectNow.end();
                     throw err;
                 } else {
