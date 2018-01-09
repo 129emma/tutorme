@@ -6,14 +6,9 @@ const router = express.Router();
 const con = require('../../javascript/connection');
 
 router.get('/', function(req, res) {
-    var tutor = 'jojo';
+    //booking ID should be provided by the click on the schedule, currently dummy data 1 inserted for testing purposes.
+    var bookingID = 1;
 
-    const booking = {
-        "tutee": [],
-        "courseID": [],
-        "description": [],
-        "totalPrice": []
-    };
     const connectNow = con.method();
 
     connectNow.connect(function (err) {
@@ -21,7 +16,7 @@ router.get('/', function(req, res) {
             connectNow.end();
             throw err;
         }
-        connectNow.query("SELECT tuteeID, courseID, desciprtion, totalPrice FROM tableBooking WHERE tutorID = ?", [tutor], function (err, result) {
+        connectNow.query("SELECT tableBooking.tuteeID, tableBooking.courseID, tableBooking.location, tableBooking.description, tableBooking.totalPrice, tableTime.timeStart  FROM tableBooking, tableTime, tableTimeOccupation WHERE tableTimeOccupation.timeID = tableTime.timeID AND tableTimeOccupation.bookingID = tableBooking.bookingID AND tableBooking.bookingID = ?", [bookingID], function (err, result) {
             connectNow.end();
             console.log('Database Connected!');
             if (err) {
@@ -29,12 +24,13 @@ router.get('/', function(req, res) {
             } else {
                 console.log(result);
 
-                const rawObject = JSON.parse(JSON.stringify(result));
+                const rawObject = JSON.parse(JSON.stringify(result[0]));
 
+                console.log("RAW: " + rawObject.tuteeID);
 
-                //console.log("RAW: " + rawObject[0].tuteeID);
+                console.log()
 
-                res.render("./tutorView/tutorBooking", rawObject);
+                res.render("./tutorView/tutorBooking", {userDetails: req.session.userDetails, bookingData: rawObject});
                 // rawObject.map(function (value) {
                 //     booking.tutee.push(value.tutee);
                 // })

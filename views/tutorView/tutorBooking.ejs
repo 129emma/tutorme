@@ -15,15 +15,20 @@
 <body>
 
 <div class="container" style="padding-top:20px;">
-    <h1 style="text-align: center">Booking from [Name] </h1>
+    <h1 style="text-align: center">Booking from <%= bookingData.tuteeID %> </h1>
     <div class="container" style="border-style: solid; border-color: darkgrey; border-radius:5px;">
-        <p>Subject: </p>
-        <p>Date: </p>
-        <p>Location: </p>
+        <div>
+            <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png" style="width: 100px;"/>
+        </div>
+        <br>
+        <p>Tutee Name: <%= bookingData.tuteeID %> </p>
+        <p>Subject: <%= bookingData.courseID %> </p>
+        <p>Date: <%= bookingData.timeStart %></p>
+        <p>Location: <%= bookingData.location %> </p>
     </div>
     <br>
     <div class="container" style="border-style: solid; border-color: darkgrey; border-radius:5px;">
-        <p>Subscription: </p>
+        <p>Requirements specified: <%= bookingData.description %></p>
         <p>Attachment: </p>
     </div>
     <div class="container" style="padding-top: 20px;">
