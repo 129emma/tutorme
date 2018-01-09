@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<html>
+
+<!-- The included template contains all the links, JS and Styling files to be included in the pages, to alter the contents please refer to templates/included.html file -->
+<% include ../templates/included.html %>
+
+<head>
+    <title>Edit Profile details</title>
+</head>
+<body>
+<!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
+<% include ../templates/navbar.ejs %>
+
+<div class="container">
+
+    <h1>Edit Profile</h1>
+    <div class="table-responsive">
+
+        <form action="/tutor/profile/editNow" method="POST">
+            Username: <input type="text" name="userName" value="<%= userDetails[0].userName %>" disabled><br>
+            First name: <input type="text" name="firstName" value="<%= userDetails[0].firstName %>" disabled><br>
+            Last name: <input type="text" name="lastName" value="<%= userDetails[0].lastName %>" disabled><br>
+            Address: <input type="text" name="address" value="<%= userDetails[0].address %>"><br>
+            Date of Birth: <input type="date" name="dateOfBirth" value="<%= userDetails[0].dob %>" disabled><br>
+            Email: <input type="email" name="email" value="<%= userDetails[0].email %>"><br>
+            Study institution: <input type="text" name="school" value="<%= userDetails[0].studySchool %>"><br>
+            Student ID: <input type="text" name="studentId" value="<%= userDetails[0].studentID %>" disabled><br>
+            <input class="button" type="submit" value="Edit">
+        </form>
+
+    </div>
+    <p></p>
+</div>
+
+</body>
+</html>
