@@ -6,8 +6,13 @@ const router = express.Router();
 const con = require('../../javascript/connection');
 
 router.get('/', function(req, res) {
+    var tutor = 'jojo';
+
     const booking = {
         "tutee": [],
+        "courseID": [],
+        "description": [],
+        "totalPrice": []
     };
     const connectNow = con.method();
 
@@ -16,23 +21,29 @@ router.get('/', function(req, res) {
             connectNow.end();
             throw err;
         }
-        connectNow.query("SELECT * FROM tableBooking", function (err, result) {
+        connectNow.query("SELECT tuteeID, courseID, desciprtion, totalPrice FROM tableBooking WHERE tutorID = ?", [tutor], function (err, result) {
             connectNow.end();
             console.log('Database Connected!');
             if (err) {
-                connectNow.end();
                 throw err;
             } else {
-                var rawObject = JSON.parse(JSON.stringify(result));
-                console.log('Data ' + rawObject);
+                console.log(result);
+
+                const rawObject = JSON.parse(JSON.stringify(result));
+
+
+                //console.log("RAW: " + rawObject[0].tuteeID);
+
+                res.render("./tutorView/tutorBooking", rawObject);
                 // rawObject.map(function (value) {
-                //     booking.push(value);
+                //     booking.tutee.push(value.tutee);
                 // })
+                // console.log(booking);
             }
         });
     });
 
-    res.render("./tutorView/tutorBooking");
+
 });
     // const promise = new Promise(function (resolve, reject) {
     //     connectNow.connect(function (err) {
