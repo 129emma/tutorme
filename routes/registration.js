@@ -73,8 +73,9 @@ router.post('/register', function(req, res) {
                 bcrypt.hash(pwd, salt, function(err, hash) {
                     // Store hash in your password DB.
                     if(err) {
-                        throw new Error('Something went wrong!');
                         connectNow.end();
+                        throw new Error('Something went wrong!');
+
                     }
                     connectNow.query("INSERT INTO tablePassword (userName, hashKey) VALUES(?, ?)", [un, hash], function(err, result){
                         console.log('Hallo--1');

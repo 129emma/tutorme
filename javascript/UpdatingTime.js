@@ -8,7 +8,13 @@ function insertDate(date,username,timeTable) {
                 connectNow.end();
                 throw err;
             }
-            connectNow.query("INSERT INTO "+(String(mysql.escape(timeTable))).replace(/'/g," ")+ " (userName, timeStart, day, occupation, bookingID) VALUES (?,?,?,?,?)", [username, date, 0,0, 1], function (err, result) {
+            const ListingOfInformation = [];
+            for(var i = 0; i< date.length; i++){
+                const oneObject = [username, date[i],0,0,1];
+                ListingOfInformation.push(oneObject);
+            }
+            console.log(ListingOfInformation);
+            connectNow.query("INSERT INTO "+(String(mysql.escape(timeTable))).replace(/'/g," ")+ " (userName, timeStart, day, occupation, bookingID) VALUES ?", [ListingOfInformation], function (err, result) {
                 connectNow.end();
                 console.log('Yeah');
                 if (err) {
@@ -36,7 +42,12 @@ function deleteDate(date, username, timeTable) {
                 connectNow.end();
                 throw err;
             }
-            connectNow.query(" DELETE FROM " + timeTable + " WHERE username = ? AND timeStart = ?", [username, date], function(err, result) {
+            const ListToDelete =[];
+            for(var i=0; i< date.length; i++){
+                const oneObject = [username, date[i]];
+                ListToDelete.push(oneObject);
+            }
+            connectNow.query(" DELETE FROM " + timeTable + " WHERE (username,timeStart)IN (?)", [ListToDelete], function(err, result) {
                 connectNow.end();
                 if (err) {
 
