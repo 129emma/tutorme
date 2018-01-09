@@ -73,7 +73,7 @@
 </div>
 <br>
 <div align="center">
-    <button id="edit" onclick="editCalendar()">Edit</button>
+    <button class="unclickButton" id="edit" onclick="editCalendar()">Edit</button>
     <button id="save" onclick="saveCalendar()">Save</button>
 </div>
 
@@ -290,7 +290,7 @@
     var edit = false;
 
     function editCalendar() {
-        document.getElementById('edit').className = 'button';
+        document.getElementById('edit').className = 'clickButton';
         edit = !edit;
         if (edit){
             document.getElementById("button2").style.display = 'none'
@@ -342,6 +342,7 @@
                 })
             }
         }
+        document.getElementById('edit').className = 'unclickButton';
     }
 
     function onClickOfTD() {
@@ -358,7 +359,7 @@
             if (classname === "empty") {
 
                 document.getElementById(this.id).className = "editing";
-                ListToInsert.push(String(Clickdate));
+                ListOfDates.push(String(Clickdate));
 
 
             }
