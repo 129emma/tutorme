@@ -76,17 +76,30 @@ router.post('/updateProfile', function (req, res) {
     connectNow.query("UPDATE tableUser SET firstName = ?, lastName = ?, address = ? WHERE userName = ? "
         , [formFirstname, formLastname, formAddress, formUsername], function (err, result) {
 
-            connectNow.end();
+            // connectNow.end();
             console.log("member updated!!");
 
             /*after user account is built create a hashed password query*/
 
 
             if (err) {
+                connectNow.end();
                 throw err
             } else {
+                //Now that new user information has been inserted to DB updating the session with the new details
+                connectNow.query('SELECT * FROM tableUser WHERE userName = ? ', [formUsername], function (err, result) {
+                    connectNow.end();
+                    if (err) {
+                        throw err
+                    } else {
+                        const userDetails = JSON.parse(JSON.stringify(result[0]));
+                        req.session.userDetails = JSON.parse("[" + JSON.stringify(userDetails) + "]");
+                        res.redirect('/tutor/profile');
 
-                res.redirect('/tutor/profile');
+                    }
+
+                });
+
                     // connectMethod.query('SELECT * FROM tableUser WHERE userName = ? ', [un], function (err, result) {
                     //     connectMethod.end();
                     //     if (err) {

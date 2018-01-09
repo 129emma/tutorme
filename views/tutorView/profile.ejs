@@ -36,7 +36,7 @@
             <li>Student Id: <input type="text" name="formID" value="<%= userDetails[0].studentID %>" > </li>
             <li>Study Institution: <input type="text" name="formSchool" value="<%= userDetails[0].studySchool %>"> </li>
             <li>Joined TutorMe: <input type="text" value="<%= userDetails[0].joinDate %>" disabled> </li>
-            <li>Activated as a tutor?: <input type="text" value="<% if (userDetails[0].tutor_activation === 1)   { %>
+            <li>Activated as a tutor?: <input type="text" value="<% if (userDetails[0].tutor_activation === 1) { %>
                 Yes
                 <% } else { %>
                 No
@@ -57,18 +57,14 @@
             <span onclick="newElement()" class="addBtn">Add</span>
             <ul id="tutorCourseList" class="list-group list-group-flush">
 
+                <!--For loop checking through obtained Capability information and list all the courses that is the tutors capability -->
                 <% for (var i = 0; i < Data.length; i++){ %>
                 <li class="list-group-item"><%= Data[i].courseID %></li>
                 <% } %>
 
-
-                <!--<li class="list-group-item">Law 121</li>-->
-                <!--<li class="list-group-item">Psych 109</li>-->
-                <!--<li class="list-group-item">Compsci 101</li>-->
             </ul>
         </div>
     </div>
-
 </div>
 
 <script>
