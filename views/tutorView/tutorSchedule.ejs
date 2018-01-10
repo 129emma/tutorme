@@ -3,19 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"
-          type="text/css"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet"
-          type="text/css"/>
-    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css"
-          rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
-    <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- The included template contains all the links, JS and Styling files to be included in the pages, to alter the contents please refer to templates/included.html file -->
+    <% include ../templates/included.html %>
+
     <style>
         table {
             font-family: arial, sans-serif;
@@ -62,37 +53,59 @@
             color: black;
         }
     </style>
-
-
 </head>
-<body>
-<h1 align="center"><%= userDetails %>'s weekly schedule</h1>
-<div align="center">
-    <button id="button2"> <</button>
-    <button id="button1"> ></button>
-</div>
-<br>
-<div align="center">
-    <button class="unclickButton" id="edit" onclick="editCalendar()">Edit</button>
-    <button id="save" onclick="saveCalendar()">Save</button>
-</div>
 
-<br>
-<div>
-    <table id="scheduleTable" class="calendar" align="center">
-        <tbody>
-        <tr>
-            <th>Time</th>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
-            <th>Sunday</th>
-        </tr>
-        </tbody>
-    </table>
+<body>
+
+<!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
+<% include ../templates/navbar.ejs %>
+
+<div class="container">
+
+    <!--&lt;!&ndash; Trigger the modal with a button &ndash;&gt;-->
+    <!--<button type="button" class="btn btn-info btn-lg"><a data-toggle="modal" href="/tutor/tutorBooking"  data-target="#myModal">Open Modal</a></button>-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <h1 align="center"><%= userDetails %>'s weekly schedule</h1>
+    <div align="center">
+        <button id="button2"> <</button>
+        <button id="button1"> ></button>
+    </div>
+    <br>
+    <div align="center">
+        <button class="unclickButton" id="edit" onclick="editCalendar()">Edit</button>
+        <button id="save" onclick="saveCalendar()">Save</button>
+    </div>
+
+    <br>
+    <div>
+        <table id="scheduleTable" class="calendar" align="center">
+            <tbody>
+            <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 </body>
@@ -284,12 +297,7 @@
                 if (bookingDetail !== undefined){
                     console.log(bookingDetail)
 
-                    selectedTime.innerHTML = bookingDetail[i].course + "<br>" + "Tutee: "+ bookingDetail[i].tutee + "<br>" + "Location: " + bookingDetail[i].location;
-                    const p =document.createElement("p");
-                    p.className = "bookingId";
-                    p.innerHTML = bookingDetail[i].bookingID;
-                    p.style.visibility = "hidden";
-                    selectedTime.appendChild(p)
+                    selectedTime.innerHTML = "<a href='/tutor/tutorBooking?bookingID="+bookingDetail[i].bookingID+"'  data-toggle='modal' data-target='#myModal'>" + bookingDetail[i].course + "<br>" + "Tutee: "+ bookingDetail[i].tutee + "<br>" + "Location: " + bookingDetail[i].location + "</a>";
                 }
             }
         }
@@ -308,7 +316,7 @@
     function editCalendar() {
         document.getElementById('edit').className = 'clickButton';
         edit = !edit;
-        if(edit) {
+        if (edit) {
             document.getElementById("button2").style.display = 'none';
             document.getElementById("button1").style.display = 'none';
         }
@@ -324,7 +332,7 @@
                     for (var i = 0; i < ListOfDates.length; i++) {
                         ListOfDates[i] = new Date(ListOfDates[i]);
                         ListOfDates[i].setTime(ListOfDates[i].getTime() + ListOfDates[i].getTimezoneOffset() * 60 * 1000);
-                        const daies = (ListOfDates[i].getDay()===0)? 7: ListOfDates[i].getDay()
+                        const daies = (ListOfDates[i].getDay() === 0) ? 7 : ListOfDates[i].getDay()
                         const idClassName = daies + "." + ListOfDates[i].getHours();
                         console.log(idClassName)
                         document.getElementById(idClassName).className = "available";
@@ -338,7 +346,7 @@
                     for (var i = 0; i < ListToDelete.length; i++) {
                         ListToDelete[i] = new Date(ListToDelete[i]);
                         ListToDelete[i].setTime(ListToDelete[i].getTime() + ListToDelete[i].getTimezoneOffset() * 60 * 1000);
-                        const daies = (ListToDelete[i].getDay()===0)? 7: ListToDelete[i].getDay()
+                        const daies = (ListToDelete[i].getDay() === 0) ? 7 : ListToDelete[i].getDay()
                         const idClassName = daies + "." + ListToDelete[i].getHours();
                         //console.log(idClassName)
                         document.getElementById(idClassName).className = "empty";
