@@ -1,56 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-      integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"-->
+<!--integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">-->
 
 <!-- The included template contains all the links, JS and Styling files to be included in the pages, to alter the contents please refer to templates/included.html file -->
 <% include ../templates/included.html %>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Tutor booking page</title>
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<title>Tutor booking page</title>-->
 
 
-</head>
-<body>
+<!--</head>-->
+<!--<body>-->
 
-<div class="container" style="padding-top:20px;">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
     <h1 style="text-align: center">Booking from <%= bookingData.tuteeID %> </h1>
-    <div class="container" style="border-style: solid; border-color: darkgrey; border-radius:5px;">
-        <div>
-            <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png" style="width: 100px;"/>
+</div>
+<div class="modal-body container" style="width: 100%;">
+    <!--<div class="container" style="padding-top:20px;">-->
+
+        <div class="container" style="border-style: solid; border-color: darkgrey; border-radius:5px; width: 100%;">
+            <div>
+                <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png" style="width: 100px;"/>
+            </div>
+            <br>
+            <p>Tutee Name: <%= bookingData.tuteeID %> </p>
+            <p>Subject: <%= bookingData.courseID %> </p>
+            <p>Date: <%= bookingData.timeStart %></p>
+            <p>Location: <%= bookingData.location %> </p>
         </div>
         <br>
-        <p>Tutee Name: <%= bookingData.tuteeID %> </p>
-        <p>Subject: <%= bookingData.courseID %> </p>
-        <p>Date: <%= bookingData.timeStart %></p>
-        <p>Location: <%= bookingData.location %> </p>
-    </div>
-    <br>
-    <div class="container" style="border-style: solid; border-color: darkgrey; border-radius:5px;">
-        <p>Requirements specified: <%= bookingData.description %></p>
-        <p>Attachment: </p>
-    </div>
-    <div class="container" style="padding-top: 20px;">
+        <div class="container" style="border-style: solid; border-color: darkgrey; border-radius:5px; width: 100%;">
+            <p>Requirements specified: <%= bookingData.description %></p>
+            <p>Attachment: </p>
+        </div>
+        <div class="container" style="padding-top: 20px; width: 100%;">
 
-        <div class="row justify-content-center">
-            <div class="col" style="text-align: center;">
-                <button type="button" class="btn btn-info">Info</button>
-            </div>
-            <div class="col" style="text-align: center;">
-                <button type="button" class="btn btn-danger">Cancel</button>
+            <div class="row justify-content-center">
+                <div class="col" style="text-align: center;">
+                    <button type="button" class="btn btn-info">Info</button>
+                </div>
+                <div class="col" style="text-align: center;">
+                    <button type="button" class="btn btn-danger">Cancel</button>
+                </div>
             </div>
         </div>
-
-    </div>
-
-
+    <!--</div>-->
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 </div>
 
-</body>
 
-<script>
+<!--</body>-->
 
-
-</script>
-</html>
+<!--</html>-->
