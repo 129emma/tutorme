@@ -7,6 +7,7 @@ router.get('/', function (req, res) {
     var promise = weekly.Oneweek(undefined, "jojo",'tableTime','timeStart');
 
     promise.then(function (value) {
+        console.log(value)
         res.render("./tutorView/tutorSchedule.ejs", {value:value, userDetails: "jojo"});
     })
 });

@@ -34,7 +34,7 @@
         }
 
         .deleting {
-            background-color: #d14c4c;
+            background-color: #dd1188;
             color: white;
         }
 
@@ -116,7 +116,31 @@
     var ListToDelete = [];
     const userName = "<%= userDetails %>";
 
+    const course = ("<%= value.course %>").split(",");
+    console.log(course);
 
+    const tuteeName = ("<%= value.tutee %>").split(",");
+    console.log(tuteeName);
+
+    const bookingLocation = ("<%= value.location %>").split(",");
+    console.log(bookingLocation);
+
+    const bookingID = ("<%= value.bookingID %>").split(",");
+    console.log(bookingID);
+
+    const bookingDetails = bookingDetailJSON(tuteeName, course, bookingLocation, bookingID);
+    //console.log(BookingDetails);
+
+    function bookingDetailJSON(tutee, course, location, bookingID){
+        var bookingDetail = [];
+        for (var i =0; i < course.length; i++){
+            const myJSON= {tutee: tutee[i], course: course[i], location: location[i], bookingID: bookingID[i]}
+            bookingDetail.push(myJSON)
+        }
+        return bookingDetail;
+    }
+
+    //rendering calendar
     var cale = document.getElementsByClassName("calendar")[0];
     for (var i = 1; i < 24; i++) {
         var newRow = document.createElement('tr');
@@ -129,7 +153,6 @@
             newtd.id = j + "." + i;
             newtd.className = "empty";
             newtd.innerHTML = "..";
-
             // newtd.onclick = onClickOfTD();
             newtd.addEventListener("click", onClickOfTD);
             newRow.appendChild(newtd);
@@ -138,14 +161,21 @@
     }
 
     var date = new Date();
+    console.log("date " + date);
     var day = new Date(date.getFullYear(), (date.getMonth()), date.getDate());
+    console.log("day " + day);
     const weekdays = $("tbody th");
     const table = $("#scheduleTable")[0];
-    const timing = ("<%= value.weekthis %>").split(",");
+    const availableTime = ("<%= value.availableTime %>").split(",");
+    //list of jsons {Time: date, id: BookingId}
+    const bookingTime = ("<%= value.bookedTime %>").split(",");
+    //console.log(bookingTime);
     renderDays();
 
+    var weeklisting = preRenderWeeks(date, availableTime, "available");
 
-    var weeklisting = preRenderWeeks(date, timing);
+    //console.log(weeklisting);
+    var weeklisting1 = preRenderWeeks(date, bookingTime, "booked", bookingDetails);
 
     $("#button1").on("click", function () {
         $(table).fadeOut("fast", function () {
@@ -153,8 +183,8 @@
             socket.emit('nextnextweek', {userName: userName, day: day});
             socket.on('nextnextweek', function (value) {
                 // weeklisting.weeknext = value
-                weeklisting = preRenderWeeks(day, value.weekthis)
-                // switchingWeeks(weeklisting.weekthis)
+                weeklisting = preRenderWeeks(day, value.availableTime)
+                // switchingWeeks(weeklisting.availableTime)
                 $(table).fadeIn("fast", function () {
                 })
             })
@@ -164,9 +194,10 @@
     $("#button2").on("click", function () {
         $(table).fadeOut("fast", function () {
             day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
+            //console.log(day)
             socket.emit('lastlastweek', {userName: userName, day: day});
             socket.on('lastlastweek', function (value) {
-                weeklisting = preRenderWeeks(day, value.weekthis)
+                weeklisting = preRenderWeeks(day, value.availableTime)
                 $(table).fadeIn("fast", function () {
                 })
             })
@@ -187,8 +218,9 @@
         return num;
     }
 
-    function preRenderWeeks(date, timing) {
-
+    function preRenderWeeks(date, timing, className, bookingDetails) {
+        console.log("BookingDetails");
+        console.log( bookingDetails)
         var weekListing = []
 
         timing.map(function (value) {
@@ -200,8 +232,7 @@
             }
         })
 
-
-        switchingWeeks(weekListing)
+        switchingWeeks(weekListing, className, bookingDetails);
         return weekListing;
     }
 
@@ -255,14 +286,25 @@
         }
     }
 
-    function switchingWeeks(msg) {
-        renderDays()
+    function switchingWeeks(msg, className, bookingDetail) {
+        //renderDays()
 
         if (msg.length > 0) {
-            msg.map(function (value) {
+            for (var i =0; i< msg.length; i++){
+                const value = msg[i]
                 const selectedTime = document.getElementById(((value.getDay() === 0) ? 7 : value.getDay()) + "." + value.getHours());
-                selectedTime.className = "available";
-            })
+                selectedTime.className = className;
+                if (bookingDetail !== undefined){
+                    console.log(bookingDetail)
+
+                    selectedTime.innerHTML = bookingDetail[i].course + "<br>" + "Tutee: "+ bookingDetail[i].tutee + "<br>" + "Location: " + bookingDetail[i].location;
+                    const p =document.createElement("p");
+                    p.className = "bookingId";
+                    p.innerHTML = bookingDetail[i].bookingID;
+                    p.style.visibility = "hidden";
+                    selectedTime.appendChild(p)
+                }
+            }
         }
     }
 
@@ -352,6 +394,11 @@
                 document.getElementById(this.id).className = "available";
                 const numbering = (ListToDelete.indexOf(String(Clickdate)));
                 ListToDelete.splice(numbering, 1);
+            }
+
+        }else{
+        if(classname === "booked") {
+
             }
         }
     }

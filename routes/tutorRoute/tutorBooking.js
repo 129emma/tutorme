@@ -6,6 +6,7 @@ const router = express.Router();
 const con = require('../../javascript/connection');
 
 router.get('/', function(req, res) {
+
     //booking ID should be provided by the click on the schedule, currently dummy data 1 inserted for testing purposes.
     var bookingID = 1;
 
