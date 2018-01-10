@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66d2b2d6-f8a2-4f67-8d60-a1b0ffb1f515" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/profile.css" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/public/stylesheets/index.css" afterPath="$PROJECT_DIR$/public/stylesheets/index.css" />
-      <change beforePath="$PROJECT_DIR$/public/stylesheets/loginPage.css" afterPath="$PROJECT_DIR$/public/stylesheets/loginPage.css" />
-      <change beforePath="$PROJECT_DIR$/public/stylesheets/navbar.css" afterPath="$PROJECT_DIR$/public/stylesheets/navbar.css" />
-      <change beforePath="$PROJECT_DIR$/public/stylesheets/navbar.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" />
-      <change beforePath="$PROJECT_DIR$/views/index.ejs" afterPath="$PROJECT_DIR$/views/index.ejs" />
-      <change beforePath="$PROJECT_DIR$/views/login.ejs" afterPath="$PROJECT_DIR$/views/login.ejs" />
-      <change beforePath="$PROJECT_DIR$/views/templates/included.html" afterPath="$PROJECT_DIR$/views/templates/included.html" />
-      <change beforePath="$PROJECT_DIR$/views/templates/navbar.ejs" afterPath="$PROJECT_DIR$/views/templates/navbar.ejs" />
       <change beforePath="$PROJECT_DIR$/views/tutorView/profile.ejs" afterPath="$PROJECT_DIR$/views/tutorView/profile.ejs" />
-      <change beforePath="$PROJECT_DIR$/views/tutorView/profileEditing.ejs" afterPath="$PROJECT_DIR$/views/tutorView/profileEditing.ejs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,7 +18,7 @@
       <file leaf-file-name="index.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/index.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
+            <state relative-caret-position="120">
               <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="58" />
               <folding />
             </state>
@@ -77,14 +68,24 @@
       <file leaf-file-name="profile.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/tutorView/profile.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="94" column="32" lean-forward="true" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
+            <state relative-caret-position="133">
+              <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
               <folding>
-                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#7;n#form#0;n#div#1;n#div#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#div#7;n#form#0;n#div#1;n#div#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1515560079535" expanded="false" signature="3070:3083" ph="..." />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#7;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#7;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1515561301408" expanded="false" signature="3130:3143" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/stylesheets/profile.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -92,18 +93,8 @@
       <file leaf-file-name="login.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/login.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" column="83" lean-forward="true" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="83" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/tutorRoute/profile.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="26" lean-forward="false" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+            <state relative-caret-position="135">
+              <caret line="9" column="62" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -135,6 +126,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -216,6 +208,7 @@
         <option value="$PROJECT_DIR$/views/login.ejs" />
         <option value="$PROJECT_DIR$/javascript/profileEditing.js" />
         <option value="$PROJECT_DIR$/views/tutorView/profileEditing.ejs" />
+        <option value="$PROJECT_DIR$/public/stylesheets/profile.css" />
         <option value="$PROJECT_DIR$/views/tutorView/profile.ejs" />
       </list>
     </option>
@@ -324,6 +317,7 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -388,7 +382,7 @@
       <workItem from="1515471100096" duration="90000" />
       <workItem from="1515471213344" duration="338000" />
       <workItem from="1515536450110" duration="2056000" />
-      <workItem from="1515544336961" duration="10141000" />
+      <workItem from="1515544336961" duration="11330000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;added sockets and the sql call related&quot;">
       <created>1513386883857</created>
@@ -509,11 +503,18 @@
       <option name="project" value="LOCAL" />
       <updated>1515553221595</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="profile">
+      <created>1515560118447</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1515560118447</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87416000" />
+    <option name="totallyTimeSpent" value="88605000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -622,20 +623,14 @@
     <MESSAGE value="nav bar Tutor schedule hiding" />
     <MESSAGE value="Merge branch 'master' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <MESSAGE value="basic styling" />
-    <option name="LAST_COMMIT_MESSAGE" value="basic styling" />
+    <MESSAGE value="profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="profile" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/routes/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="30" lean-forward="false" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/tutorView/tutorSchedule.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1764">
@@ -944,14 +939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/tutorView/profileEditing.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -976,23 +963,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/profile.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/login.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="83" lean-forward="true" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="83" />
+        <state relative-caret-position="135">
+          <caret line="9" column="62" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="62" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/tutorView/profile.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="94" column="32" lean-forward="true" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
+        <state relative-caret-position="133">
+          <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#7;n#form#0;n#div#1;n#div#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#7;n#form#0;n#div#1;n#div#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1515560079535" expanded="false" signature="3070:3083" ph="..." />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#7;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#7;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1515561301408" expanded="false" signature="3130:3143" ph="..." />
           </folding>
         </state>
       </provider>
