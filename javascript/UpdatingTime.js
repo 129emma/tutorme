@@ -10,13 +10,13 @@ function insertDate(date,username,timeTable) {
             }
             const ListingOfInformation = [];
             for(var i = 0; i< date.length; i++){
-                const oneObject = [username, date[i],0,0,1];
+                const oneObject = [username, date[i],0,0];
                 ListingOfInformation.push(oneObject);
             }
             console.log(ListingOfInformation);
-            connectNow.query("INSERT INTO "+(String(mysql.escape(timeTable))).replace(/'/g," ")+ " (userName, timeStart, day, occupation, bookingID) VALUES ?", [ListingOfInformation], function (err, result) {
+            connectNow.query("INSERT INTO "+(String(mysql.escape(timeTable))).replace(/'/g," ")+ " (userName, timeStart, day, occupation) VALUES ?", [ListingOfInformation], function (err, result) {
                 connectNow.end();
-                console.log('Yeah');
+
                 if (err) {
                     connectNow.end();
                     throw err;
