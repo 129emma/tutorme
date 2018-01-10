@@ -92,38 +92,38 @@ const con = require("./javascript/connection.js");
 //The socket's entry point the .on event is based on the other's end .emit event in this given case it is 'hello' from
 //the tutorSchedule.ejs. The .on event will be trigger by the .emit events speifically given like an eventListener
 io.on('connection', function (socket) {
-    console.log("connected");
+    //console.log("connected");
     //socket itself could be collected to be broadcasted, or there is an function  socket.broadcast.emit to emit to all,
     // apart from itself.
     //msg is the given JSON Object from the emitter.
     socket.on('nextnextweek', function (msg) {
-        console.log(typeof msg);
-        console.log(msg.userName);
+        //console.log(typeof msg);
+        //console.log(msg.userName);
         const presetDate = new Date(msg.day);
         const date = new Date(presetDate.getFullYear(),presetDate.getMonth(),(presetDate.getDate()),-11);
-        console.log(date);
+        //console.log(date);
         var promise = tutorSchedule.Oneweek(date,String(msg.userName),'tableTime','timeStart');
         promise.then(function (value) {
-            console.log("promising");
-            console.log(value);
+            //console.log("promising");
+            //console.log(value);
             socket.emit('nextnextweek', value)
         });
 
     });
     socket.on('lastlastweek', function (msg) {
-        console.log(typeof msg);
+        //console.log(typeof msg);
         const presetDate = new Date(msg.day);
         const date = new Date(presetDate.getFullYear(),presetDate.getMonth(),(presetDate.getDate()),-11);
-        console.log(date);
+        //console.log(date);
         var promise = tutorSchedule.Oneweek(date,String(msg.userName),'tableTime','timeStart');
         promise.then(function (value) {
-            console.log("promising");
-            console.log(value);
+            //console.log("promising");
+            //console.log(value);
             socket.emit('lastlastweek', value)
         });
     });
     socket.on('insertTime',function (msg) {
-        console.log(msg);
+        //console.log(msg);
 
         for (var i = 0; i< msg.date.length; i++){
             msg.date[i] = new Date(msg.date[i]);
@@ -132,7 +132,7 @@ io.on('connection', function (socket) {
 
         var promise = UpdatingTime.Insert(msg.date,String(msg.userName),"tableTime");
         promise.then(function (value) {
-            console.log(value);
+            //console.log(value);
             socket.emit('insertTime', {})
         })
     });
@@ -142,7 +142,7 @@ io.on('connection', function (socket) {
         }
         var promise = UpdatingTime.Delete(msg.date,String(msg.userName), "tableTime");
         promise.then(function (value) {
-            console.log("delete " + value);
+            //console.log("delete " + value);
             socket.emit('deleteTime', {});
         })
     })
