@@ -8,7 +8,12 @@ const con = require('../../javascript/connection');
 router.get('/', function(req, res) {
 
     //booking ID should be provided by the click on the schedule, currently dummy data 1 inserted for testing purposes.
-    var bookingID = 1;
+
+    console.log(req)
+
+    var bookingID = req.query.bookingID;
+
+    console.log(bookingID);
 
     const connectNow = con.method();
 

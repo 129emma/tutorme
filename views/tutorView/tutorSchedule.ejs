@@ -62,8 +62,8 @@
 
 <div class="container">
 
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-info btn-lg"><a data-toggle="modal" href="/tutor/tutorBooking"  data-target="#myModal">Open Modal</a></button>
+    <!--&lt;!&ndash; Trigger the modal with a button &ndash;&gt;-->
+    <!--<button type="button" class="btn btn-info btn-lg"><a data-toggle="modal" href="/tutor/tutorBooking"  data-target="#myModal">Open Modal</a></button>-->
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
@@ -297,12 +297,7 @@
                 if (bookingDetail !== undefined){
                     console.log(bookingDetail)
 
-                    selectedTime.innerHTML = bookingDetail[i].course + "<br>" + "Tutee: "+ bookingDetail[i].tutee + "<br>" + "Location: " + bookingDetail[i].location;
-                    const p =document.createElement("p");
-                    p.className = "bookingId";
-                    p.innerHTML = bookingDetail[i].bookingID;
-                    p.style.visibility = "hidden";
-                    selectedTime.appendChild(p)
+                    selectedTime.innerHTML = "<a href='/tutor/tutorBooking?bookingID="+bookingDetail[i].bookingID+"'  data-toggle='modal' data-target='#myModal'>" + bookingDetail[i].course + "<br>" + "Tutee: "+ bookingDetail[i].tutee + "<br>" + "Location: " + bookingDetail[i].location + "</a>";
                 }
             }
         }
