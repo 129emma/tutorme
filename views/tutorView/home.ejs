@@ -19,16 +19,39 @@
     <p>Success!</p>
     <p>Welcome to your new account, <%= userDetails[0].firstName %> </p>
 
-    <% for (x in userDetails[0]) { %>
-        <%= x %>
-    <% } %>
-
-
-    <p>Username: <%= userDetails[0].userName %> </p>
-    <p>Email: <%= userDetails[0].email %> </p>
-    <p>Address: <%= userDetails[0].address %> </p>
-
-    <p></p>
+    <div class="table-responsive">
+        <table style= "width: 100%" class="table-bordered">
+            <tr>
+                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Date of Birth</th>
+                <th>Student Id</th>
+                <th>Study Institution</th>
+                <th>Joined TutorMe</th>
+                <th>Activated as a tutor?</th>
+            </tr>
+            <tr>
+                <td><%= userDetails[0].userName %></td>
+                <td><%= userDetails[0].firstName %></td>
+                <td><%= userDetails[0].lastName %></td>
+                <td><%= userDetails[0].email %></td>
+                <td><%= userDetails[0].address %></td>
+                <td><%= userDetails[0].dob %></td>
+                <td><%= userDetails[0].studentID %></td>
+                <td><%= userDetails[0].studySchool %></td>
+                <td><%= userDetails[0].joinDate %></td>
+                <td><% if (userDetails[0].tutor_activation === 1) { %>
+                    Yes
+                    <% } else { %>
+                    No
+                    <% }%>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 <button onclick="myFunction()">Click to check session id</button>

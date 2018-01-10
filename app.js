@@ -128,23 +128,22 @@ io.on('connection', function (socket) {
         for (var i = 0; i< msg.date.length; i++){
             msg.date[i] = new Date(msg.date[i]);
         }
+        // const day = new Date(msg.date);
 
         var promise = UpdatingTime.Insert(msg.date,String(msg.userName),"tableTime");
         promise.then(function (value) {
-            // console.log(value);
+            console.log(value);
             socket.emit('insertTime', {})
         })
-    })
-
+    });
     socket.on('deleteTime', function(msg) {
-        for (var i = 0; i< msg.date.length; i++) {
+        for (var i = 0; i< msg.date.length; i++){
             msg.date[i] = new Date(msg.date[i]);
         }
         var promise = UpdatingTime.Delete(msg.date,String(msg.userName), "tableTime");
         promise.then(function (value) {
-            console.log(msg)
-            // console.log("delete " + value);
-            socket.emit('deleteTime', {id:msg.id});
+            console.log("delete " + value);
+            socket.emit('deleteTime', {});
         })
     })
 });

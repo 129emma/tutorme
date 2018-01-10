@@ -73,7 +73,7 @@
 </div>
 <br>
 <div align="center">
-    <button id="edit" onclick="editCalendar()">Edit</button>
+    <button class="unclickButton" id="edit" onclick="editCalendar()">Edit</button>
     <button id="save" onclick="saveCalendar()">Save</button>
 </div>
 
@@ -100,11 +100,11 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-    var ListToInsert = [];
+    var ListOfDates = [];
     var ListToDelete = [];
     const userName = "<%= userDetails %>";
-    
-    
+
+
     var cale = document.getElementsByClassName("calendar")[0];
     for (var i = 1; i < 24; i++) {
         var newRow = document.createElement('tr');
@@ -131,7 +131,7 @@
     const table = $("#scheduleTable")[0];
     const timing = ("<%= value.weekthis %>").split(",");
     renderDays();
-    
+
 
     var weeklisting = preRenderWeeks(date, timing);
 
@@ -140,16 +140,16 @@
 
         $(table).fadeOut("fast", function () {
             day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
-            
+
             socket.emit('nextnextweek', {userName: userName, day: day});
 
             socket.on('nextnextweek', function (value) {
-                
+
                 // weeklisting.weeknext = value
                 weeklisting = preRenderWeeks(day, value.weekthis)
                 // switchingWeeks(weeklisting.weekthis)
                 $(table).fadeIn("fast", function () {
-                    
+
                 })
 
             })
@@ -161,16 +161,16 @@
 
         $(table).fadeOut("fast", function () {
             day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
-            
+
             socket.emit('lastlastweek', {userName: userName, day: day});
             socket.on('lastlastweek', function (value) {
                 // weeklisting.weeklast = value
-                
+
                 weeklisting = preRenderWeeks(day, value.weekthis)
                 $(table).fadeIn("fast", function () {
-                    // 
-                    // 
-                    // 
+                    //
+                    //
+                    //
                     // switchingWeeks(weeklisting.weekthis)
                 })
             })
@@ -196,18 +196,18 @@
     function preRenderWeeks(date, timing) {
 
         var weekListing = []
-        
+
 
         timing.map(function (value) {
-            
+
             if (value !== "") {
                 value = new Date(value)
                 value.setTime(value.getTime() + value.getTimezoneOffset() * 60 * 1000);
                 weekListing.push(value)
             }
         })
-        
-        
+
+
         switchingWeeks(weekListing)
         return weekListing;
     }
@@ -220,7 +220,7 @@
                 availableTimeCells[aCells].className = "empty";
             }
             availableTimeCells = document.getElementsByClassName("available");
-            
+
         }
 
 
@@ -274,7 +274,7 @@
                 const selectedTime = document.getElementById(((value.getDay() === 0) ? 7 : value.getDay()) + "." + value.getHours());
                 selectedTime.className = "available";
             })
-            
+
         }
     }
 
@@ -282,7 +282,7 @@
     var socket = io('http://localhost:3000/');
     // the on connect is going to trigger the .on('connection') for the backend IO.
     socket.on('connect', function () {
-        
+
     })
     socket.on('disconnect', function () {
     });
@@ -291,49 +291,62 @@
 
     function editCalendar() {
         document.getElementById('edit').className = 'clickButton';
-        edit = true;
-        
+        edit = !edit;
+        if (edit){
+            document.getElementById("button2").style.display = 'none'
+            document.getElementById("button1").style.display = 'none'
+        }
+        else{
+            document.getElementById("button2").style.display = ''
+            document.getElementById("button1").style.display = ''
+        }
+        console.log("Edit is " + edit);
+
     }
 
-    function classChanging(listOfid,className) {
-        for(var i =0; i< listOfid.length;i++){
-            var date = new Date(listOfid[i])
-            date.setTime(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
-            const id = date.getDay()+"."+ date.getHours();
-            console.log(document.getElementById(id));
-            document.getElementById(id).className = className;
-        }
-        return [];
-    }
+    var save = false;
 
     function saveCalendar() {
-        console.log(this);
-        if (edit ===true){
-            if(ListToInsert.length > 0) {
-                //Get the List then socket emit
-                socket.emit("insertTime", {date: ListToInsert, userName:userName});
-                socket.on("insertTime",function (msg) {
-                    ListToInsert = classChanging(ListToInsert,"available");
+        // // save = true;
+        // // edit = false;
+        if (edit === true) {
+            //     //Get the List then socket emit
+            if (ListOfDates.length > 0) {
+                socket.emit("insertTime", {date: ListOfDates, userName: userName});
+                socket.on("insertTime", function (msg) {
+                    console.log(ListOfDates);
+                    for (var i = 0; i < ListOfDates.length; i++) {
+                        ListOfDates[i] = new Date(ListOfDates[i]);
+                        ListOfDates[i].setTime(ListOfDates[i].getTime() + ListOfDates[i].getTimezoneOffset() * 60 * 1000);
+                        const daies = (ListOfDates[i].getDay()===0)? 7: ListOfDates[i].getDay()
+                        const idClassName = daies + "." + ListOfDates[i].getHours();
+                        console.log(idClassName)
+                        document.getElementById(idClassName).className = "available";
+                    }
+                    ListOfDates = [];
                 })
             }
-
-            if(ListToDelete.length > 0) {
-                socket.emit("deleteTime", {id: this.id, date: ListToDelete, userName:userName});
-
-                socket.on("deleteTime",function (msg) {
-                    //document.getElementById(msg.id).className = "empty";
-                    //Time in terms of day = ?.x,while The time in terms the hour = x.? in term of html id.
-                    ListToDelete=classChanging(ListToDelete,"empty");
+            if (ListToDelete.length > 0) {
+                socket.emit("deleteTime", {date: ListToDelete, userName: userName});
+                socket.on("deleteTime", function (msg) {
+                    for (var i = 0; i < ListToDelete.length; i++) {
+                        ListToDelete[i] = new Date(ListToDelete[i]);
+                        ListToDelete[i].setTime(ListToDelete[i].getTime() + ListToDelete[i].getTimezoneOffset() * 60 * 1000);
+                        const daies = (ListToDelete[i].getDay()===0)? 7: ListToDelete[i].getDay()
+                        const idClassName = daies + "." + ListToDelete[i].getHours();
+                        console.log(idClassName)
+                        document.getElementById(idClassName).className = "empty";
+                        console.log("deleting")
+                    }
+                    ListToDelete = [];
                 })
             }
-            document.getElementById('edit').className = 'unclickButton';
-            edit = false;
-
         }
+        document.getElementById('edit').className = 'unclickButton';
     }
 
     function onClickOfTD() {
-        // 
+        //
         var classname = this.className;
         const classId = this.id.split(".")
         const classIdDay = classId[0]
@@ -341,22 +354,22 @@
 
         var Clickdate = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - (day.getDay()) + classIdDay * 1), classIdHour);
         Clickdate.setTime(Clickdate.getTime() - Clickdate.getTimezoneOffset() * 60 * 1000);
-        // 
+        //
         if (edit === true) {
             if (classname === "empty") {
 
                 document.getElementById(this.id).className = "editing";
-                ListToInsert.push(String(Clickdate));
-                
+                ListOfDates.push(String(Clickdate));
+
 
             }
             else if (classname === "editing") {
                 document.getElementById(this.id).className = 'empty';
-                const numbering = (ListToInsert.indexOf(String(Clickdate)));
-                ListToInsert.splice(numbering, 1);
+                const numbering = (ListOfDates.indexOf(String(Clickdate)));
+                ListOfDates.splice(numbering, 1);
             }
             else if (classname === "available") {
-                
+
                 document.getElementById(this.id).className = 'deleting';
                 ListToDelete.push(String(Clickdate));
 
@@ -366,8 +379,8 @@
                 const numbering = (ListToDelete.indexOf(String(Clickdate)));
                 ListToDelete.splice(numbering, 1);
             }
-            
-            
+
+
         }
     }
 
