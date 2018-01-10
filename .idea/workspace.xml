@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="66d2b2d6-f8a2-4f67-8d60-a1b0ffb1f515" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change beforePath="$PROJECT_DIR$/javascript/tutorSchedule3WeekPreRendering.js" afterPath="$PROJECT_DIR$/javascript/tutorSchedule3WeekPreRendering.js" />
-      <change beforePath="$PROJECT_DIR$/routes/tutorRoute/tutorBooking.js" afterPath="$PROJECT_DIR$/routes/tutorRoute/tutorBooking.js" />
-      <change beforePath="$PROJECT_DIR$/routes/tutorRoute/tutorSchedule.js" afterPath="$PROJECT_DIR$/routes/tutorRoute/tutorSchedule.js" />
-      <change beforePath="$PROJECT_DIR$/views/tutorView/tutorSchedule.ejs" afterPath="$PROJECT_DIR$/views/tutorView/tutorSchedule.ejs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -335,7 +330,7 @@
       <workItem from="1515471100096" duration="90000" />
       <workItem from="1515471213344" duration="338000" />
       <workItem from="1515537557204" duration="20000" />
-      <workItem from="1515537583343" duration="10731000" />
+      <workItem from="1515537583343" duration="11066000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;added sockets and the sql call related&quot;">
       <created>1513386883857</created>
@@ -456,11 +451,18 @@
       <option name="project" value="LOCAL" />
       <updated>1515558244294</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Merge branch 'master' of https://github.com/jwwnz/tutorme into vanies&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;routes/tutorRoute/tutorBooking.js&#10;#&#9;views/tutorView/tutorBooking.ejs">
+      <created>1515559971666</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1515559971666</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88755000" />
+    <option name="totallyTimeSpent" value="89090000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
