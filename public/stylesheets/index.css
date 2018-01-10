@@ -1,14 +1,3 @@
-/*Attached message setting*/
-.ui.bottom.attached.message {
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-}
-/*Container position*/
 .ui.text.center.aligned.container {
-    padding-top: 200px;
-}
-/*Button color*/
-button.ui.huge.primary.button {
-    background-color: orange;
+    padding-top: 300px;
 }

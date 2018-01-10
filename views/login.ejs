@@ -2,26 +2,41 @@
 <html>
 
 <!-- The included template contains all the links, JS and Styling files to be included in the pages, to alter the contents please refer to templates/included.html file -->
-h include templates/included.html %>
-
+<% include templates/included.html %>
 <html lang="en">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 <head>
     <title>Login</title>
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel="stylesheet" href="/stylesheets/loginPage.css"/>
 </head>
 <body>
 
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
 <% include templates/navbar.ejs %>
 
-<div class="container">
-    <h1>Login in to TutorMe!</h1>
-    <p>Type in your details to login:</p>
-    <form action="/login/logging" method="POST">
-        Username: <input type="text" name="userName"><br>
-        Password: <input type="password" name="passWord"><br>
-        <input type="submit" value="Submit">
+
+
+<div class="ui text center aligned container">
+    <h1 class="ui center aligned header">
+        Login in to TutorMe!
+    </h1>
+    <form class="ui large form" action="/login/logging" method="POST">
+        <div class="ui basic segment">
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="user icon"></i>
+                    <input type="text" name="userName" placeholder="User name">
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="password" name="passWord" placeholder="Password">
+                </div>
+            </div>
+            <input type="submit" value="Submit" class="ui fluid teal submit button" >
+        </div>
+        <div class="ui error message"></div>
     </form>
 </div>
 </body>
