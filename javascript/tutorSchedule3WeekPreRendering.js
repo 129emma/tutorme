@@ -44,7 +44,7 @@ function renderingOneweek(date,username,timeTable,whatWanted) {
 
                 //console.log("Tutor " + tutor);
             })
-            connectNow.query("SELECT tableBooking.tuteeID, tableBooking.courseID, tableBooking.location, tableTime.timeStart, tableTimeOccupation.bookingID  FROM tableBooking, tableTime, tableTimeOccupation WHERE tableTimeOccupation.timeID = tableTime.timeID AND tableTimeOccupation.bookingID = tableBooking.bookingID", function (err, result) {
+            connectNow.query("SELECT tableBooking.tuteeID, tableBooking.courseID, tableBooking.location, tableTime.timeStart, tableTimeOccupation.bookingID  FROM tableBooking, tableTime, tableTimeOccupation WHERE tableTimeOccupation.timeID = tableTime.timeID AND tableTimeOccupation.bookingID = tableBooking.bookingID And tableTime.timeStart>=? AND tableTime.timeStart<=?",[startOfWeek, endOfWeek] ,function (err, result) {
                 if (err) {
                     connectNow.end();
                     throw err;

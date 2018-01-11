@@ -183,7 +183,10 @@
             socket.emit('nextnextweek', {userName: userName, day: day});
             socket.on('nextnextweek', function (value) {
                 // weeklisting.weeknext = value
-                weeklisting = preRenderWeeks(day, value.availableTime)
+                renderDays()
+                const bookingDetailsFornextWeek = bookingDetailJSON(value.tutee,value.course,value.location,value.bookingID)
+                weeklisting = preRenderWeeks(day, value.availableTime, "available")
+                weeklisting1 = preRenderWeeks(day,value.bookedTime, "booked",bookingDetailsFornextWeek)
                 // switchingWeeks(weeklisting.availableTime)
                 $(table).fadeIn("fast", function () {
                 })
@@ -197,7 +200,11 @@
             //console.log(day)
             socket.emit('lastlastweek', {userName: userName, day: day});
             socket.on('lastlastweek', function (value) {
-                weeklisting = preRenderWeeks(day, value.availableTime)
+                renderDays()
+                const bookingDetailsFornextWeek = bookingDetailJSON(value.tutee,value.course,value.location,value.bookingID)
+                weeklisting = preRenderWeeks(day, value.availableTime, "available")
+                weeklisting1 = preRenderWeeks(day,value.bookedTime, "booked",bookingDetailsFornextWeek)
+
                 $(table).fadeIn("fast", function () {
                 })
             })
@@ -238,12 +245,17 @@
 
     function renderDays() {
         var availableTimeCells = document.getElementsByClassName("available");
-
-        while (availableTimeCells.length > 0) {
+        var bookedTimeCells = document.getElementsByClassName("booked");
+        while (availableTimeCells.length > 0|| bookedTimeCells.length >0) {
             for (var aCells = 0; aCells < availableTimeCells.length; aCells++) {
                 availableTimeCells[aCells].className = "empty";
             }
             availableTimeCells = document.getElementsByClassName("available");
+            for (var bCells = 0; bCells < bookedTimeCells.length; bCells++) {
+                bookedTimeCells[bCells].innerHTML = ".."
+                bookedTimeCells[bCells].className = "empty";
+            }
+            bookedTimeCells = document.getElementsByClassName("booked");
         }
 
         for (var i = 1; i < weekdays.length; i++) {
@@ -296,7 +308,6 @@
                 selectedTime.className = className;
                 if (bookingDetail !== undefined){
                     console.log(bookingDetail)
-
                     selectedTime.innerHTML = "<a href='/tutor/tutorBooking?bookingID="+bookingDetail[i].bookingID+"'  data-toggle='modal' data-target='#myModal'>" + bookingDetail[i].course + "<br>" + "Tutee: "+ bookingDetail[i].tutee + "<br>" + "Location: " + bookingDetail[i].location + "</a>";
                 }
             }
