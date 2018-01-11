@@ -2,10 +2,13 @@ const express = require('express');
 const router = express.Router();
 const con = require('../../javascript/connection.js');
 
+//requiring express session module
+var session = require('express-session');
+
+
 router.get('/', function (req, res){
 
 
-    console.log(req.session);
 
 // const connectNow = con.method();
 //
