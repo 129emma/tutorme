@@ -8,7 +8,7 @@ router.use(bodyParser.urlencoded({extended: false}));
 
 router.get('/', function (req, res) {
 
-    res.render('./tutorView/tuteeProfile', req.session);
+    res.redirect('/tutor/profile');
 
 });
 
