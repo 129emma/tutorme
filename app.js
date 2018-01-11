@@ -20,6 +20,9 @@ const tutee = require('./routes/tutee');
 //requiring Mozilla session module
 var session = require('express-session');
 
+//require ajaxexpresso
+const ajaxhandler = require('./routes/ajaxhandler');
+
 const tutorSchedule = require('./javascript/tutorSchedule3WeekPreRendering');
 const UpdatingTime = require('./javascript/UpdatingTime');
 
@@ -55,6 +58,9 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/registration', registration);
 app.use('/login', login);
+
+//ajax handler router
+app.use('/ajaxhandler', ajaxhandler);
 
 //use of tutor routes, see routes/tutorRoute/* for all the different routes inside of tutorRoutes
 app.use('/tutor', tutor);

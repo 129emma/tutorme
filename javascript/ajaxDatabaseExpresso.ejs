@@ -1,0 +1,105 @@
+
+
+
+
+
+<script>
+
+
+
+    function ajaxDatabaseExpress(query, myfunc) {
+
+        var http = new XMLHttpRequest();
+        http.open("POST", "/ajaxhandler", true);
+        var params = "query="+query;
+
+//Send the proper header information along with the request
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        http.onreadystatechange = function() {//Call a function when the state changes.
+            if(http.readyState == 4 && http.status == 200) {
+                data = http.responseText;
+                myfunc(data);
+            }
+        }
+        http.send(params);
+    }
+
+
+
+
+    function Selectquerying(query, fromTable, where) {
+        var queryString = "SELECT ";
+        if (query === "*"){
+            queryString += query;
+        }else {
+            for (var i in query) {
+                queryString += query[i] + ",";
+            }
+        }
+        queryString = queryString.substr(0, queryString.length - 1);
+        queryString += " FROM " + fromTable + " ";
+        if (where != null) {
+            queryString += "WHERE ";
+            for (var n in where) {
+                //n represents the column associated to the where if you wanted to be more safe can change it to ?
+                queryString += n + " = " + "? AND ";
+            }
+            queryString = queryString.substr(0, queryString.lastIndexOf(" AND ")) + ";";
+        }
+        console.log(queryString);
+        return queryString;
+    }
+
+    function Insertquerying(query, fromTable) {
+        var queryString = "INSERT INTO " + fromTable + "(";
+        for (var i = 0; i < query.length; i++) {
+            queryString += query[i] + ",";
+        }
+        queryString = queryString.substr(0, queryString.length - 1) + ") VALUES (";
+        for (var n = 0; n < query.length; n++) {
+            queryString += "?,";
+        }
+        queryString = queryString.substr(0, queryString.length - 1) + ");";
+        console.log(queryString);
+        return queryString;
+    }
+
+    function Deletequerying(query, fromTable, where) {
+        var queryString = "DELETE FROM "+ fromTable+" ";
+        queryString += "WHERE ";
+        for (var n in where) {
+            //n represents the column associated to the where if you wanted to be more safe can change it to ?
+            queryString += n + " = " + "? AND ";
+        }
+        queryString = queryString.substr(0, queryString.lastIndexOf(" AND ")) + ";";
+
+        console.log(queryString);
+        return queryString;
+    }
+
+    function Updatequerying( fromTable,update, where) {
+        var queryString = "UPDATE "+ fromTable+" SET ";
+        for(var i in update){
+            queryString+= i + "=" + update[i]+", ";
+        }
+        queryString = queryString.substr(0, queryString.lastIndexOf(", "));
+        queryString += " WHERE ";
+        for (var n in where) {
+            //n represents the column associated to the where if you wanted to be more safe can change it to ?
+            queryString += n + " = " + "? AND ";
+        }
+        queryString = queryString.substr(0, queryString.lastIndexOf(" AND ")) + ";";
+        console.log(queryString);
+        return queryString;
+    }
+
+
+
+
+
+
+
+
+
+</script>
