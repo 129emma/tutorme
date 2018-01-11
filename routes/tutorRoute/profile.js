@@ -12,7 +12,7 @@ router.get('/', function (req, res) {
 
     connectNow.connect(function (err) {
         if (err) throw err;
-        console.log("Connected and online (feedback!");
+        console.log("Connected and online (Tutor Profile)!");
     });
 
     const tutorUsername = req.session.userDetails[0].userName;
