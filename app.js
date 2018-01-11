@@ -111,7 +111,7 @@ io.on('connection', function (socket) {
         var promise = tutorSchedule.Oneweek(date,String(msg.userName),'tableTime','timeStart');
         promise.then(function (value) {
             //console.log("promising");
-            //console.log(value);
+            console.log(value);
             socket.emit('nextnextweek', value)
         });
 
@@ -124,7 +124,7 @@ io.on('connection', function (socket) {
         var promise = tutorSchedule.Oneweek(date,String(msg.userName),'tableTime','timeStart');
         promise.then(function (value) {
             //console.log("promising");
-            //console.log(value);
+            console.log(value);
             socket.emit('lastlastweek', value)
         });
     });
