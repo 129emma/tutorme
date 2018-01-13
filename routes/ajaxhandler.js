@@ -20,13 +20,14 @@ router.post('/', function (req, res) {
 
 
     const query = req.body.query;
+    console.log(query);
     connectMethod.query(query, [], function (err, result) {
 
         connectMethod.end();
         if (err) {
             throw err
         } else {
-            const resultPack = JSON.parse(JSON.stringify(result));
+            const resultPack = JSON.stringify(result);
             res.send(resultPack);
         }
             });

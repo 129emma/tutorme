@@ -9,6 +9,23 @@
 
 <head>
     <title>Tutor Profile page</title>
+
+    <style>
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    </style>
 </head>
 <body>
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
@@ -92,7 +109,36 @@
                 <h4 class="modal-title">Course name</h4>
             </div>
             <div class="modal-body">
-                <p>Description</p>
+                <h3>About the course: </h3>
+                <p></p>
+
+
+                <form>
+                    <fieldset>
+                        <legend>About yourself:</legend>
+
+                        Your experience:<br>
+                        <textarea name="experience" rows="10" cols="30">Your experience in this course.</textarea>
+                        <br>
+
+                        Describe what you can do?<br>
+                        <textarea name="experience" rows="10" cols="30">What can you teach in regard to this course?</textarea><br>
+                        grade: <br>
+                        <select name="cars">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="fiat">Fiat</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                    <br>
+
+                    </fieldset>
+                </form>
+
+
+
+
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -109,9 +155,20 @@
 
 
     function coursePopup (){
+
         var courseID = document.getElementById("myInput").value;
-        ajaxDatabaseExpress("SELECT *　FROM tableCourseList WHERE courseID = "+courseID, function(data){
-            alert(data);
+        document.getElementsByClassName('modal-title')[0].innerHTML = courseID;
+        var loader = document.createElement('div');
+        loader.className = 'loader';
+// The variable iDiv is still good... Just append to it.
+        document.getElementsByClassName("modal-body")[0].appendChild(loader);
+
+        console.log(courseID);
+        console.log(typeof (courseID));
+        ajaxDatabaseExpress("SELECT * FROM tableCourseList WHERE courseID = '"+courseID+"';", function(data){
+            document.getElementsByClassName('modal-title')[0].innerHTML = data[0].courseID+ ": "+data[0].courseName;
+            loader.parentNode.removeChild(loader);
+            document.querySelector(".modal-body p").innerHTML = data[0].courseDescription;
         });
     }
 
