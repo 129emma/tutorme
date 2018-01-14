@@ -87,7 +87,7 @@
 
                 <!--For loop checking through obtained Capability information and list all the courses that is the tutors capability -->
                 <% for (var i = 0; i < Data.length; i++){ %>
-                <li class="list-group-item"><%= Data[i].courseID %></li>
+                <li class="list-group-item" ><span onclick="console.log(this.innerHTML)"><%= Data[i].courseID %></span><span style="float: right"><%= Data[i].grade%></span></li>
                 <% } %>
 
             </ul>
@@ -101,7 +101,6 @@
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
@@ -110,41 +109,42 @@
             </div>
             <div class="modal-body">
                 <h3>About the course: </h3>
+                <div class="loader_container"></div>
                 <p></p>
-
-
-                <form>
+                <form method="POST" action="/tutor/profile/create_cap" >
                     <fieldset>
                         <legend>About yourself:</legend>
 
+                        <input type="hidden" id = "courseID" value="none" name="courseID">
                         Your experience:<br>
-                        <textarea name="experience" rows="10" cols="30">Your experience in this course.</textarea>
+                        <textarea name="experience" rows="4" cols="70">Your experience in this course.</textarea>
                         <br>
 
                         Describe what you can do?<br>
-                        <textarea name="experience" rows="10" cols="30">What can you teach in regard to this course?</textarea><br>
+                        <textarea name="description" rows="4" cols="70">What can you teach in regard to this course?</textarea><br>
                         grade: <br>
-                        <select name="cars">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="fiat">Fiat</option>
-                            <option value="audi">Audi</option>
+                        <select name="grade">
+                            <option value="A+">A+</option>
+                            <option value="A">A</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B">B</option>
+                            <option value="B-">B-</option>
+                            <option value="N/A">N/A</option>
                         </select>
-                    <br>
+                    <br><br>
+                        Verification: <br>
+                        <input type="radio" name="verification" value="1"> Verified
+                        <input type="radio" name="verification" value="0" checked> Unverified<br>
 
                     </fieldset>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-default" value="create">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
                 </form>
-
-
-
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -158,10 +158,12 @@
 
         var courseID = document.getElementById("myInput").value;
         document.getElementsByClassName('modal-title')[0].innerHTML = courseID;
+        document.getElementById('courseID').value = courseID;
+        document.querySelector(".modal-body p").innerHTML = "";
         var loader = document.createElement('div');
         loader.className = 'loader';
 // The variable iDiv is still good... Just append to it.
-        document.getElementsByClassName("modal-body")[0].appendChild(loader);
+        document.getElementsByClassName("loader_container")[0].appendChild(loader);
 
         console.log(courseID);
         console.log(typeof (courseID));
