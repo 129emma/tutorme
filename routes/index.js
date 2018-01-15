@@ -4,6 +4,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
+
   if (typeof req.session.userDetails !== 'undefined') {
     console.log("YES" + req.session.userDetails);
     res.redirect('/tutor/home');
