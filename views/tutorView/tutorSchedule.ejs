@@ -8,21 +8,6 @@
     <% include ../templates/included.html %>
 
     <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 80%;
-
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: center;
-            padding: 8px;
-            width: 10%;
-            height: 50px;
-        }
-
         .available {
             background-color: #666672;
             color: white;
@@ -39,7 +24,7 @@
         }
 
         .booked {
-            background-color: #d14c4c;
+            background-color: #e6989b;
             color: white;
         }
 
@@ -53,6 +38,7 @@
             color: black;
         }
     </style>
+
 </head>
 
 <body>
@@ -60,39 +46,37 @@
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
 <% include ../templates/navbar.ejs %>
 
-<div class="container">
+<div class="ui center aligned container">
 
-    <!--&lt;!&ndash; Trigger the modal with a button &ndash;&gt;-->
-    <!--<button type="button" class="btn btn-info btn-lg"><a data-toggle="modal" href="/tutor/tutorBooking"  data-target="#myModal">Open Modal</a></button>-->
+    <div class="ui info modal">
+        <div class="content" id="info"></div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog modal-lg">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-            </div>
-
-        </div>
     </div>
-
 
 
     <h1 align="center"><%= userDetails %>'s weekly schedule</h1>
-    <div align="center">
-        <button id="button2"> <</button>
-        <button id="button1"> ></button>
-    </div>
-    <br>
-    <div align="center">
-        <button class="unclickButton" id="edit" onclick="editCalendar()">Edit</button>
-        <button id="save" onclick="saveCalendar()">Save</button>
+    <div class="ui center aligned container">
+        <div class="column">
+            <button class="icon button" id="button2" style="border: none">
+                <i class="chevron left icon"></i>
+            </button>
+            <button class="icon button" id="button1" style="border: none">
+                <i class="chevron right icon"></i></button>
+        </div>
+
+        <div class="column" style="padding: 10px">
+            <div class="ui buttons" >
+                <button class="ui button unclickButton" id="edit" onclick="editCalendar()" >Edit</button>
+                <div class="or"></div>
+                <button class="ui positive button" id="save" onclick="saveCalendar()">Save</button>
+            </div>
+        </div>
     </div>
 
-    <br>
-    <div>
-        <table id="scheduleTable" class="calendar" align="center">
-            <tbody>
+    <div class="ui container" style="padding: 20px">
+        <table id="scheduleTable" class="ui orange celled table calendar" align="center">
+            <thead>
             <tr>
                 <th>Time</th>
                 <th>Monday</th>
@@ -103,12 +87,30 @@
                 <th>Saturday</th>
                 <th>Sunday</th>
             </tr>
-            </tbody>
+            </thead>
         </table>
     </div>
 </div>
 
 </body>
+
+
+<!--This is the script to load semantic model content from another webpage-->
+
+<script>
+    $(function () {
+        $('.info-modal-link').each(function () {
+            $(this).on('click', function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                $.get(url, function (data) {
+                    $('.info.modal .content').html(data);
+                    $(".info.modal").modal({closable: true, observeChanges: true}).modal('show');
+                });
+            });
+        });
+    });
+</script>
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
@@ -136,12 +138,13 @@
     console.log(bookingID);
 
     const bookingDetails = bookingDetailJSON(tuteeName, course, bookingLocation, bookingID);
+
     //console.log(BookingDetails);
 
-    function bookingDetailJSON(tutee, course, location, bookingID){
+    function bookingDetailJSON(tutee, course, location, bookingID) {
         var bookingDetail = [];
-        for (var i =0; i < course.length; i++){
-            const myJSON= {tutee: tutee[i], course: course[i], location: location[i], bookingID: bookingID[i]}
+        for (var i = 0; i < course.length; i++) {
+            const myJSON = {tutee: tutee[i], course: course[i], location: location[i], bookingID: bookingID[i]}
             bookingDetail.push(myJSON)
         }
         return bookingDetail;
@@ -196,9 +199,9 @@
             socket.on('nextnextweek', function (value) {
                 // weeklisting.weeknext = value
                 renderDays()
-                const bookingDetailsFornextWeek = bookingDetailJSON(value.tutee,value.course,value.location,value.bookingID)
+                const bookingDetailsFornextWeek = bookingDetailJSON(value.tutee, value.course, value.location, value.bookingID)
                 weeklisting = preRenderWeeks(day, value.availableTime, "available")
-                weeklisting1 = preRenderWeeks(day,value.bookedTime, "booked",bookingDetailsFornextWeek)
+                weeklisting1 = preRenderWeeks(day, value.bookedTime, "booked", bookingDetailsFornextWeek)
                 // switchingWeeks(weeklisting.availableTime)
                 $(table).fadeIn("fast", function () {
                 })
@@ -218,9 +221,9 @@
             }
             socket.on('lastlastweek', function (value) {
                 renderDays()
-                const bookingDetailsFornextWeek = bookingDetailJSON(value.tutee,value.course,value.location,value.bookingID)
+                const bookingDetailsFornextWeek = bookingDetailJSON(value.tutee, value.course, value.location, value.bookingID)
                 weeklisting = preRenderWeeks(day, value.availableTime, "available")
-                weeklisting1 = preRenderWeeks(day,value.bookedTime, "booked",bookingDetailsFornextWeek)
+                weeklisting1 = preRenderWeeks(day, value.bookedTime, "booked", bookingDetailsFornextWeek)
 
                 $(table).fadeIn("fast", function () {
                 })
@@ -244,7 +247,7 @@
 
     function preRenderWeeks(date, timing, className, bookingDetails) {
         console.log("BookingDetails");
-        console.log( bookingDetails)
+        console.log(bookingDetails)
         var weekListing = []
 
         timing.map(function (value) {
@@ -263,7 +266,7 @@
     function renderDays() {
         var availableTimeCells = document.getElementsByClassName("available");
         var bookedTimeCells = document.getElementsByClassName("booked");
-        while (availableTimeCells.length > 0|| bookedTimeCells.length >0) {
+        while (availableTimeCells.length > 0 || bookedTimeCells.length > 0) {
             for (var aCells = 0; aCells < availableTimeCells.length; aCells++) {
                 availableTimeCells[aCells].className = "empty";
             }
@@ -319,13 +322,13 @@
         //renderDays()
 
         if (msg.length > 0) {
-            for (var i =0; i< msg.length; i++){
+            for (var i = 0; i < msg.length; i++) {
                 const value = msg[i]
                 const selectedTime = document.getElementById(((value.getDay() === 0) ? 7 : value.getDay()) + "." + value.getHours());
                 selectedTime.className = className;
-                if (bookingDetail !== undefined){
+                if (bookingDetail !== undefined) {
                     console.log(bookingDetail)
-                    selectedTime.innerHTML = "<a href='/tutor/tutorBooking?bookingID="+bookingDetail[i].bookingID+"'  data-toggle='modal' data-target='#myModal'>" + bookingDetail[i].course + "<br>" + "Tutee: "+ bookingDetail[i].tutee + "<br>" + "Location: " + bookingDetail[i].location + "</a>";
+                    selectedTime.innerHTML = "<a href='/tutor/tutorBooking?bookingID=" + bookingDetail[i].bookingID + "' id='myDetail' class='info-modal-link'>" + bookingDetail[i].course + "<br>" + "Tutee: " + bookingDetail[i].tutee + "<br>" + "Location: " + bookingDetail[i].location + "</a>";
                 }
             }
         }
@@ -419,12 +422,14 @@
                 ListToDelete.splice(numbering, 1);
             }
 
-        }else{
-        if(classname === "booked") {
+        } else {
+            if (classname === "booked") {
 
             }
         }
     }
+
+
 
 
 </script>

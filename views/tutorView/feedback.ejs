@@ -14,10 +14,9 @@
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
 <% include ../templates/navbar.ejs %>
 
-<div class="container">
+<div class="ui container">
 
     <h1>Feedback!</h1>
-
     <div>
 
         <% var cummulativeRating = 0; %>
@@ -26,21 +25,43 @@
         <% } %>
         Average: <%= cummulativeRating / feedbackDetails.length; %> / 10 from <%= feedbackDetails.length; %> feedbacks;
     </div>
+    <table class="ui center aligned orange celled table">
 
-    <div>
+        <thead>
+        <tr>
+            <th>Rating</th>
+            <th>Tutee</th>
+            <th>Course</th>
+            <th>Comment</th>
+        </tr>
+        </thead>
+        <tbody>
         <% for (var i = 0; i < feedbackDetails.length; i++) { %>
-    <p>Tutee = <%= feedbackDetails[i].tuteeID %></p>
-    <p>Course = <%= feedbackDetails[i].courseID %></p>
-    <p>Feedback <%= feedbackDetails[i].tuteeFeedback %></p>
-    <p>Rating (out of 10) <%= feedbackDetails[i].tuteeRating %></p>
-    <hr>
+        <tr>
+            <td>
+                <div class="ui star rating" data-rating="3"></div>
+                <%feedbackDetails[i].tuteeRating %>
 
-    <% } %>
+            </td>
+            <td>
+                <%= feedbackDetails[i].tuteeID %>
+            </td>
+            <td>
+                <%= feedbackDetails[i].courseID %>
+            </td>
+            <td>
+                <%= feedbackDetails[i].tuteeFeedback %>
+            </td>
+        </tr>
+        <% } %>
+        </tbody>
 
-    </div>
+
+    </table>
+
+    <button class="ui button" onclick="myFunction()">Click to check session id</button>
 </div>
 
-<button onclick="myFunction()">Click to check session id</button>
 
 <script>
     console.log("Hello!" + sessionStorage.genid);
@@ -48,6 +69,13 @@
     function myFunction() {
         alert("Hello!" + sessionStorage.genid);
     }
+
+    $(function () {
+        $('.ui.rating')
+            .rating('disable')
+        ;
+    })
+
 </script>
 
 </body>
