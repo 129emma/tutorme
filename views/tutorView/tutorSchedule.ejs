@@ -112,10 +112,12 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-    const modal = document.getElementById("myModal")
-function showingModal() {
 
-}
+
+    const tuteeBoolean = "<%= sess.tuteeBoolean %>";
+    if (typeof tuteeBoolean !== "undefined" && tuteeBoolean !== "" && tuteeBoolean === "true"){
+        console.log("This is tutee");
+    }
 
     var ListOfDates = [];
     var ListToDelete = [];
@@ -185,7 +187,12 @@ function showingModal() {
     $("#button1").on("click", function () {
         $(table).fadeOut("fast", function () {
             day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
-            socket.emit('nextnextweek', {userName: userName, day: day});
+            if (typeof tuteeBoolean !== "undefined" && tuteeBoolean !== "" && tuteeBoolean === "true"){
+                console.log("This is tutee");
+                socket.emit('nextnextweek', {userName: userName, day: day, tuteeBoolean: true});
+            }else{
+                socket.emit('nextnextweek', {userName: userName, day: day, tuteeBoolean: false});
+            }
             socket.on('nextnextweek', function (value) {
                 // weeklisting.weeknext = value
                 renderDays()
@@ -203,7 +210,12 @@ function showingModal() {
         $(table).fadeOut("fast", function () {
             day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
             //console.log(day)
-            socket.emit('lastlastweek', {userName: userName, day: day});
+            if (typeof tuteeBoolean !== "undefined" && tuteeBoolean !== "" && tuteeBoolean === "true"){
+                console.log("This is tutee");
+                socket.emit('lastlastweek', {userName: userName, day: day, tuteeBoolean: true});
+            }else{
+                socket.emit('lastlastweek', {userName: userName, day: day, tuteeBoolean: false});
+            }
             socket.on('lastlastweek', function (value) {
                 renderDays()
                 const bookingDetailsFornextWeek = bookingDetailJSON(value.tutee,value.course,value.location,value.bookingID)

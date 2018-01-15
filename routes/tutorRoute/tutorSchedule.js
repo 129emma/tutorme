@@ -8,7 +8,7 @@ router.get('/', function (req, res) {
 
     promise.then(function (value) {
         console.log(value)
-        res.render("./tutorView/tutorSchedule.ejs", {value:value, userDetails: "jojo"});
+        res.render("./tutorView/tutorSchedule.ejs", {value:value, userDetails: "jojo", sess: req.session});
     })
 });
 

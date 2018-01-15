@@ -20,7 +20,7 @@ router.get('/', function (req, res) {
     connectNow.query("SELECT tutor.userName, tutor.selfIntroduction, cap.courseID, cap.experience, cap.description, cap.verification, cap.grade FROM tableTutor AS tutor, tableCapabilities AS cap WHERE tutor.userName = ? AND tutor.userName = cap.userName"
         , [tutorUsername], function (err, resultTutor) {
             const resultDetails = JSON.parse(JSON.stringify(resultTutor));
-
+            console.log(resultDetails);
             if (err) {
                 connectNow.end();
                 throw err;

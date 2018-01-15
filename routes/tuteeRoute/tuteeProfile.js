@@ -7,7 +7,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: false}));
 
 router.get('/', function (req, res) {
-
+    console.log("tuteeProfile.js")
     res.redirect('/tutor/profile');
 
 });
