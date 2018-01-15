@@ -23,6 +23,9 @@ var session = require('express-session');
 //require ajaxexpresso
 const ajaxhandler = require('./routes/ajaxhandler');
 
+//require listing
+const listing = require('./routes/listing');
+
 const tutorSchedule = require('./javascript/tutorSchedule3WeekPreRendering');
 const UpdatingTime = require('./javascript/UpdatingTime');
 
@@ -67,6 +70,8 @@ app.use('/tutor', tutor);
 
 //use of tutee routes, see routes/tuteeRoute/* for all the different routes inside of tutorRoutes
 app.use('/tutee', tutee);
+
+app.use('/listing', listing);
 
 app.use(session({
     genid: function (req) {
