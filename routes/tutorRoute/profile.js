@@ -9,7 +9,6 @@ router.use(bodyParser.urlencoded({extended: false}));
 router.get('/', function (req, res) {
 
     const connectNow = con.method();
-
     connectNow.connect(function (err) {
         if (err) throw err;
         console.log("Connected and online (Tutor Profile)!");
@@ -18,7 +17,6 @@ router.get('/', function (req, res) {
     const tutorUsername = req.session.userDetails[0].userName;
 
     /* first query to make the user in user table*/
-
     connectNow.query("SELECT tutor.userName, tutor.selfIntroduction, cap.courseID, cap.experience, cap.description, cap.verification, cap.grade FROM tableTutor AS tutor, tableCapabilities AS cap WHERE tutor.userName = ? AND tutor.userName = cap.userName"
         , [tutorUsername], function (err, resultTutor) {
             const resultDetails = JSON.parse(JSON.stringify(resultTutor));
@@ -31,24 +29,17 @@ router.get('/', function (req, res) {
                 connectNow.query("SELECT * FROM tableCourseList"
                     , [], function (err, resultCourse) {
                         connectNow.end();
-
                         if (err) {
                             throw err
                         } else {
                             const courseDetails = JSON.parse(JSON.stringify(resultCourse));
-                            console.log(courseDetails);
-                            res.render('./tutorView/profile', {userDetails: req.session.userDetails, Data: resultDetails, CourseList: courseDetails});
+                            const currentCourse = resultDetails.map(function(cap){return cap.courseID;});
+                            const availableCourse = courseDetails.filter(function (curV) { return !currentCourse.includes(curV.courseID);});
+                            res.render('./tutorView/profile', {userDetails: req.session.userDetails, Data: resultDetails, CourseList: availableCourse});
                         }
                     });
             }
         });
-
-
-/*
- SELECT tutor.userName, tutor.selfIntroduction, cap.courseID, cap.experience, cap.description, cap.verification, cap.grade
- FROM tableTutor AS tutor, tableCapabilities AS cap
- WHERE tutor.userName = 'jojo' AND tutor.userName = cap.userName
- */
 });
 
 router.get('/edit', function (req, res) {
@@ -56,10 +47,43 @@ router.get('/edit', function (req, res) {
     res.render("./tutorView/profileEditing", req.session);
 });
 
+
+router.post('/create_cap', function(req, res){
+
+
+
+    const tutorUsername = req.session.userDetails[0].userName;
+    const courseID =req.body.courseID;
+    const experience = req.body.experience;
+    const description = req.body.description;
+    const verification = req.body.verification;
+    const grade = req.body.grade;
+
+
+    const connectNow = con.method();
+    connectNow.connect(function (err) {
+        if (err) throw err;
+        console.log("Connected and online!");
+    });
+
+    connectNow.query("INSERT INTO tableCapabilities (userName, courseID, experience, description, verification, grade) VALUES (?, ?, ?, ?, ?, ?)", [tutorUsername, courseID, experience, description, verification, grade], function (err, result) {
+
+        if (err) {
+            connectNow.end();
+            throw err
+        } else {
+            connectNow.end();
+            console.log("database inserted!!");
+            res.redirect("./");
+        }
+    });
+
+    });
+
+
 router.post('/updateProfile', function (req, res) {
 
     const connectNow = con.method();
-
     connectNow.connect(function (err) {
         if (err) throw err;
         console.log("Connected and online!");

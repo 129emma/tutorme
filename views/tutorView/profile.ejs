@@ -9,6 +9,23 @@
 
 <head>
     <title>Tutor Profile page</title>
+
+    <style>
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    </style>
 </head>
 <body>
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
@@ -70,7 +87,7 @@
 
                 <!--For loop checking through obtained Capability information and list all the courses that is the tutors capability -->
                 <% for (var i = 0; i < Data.length; i++){ %>
-                <li class="list-group-item"><%= Data[i].courseID %></li>
+                <li class="list-group-item" ><span onclick="console.log(this.innerHTML)"><%= Data[i].courseID %></span><span style="float: right"><%= Data[i].grade%></span></li>
                 <% } %>
 
             </ul>
@@ -84,7 +101,6 @@
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
@@ -92,13 +108,43 @@
                 <h4 class="modal-title">Course name</h4>
             </div>
             <div class="modal-body">
-                <p>Description</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <h3>About the course: </h3>
+                <div class="loader_container"></div>
+                <p></p>
+                <form method="POST" action="/tutor/profile/create_cap" >
+                    <fieldset>
+                        <legend>About yourself:</legend>
+
+                        <input type="hidden" id = "courseID" value="none" name="courseID">
+                        Your experience:<br>
+                        <textarea name="experience" rows="4" cols="70">Your experience in this course.</textarea>
+                        <br>
+
+                        Describe what you can do?<br>
+                        <textarea name="description" rows="4" cols="70">What can you teach in regard to this course?</textarea><br>
+                        grade: <br>
+                        <select name="grade">
+                            <option value="A+">A+</option>
+                            <option value="A">A</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B">B</option>
+                            <option value="B-">B-</option>
+                            <option value="N/A">N/A</option>
+                        </select>
+                    <br><br>
+                        Verification: <br>
+                        <input type="radio" name="verification" value="1"> Verified
+                        <input type="radio" name="verification" value="0" checked> Unverified<br>
+
+                    </fieldset>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-default" value="create">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -109,9 +155,22 @@
 
 
     function coursePopup (){
+
         var courseID = document.getElementById("myInput").value;
-        ajaxDatabaseExpress("SELECT *　FROM tableCourseList WHERE courseID = "+courseID, function(data){
-            alert(data);
+        document.getElementsByClassName('modal-title')[0].innerHTML = courseID;
+        document.getElementById('courseID').value = courseID;
+        document.querySelector(".modal-body p").innerHTML = "";
+        var loader = document.createElement('div');
+        loader.className = 'loader';
+// The variable iDiv is still good... Just append to it.
+        document.getElementsByClassName("loader_container")[0].appendChild(loader);
+
+        console.log(courseID);
+        console.log(typeof (courseID));
+        ajaxDatabaseExpress("SELECT * FROM tableCourseList WHERE courseID = '"+courseID+"';", function(data){
+            document.getElementsByClassName('modal-title')[0].innerHTML = data[0].courseID+ ": "+data[0].courseName;
+            loader.parentNode.removeChild(loader);
+            document.querySelector(".modal-body p").innerHTML = data[0].courseDescription;
         });
     }
 
