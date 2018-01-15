@@ -80,8 +80,10 @@
             <% if (typeof userDetails !== 'undefined') { %>
             <li><a href="/tutor/profile">Profile</a></li>
             <li><a href="/tutor/feedback">Feedback</a></li>
-            <% if(userDetails[0].tutor_activation === 1){ %>
+            <% if(userDetails[0].tutor_activation === 1 && (typeof userDetails) !== "undefined" && ((typeof tuteeBoolean) ==="undefined" || tuteeBoolean === false)){ %>
             <li><a href="/tutor/tutorSchedule">Tutor Schedule</a></li>
+            <% } else { %>
+            <li><a href="/tutee/tuteeSchedule">Tutee Schedule</a></li>
             <% } %>
             <li><a href="/login/logout">logout</a></li>
             <% } else { %>
@@ -89,12 +91,14 @@
             <li><a href="/login">Login</a></li>
 
             <% } %>
-            <li>
-                <label class="switch">
-                    <input name="tutorSwitch" type="checkbox">
-                    <span class="slider round"></span>
-                </label></li>
+            <!--<li>-->
+                <!--<label class="switch">-->
+                    <!--<input name="tutorSwitch" type="checkbox">-->
+                    <!--<span class="slider round"></span>-->
+                <!--</label></li>-->
+            <% if ((typeof userDetails) !== "undefined"){%>
                 <a href="/tutee/home?tuteeSwitch=true">swtich to tutee</a>
+            <% }%>
 
         </ul>
     </div>

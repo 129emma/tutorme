@@ -64,7 +64,7 @@ router.post('/logging', function (req, res) {
                             const userDetails = JSON.parse(JSON.stringify(result[0]));
 
                             req.session.userDetails = JSON.parse("[" + JSON.stringify(userDetails) + "]");
-                            req.session.userDetails.tuteeBoolean = true;
+                           // req.session.userDetails.tuteeBoolean = true;
 
                             res.redirect('/tutee/profile');
 

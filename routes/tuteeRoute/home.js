@@ -5,9 +5,20 @@ var session = require('express-session');
 
 router.get('/', function (req, res){
     console.log(req.session);
-    console.log(typeof req.query.tuteeSwitch);
+    const tuteeBoolean = req.session.tuteeBoolean;
+    console.log(tuteeBoolean);
+    if (req.session.tuteeBoolean === undefined){
+        req.session.tuteeBoolean = true;
+        console.log("tuteeBoolean is undefined");
+    }
+    else if (req.session.tuteeBoolean === false){
+        req.session.tuteeBoolean = true;
+    }
+    else if (req.session.tuteeBoolean === true){
+        req.session.tuteeBoolean = false;
+    }
+    console.log(req.session.tuteeBoolean);
 
-    req.session
 
 // connectNow.connect(function (err) {
 //     if (err) throw err;
@@ -16,7 +27,7 @@ router.get('/', function (req, res){
 
 console.log("ready to make query to database");
     //Key for session
-    res.render("./tuteeView/home");
+    res.render("./tuteeView/home", req.session);
 
 })
 ;
