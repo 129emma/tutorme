@@ -7,12 +7,12 @@ const bodyParser = require('body-parser');
 
 // requiring general prior to login routes.
 const index = require('./routes/index');
-const users = require('./unused/users');
 const registration = require('./routes/registration');
 const login = require('./routes/login');
+const user = require('./routes/user');
 
 // requiring tutor.js which contains requires to all the tutor specific routes, used below.
-const tutor = require('./routes/tutor');
+// const tutor = require('./routes/tutor');
 
 // requiring tutee.js which contains requires to all the tutee specific routes, used below.
 const tutee = require('./routes/tutee');
@@ -63,7 +63,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Setting up routes and connections to url's
 app.use('/', index);
-app.use('/users', users);
 app.use('/registration', registration);
 app.use('/login', login);
 // user routes, see routes/userRoutes/* for all the various specific end routes.
@@ -78,10 +77,10 @@ app.use('/user', user);
 app.use('/ajaxhandler', ajaxhandler);
 
 //use of tutor routes, see routes/tutorRoute/* for all the different routes inside of tutorRoutes
-app.use('/tutor', tutor);
+// app.use('/tutor', tutor);
 
 //use of tutee routes, see routes/tuteeRoute/* for all the different routes inside of tutorRoutes
-app.use('/tutee', tutee);
+// app.use('/tutee', tutee);
 
 app.use('/listing', listing);
 
