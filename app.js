@@ -12,7 +12,7 @@ const registration = require('./routes/registration');
 const login = require('./routes/login');
 
 // requiring tutor.js which contains requires to all the tutor specific routes, used below.
-const tutor = require('./routes/tutor');
+// const tutor = require('./routes/tutor');
 
 // requiring tutee.js which contains requires to all the tutee specific routes, used below.
 const tutee = require('./routes/tutee');

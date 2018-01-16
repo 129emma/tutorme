@@ -29,15 +29,6 @@
 </head>
 <body>
 
-
-<%
-var index = 0;
-
-%>
-
-
-
-
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
 <% include ../templates/navbar.ejs %>
 <% include ../../javascript/ajaxDatabaseExpresso.ejs %>
@@ -224,6 +215,18 @@ var index = 0;
 </div>
 
 
+<%
+var Co_id = [];
+var Co_name = [];
+var Co_description = [];
+CourseList.map(function(Co){
+    Co_id.push(Co.courseID);
+    Co_name.push(Co.courseName);
+    Co_description.push(Co.courseDescription);
+})
+%>
+
+
 <!-- Modal -->
 <div id="myModal" class="ui modal fade" role="dialog">
         <!-- Modal content-->
@@ -272,6 +275,9 @@ var index = 0;
 
 <script>
         // Create a new list item when clicking on the "Add" button
+
+console.log(Co_id);
+
 
 
     function coursePopup (){
