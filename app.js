@@ -11,11 +11,8 @@ const users = require('./unused/users');
 const registration = require('./routes/registration');
 const login = require('./routes/login');
 
-// requiring the routes after login, including Tutor and Tutee options
-const user = require('./routes/user')
-
-// requiring user.js which contains requires to all the tutor specific routes, used below.
-const tutor = require('./routes/user');
+// requiring tutor.js which contains requires to all the tutor specific routes, used below.
+const tutor = require('./routes/tutor');
 
 // requiring tutee.js which contains requires to all the tutee specific routes, used below.
 const tutee = require('./routes/tutee');
@@ -23,17 +20,23 @@ const tutee = require('./routes/tutee');
 //requiring Mozilla session module
 var session = require('express-session');
 
-//requiring the ajax handlers created by Bryan
+//require ajaxexpresso
 const ajaxhandler = require('./routes/ajaxhandler');
+
+//require listing
+const listing = require('./routes/listing');
 
 // Lamlam and Vanie needs to add comments
 const tutorSchedule = require('./javascript/tutorSchedule3WeekPreRendering');
 const UpdatingTime = require('./javascript/UpdatingTime');
 
-//using the server for socket.io purpose and in general nothing had changed.
+
+
 const app = express();
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
+
+//using the server for socket.io purpose and in general nothing had changed.
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
 //Setup to listen to port 3000
 server.listen(3000);
@@ -73,6 +76,14 @@ app.use('/user', user);
 
 //ajax handler router
 app.use('/ajaxhandler', ajaxhandler);
+
+//use of tutor routes, see routes/tutorRoute/* for all the different routes inside of tutorRoutes
+app.use('/tutor', tutor);
+
+//use of tutee routes, see routes/tuteeRoute/* for all the different routes inside of tutorRoutes
+app.use('/tutee', tutee);
+
+app.use('/listing', listing);
 
 app.use(session({
     genid: function (req) {
