@@ -26,6 +26,7 @@ const ajaxhandler = require('./routes/ajaxhandler');
 //require listing
 const listing = require('./routes/listing');
 
+// Lamlam and Vanie needs to add comments
 const tutorSchedule = require('./javascript/tutorSchedule3WeekPreRendering');
 const UpdatingTime = require('./javascript/UpdatingTime');
 
@@ -37,7 +38,9 @@ const app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
+//Setup to listen to port 3000
 server.listen(3000);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -49,6 +52,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
+//Setting up session
 app.use(session({
     resave: true,
     saveUninitialized: true,
@@ -57,10 +61,18 @@ app.use(session({
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Setting up routes and connections to url's
 app.use('/', index);
 app.use('/users', users);
 app.use('/registration', registration);
 app.use('/login', login);
+// user routes, see routes/userRoutes/* for all the various specific end routes.
+app.use('/user', user);
+// //use of tutor routes, see routes/tutorRoute/* for all the different routes inside of tutorRoutes
+// app.use('/tutor', tutor);
+//
+// //use of tutee routes, see routes/tuteeRoute/* for all the different routes inside of tutorRoutes
+// app.use('/tutee', tutee);
 
 //ajax handler router
 app.use('/ajaxhandler', ajaxhandler);
