@@ -345,7 +345,7 @@
     var edit = false;
 
     function editCalendar() {
-        document.getElementById('edit').className = 'clickButton';
+        document.getElementById('edit').className = 'ui button clickButton';
         edit = !edit;
         if (edit) {
             document.getElementById("button2").style.display = 'none';
@@ -387,7 +387,7 @@
                 })
             }
         }
-        document.getElementById('edit').className = 'unclickButton';
+        document.getElementById('edit').className = 'ui button unclickButton';
         edit = false;
         document.getElementById("button2").style.display = '';
         document.getElementById("button1").style.display = '';
