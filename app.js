@@ -20,6 +20,9 @@ const tutee = require('./routes/tutee');
 //requiring Mozilla session module
 var session = require('express-session');
 
+//require ajaxexpresso
+const ajaxhandler = require('./routes/ajaxhandler');
+
 const tutorSchedule = require('./javascript/tutorSchedule3WeekPreRendering');
 const UpdatingTime = require('./javascript/UpdatingTime');
 
@@ -55,6 +58,9 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/registration', registration);
 app.use('/login', login);
+
+//ajax handler router
+app.use('/ajaxhandler', ajaxhandler);
 
 //use of tutor routes, see routes/tutorRoute/* for all the different routes inside of tutorRoutes
 app.use('/tutor', tutor);
@@ -102,7 +108,13 @@ io.on('connection', function (socket) {
         const presetDate = new Date(msg.day);
         const date = new Date(presetDate.getFullYear(),presetDate.getMonth(),(presetDate.getDate()),-11);
         //console.log(date);
-        var promise = tutorSchedule.Oneweek(date,String(msg.userName),'tableTime','timeStart');
+        console.log("Is this tutee: "+ msg.tuteeBoolean + " "+ (typeof msg.tuteeBoolean));
+        var promise;
+        if (msg.tuteeBoolean){
+            promise = tutorSchedule.tuteeSQLBookingCall(date,String(msg.userName),'tableTime','timeStart');
+        }else{
+            promise = tutorSchedule.Oneweek(date,String(msg.userName),'tableTime','timeStart');
+        }
         promise.then(function (value) {
             //console.log("promising");
             console.log(value);
@@ -115,7 +127,12 @@ io.on('connection', function (socket) {
         const presetDate = new Date(msg.day);
         const date = new Date(presetDate.getFullYear(),presetDate.getMonth(),(presetDate.getDate()),-11);
         //console.log(date);
-        var promise = tutorSchedule.Oneweek(date,String(msg.userName),'tableTime','timeStart');
+        var promise;
+        if (msg.tuteeBoolean){
+            promise = tutorSchedule.tuteeSQLBookingCall(date,String(msg.userName),'tableTime','timeStart');
+        }else{
+            promise = tutorSchedule.Oneweek(date,String(msg.userName),'tableTime','timeStart');
+        }
         promise.then(function (value) {
             //console.log("promising");
             console.log(value);

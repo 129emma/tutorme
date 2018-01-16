@@ -1,20 +1,4 @@
-/*Button color*/
-.ui.fluid.large.teal.submit.button {
-    background-color: #FF6D1F;
-}
-/*Title color*/
-#title{
-    color: #FF6D1F;
-}
-/*Form size*/
-.column {
-    max-width: 450px;
-}
-/*Form position*/
-.ui.middle.aligned.center.aligned.grid {
-    padding-top: 200px;
-}
-/*Input field*/
-.field {
-    padding: 10px;
+.ui.text.center.aligned.container {
+    padding-top: 250px;
+    width: 450px;
 }

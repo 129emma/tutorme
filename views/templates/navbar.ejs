@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<head>
-    <title>Navbar</title>
-</head>
-
-<body>
-
-<nav class="navbar navbar-default" style="background-color: #F1A829">
+<!--<nav class="navbar navbar-default" style="background-color: #F1A829">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">Tutorme</a>
@@ -19,7 +9,7 @@
             <% if (typeof userDetails !== 'undefined') { %>
             <li><a href="/tutor/profile">Profile</a></li>
             <li><a href="/tutor/feedback">Feedback</a></li>
-            <% if(userDetails[0].tutor_activation === 1){%>
+            <% if(userDetails[0].tutor_activation === 1 && (typeof userDetails) !== "undefined" && ((typeof tuteeBoolean) ==="undefined" || tuteeBoolean === false)){ %>
             <li><a href="/tutor/tutorSchedule">Tutor Schedule</a></li>
             <%}%>
             <li><a href="/login/logout">logout</a></li>
@@ -30,7 +20,48 @@
             <% }%>
         </ul>
     </div>
-</nav>
+</nav>-->
+<link rel='stylesheet' type='text/css' href='/stylesheets/navbar.css' />
+<div>
+<div class="ui secondary orange inverted segment">
+    <div class="ui middle aligned grid">
+        <div class="row">
+            <div class="two wide column">
+                <h1>Tutorme</h1>
+            </div>
+            <div class="two wide column">
+            </div>
+            <div class="eight wide column">
+                <div class="ui four column grid">
+                    <div class="column">
+                        <a href="/">Home</a>
+                    </div>
+                    <% if (typeof userDetails !== 'undefined') { %>
+                    <div class="column"><a href="/tutor/profile">Profile</a></div>
+                    <div class="column"><a href="/tutor/feedback">Feedback</a></div>
+                    <% if(userDetails[0].tutor_activation === 1){ %>
+                    <div class="column"><a href="/tutor/tutorSchedule">Tutor Schedule</a></div>
+                    <% } %>
+                </div>
+            </div>
+            <div class="center aligned four wide column">
+                <div class="column">
+                    <a href="/login/logout">logout</a></div>
+                <% } else { %>
+                <div class="column">
+                    <a href="/login">Login</a>
+                    <% } %>
+                </div>
+                <% if ((typeof userDetails) !== "undefined"){%>
+                <div class="column">
+                    <a href="/tutee/home?tuteeSwitch=true">swtich to tutee</a>
+                </div>
+                <% }%>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 
 </body>
 </html>
