@@ -1,10 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="66d2b2d6-f8a2-4f67-8d60-a1b0ffb1f515" name="Default" comment="Merge branch 'Emma' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;views/templates/navbar.ejs&#10;#&#9;views/tutorView/profile.ejs">
+    <list default="true" id="66d2b2d6-f8a2-4f67-8d60-a1b0ffb1f515" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/.bin/detect-libc" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/.bin/detect-libc.cmd" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/compile/validation_error.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/dot/v5/_formatLimit.jst" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/dot/v5/constant.jst" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/dot/v5/patternRequired.jst" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/dot/v5/switch.jst" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/dotjs/_formatLimit.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/dotjs/constant.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/dotjs/patternRequired.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/dotjs/switch.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/v5.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/boom/.npmignore" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/boom/.travis.yml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/boom/CONTRIBUTING.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/boom/images/boom.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/boom/test/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/cryptiles/.travis.yml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/cryptiles/test/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/dashdash/node_modules/assert-plus/AUTHORS" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/dashdash/node_modules/assert-plus/CHANGES.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/dashdash/node_modules/assert-plus/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/dashdash/node_modules/assert-plus/assert.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/dashdash/node_modules/assert-plus/package.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/detect-libc/.npmignore" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/detect-libc/LICENSE" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/detect-libc/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/detect-libc/bin/detect-libc.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/detect-libc/lib/detect-libc.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/detect-libc/package.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/getpass/node_modules/assert-plus/AUTHORS" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/getpass/node_modules/assert-plus/CHANGES.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/getpass/node_modules/assert-plus/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/getpass/node_modules/assert-plus/assert.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/getpass/node_modules/assert-plus/package.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/browser/async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/browser/error.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/browser/promise.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node4/async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node4/error.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node4/promise.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node6/async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node6/error.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node6/promise.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node7/async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node7/error.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node7/promise.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/src/async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/src/error.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/src/promise.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/.travis.yml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/bower.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/component.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/dist/client.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/example/usage.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/images/hawk.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/images/logo.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/test/browser.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/test/client.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/test/crypto.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/test/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/test/readme.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/test/server.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/test/uri.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/test/utils.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/.travis.yml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/CONTRIBUTING.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/images/hoek.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/test/escaper.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/test/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/test/modules/ignore.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/test/modules/test1.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/test/modules/test2.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/test/modules/test3.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/.npmignore" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/.travis.yml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/LICENSE" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/example/key_cmp.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/example/nested.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/example/str.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/example/value_cmp.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/package.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/readme.markdown" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/test/cmp.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/test/nested.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/test/replacer.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/test/space.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/test/str.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/test/to-json.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsonify/README.markdown" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsonify/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsonify/lib/parse.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsonify/lib/stringify.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsonify/package.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsonify/test/parse.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsonify/test/stringify.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsprim/node_modules/assert-plus/AUTHORS" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsprim/node_modules/assert-plus/CHANGES.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsprim/node_modules/assert-plus/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsprim/node_modules/assert-plus/assert.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsprim/node_modules/assert-plus/package.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/performance-now/Makefile" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/rc/cli.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/.eslintignore" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/.eslintrc" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/.jscs.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/CHANGELOG.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/LICENSE" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/dist/qs.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/lib/formats.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/lib/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/lib/parse.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/lib/stringify.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/lib/utils.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/package.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/test/.eslintrc" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/test/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/test/parse.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/test/stringify.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/test/utils.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sntp/.travis.yml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sntp/Makefile" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sntp/examples/offset.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sntp/examples/time.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sntp/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sntp/test/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sshpk/node_modules/assert-plus/AUTHORS" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sshpk/node_modules/assert-plus/CHANGES.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sshpk/node_modules/assert-plus/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sshpk/node_modules/assert-plus/assert.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sshpk/node_modules/assert-plus/package.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/verror/node_modules/assert-plus/AUTHORS" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/verror/node_modules/assert-plus/CHANGES.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/verror/node_modules/assert-plus/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/verror/node_modules/assert-plus/assert.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/verror/node_modules/assert-plus/package.json" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/node_modules/rc/package.json" afterPath="$PROJECT_DIR$/node_modules/rc/package.json" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -88,8 +225,8 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+            <state relative-caret-position="440">
+              <caret line="20" column="17" lean-forward="false" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -235,6 +372,17 @@
             <path>
               <item name="tutorme" type="b2602c69:ProjectViewProjectNode" />
               <item name="tutorme" type="462c0819:PsiDirectoryNode" />
+              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tutorme" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tutorme" type="462c0819:PsiDirectoryNode" />
+              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="rc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tutorme" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tutorme" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -341,7 +489,7 @@
       <workItem from="1515743461582" duration="739000" />
       <workItem from="1515986128997" duration="2008000" />
       <workItem from="1516055433984" duration="3543000" />
-      <workItem from="1516066166360" duration="5733000" />
+      <workItem from="1516066166360" duration="5911000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;added sockets and the sql call related&quot;">
       <created>1513386883857</created>
@@ -518,11 +666,18 @@
       <option name="project" value="LOCAL" />
       <updated>1516071828377</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Merge branch 'Emma' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;views/templates/navbar.ejs&#10;#&#9;views/tutorView/profile.ejs">
+      <created>1516072390813</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1516072390813</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114461000" />
+    <option name="totallyTimeSpent" value="114639000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -535,14 +690,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="952" y="0" width="976" height="1038" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.49505603" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998413" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3220339" sideWeight="0.53547525" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3204105" sideWeight="0.46452478" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3194925" sideWeight="0.46452478" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21099745" sideWeight="0.4698795" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4982699" sideWeight="0.48995984" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4982699" sideWeight="0.48995984" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28417653" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -973,8 +1129,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+        <state relative-caret-position="440">
+          <caret line="20" column="17" lean-forward="false" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
           <folding />
         </state>
       </provider>
