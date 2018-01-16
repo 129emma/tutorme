@@ -328,7 +328,7 @@
                 selectedTime.className = className;
                 if (bookingDetail !== undefined) {
                     console.log(bookingDetail)
-                    selectedTime.innerHTML = "<a href='/tutor/tutorBooking?bookingID=" + bookingDetail[i].bookingID + "' id='myDetail' class='info-modal-link'>" + bookingDetail[i].course + "<br>" + "Tutee: " + bookingDetail[i].tutee + "<br>" + "Location: " + bookingDetail[i].location + "</a>";
+                    selectedTime.innerHTML = "<a href='/user/tutorBooking?bookingID=" + bookingDetail[i].bookingID + "' id='myDetail' class='info-modal-link'>" + bookingDetail[i].course + "<br>" + "Tutee: " + bookingDetail[i].tutee + "<br>" + "Location: " + bookingDetail[i].location + "</a>";
                 }
             }
         }

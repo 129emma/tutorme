@@ -37,10 +37,10 @@
                         <a href="/">Home</a>
                     </div>
                     <% if (typeof userDetails !== 'undefined') { %>
-                    <div class="column"><a href="/tutor/profile">Profile</a></div>
-                    <div class="column"><a href="/tutor/feedback">Feedback</a></div>
+                    <div class="column"><a href="/user/profile">Profile</a></div>
+                    <div class="column"><a href="/user/feedback">Feedback</a></div>
                     <% if(userDetails[0].tutor_activation === 1){ %>
-                    <div class="column"><a href="/tutor/tutorSchedule">Tutor Schedule</a></div>
+                    <div class="column"><a href="/user/tutorSchedule">Tutor Schedule</a></div>
                     <% } %>
                 </div>
             </div>
@@ -52,11 +52,6 @@
                     <a href="/login">Login</a>
                     <% } %>
                 </div>
-                <% if ((typeof userDetails) !== "undefined"){%>
-                <div class="column">
-                    <a href="/tutee/home?tuteeSwitch=true">swtich to tutee</a>
-                </div>
-                <% }%>
             </div>
         </div>
     </div>

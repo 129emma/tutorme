@@ -37,13 +37,13 @@ router.get('/', function (req, res) {
                 const resultDetails = JSON.parse(JSON.stringify(result));
 
                 console.log(resultDetails);
-                res.render('./tutorView/feedback', {feedbackDetails: resultDetails, userDetails: req.session.userDetails});
+                res.render('./userView/feedback', {feedbackDetails: resultDetails, userDetails: req.session.userDetails});
 
 
             }
         });
 
-    // res.render("./tutorView/feedback");
+    // res.render("./userView/feedback");
 
 });
 

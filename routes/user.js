@@ -3,12 +3,11 @@ const router = express.Router();
 
 //tutorRoute specific routers below
 
-const home = require('./tutorRoute/home');
-const tutorSchedule = require('./tutorRoute/tutorSchedule');
-const feedback = require('./tutorRoute/feedback');
-const profile = require('./tutorRoute/profile');
-const tutorBooking = require('./tutorRoute/tutorBooking');
-
+const home = require('./userRoute/home');
+const tutorSchedule = require('./userRoute/tutorSchedule');
+const feedback = require('./userRoute/feedback');
+const profile = require('./userRoute/profile');
+const tutorBooking = require('./userRoute/tutorBooking');
 
 router.use('/home', home);
 router.use('/tutorSchedule', tutorSchedule);

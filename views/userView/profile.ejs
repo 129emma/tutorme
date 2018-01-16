@@ -44,7 +44,7 @@
     <div id="generalProfileDetails">
         <h3>Edit general details</h3>
         <p>Edit your general Profile Details</p>
-        <form action="/tutor/profile/updateProfile" method="post">
+        <form action="/user/profile/updateProfile" method="post">
 
             <li>Username: <input type="hidden" name="formUsername"
                                  value="<%= userDetails[0].userName %>"><%= userDetails[0].userName %></li>
@@ -227,7 +227,7 @@
                 <h3>About the course: </h3>
                 <div class="loader_container"></div>
                 <p></p>
-                <form method="POST" action="/tutor/profile/create_cap" >
+                <form method="POST" action="/user/profile/create_cap" >
                     <fieldset>
                         <legend>About yourself:</legend>
 

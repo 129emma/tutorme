@@ -36,7 +36,7 @@ router.get('/', function(req, res) {
 
                 console.log()
 
-                res.render("./tutorView/tutorBooking", {userDetails: req.session.userDetails, bookingData: rawObject});
+                res.render("./userView/tutorBooking", {userDetails: req.session.userDetails, bookingData: rawObject});
                 // rawObject.map(function (value) {
                 //     booking.tutee.push(value.tutee);
                 // })

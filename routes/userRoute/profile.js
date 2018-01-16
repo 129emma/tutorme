@@ -35,7 +35,7 @@ router.get('/', function (req, res) {
                             const courseDetails = JSON.parse(JSON.stringify(resultCourse));
                             const currentCourse = resultDetails.map(function(cap){return cap.courseID;});
                             const availableCourse = courseDetails.filter(function (curV) { return !currentCourse.includes(curV.courseID);});
-                            res.render('./tutorView/profile', {userDetails: req.session.userDetails, Data: resultDetails, CourseList: availableCourse});
+                            res.render('./userView/profile', {userDetails: req.session.userDetails, Data: resultDetails, CourseList: availableCourse});
                         }
                     });
             }
@@ -44,7 +44,7 @@ router.get('/', function (req, res) {
 
 router.get('/edit', function (req, res) {
 
-    res.render("./tutorView/profileEditing", req.session);
+    res.render("./userView/profileEditing", req.session);
 });
 
 
@@ -129,7 +129,7 @@ router.post('/updateProfile', function (req, res) {
                     } else {
                         const userDetails = JSON.parse(JSON.stringify(result[0]));
                         req.session.userDetails = JSON.parse("[" + JSON.stringify(userDetails) + "]");
-                        res.redirect('/tutor/profile');
+                        res.redirect('/userView/profile');
 
                     }
 
