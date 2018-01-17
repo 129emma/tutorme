@@ -35,11 +35,22 @@ const UpdatingTime = require('./javascript/UpdatingTime');
 const app = express();
 
 //using the server for socket.io purpose and in general nothing had changed.
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+
+
+var http = require('http');
+// var io = require('socket.io')(server);
+
+//
+// var app = express();
+
+
+app.set('port', process.env.PORT || 3000);
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);
+server.listen(app.get('port'));
 
 //Setup to listen to port 3000
-server.listen(process.env.port || 3000);
+// server.listen(process.env.port || 3000);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
