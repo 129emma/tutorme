@@ -129,7 +129,7 @@
 
     //rendering calendar
     var cale = document.getElementsByClassName("calendar")[0];
-    for (var i = 1; i < 24; i++) {
+    for (var i = 7; i < 24; i++) {
         var newRow = document.createElement('tr');
         var firstTd = document.createElement('td');
         firstTd.innerHTML = i + ':00';
@@ -151,7 +151,7 @@
     console.log("date " + date);
     var day = new Date(date.getFullYear(), (date.getMonth()), date.getDate());
     console.log("day " + day);
-    const weekdays = $("tbody th");
+    const weekdays = $("th");
     const table = $("#scheduleTable")[0];
     const availableTime = ("<%= value.availableTime %>").split(",");
     //list of jsons {Time: date, id: BookingId}
