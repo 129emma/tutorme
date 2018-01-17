@@ -1,0 +1,36 @@
+.available {
+    background-color: #666672;
+    color: white;
+}
+
+.editing {
+    background-color: pink;
+    color: white;
+}
+
+.deleting {
+    background-color: #dd1188;
+    color: white;
+}
+
+.booked {
+    background-color: #e6989b;
+    color: white;
+}
+
+.clickButton {
+    background-color: #4CAF50;
+    color: white;
+}
+
+a#myDetail {
+    color: #fff4f9;
+}
+
+td{
+    width: 12.5% !important;
+}
+
+button.ui.black.deny.button {
+    margin-left: 40px;
+}
