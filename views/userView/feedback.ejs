@@ -17,47 +17,127 @@
 <div class="ui container">
 
     <h1>Feedback!</h1>
-    <div>
 
-        <% var cummulativeRating = 0; %>
-        <% for (var i = 0; i < feedbackDetails.length; i++) { %>
-        <% cummulativeRating += feedbackDetails[i].tuteeRating %>
-        <% } %>
-        Average: <%= cummulativeRating / feedbackDetails.length; %> / 10 from <%= feedbackDetails.length; %> feedbacks;
+    <!--Tab display to show ratings received as a tutor and as a tutee-->
+    <div class="ui top attached tabular menu">
+        <a class="item active" data-tab="first">Tutoring</a>
+        <a class="item" data-tab="second">Tuteed</a>
     </div>
-    <table class="ui center aligned orange celled table">
+    <!--First tab showing ratings received as a tutor-->
+    <div class="ui bottom attached tab segment active" data-tab="first">
 
-        <thead>
-        <tr>
-            <th>Rating</th>
-            <th>Tutee</th>
-            <th>Course</th>
-            <th>Comment</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% for (var i = 0; i < feedbackDetails.length; i++) { %>
-        <tr>
-            <td>
-                <div class="ui star rating" data-rating="3"></div>
-                <%feedbackDetails[i].tuteeRating %>
+        <div>
+            <% var cummulativeTutorRating = 0; %>
+            <% var numberTutorRating = 0; %>
 
-            </td>
-            <td>
-                <%= feedbackDetails[i].tuteeID %>
-            </td>
-            <td>
-                <%= feedbackDetails[i].courseID %>
-            </td>
-            <td>
-                <%= feedbackDetails[i].tuteeFeedback %>
-            </td>
-        </tr>
-        <% } %>
-        </tbody>
+            <% for (var i = 0; i < feedbackDetails.length; i++) { %>
+
+            <% if (feedbackDetails[i].tutorOrTutee === "tutor") { %>
+
+            <% cummulativeTutorRating += feedbackDetails[i].tuteeRating %>
+            <% numberTutorRating++; %>
+
+            <% } %>
+            <% } %>
+
+            <% var averageTutorRating = (cummulativeTutorRating / numberTutorRating) * 10 || 0; %>
+            Average: <%= averageTutorRating; %> % from <%= numberTutorRating; %>
+            feedbacks;
+        </div>
+        <table class="ui center aligned orange celled table">
+            <thead>
+            <tr>
+                <th>Rating</th>
+                <th>Tutee</th>
+                <th>Course</th>
+                <th>Comment</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (var i = 0; i < feedbackDetails.length; i++) { %>
+
+            <% if (feedbackDetails[i].tutorOrTutee === "tutor") { %>
+            <tr>
+                <td>
+                    <div class="ui star rating" data-rating="3"></div>
+                    <% feedbackDetails[i].tuteeRating %>
+                </td>
+                <td>
+                    <%= feedbackDetails[i].tuteeID %>
+                </td>
+                <td>
+                    <%= feedbackDetails[i].courseID %>
+                </td>
+                <td>
+                    <%= feedbackDetails[i].tuteeFeedback %>
+                </td>
+            </tr>
+            <% } %>
+
+            <% } %>
+            </tbody>
+        </table>
+
+    </div>
+
+    <!--Display ratings received as a Tutee-->
+    <div class="ui bottom attached tab segment" data-tab="second">
+        <div>
+            <% var cummulativeTuteeRating = 0; %>
+            <% var numberTuteeRating = 0; %>
+
+            <% for (var i = 0; i < feedbackDetails.length; i++) { %>
+
+            <% if (feedbackDetails[i].tutorOrTutee === "tutee") { %>
+
+            <% cummulativeTuteeRating += feedbackDetails[i].tuteeRating %>
+            <% numberTuteeRating ++; %>
+            <% } %>
+            <% } %>
+
+            <% var averageTuteeRating = (cummulativeTuteeRating / numberTuteeRating) * 10 || 0; %>
+
+            Average: <%= averageTuteeRating; %>% from <%= numberTuteeRating; %>
+            feedbacks;
+        </div>
+        <table class="ui center aligned orange celled table">
+
+            <thead>
+            <tr>
+                <th>Rating</th>
+                <th>Tutee</th>
+                <th>Course</th>
+                <th>Comment</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (var i = 0; i < feedbackDetails.length; i++) { %>
+
+            <% if (feedbackDetails[i].tutorOrTutee === "tutee") { %>
+            <tr>
+                <td>
+                    <div class="ui star rating" data-rating="3"></div>
+                    <% feedbackDetails[i].tuteeRating %>
+                </td>
+                <td>
+                    <%= feedbackDetails[i].tuteeID %>
+                </td>
+                <td>
+                    <%= feedbackDetails[i].courseID %>
+                </td>
+                <td>
+                    <%= feedbackDetails[i].tuteeFeedback %>
+                </td>
+            </tr>
+            <% } %>
+
+            <% } %>
+            </tbody>
+        </table>
 
 
-    </table>
+    </div>
+
 
     <button class="ui button" onclick="myFunction()">Click to check session id</button>
 </div>
@@ -65,6 +145,11 @@
 
 <script>
     console.log("Hello!" + sessionStorage.genid);
+
+    //script for displaying tabs
+    $('.menu .item')
+        .tab()
+    ;
 
     function myFunction() {
         alert("Hello!" + sessionStorage.genid);

@@ -10,6 +10,8 @@ const index = require('./routes/index');
 const registration = require('./routes/registration');
 const login = require('./routes/login');
 const user = require('./routes/user');
+const aboutUs = require('./routes/aboutUs');
+const contactUs = require('./routes/contactUs');
 
 // requiring tutor.js which contains requires to all the tutor specific routes, used below.
 // const tutor = require('./routes/tutor');
@@ -39,7 +41,7 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
 //Setup to listen to port 3000
-server.listen(3000);
+server.listen(process.env.port || 3000);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -57,7 +59,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     secret: 'SOMERANDOMSECRETHERE',
-    cookie: {maxAge: 60000}}));
+    cookie: {maxAge: 6000000}}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -67,6 +69,8 @@ app.use('/registration', registration);
 app.use('/login', login);
 // user routes, see routes/userRoutes/* for all the various specific end routes.
 app.use('/user', user);
+app.use('/aboutus', aboutUs);
+app.use('/contactus', contactUs);
 // //use of tutor routes, see routes/tutorRoute/* for all the different routes inside of tutorRoutes
 // app.use('/tutor', tutor);
 //

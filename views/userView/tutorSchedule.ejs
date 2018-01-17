@@ -312,7 +312,8 @@
     }
 
     //made a socket based on the http/ url address hence it is app.js
-    var socket = io('http://localhost:3000/');
+    // var socket = io("http://localhost:3000/");
+    var socket = io.connect(window.location.origin);
     // the on connect is going to trigger the .on('connection') for the backend IO.
     socket.on('connect', function () {
     })
