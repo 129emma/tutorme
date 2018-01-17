@@ -10,6 +10,8 @@ const index = require('./routes/index');
 const registration = require('./routes/registration');
 const login = require('./routes/login');
 const user = require('./routes/user');
+const aboutUs = require('./routes/aboutUs');
+const contactUs = require('./routes/contactUs');
 
 // requiring tutor.js which contains requires to all the tutor specific routes, used below.
 // const tutor = require('./routes/tutor');
@@ -67,6 +69,8 @@ app.use('/registration', registration);
 app.use('/login', login);
 // user routes, see routes/userRoutes/* for all the various specific end routes.
 app.use('/user', user);
+app.use('/aboutus', aboutUs);
+app.use('/contactus', contactUs);
 // //use of tutor routes, see routes/tutorRoute/* for all the different routes inside of tutorRoutes
 // app.use('/tutor', tutor);
 //
