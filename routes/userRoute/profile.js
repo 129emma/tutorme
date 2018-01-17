@@ -116,7 +116,6 @@ router.post('/updateProfile', function (req, res) {
 
             /*after user account is built create a hashed password query*/
 
-
             if (err) {
                 connectNow.end();
                 throw err
@@ -130,9 +129,7 @@ router.post('/updateProfile', function (req, res) {
                         const userDetails = JSON.parse(JSON.stringify(result[0]));
                         req.session.userDetails = JSON.parse("[" + JSON.stringify(userDetails) + "]");
                         res.redirect('/userView/profile');
-
                     }
-
                 });
 
                     // connectMethod.query('SELECT * FROM tableUser WHERE userName = ? ', [un], function (err, result) {
