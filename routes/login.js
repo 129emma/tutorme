@@ -64,7 +64,9 @@ router.post('/logging', function (req, res) {
                             const userDetails = JSON.parse(JSON.stringify(result[0]));
 
                             req.session.userDetails = JSON.parse("[" + JSON.stringify(userDetails) + "]");
-                            res.redirect('/tutor/home');
+                           // req.session.userDetails.tuteeBoolean = true;
+
+                            res.redirect('/user/profile');
 
                         }
 
@@ -76,11 +78,9 @@ router.post('/logging', function (req, res) {
                     res.redirect('/login');
                 }
             });
-
             // const loginObject = JSON.parse(JSON.stringify(result[0]));
         };
     });
-
 });
 
 

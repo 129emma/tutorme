@@ -13,13 +13,17 @@ router.get('/', function(req, res, next) {
       console.log("NO!" + req.session.userDetails);
       res.render('index', { title: 'Tutorme' });
   }
+});
+
+/* GET disclaimer page. */
+router.get('/privacy', function(req, res, next) {
+
+    res.render('privacy');
 
 });
 
 
-//
-// router.get('/registration', function(req, res) {
-//     res.render("registration");
-// });
+
+
 
 module.exports = router;

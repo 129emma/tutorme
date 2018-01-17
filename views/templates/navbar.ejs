@@ -9,15 +9,15 @@
             <% if (typeof userDetails !== 'undefined') { %>
             <li><a href="/tutor/profile">Profile</a></li>
             <li><a href="/tutor/feedback">Feedback</a></li>
-            <% if(userDetails[0].tutor_activation === 1){ %>
+            <% if(userDetails[0].tutor_activation === 1 && (typeof userDetails) !== "undefined" && ((typeof tuteeBoolean) ==="undefined" || tuteeBoolean === false)){ %>
             <li><a href="/tutor/tutorSchedule">Tutor Schedule</a></li>
-            <% } %>
+            <%}%>
             <li><a href="/login/logout">logout</a></li>
             <% } else { %>
 
             <li><a href="/login">Login</a></li>
 
-            <% } %>
+            <% }%>
         </ul>
     </div>
 </nav>-->
@@ -34,13 +34,13 @@
             <div class="eight wide column">
                 <div class="ui four column grid">
                     <div class="column">
-                        <a href="#">Home</a>
+                        <a href="/">Home</a>
                     </div>
                     <% if (typeof userDetails !== 'undefined') { %>
-                    <div class="column"><a href="/tutor/profile">Profile</a></div>
-                    <div class="column"><a href="/tutor/feedback">Feedback</a></div>
+                    <div class="column"><a href="/user/profile">Profile</a></div>
+                    <div class="column"><a href="/user/feedback">Feedback</a></div>
                     <% if(userDetails[0].tutor_activation === 1){ %>
-                    <div class="column"><a href="/tutor/tutorSchedule">Tutor Schedule</a></div>
+                    <div class="column"><a href="/user/tutorSchedule">Tutor Schedule</a></div>
                     <% } %>
                 </div>
             </div>
@@ -57,3 +57,6 @@
     </div>
 </div>
 </div>
+
+</body>
+</html>
