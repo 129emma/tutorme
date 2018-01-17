@@ -67,8 +67,8 @@
       <file leaf-file-name="tutorSchedule.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/userView/tutorSchedule.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="335" column="0" lean-forward="true" selection-start-line="335" selection-start-column="0" selection-end-line="335" selection-end-column="0" />
+            <state relative-caret-position="298">
+              <caret line="337" column="54" lean-forward="true" selection-start-line="337" selection-start-column="54" selection-end-line="337" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -321,7 +321,7 @@
       <workItem from="1516055433984" duration="3543000" />
       <workItem from="1516066166360" duration="7302000" />
       <workItem from="1516136922515" duration="7686000" />
-      <workItem from="1516156333739" duration="3469000" />
+      <workItem from="1516156333739" duration="3762000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;added sockets and the sql call related&quot;">
       <created>1513386883857</created>
@@ -547,11 +547,18 @@
       <option name="project" value="LOCAL" />
       <updated>1516162067687</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Schedule issue with io socket fixed">
+      <created>1516162759079</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1516162759079</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127185000" />
+    <option name="totallyTimeSpent" value="127478000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -659,7 +666,8 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/jwwnz/tutorme into vanies&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;routes/tutorRoute/tutorBooking.js&#10;#&#9;views/tutorView/tutorBooking.ejs" />
     <MESSAGE value="Merge branch 'Emma' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;views/templates/navbar.ejs&#10;#&#9;views/tutorView/profile.ejs" />
     <MESSAGE value="Updated changes to the backend and frontend for feedback." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated changes to the backend and frontend for feedback." />
+    <MESSAGE value="Schedule issue with io socket fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Schedule issue with io socket fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -989,8 +997,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/userView/tutorSchedule.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="335" column="0" lean-forward="true" selection-start-line="335" selection-start-column="0" selection-end-line="335" selection-end-column="0" />
+        <state relative-caret-position="298">
+          <caret line="337" column="54" lean-forward="true" selection-start-line="337" selection-start-column="54" selection-end-line="337" selection-end-column="54" />
           <folding />
         </state>
       </provider>
