@@ -39,7 +39,7 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
 //Setup to listen to port 3000
-server.listen(3000);
+server.listen(process.env.port || 3000);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
