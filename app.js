@@ -11,8 +11,11 @@ const users = require('./unused/users');
 const registration = require('./routes/registration');
 const login = require('./routes/login');
 
-// requiring tutor.js which contains requires to all the tutor specific routes, used below.
-const tutor = require('./routes/tutor');
+// requiring the routes after login, including Tutor and Tutee options
+const user = require('./routes/user')
+
+// requiring user.js which contains requires to all the tutor specific routes, used below.
+const tutor = require('./routes/user');
 
 // requiring tutee.js which contains requires to all the tutee specific routes, used below.
 const tutee = require('./routes/tutee');
@@ -20,21 +23,21 @@ const tutee = require('./routes/tutee');
 //requiring Mozilla session module
 var session = require('express-session');
 
-//require ajaxexpresso
+//requiring the ajax handlers created by Bryan
 const ajaxhandler = require('./routes/ajaxhandler');
 
+// Lamlam and Vanie needs to add comments
 const tutorSchedule = require('./javascript/tutorSchedule3WeekPreRendering');
 const UpdatingTime = require('./javascript/UpdatingTime');
 
-
-
-const app = express();
-
 //using the server for socket.io purpose and in general nothing had changed.
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 
+//Setup to listen to port 3000
 server.listen(3000);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -46,6 +49,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
+//Setting up session
 app.use(session({
     resave: true,
     saveUninitialized: true,
@@ -54,19 +58,21 @@ app.use(session({
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Setting up routes and connections to url's
 app.use('/', index);
 app.use('/users', users);
 app.use('/registration', registration);
 app.use('/login', login);
+// user routes, see routes/userRoutes/* for all the various specific end routes.
+app.use('/user', user);
+// //use of tutor routes, see routes/tutorRoute/* for all the different routes inside of tutorRoutes
+// app.use('/tutor', tutor);
+//
+// //use of tutee routes, see routes/tuteeRoute/* for all the different routes inside of tutorRoutes
+// app.use('/tutee', tutee);
 
 //ajax handler router
 app.use('/ajaxhandler', ajaxhandler);
-
-//use of tutor routes, see routes/tutorRoute/* for all the different routes inside of tutorRoutes
-app.use('/tutor', tutor);
-
-//use of tutee routes, see routes/tuteeRoute/* for all the different routes inside of tutorRoutes
-app.use('/tutee', tutee);
 
 app.use(session({
     genid: function (req) {

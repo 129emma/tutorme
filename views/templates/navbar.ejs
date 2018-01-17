@@ -1,75 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<head>
-    <title>Navbar</title>
-</head>
-<style>
-    .switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 34px;
-    }
-
-    .switch input {
-        display: none;
-    }
-
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-
-    .slider:before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-
-    input:checked + .slider {
-        background-color: #2196F3;
-    }
-
-    input:focus + .slider {
-        box-shadow: 0 0 1px #2196F3;
-    }
-
-    input:checked + .slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
-    }
-
-    /* Rounded sliders */
-    .slider.round {
-        border-radius: 34px;
-    }
-
-    .slider.round:before {
-        border-radius: 50%;
-    }
-
-</style>
-
-<body>
-
-<nav class="navbar navbar-default" style="background-color: #F1A829">
+<!--<nav class="navbar navbar-default" style="background-color: #F1A829">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">Tutorme</a>
@@ -82,35 +11,52 @@
             <li><a href="/tutor/feedback">Feedback</a></li>
             <% if(userDetails[0].tutor_activation === 1 && (typeof userDetails) !== "undefined" && ((typeof tuteeBoolean) ==="undefined" || tuteeBoolean === false)){ %>
             <li><a href="/tutor/tutorSchedule">Tutor Schedule</a></li>
-            <% } else { %>
-            <li><a href="/tutee/tuteeSchedule">Tutee Schedule</a></li>
-            <% } %>
+            <%}%>
             <li><a href="/login/logout">logout</a></li>
             <% } else { %>
 
             <li><a href="/login">Login</a></li>
 
-            <% } %>
-            <!--<li>-->
-                <!--<label class="switch">-->
-                    <!--<input name="tutorSwitch" type="checkbox">-->
-                    <!--<span class="slider round"></span>-->
-                <!--</label></li>-->
-            <% if ((typeof userDetails) !== "undefined"){%>
-                <a href="/tutee/home?tuteeSwitch=true">swtich to tutee</a>
             <% }%>
-
         </ul>
     </div>
-</nav>
+</nav>-->
+<link rel='stylesheet' type='text/css' href='/stylesheets/navbar.css' />
+<div>
+<div class="ui secondary orange inverted segment">
+    <div class="ui middle aligned grid">
+        <div class="row">
+            <div class="two wide column">
+                <h1>Tutorme</h1>
+            </div>
+            <div class="two wide column">
+            </div>
+            <div class="eight wide column">
+                <div class="ui four column grid">
+                    <div class="column">
+                        <a href="/">Home</a>
+                    </div>
+                    <% if (typeof userDetails !== 'undefined') { %>
+                    <div class="column"><a href="/user/profile">Profile</a></div>
+                    <div class="column"><a href="/user/feedback">Feedback</a></div>
+                    <% if(userDetails[0].tutor_activation === 1){ %>
+                    <div class="column"><a href="/user/tutorSchedule">Tutor Schedule</a></div>
+                    <% } %>
+                </div>
+            </div>
+            <div class="center aligned four wide column">
+                <div class="column">
+                    <a href="/login/logout">logout</a></div>
+                <% } else { %>
+                <div class="column">
+                    <a href="/login">Login</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 
 </body>
-<script>
-    // const inputButton = $("input");
-    // inputButton.on("change", function () {
-    //     var xmlHttp = new XMLHttpRequest();
-    //     xmlHttp.open( "POST", "", false ); // false for synchronous request
-    //     xmlHttp.send( {tutorSwitch: true});
-    // })
-</script>
 </html>

@@ -27,7 +27,7 @@ router.get('/', function (req, res){
 
 console.log("ready to make query to database");
     //Key for session
-    res.render("./tuteeView/home", req.session);
+    res.render("./userView/home", req.session);
 
 })
 ;

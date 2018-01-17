@@ -6,36 +6,40 @@
 
 <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/index.css" />
+    <link rel="stylesheet" href="../public/stylesheets/index.css"/>
 </head>
-
-<!--<style>#F1A829</style>-->
 <body>
 
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
 <% include templates/navbar.ejs %>
 
-<div class="ui container">
+<!--<div class="ui container">
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <p><a href="/login">Login</a> </p>
     <p><a href="/registration">Register now!</a> </p>
+</div>-->
+
+
+<div class="ui text center aligned container">
+    <h1 class="ui center aligned header">
+        Welcome to <%= title %>!
+    </h1>
+    <div class="ui two column grid">
+        <div class="row">
+            <div class="column">
+                <button class="ui right floated button"><a href="/registration">Sign up</a></button>
+            </div>
+            <div class="column">
+                <button class="ui left floated button"><a href="/login">Login</a></button>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
-
-
-<!--<div class="ui text center aligned container">-->
-    <!--<h1 class="ui center aligned header">-->
-        <!--Welcome to <%= title %>!-->
-    <!--</h1>-->
-    <!--<button class="ui huge primary button" href="/registration">Sign up</button>-->
-    <!--&lt;!&ndash;<button class="ui left floated button" href="/registration">Left Floated</button>&ndash;&gt;-->
-    <!--<div class="ui bottom attached message">-->
-        <!--Already signed up? <a href="/login">Login here</a> instead.-->
-    <!--</div>-->
-<!--</div>-->
-
-
-
 </body>
+
+
 </html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<html>
+
+<!-- The included template contains all the links, JS and Styling files to be included in the pages, to alter the contents please refer to templates/included.html file -->
+<% include ../templates/included.html %>
+
+<head>
+    <title>Tutor Home page</title>
+</head>
+<body>
+<!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
+<% include ../templates/navbar.ejs %>
+
+<div class="ui container">
+
+        <h1>Welcome to your home page!</h1>
+        <p>Success!</p>
+        <p>Welcome to your new account, <%= userDetails[0].firstName %> </p>
+
+        <table class="ui orange celled center aligned table ">
+            <thead>
+            <tr>
+                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Date of Birth</th>
+                <th>Student Id</th>
+                <th>Study Institution</th>
+                <th>Joined TutorMe</th>
+                <th>Activated as a tutor?</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><%= userDetails[0].userName %></td>
+                <td><%= userDetails[0].firstName %></td>
+                <td><%= userDetails[0].lastName %></td>
+                <td><%= userDetails[0].email %></td>
+                <td><%= userDetails[0].address %></td>
+                <td><%= userDetails[0].dob %></td>
+                <td><%= userDetails[0].studentID %></td>
+                <td><%= userDetails[0].studySchool %></td>
+                <td><%= userDetails[0].joinDate %></td>
+                <td>
+                    <% if (userDetails[0].tutor_activation === 1) { %>
+                    <i class="large green checkmark icon"></i>
+                    <% } else { %>
+                    <i class="large red remove icon"></i>
+                    <% } %>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <button class="ui button" onclick="myFunction()">Click to check session id</button>
+
+
+</div>
+
+
+<script>
+    function myFunction() {
+        alert("Hello!" + session(genid));
+    }
+</script>
+
+</body>
+</html>
