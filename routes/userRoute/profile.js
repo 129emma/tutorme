@@ -35,7 +35,21 @@ router.get('/', function (req, res) {
                             const courseDetails = JSON.parse(JSON.stringify(resultCourse));
                             const currentCourse = resultDetails.map(function(cap){return cap.courseID;});
                             const availableCourse = courseDetails.filter(function (curV) { return !currentCourse.includes(curV.courseID);});
-                            res.render('./userView/profile', {userDetails: req.session.userDetails, Data: resultDetails, CourseList: availableCourse});
+
+                            var Co_id = [];
+                            var Co_name = [];
+                            var Co_description = [];
+                            availableCourse.map(function(Co){
+                                Co_id.push(Co.courseID);
+                                Co_name.push(Co.courseName);
+                                Co_description.push(Co.courseDescription);
+                            });
+                            Co_id = JSON.stringify(Co_id);
+                            Co_name = JSON.stringify(Co_name);
+                            Co_description = JSON.stringify(Co_description);
+
+
+                            res.render('./userView/profile.ejs', {userDetails: req.session.userDetails, Data: resultDetails, CourseList: availableCourse, Co_id: Co_id, Co_name: Co_name, Co_description: Co_description});
                         }
                     });
             }
@@ -51,7 +65,7 @@ router.get('/edit', function (req, res) {
 router.post('/create_cap', function(req, res){
 
 
-
+    console.log("hi");
     const tutorUsername = req.session.userDetails[0].userName;
     const courseID =req.body.courseID;
     const experience = req.body.experience;
@@ -59,12 +73,15 @@ router.post('/create_cap', function(req, res){
     const verification = req.body.verification;
     const grade = req.body.grade;
 
+    console.log(tutorUsername, courseID, experience, description, verification, grade);
 
     const connectNow = con.method();
     connectNow.connect(function (err) {
         if (err) throw err;
         console.log("Connected and online!");
     });
+
+
 
     connectNow.query("INSERT INTO tableCapabilities (userName, courseID, experience, description, verification, grade) VALUES (?, ?, ?, ?, ?, ?)", [tutorUsername, courseID, experience, description, verification, grade], function (err, result) {
 
@@ -74,7 +91,7 @@ router.post('/create_cap', function(req, res){
         } else {
             connectNow.end();
             console.log("database inserted!!");
-            res.redirect("./");
+            res.redirect("/user/profile");
         }
     });
 
