@@ -78,11 +78,9 @@ router.post('/logging', function (req, res) {
                     res.redirect('/login');
                 }
             });
-
             // const loginObject = JSON.parse(JSON.stringify(result[0]));
         };
     });
-
 });
 
 

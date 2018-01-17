@@ -8,26 +8,11 @@ const bodyParser = require('body-parser');
 const router = express.Router();
 
 
-router.post('/', function (req, res) {
-
-    const connectMethod = con.method();
-    connectMethod.connect(function (err) {
-        if (err) throw err;
-        console.log("Connected and online!");
-    });
+router.get('/', function (req, res) {
 
 
-    const query = req.body.query;
-    console.log(query);
-    connectMethod.query(query, [], function (err, result) {
-        connectMethod.end();
-        if (err) {
-            throw err
-        } else {
-            const resultPack = JSON.stringify(result);
-            res.send(resultPack);
-        }
-    });
+    console.log("reach listing");
+    res.render("listing");
 });
 
 module.exports = router;
