@@ -2,145 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66d2b2d6-f8a2-4f67-8d60-a1b0ffb1f515" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/.bin/detect-libc" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/.bin/detect-libc.cmd" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/compile/validation_error.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/dot/v5/_formatLimit.jst" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/dot/v5/constant.jst" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/dot/v5/patternRequired.jst" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/dot/v5/switch.jst" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/dotjs/_formatLimit.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/dotjs/constant.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/dotjs/patternRequired.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/dotjs/switch.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/v5.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/boom/.npmignore" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/boom/.travis.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/boom/CONTRIBUTING.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/boom/images/boom.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/boom/test/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/cryptiles/.travis.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/cryptiles/test/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/dashdash/node_modules/assert-plus/AUTHORS" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/dashdash/node_modules/assert-plus/CHANGES.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/dashdash/node_modules/assert-plus/README.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/dashdash/node_modules/assert-plus/assert.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/dashdash/node_modules/assert-plus/package.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/detect-libc/.npmignore" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/detect-libc/LICENSE" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/detect-libc/README.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/detect-libc/bin/detect-libc.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/detect-libc/lib/detect-libc.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/detect-libc/package.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/getpass/node_modules/assert-plus/AUTHORS" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/getpass/node_modules/assert-plus/CHANGES.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/getpass/node_modules/assert-plus/README.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/getpass/node_modules/assert-plus/assert.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/getpass/node_modules/assert-plus/package.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/browser/async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/browser/error.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/browser/promise.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node4/async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node4/error.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node4/promise.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node6/async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node6/error.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node6/promise.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node7/async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node7/error.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/lib/node7/promise.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/src/async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/src/error.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/har-validator/src/promise.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/.travis.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/bower.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/component.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/dist/client.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/example/usage.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/images/hawk.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/images/logo.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/test/browser.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/test/client.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/test/crypto.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/test/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/test/readme.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/test/server.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/test/uri.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hawk/test/utils.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/.travis.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/CONTRIBUTING.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/images/hoek.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/test/escaper.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/test/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/test/modules/ignore.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/test/modules/test1.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/test/modules/test2.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/hoek/test/modules/test3.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/.npmignore" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/.travis.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/LICENSE" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/example/key_cmp.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/example/nested.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/example/str.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/example/value_cmp.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/package.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/readme.markdown" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/test/cmp.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/test/nested.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/test/replacer.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/test/space.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/test/str.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/json-stable-stringify/test/to-json.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsonify/README.markdown" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsonify/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsonify/lib/parse.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsonify/lib/stringify.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsonify/package.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsonify/test/parse.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsonify/test/stringify.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsprim/node_modules/assert-plus/AUTHORS" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsprim/node_modules/assert-plus/CHANGES.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsprim/node_modules/assert-plus/README.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsprim/node_modules/assert-plus/assert.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/jsprim/node_modules/assert-plus/package.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/performance-now/Makefile" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/rc/cli.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/.eslintignore" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/.eslintrc" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/.jscs.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/CHANGELOG.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/LICENSE" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/README.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/dist/qs.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/lib/formats.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/lib/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/lib/parse.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/lib/stringify.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/lib/utils.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/package.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/test/.eslintrc" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/test/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/test/parse.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/test/stringify.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/test/utils.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sntp/.travis.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sntp/Makefile" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sntp/examples/offset.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sntp/examples/time.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sntp/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sntp/test/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sshpk/node_modules/assert-plus/AUTHORS" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sshpk/node_modules/assert-plus/CHANGES.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sshpk/node_modules/assert-plus/README.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sshpk/node_modules/assert-plus/assert.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/sshpk/node_modules/assert-plus/package.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/verror/node_modules/assert-plus/AUTHORS" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/verror/node_modules/assert-plus/CHANGES.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/verror/node_modules/assert-plus/README.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/verror/node_modules/assert-plus/assert.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/node_modules/verror/node_modules/assert-plus/package.json" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -150,83 +11,43 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/app.js">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="484">
-                    <caret line="20" column="40" lean-forward="false" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="profile.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/userView/profile.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="16" />
+            <state relative-caret-position="-1628">
+              <caret line="31" column="50" lean-forward="false" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/login.ejs">
+      <file leaf-file-name="feedback.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/userRoute/feedback.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="25" />
+            <state relative-caret-position="511">
+              <caret line="44" column="17" lean-forward="false" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/login.js">
+      <file leaf-file-name="feedback.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/userView/feedback.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1663">
-              <caret line="6" column="30" lean-forward="false" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+            <state relative-caret-position="726">
+              <caret line="97" column="88" lean-forward="false" selection-start-line="97" selection-start-column="88" selection-end-line="97" selection-end-column="88" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tutorBooking.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/userView/tutorBooking.ejs">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="27" column="43" lean-forward="false" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="navbar.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/templates/navbar.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="53" column="22" lean-forward="false" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="20" column="17" lean-forward="false" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+            <state relative-caret-position="-1683">
+              <caret line="89" column="6" lean-forward="false" selection-start-line="89" selection-start-column="6" selection-end-line="89" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -243,7 +64,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sw</find>
       <find>switchingWeeks</find>
       <find>render</find>
       <find>msg</find>
@@ -273,6 +93,7 @@
       <find>booked</find>
       <find>tutor</find>
       <find>tutee</find>
+      <find>user</find>
     </findStrings>
     <replaceStrings>
       <replace>value.timeStart</replace>
@@ -317,13 +138,16 @@
         <option value="$PROJECT_DIR$/routes/tutorRoute/profile.js" />
         <option value="$PROJECT_DIR$/routes/tutorRoute/tutorBooking.js" />
         <option value="$PROJECT_DIR$/routes/tutorRoute/tutorSchedule.js" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/routes/user.js" />
         <option value="$PROJECT_DIR$/views/userView/tutorSchedule.ejs" />
         <option value="$PROJECT_DIR$/views/userView/profile.ejs" />
         <option value="$PROJECT_DIR$/routes/login.js" />
         <option value="$PROJECT_DIR$/views/templates/navbar.ejs" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/routes/userRoute/profile.js" />
+        <option value="$PROJECT_DIR$/routes/userRoute/feedback.js" />
+        <option value="$PROJECT_DIR$/views/userView/feedback.ejs" />
       </list>
     </option>
   </component>
@@ -336,8 +160,9 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="952" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="902" />
+    <option name="y" value="-19" />
     <option name="width" value="976" />
     <option name="height" value="1038" />
   </component>
@@ -356,7 +181,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -367,34 +191,18 @@
             <path>
               <item name="tutorme" type="b2602c69:ProjectViewProjectNode" />
               <item name="tutorme" type="462c0819:PsiDirectoryNode" />
-              <item name="javascript" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tutorme" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tutorme" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tutorme" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tutorme" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="rc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tutorme" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tutorme" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tutorme" type="b2602c69:ProjectViewProjectNode" />
               <item name="tutorme" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="userRoute" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tutorme" type="b2602c69:ProjectViewProjectNode" />
               <item name="tutorme" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tutorme" type="b2602c69:ProjectViewProjectNode" />
@@ -406,6 +214,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -489,7 +298,9 @@
       <workItem from="1515743461582" duration="739000" />
       <workItem from="1515986128997" duration="2008000" />
       <workItem from="1516055433984" duration="3543000" />
-      <workItem from="1516066166360" duration="5911000" />
+      <workItem from="1516066166360" duration="7302000" />
+      <workItem from="1516136922515" duration="7686000" />
+      <workItem from="1516156333739" duration="2816000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;added sockets and the sql call related&quot;">
       <created>1513386883857</created>
@@ -673,11 +484,46 @@
       <option name="project" value="LOCAL" />
       <updated>1516072390813</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Merge branch 'Emma' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;views/templates/navbar.ejs&#10;#&#9;views/tutorView/profile.ejs">
+      <created>1516072569365</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1516072569365</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Merge branch 'Emma' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;views/templates/navbar.ejs&#10;#&#9;views/tutorView/profile.ejs">
+      <created>1516137871566</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1516137871566</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Merge branch 'Emma' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;views/templates/navbar.ejs&#10;#&#9;views/tutorView/profile.ejs">
+      <created>1516138029863</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1516138029863</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Merge branch 'Emma' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;views/templates/navbar.ejs&#10;#&#9;views/tutorView/profile.ejs">
+      <created>1516138262215</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1516138262215</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Updated changes to the backend and frontend for feedback.">
+      <created>1516161975254</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1516161975254</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114639000" />
+    <option name="totallyTimeSpent" value="126532000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -689,22 +535,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="952" y="0" width="976" height="1038" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33791643" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.49505603" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998413" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3220339" sideWeight="0.53547525" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3194925" sideWeight="0.46452478" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21099745" sideWeight="0.4698795" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4982699" sideWeight="0.48995984" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28417653" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21094641" sideWeight="0.4698795" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31927025" sideWeight="0.46452478" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997735" sideWeight="0.49814913" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4982699" sideWeight="0.48995984" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997735" sideWeight="0.49814913" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -712,6 +557,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -784,21 +630,14 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <MESSAGE value="Merge branch 'master' of https://github.com/jwwnz/tutorme into vanies&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;routes/tutorRoute/tutorBooking.js&#10;#&#9;views/tutorView/tutorBooking.ejs" />
     <MESSAGE value="Merge branch 'Emma' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;views/templates/navbar.ejs&#10;#&#9;views/tutorView/profile.ejs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'Emma' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;views/templates/navbar.ejs&#10;#&#9;views/tutorView/profile.ejs" />
+    <MESSAGE value="Updated changes to the backend and frontend for feedback." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated changes to the backend and frontend for feedback." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/userView/tutorSchedule.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4200">
-          <caret line="200" column="28" lean-forward="false" selection-start-line="200" selection-start-column="28" selection-end-line="200" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/schedule.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1638">
@@ -860,7 +699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1764">
           <caret line="84" column="35" lean-forward="true" selection-start-line="84" selection-start-column="35" selection-end-line="84" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -971,7 +809,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1012">
           <caret line="46" column="396" lean-forward="false" selection-start-line="46" selection-start-column="396" selection-end-line="46" selection-end-column="396" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -979,7 +816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="5" column="100" lean-forward="false" selection-start-line="5" selection-start-column="100" selection-end-line="5" selection-end-column="100" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -987,7 +823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="633">
           <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -995,15 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/userRoute/feedback.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="45" column="29" lean-forward="false" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1011,7 +837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-616">
           <caret line="38" column="38" lean-forward="false" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1019,7 +844,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1027,15 +851,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="616">
           <caret line="28" column="15" lean-forward="true" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/userRoute/profile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3036">
-          <caret line="136" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1043,7 +858,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1051,15 +865,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/userView/tutorBooking.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
+        <state relative-caret-position="594">
           <caret line="27" column="43" lean-forward="false" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1067,15 +879,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
           <caret line="330" column="66" lean-forward="false" selection-start-line="330" selection-start-column="61" selection-end-line="330" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/userView/feedback.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1083,54 +886,81 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
           <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/templates/navbar.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1166">
+          <caret line="53" column="22" lean-forward="false" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/login.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="30" lean-forward="false" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/tutorTime.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/userRoute/profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="117" column="12" lean-forward="false" selection-start-line="117" selection-start-column="12" selection-end-line="117" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/userRoute/feedback.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="44" column="17" lean-forward="false" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/userView/feedback.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="97" column="88" lean-forward="false" selection-start-line="97" selection-start-column="88" selection-end-line="97" selection-end-column="88" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/userView/profile.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="16" />
+        <state relative-caret-position="-1628">
+          <caret line="31" column="50" lean-forward="false" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="20" column="40" lean-forward="false" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/templates/navbar.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="53" column="22" lean-forward="false" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/login.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1663">
-          <caret line="6" column="30" lean-forward="false" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="17" lean-forward="false" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+        <state relative-caret-position="-1683">
+          <caret line="89" column="6" lean-forward="false" selection-start-line="89" selection-start-column="6" selection-end-line="89" selection-end-column="6" />
           <folding />
         </state>
       </provider>
