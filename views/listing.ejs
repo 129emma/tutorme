@@ -8,6 +8,24 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="/stylesheets/loginPage.css"/>
+    <style>
+        .ui.text.center.aligned.container {
+            padding-top: 3%;
+            width: 600px;
+        }
+        .ui.card, .ui.cards>.card{
+            width: 100%;
+            text-align: left;
+            flex-direction: row;
+        }
+        .ui.card>.image{
+            width: 20%;
+            height: 100%;
+        }
+
+
+
+    </style>
 </head>
 <body>
 
@@ -18,26 +36,51 @@
 
 <div class="ui text center aligned container">
     <h1 class="ui center aligned header">
-        Login in to TutorMe!
+        Listing
     </h1>
-    <form class="ui large form" action="/login/logging" method="POST">
-        <div class="ui basic segment">
-            <div class="field">
-                <div class="ui left icon input">
-                    <i class="user icon"></i>
-                    <input type="text" name="userName" placeholder="User name">
-                </div>
-            </div>
-            <div class="field">
-                <div class="ui left icon input">
-                    <i class="lock icon"></i>
-                    <input type="password" name="passWord" placeholder="Password">
-                </div>
-            </div>
-            <input type="submit" value="Submit" class="ui fluid teal submit button" >
+    <div class="ui fluid action input">
+        <form>
+        <input list="courses" name="search" placeholder="Search...">
+        <input type="submit"  class="ui button">Search</input>
+        <datalist id="courses">
+            <% for (var j = 0; j < courses.length; j++){ %>
+            <option value="<%=courses[j].courseID%>"></option>
+            <%}%>
+        </datalist>
+        </form>
+    </div>
+    <% for (var i = 0; i < tutors.length; i++){ %>
+    <div class="ui card">
+        <div class="image" style="float: left">
+            <img src="https://www.w3schools.com/w3images/avatar2.png">
         </div>
-        <div class="ui error message"></div>
-    </form>
+        <div class="content" style="float: right">
+
+            <%
+              var cap = tutors[i].courses.split(",");
+              var grades = tutors[i].grades.split(",");
+            %>
+            <a class="header"><%=tutors[i].userName%></a>
+            <form>
+                <div class="ui action input">
+                    <select class="ui compact selection dropdown">
+                        <% for (var k = 0; k < cap.length; k++){ %>
+                        <option value="<%=cap[k]%>"><%=cap[k]%>   <%=grades[k]%></option>
+                        <%} %>
+                    </select>
+                    <div type="submit" class="ui button"><i class="right arrow icon"></i></div>
+                </div>
+            </form>
+            <div class="description">
+                <%=tutors[i].selfIntroduction%>
+            </div>
+        </div>
+        <div class="ui extra content" style="text-align: right">
+            rating: <%=tutors[i].rating%>
+        </div>
+    </div>
+    <%}%>
+
 </div>
 </body>
 </html>
