@@ -17,14 +17,15 @@ router.get('/', function (req, res) {
     });
 
     // getting the tutor username from the session to set up variable to query Database.
-    const tutorUsername = req.session.userDetails[0].userName;
+    const username = req.session.userDetails[0].userName;
 
-    console.log("Username = " + tutorUsername);
+    console.log("Username = " + username);
     console.log("ready to query to the DB");
 
-    /* Query to request for Tutee and Tutor Feedback, where the tutorial is complete.*/
-    connectNow.query("SELECT courseID, tuteeID, tuteeFeedback, tuteeRating FROM tableBooking WHERE complete = ? AND tutorID = ? "
-        , [1, tutorUsername], function (err, result) {
+    /* Query to request for Tutee and Tutor Feedback, where the tutorial is complete. */
+    connectNow.query("SELECT courseID, tuteeID, tutorID, tutorFeedback, tutorRating, tuteeFeedback, tuteeRating FROM tableBooking WHERE complete = ? AND (tutorID = ? OR tuteeID = ?)"
+        , [1, username, username], function (err, result) {
+        console.log(result);
 
             connectNow.end();
 
@@ -33,13 +34,19 @@ router.get('/', function (req, res) {
             } else {
                 const resultDetails = JSON.parse(JSON.stringify(result));
                 console.log(resultDetails);
+                console.log(resultDetails[0].tutorID);
+
+                for (var i = 0; i < resultDetails.length; i++) {
+                    if (resultDetails[i].tutorID === username) {
+                        resultDetails[i].tutorOrTutee = "tutor";
+                    } else {
+                        resultDetails[i].tutorOrTutee = "tutee";
+                    }
+                }
                 res.render('./userView/feedback', {feedbackDetails: resultDetails, userDetails: req.session.userDetails});
             }
         });
-
     // res.render("./userView/feedback");
-
 });
-
 
 module.exports = router;

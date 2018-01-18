@@ -1,3 +1,4 @@
+<body>
 <h3 class="header">
     Booking from <%= bookingData.tuteeID %>
 </h3>
@@ -31,3 +32,11 @@
 
     </div>
 </div>
+</body>
+
+<script>
+$(function () {
+    $('.ui.info.modal').modal('attach events','.ui.deny.button','hide');
+})
+</script>
+

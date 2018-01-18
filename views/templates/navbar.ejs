@@ -9,55 +9,85 @@
             <% if (typeof userDetails !== 'undefined') { %>
             <li><a href="/tutor/profile">Profile</a></li>
             <li><a href="/tutor/feedback">Feedback</a></li>
-            <% if(userDetails[0].tutor_activation === 1 && (typeof userDetails) !== "undefined" && ((typeof tuteeBoolean) ==="undefined" || tuteeBoolean === false)){ %>
+            <% if(userDetails[0].tutor_activation === 1 && (typeof userDetails) !== "undefined" && ((typeof tuteeBoolean) === "undefined" || tuteeBoolean === false)){ %>
             <li><a href="/tutor/tutorSchedule">Tutor Schedule</a></li>
-            <%}%>
+            <% } %>
             <li><a href="/login/logout">logout</a></li>
             <% } else { %>
 
             <li><a href="/login">Login</a></li>
 
-            <% }%>
+            <% } %>
         </ul>
     </div>
 </nav>-->
-<link rel='stylesheet' type='text/css' href='/stylesheets/navbar.css' />
+<link rel='stylesheet' type='text/css' href='/stylesheets/navbar.css'/>
 <div>
-<div class="ui secondary orange inverted segment">
-    <div class="ui middle aligned grid">
-        <div class="row">
-            <div class="two wide column">
-                <h1>Tutorme</h1>
-            </div>
-            <div class="two wide column">
-            </div>
-            <div class="eight wide column">
-                <div class="ui four column grid">
-                    <div class="column">
-                        <a href="/">Home</a>
-                    </div>
-                    <div class="column"><a href="/listing">Listing</a></div>
-                    <% if (typeof userDetails !== 'undefined') { %>
-                    <div class="column"><a href="/user/profile">Profile</a></div>
-                    <div class="column"><a href="/user/feedback">Feedback</a></div>
-                    <% if(userDetails[0].tutor_activation === 1){ %>
-                    <div class="column"><a href="/user/tutorSchedule">Tutor Schedule</a></div>
-                    <% } %>
+    <div class="ui secondary orange inverted segment">
+        <div class="ui middle aligned grid">
+            <div class="row">
+                <div class="two wide column">
+                    <h1>Tutorme</h1>
                 </div>
-            </div>
-            <div class="center aligned four wide column">
-                <div class="column">
-                    <a href="/login/logout">logout</a></div>
-                <% } else { %>
-                <div class="column">
-                    <a href="/login">Login</a>
-                    <% } %>
+                <div class="two wide column">
+                </div>
+                <div class="eight wide column">
+                    <div class="ui four column grid">
+                        <div class="column">
+                            <a href="/">Home</a>
+                        </div>
+                        <% if (typeof userDetails !== 'undefined') { %>
+                        <div class="column"><a href="/user/profile">Profile</a></div>
+                        <div class="column"><a href="/user/feedback">Feedback</a></div>
+                        <% if(userDetails[0].tutor_activation === 1){ %>
+                        <div class="column"><a href="/user/tutorSchedule">Tutor Schedule</a></div>
+                        <% } %>
+                        <!--About us / policy static pages in dropdown -->
+
+                    </div>
+                </div>
+                <div class="center aligned four wide column">
+                    <div class="column">
+                        <a href="/login/logout">logout</a></div>
+                    <% } else { %>
+                    <div class="column">
+                        <a href="/login">Login</a>
+                        <% } %>
+                    </div>
+
+                    <div class="column">
+                        <div class="ui orange buttons">
+                            <div class="ui button">About us</div>
+                            <div class="ui floating dropdown icon button">
+                                <i class="dropdown icon"></i>
+                                <div class="menu">
+                                    <a class="item" href="/aboutus">About our team</a>
+                                    <a class="item" href="/contactus">Contact us</a>
+                                    <a class="item" href="#link3">Policy</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</div>
+
+<script>
+    $('.dropdown')
+        .dropdown({
+            // you can use any ui transition
+            transition: 'drop'
+        })
+    ;
+    $('.link.example .dropdown')
+        .dropdown({
+            action: 'hide'
+        })
+    ;
+</script>
 
 </body>
 </html>
