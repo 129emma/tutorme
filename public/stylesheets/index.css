@@ -1,0 +1,26 @@
+div#header {
+    padding-bottom: 0;
+    background-color: #FBFBFB;
+}
+
+div#footer {
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    background-color: #FBFBFB
+}
+
+div#middle {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 50%;
+}
+
+button.ui.primary.button {
+    background-color: transparent;
+    color: black;
+}
+body{
+    background-color: #B9E1DC;
+}
