@@ -36,7 +36,8 @@ router.get('/', function (req, res) {
 
 router.get('/search', function (req, res) {
     console.log("searching");
-    const id = req.body.search;
+    const id = req.query.search;
+    console.log(id);
     //the limit for number of display per page
     const limit = 10;
     const tutorUsername = req.session.userDetails[0].userName;
@@ -82,6 +83,7 @@ router.get('/search', function (req, res) {
     const promiseForSelection = ListingSQL.listingSQLDEC(limit,id);
     const promiseForAllcourses = ListingSQL.allTableCourses();
     Promise.all([promiseForSelection,promiseForAllcourses]).then(function (value) {
+
         res.render("listing", {tutors: value[0], courses: value[1]});
     });
 });

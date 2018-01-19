@@ -58,7 +58,7 @@
 
             <%
               var cap = tutors[i].courses.split(",");
-              var grades = tutors[i].grades.split(",");
+              var grades = tutors[i].grades.split(",").sort();
             %>
             <a class="header"><%=tutors[i].userName%></a>
             <form>
