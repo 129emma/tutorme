@@ -57,42 +57,76 @@
             <a class="item" href="/contactus">
                 Contact Us
             </a>
+            <div class="item">
+                <div class="ui icon input">
+                    <input type="text" placeholder="Search tutor">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
 
-            <a class="right item" href="/login">
-                <button class="ui button" id="rightButton">Login</button>
+            <a class="right item">
+                <a class="item" id="loginButton">
+                    Login
+                </a>
+                <a class="item" href="/registration">
+                    Register
+                </a>
             </a>
         </div>
     </div>
 
-
     <div class="ui center aligned text container" id="middle">
-        <h1 class="ui header">
-            Better tutor, better future
+        <h1 class="ui header" id="header">
+           No tutor, no life
         </h1>
-        <div class="item">
-            <div class="ui icon input">
-                <input type="text" placeholder="Search tutor">
-                <i class="search link icon"></i>
-            </div>
+        <div align="middle">
+            <img class="ui medium image" src='https://i.imgur.com/WHAKGfJ.gif'/>
         </div>
+
+
     </div>
 
 
-    <div class="ui basic vertical center aligned segment" id="footer">
-        <div class="ui center aligned container">
-            <img src="https://i.imgur.com/FjQFqbU.jpg" class="ui centered mini image">
-        </div>
-        <div class="ui horizontal small divided link list">
-            <a class="item" href="#">Site Map</a>
-            <a class="item" href="#">Contact Us</a>
-            <a class="item" href="#">Terms and Conditions</a>
-            <a class="item" href="#">Privacy Policy</a>
-        </div>
-    </div>
+    <% include templates/footer.ejs%>
 </div>
 
+<div class="ui tiny modal" id="loginModal">
+    <div class="ui text center aligned container">
+        <h1 class="ui header">
+            Login in to TutorMe!
+        </h1>
+        <form class="ui small form" action="/login/logging" method="POST">
+            <div class="ui basic segment" align="middle">
+                <div class="ten wide field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="userName" placeholder="User name">
+                    </div>
+                </div>
+                <div class="ten wide field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="passWord" placeholder="Password">
+                    </div>
+                </div>
+                <input type="submit" value="Submit" class="ui teal submit button" >
+            </div>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+</div>
 
 </body>
 
 
 </html>
+<script>
+    $(document).ready(function () {
+        $('#loginButton').click(function () {
+            $('.ui.tiny.modal')
+                .modal('show')
+            ;
+        })
+    })
+
+</script>

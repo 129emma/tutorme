@@ -1,6 +1,10 @@
 div#header {
     padding-bottom: 0;
     background-color: #FBFBFB;
+
+}
+h1#header{
+    color: #756C83;
 }
 
 div#footer {
@@ -17,10 +21,12 @@ div#middle {
     bottom: 50%;
 }
 
-button.ui.primary.button {
-    background-color: transparent;
-    color: black;
-}
+
 body{
-    background-color: #B9E1DC;
+    background-color: #FBFBFB;
+}
+
+.ui.text.center.aligned.container{
+    padding-top: 30px;
+    width: 100%;
 }
