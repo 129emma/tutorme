@@ -1,6 +1,7 @@
 const con = require("./connection");
 
 function listingSQLDEC(connectNow,limit,subject) {
+    var connection= false;
     if (connectNow === undefined){
         console.log("No connection, now making one");
         const connectNow = con.method();
@@ -9,6 +10,7 @@ function listingSQLDEC(connectNow,limit,subject) {
                 connectNow.end();
                 throw err
             }
+            connection = true
         });
     }
     //the limit for number of display per page
@@ -22,6 +24,9 @@ function listingSQLDEC(connectNow,limit,subject) {
         }
 
         connectNow.query(initalQuery, preparedStatments, function (err, resultTutor) {
+            if (connection){
+                connectNow.end()
+            }
             if (err) {
                 connectNow.end();
                 throw err;
@@ -39,6 +44,7 @@ function listingSQLDEC(connectNow,limit,subject) {
 
 
 function allTableCourseListing(connectNow) {
+    var connection= false;
     if (connectNow === undefined){
         console.log("No connection, now making one");
         const connectNow = con.method();
@@ -48,9 +54,13 @@ function allTableCourseListing(connectNow) {
                 throw err
             }
         });
+        connection = true
     }
     const promise = new Promise(function (resolve, reject) {
         connectNow.query("SELECT * FROM `tableCourseList`", [], function (err, courselist) {
+            if (connection){
+                connectNow.end()
+            }
             if (err) {
                 connectNow.end();
                 throw err;

@@ -15,7 +15,6 @@ router.get('/', function (req, res) {
 router.get('/booking',function (req, res) {
     console.log(req.query);
     console.log("from listing");
-
-})
+});
 
 module.exports = router;

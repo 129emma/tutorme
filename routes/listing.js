@@ -79,6 +79,16 @@ router.get('/search', function (req, res) {
 
 router.get("/booking",function (req, res) {
     console.log(req.query);
+
+
+        // connectNow = con.method();
+        // connectNow.connect(function (err) {
+        //     if (err) {
+        //         connectNow.end();
+        //         throw err;
+        //     }
+        // });
+
     const listOfPromises = [weekly1.Oneweek,weekly1.tutorbooked];
     console.log("list of Promises");
     const promise = weekly1.joinedScheduleCalls(listOfPromises, undefined, undefined, req.query.username,'tableTime','timeStart');

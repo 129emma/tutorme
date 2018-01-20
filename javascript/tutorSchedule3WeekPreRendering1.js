@@ -2,15 +2,17 @@ const con = require("./connection.js");
 const mysql = require("mysql");
 
 function renderingOneweek(connectNow,  startOfWeek, endOfWeek, username, timeTable, whatWanted) {
+    var connection =false;
     if (connectNow === undefined) {
         console.log("making connection in one week");
-        const connectNow = con.method();
+        connectNow = con.method();
         connectNow.connect(function (err) {
             if (err) {
                 connectNow.end();
                 throw err;
             }
         });
+        connection = true;
     }
     console.log("one week");
     var today;
@@ -21,6 +23,9 @@ function renderingOneweek(connectNow,  startOfWeek, endOfWeek, username, timeTab
     // console.log("End date: "+ endOfWeek);
     const promise = new Promise(function (resolve, reject) {
         connectNow.query("SELECT " + (String(mysql.escape(whatWanted))).replace(/'/g, " ") + " FROM " + (String(mysql.escape(timeTable))).replace(/'/g, " ") + " Where timeStart>=? AND timeStart<=? AND username=?", [startOfWeek, endOfWeek, username], function (err, result) {
+            if  (connection){
+                connectNow.end();
+            }
             if (err) {
                 connectNow.end();
                 throw err;
@@ -40,19 +45,25 @@ function renderingOneweek(connectNow,  startOfWeek, endOfWeek, username, timeTab
 };
 
 function tutorBooked(connectNow,  startOfWeek, endOfWeek, username, timeTable, whatWanted) {
-
+var connection = false;
     if (connectNow === undefined) {
-        const connectNow = con.method();
+        connectNow = con.method();
         connectNow.connect(function (err) {
+
             if (err) {
                 connectNow.end();
                 throw err;
             }
         });
+        console.log("tutor booked connection");
+        connection = true;
     }
     console.log("tutor booked");
     const promise = new Promise(function (resolve, reject) {
         connectNow.query("SELECT tableBooking.tuteeID, tableBooking.courseID, tableBooking.location, tableTime.timeStart, tableTimeOccupation.bookingID  FROM tableBooking, tableTime, tableTimeOccupation WHERE tableTimeOccupation.timeID = tableTime.timeID AND tableTimeOccupation.bookingID = tableBooking.bookingID And tableTime.timeStart>=? AND tableTime.timeStart<=? AND tableTime.username=?", [startOfWeek, endOfWeek,username], function (err, result) {
+            if  (connection){
+                connectNow.end();
+            }
             if (err) {
                 connectNow.end();
                 throw err;
@@ -73,17 +84,19 @@ function tutorBooked(connectNow,  startOfWeek, endOfWeek, username, timeTable, w
 
 function tuteeSQLBookingCall(connectNow,  startOfWeek, endOfWeek, username, timeTable, whatWanted) {
     //var bookingID = 1;
+    var connection = false;
     if (connectNow === undefined) {
-        const connectNow = con.method();
+        connectNow = con.method();
         connectNow.connect(function (err) {
             if (err) {
                 connectNow.end();
                 throw err;
             }
         });
+        connection =true;
     };
     var today;
-console.log("tuteeSQL")
+console.log("tuteeSQL");
     // (date === undefined) ? today = new Date() : today = new Date(date);
     // var startOfWeek = new Date(today.getFullYear(), today.getMonth(), (today.getDate() - (today.getDay() - 2) - 1));
     // const endOfWeek = new Date(today.getFullYear(), today.getMonth(), (today.getDate() + (7 - today.getDay() + 1)));
@@ -91,7 +104,9 @@ console.log("tuteeSQL")
     // console.log("End date: "+ endOfWeek);
     const promise = new Promise(function (resolve, reject) {
             connectNow.query("SELECT tableBooking.tuteeID, tableBooking.courseID, tableBooking.location, tableTime.timeStart, tableTimeOccupation.bookingID  FROM tableBooking, tableTime, tableTimeOccupation WHERE tableTimeOccupation.timeID = tableTime.timeID AND tableTimeOccupation.bookingID = tableBooking.bookingID And tableTime.timeStart>=? AND tableTime.timeStart<=? AND tableBooking.tuteeID=?", [startOfWeek, endOfWeek, username], function (err, result) {
-                connectNow.end();
+                if  (connection){
+                    connectNow.end();
+                }
                 if (err) {
                     connectNow.end();
                     throw err;
@@ -113,16 +128,6 @@ console.log("tuteeSQL")
 
 function JoinedScheduleCalls(ListOfPromises,connectNow, date, username, timeTable, whatWanted) {
     console.log(ListOfPromises.length);
-    if (connectNow === undefined) {
-        console.log("making connection in join");
-        connectNow = con.method();
-        connectNow.connect(function (err) {
-            if (err) {
-                connectNow.end();
-                throw err;
-            }
-        });
-    };
     console.log("joined");
     (date === undefined) ? today = new Date() : today = new Date(date);
     const startOfWeek = new Date(today.getFullYear(), today.getMonth(), (today.getDate() - (today.getDay() - 2) - 1));
@@ -135,7 +140,9 @@ function JoinedScheduleCalls(ListOfPromises,connectNow, date, username, timeTabl
      const promise = new Promise(function (resolve, reject) {
         Promise.all(ListOfPromises).then(function (value) {
             console.log(ListOfPromises);
-            connectNow.end();
+            console.log("hello there");
+            if (connectNow !== undefined){
+            connectNow.end();}
             console.log("joined done!!");
             console.log(value);
             resolve(value);
