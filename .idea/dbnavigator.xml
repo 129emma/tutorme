@@ -23,11 +23,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="10b13aad-a5ea-4294-984d-40d2a025e214">
-        <schema name="tutorme" object-types="column, constraint, function, index, procedure, table, dataset trigger, view" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="10b13aad-a5ea-4294-984d-40d2a025e214">
@@ -41,7 +37,7 @@ GROUP BY  tutor.userName
 ORDER BY rating DESC
 LIMIT 10;]]></console>
     </connection>
-    <connection id="45892a0d-e823-42df-888c-a3837526d00a">
+    <connection id="39c13afc-cd79-4b47-a478-14e289ebf855">
       <console name="Connection 1" type="STANDARD" />
     </connection>
   </component>
@@ -144,7 +140,7 @@ LIMIT 10;]]></console>
           <object-name-filters />
         </object-filters>
       </connection>
-      <connection id="45892a0d-e823-42df-888c-a3837526d00a" active="true">
+      <connection id="39c13afc-cd79-4b47-a478-14e289ebf855" active="true">
         <database>
           <name value="Connection 1" />
           <description value="" />

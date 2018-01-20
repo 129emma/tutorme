@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="66d2b2d6-f8a2-4f67-8d60-a1b0ffb1f515" name="Default" comment="&quot;fix bryan's shsit&quot;">
+    <list default="true" id="66d2b2d6-f8a2-4f67-8d60-a1b0ffb1f515" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/javascript/tutorSchedule3WeekPreRendering1.js" />
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/javascript/ListingSQL.js" afterPath="$PROJECT_DIR$/javascript/ListingSQL.js" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
+      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change beforePath="$PROJECT_DIR$/routes/listing.js" afterPath="$PROJECT_DIR$/routes/listing.js" />
+      <change beforePath="$PROJECT_DIR$/routes/userRoute/tutorSchedule.js" afterPath="$PROJECT_DIR$/routes/userRoute/tutorSchedule.js" />
       <change beforePath="$PROJECT_DIR$/views/listing.ejs" afterPath="$PROJECT_DIR$/views/listing.ejs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,21 +21,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="profile.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/userView/profile.ejs">
+      <file leaf-file-name="listing.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/listing.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="31" column="50" lean-forward="false" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
+            <state relative-caret-position="209">
+              <caret line="91" column="68" lean-forward="false" selection-start-line="91" selection-start-column="68" selection-end-line="91" selection-end-column="68" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="publicProfile.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/publicProfile.ejs">
+      <file leaf-file-name="tutorSchedule.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/userRoute/tutorSchedule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-524">
-              <caret line="10" column="33" lean-forward="false" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+            <state relative-caret-position="191">
+              <caret line="16" column="26" lean-forward="false" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -40,18 +44,48 @@
       <file leaf-file-name="listing.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/listing.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="733">
-              <caret line="38" column="24" lean-forward="false" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+            <state relative-caret-position="104">
+              <caret line="103" column="53" lean-forward="false" selection-start-line="103" selection-start-column="53" selection-end-line="103" selection-end-column="53" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListingSQL.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tutorSchedule.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/userView/tutorSchedule.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="390" column="49" lean-forward="true" selection-start-line="389" selection-start-column="16" selection-end-line="390" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tutorSchedule3WeekPreRendering.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/javascript/tutorSchedule3WeekPreRendering.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="39" column="63" lean-forward="false" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tutorSchedule3WeekPreRendering1.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/javascript/tutorSchedule3WeekPreRendering1.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="401">
+              <caret line="139" column="31" lean-forward="true" selection-start-line="139" selection-start-column="31" selection-end-line="139" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListingSQL.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/javascript/ListingSQL.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="16" column="70" lean-forward="false" selection-start-line="16" selection-start-column="70" selection-end-line="16" selection-end-column="70" />
+            <state relative-caret-position="356">
+              <caret line="78" column="70" lean-forward="false" selection-start-line="78" selection-start-column="70" selection-end-line="78" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -72,51 +106,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UpdatingTime.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/javascript/UpdatingTime.js">
+      <file leaf-file-name="publicProfile.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/publicProfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-42">
-              <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="31" />
+            <state relative-caret-position="-9">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="listing.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/listing.ejs">
+      <file leaf-file-name="tuteeSchedule.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/tuteeRoute/tuteeSchedule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="70" column="84" lean-forward="false" selection-start-line="70" selection-start-column="84" selection-end-line="70" selection-end-column="84" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1344">
-              <caret line="64" column="14" lean-forward="false" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="navbar.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/templates/navbar.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="861">
-              <caret line="41" column="61" lean-forward="false" selection-start-line="41" selection-start-column="61" selection-end-line="41" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tutorSchedule.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/userView/tutorSchedule.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3444">
-              <caret line="164" column="62" lean-forward="false" selection-start-line="164" selection-start-column="62" selection-end-line="164" selection-end-column="62" />
+            <state relative-caret-position="-9">
+              <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -134,13 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>render</find>
-      <find>msg</find>
-      <find>input</find>
-      <find>time</find>
-      <find>value.getTime() + value.getTimezoneOffset()*60*1000</find>
-      <find>date</find>
-      <find>switch</find>
       <find>connecting</find>
       <find>day</find>
       <find>socket</find>
@@ -148,7 +145,6 @@
       <find>username</find>
       <find>insert</find>
       <find>availa</find>
-      <find>available</find>
       <find>save</find>
       <find>ava</find>
       <find>edit</find>
@@ -164,6 +160,14 @@
       <find>rating</find>
       <find>&lt;i&gt;</find>
       <find>as b</find>
+      <find>?</find>
+      <find>one week</find>
+      <find>oneweek</find>
+      <find>start</find>
+      <find>for</find>
+      <find>available</find>
+      <find>String</find>
+      <find>splice</find>
     </findStrings>
     <replaceStrings>
       <replace>value.timeStart</replace>
@@ -199,7 +203,6 @@
         <option value="$PROJECT_DIR$/routes/tutorRoute/profile.js" />
         <option value="$PROJECT_DIR$/routes/tutorRoute/tutorSchedule.js" />
         <option value="$PROJECT_DIR$/routes/tutorRoute/tutorBooking.js" />
-        <option value="$PROJECT_DIR$/javascript/tutorSchedule3WeekPreRendering.js" />
         <option value="$PROJECT_DIR$/views/tutorView/tutorBooking.ejs" />
         <option value="$PROJECT_DIR$/views/tutorView/home.ejs" />
         <option value="$PROJECT_DIR$/views/tutorView/feedback.ejs" />
@@ -218,9 +221,12 @@
         <option value="$PROJECT_DIR$/views/publicProfile.ejs" />
         <option value="$PROJECT_DIR$/views/templates/included.html" />
         <option value="$PROJECT_DIR$/views/error.ejs" />
-        <option value="$PROJECT_DIR$/routes/listing.js" />
+        <option value="$PROJECT_DIR$/routes/userRoute/tutorSchedule.js" />
+        <option value="$PROJECT_DIR$/javascript/tutorSchedule3WeekPreRendering.js" />
         <option value="$PROJECT_DIR$/views/listing.ejs" />
         <option value="$PROJECT_DIR$/javascript/ListingSQL.js" />
+        <option value="$PROJECT_DIR$/javascript/tutorSchedule3WeekPreRendering1.js" />
+        <option value="$PROJECT_DIR$/routes/listing.js" />
       </list>
     </option>
   </component>
@@ -234,10 +240,9 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-362" />
-    <option name="y" value="-26" />
-    <option name="width" value="1920" />
-    <option name="height" value="1045" />
+    <option name="x" value="-8" />
+    <option name="width" value="976" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -254,13 +259,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="tutorme" type="b2602c69:ProjectViewProjectNode" />
               <item name="tutorme" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tutorme" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tutorme" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tutorme" type="b2602c69:ProjectViewProjectNode" />
@@ -277,6 +286,12 @@
               <item name="tutorme" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
               <item name="tuteeRoute" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tutorme" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tutorme" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="userRoute" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tutorme" type="b2602c69:ProjectViewProjectNode" />
@@ -299,6 +314,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -311,11 +327,12 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/J Won/WebstormProjects/tutorme/public/img/logo.png" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\james\WebstormProjects\tutorme\javascript" />
+      <recent name="$PROJECT_DIR$/public/img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\J Won\WebstormProjects\tutorme\views" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/img" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -390,7 +407,8 @@
       <workItem from="1516158306916" duration="13670000" />
       <workItem from="1516321954524" duration="74000" />
       <workItem from="1516324488917" duration="3371000" />
-      <workItem from="1516333207051" duration="2727000" />
+      <workItem from="1516333207051" duration="2784000" />
+      <workItem from="1516400645470" duration="11122000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;added sockets and the sql call related&quot;">
       <created>1513386883857</created>
@@ -574,11 +592,18 @@
       <option name="project" value="LOCAL" />
       <updated>1516247679752</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="&quot;search function done for bryan's part&quot;">
+      <created>1516335959449</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1516335959450</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133864000" />
+    <option name="totallyTimeSpent" value="145043000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -593,16 +618,16 @@
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40796554" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21152829" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.49505603" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32998413" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998413" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3220339" sideWeight="0.53547525" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21039903" sideWeight="0.4698795" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3148358" sideWeight="0.46452478" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20951302" sideWeight="0.4698795" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43261608" sideWeight="0.46452478" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23033068" sideWeight="0.48995984" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22989808" sideWeight="0.48995984" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997735" sideWeight="0.49814913" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -692,21 +717,14 @@
     <MESSAGE value="yesteradya" />
     <MESSAGE value="," />
     <MESSAGE value="&quot;fix bryan's shsit&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;fix bryan's shsit&quot;" />
+    <MESSAGE value="&quot;search function done for bryan's part&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;search function done for bryan's part&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/routes/schedule.js" />
-    <entry file="file://$PROJECT_DIR$/routes/tutee.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -762,24 +780,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/tutorSchedule3WeekPreRendering.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1012">
-          <caret line="46" column="396" lean-forward="false" selection-start-line="46" selection-start-column="396" selection-end-line="46" selection-end-column="396" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/tutorRoute/profile.js" />
     <entry file="file://$PROJECT_DIR$/routes/tutorRoute/tutorSchedule.js" />
     <entry file="file://$PROJECT_DIR$/routes/tutorRoute/tutorBooking.js" />
     <entry file="file://$PROJECT_DIR$/views/tutorView/feedback.ejs" />
-    <entry file="file://$PROJECT_DIR$/routes/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/login.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -805,25 +809,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/userView/tutorBooking.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/tutorSchedule.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="524">
           <caret line="35" column="1" lean-forward="false" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/userView/tutorSchedule.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3444">
-          <caret line="164" column="62" lean-forward="false" selection-start-line="164" selection-start-column="62" selection-end-line="164" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -886,7 +875,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/publicProfile.js" />
     <entry file="file://$PROJECT_DIR$/views/error.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="388">
@@ -901,9 +889,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/userView/profile.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="31" column="50" lean-forward="false" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascript/UpdatingTime.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/publicProfile.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-557">
+          <caret line="10" column="33" lean-forward="false" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/userView/tutorBooking.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/publicProfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/tuteeRoute/tuteeSchedule.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
+        <state relative-caret-position="-9">
           <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
           <folding />
         </state>
@@ -922,50 +958,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/UpdatingTime.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-42">
-          <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/listing.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="70" column="84" lean-forward="false" selection-start-line="70" selection-start-column="84" selection-end-line="70" selection-end-column="84" />
+        <state relative-caret-position="209">
+          <caret line="91" column="68" lean-forward="false" selection-start-line="91" selection-start-column="68" selection-end-line="91" selection-end-column="68" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/userView/profile.ejs">
+    <entry file="file://$PROJECT_DIR$/javascript/tutorSchedule3WeekPreRendering1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="31" column="50" lean-forward="false" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/listing.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="733">
-          <caret line="38" column="24" lean-forward="false" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/publicProfile.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-524">
-          <caret line="10" column="33" lean-forward="false" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+        <state relative-caret-position="401">
+          <caret line="139" column="31" lean-forward="true" selection-start-line="139" selection-start-column="31" selection-end-line="139" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/javascript/ListingSQL.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="16" column="70" lean-forward="false" selection-start-line="16" selection-start-column="70" selection-end-line="16" selection-end-column="70" />
+        <state relative-caret-position="356">
+          <caret line="78" column="70" lean-forward="false" selection-start-line="78" selection-start-column="70" selection-end-line="78" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascript/tutorSchedule3WeekPreRendering.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="39" column="63" lean-forward="false" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/userView/tutorSchedule.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="390" column="49" lean-forward="true" selection-start-line="389" selection-start-column="16" selection-end-line="390" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/listing.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="103" column="53" lean-forward="false" selection-start-line="103" selection-start-column="53" selection-end-line="103" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/userRoute/tutorSchedule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="16" column="26" lean-forward="false" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="26" />
           <folding />
         </state>
       </provider>

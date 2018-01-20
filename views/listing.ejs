@@ -83,4 +83,28 @@
 
 </div>
 </body>
+<script>
+    console.log($("div.ui.action.input > div.ui.button"))
+    $("div.ui.action.input > div.ui.button").on("click",function () {
+       const subject = $(this).siblings("select.ui.compact.selection.dropdown")[0].value;
+        const username = ($(this).parent().parent().siblings("a.header")[0].innerHTML);
+        // $.get("/listing/booking",{username: username , subject: subject});
+        window.location.href = '/listing/booking?username='+username+"&&subject="+subject;
+
+        // $.ajax({
+        //     url:   "/listing/booking",
+        //     data:  {username: username , subject: subject},
+        //     async: false
+        // });
+        // $.ajax({
+        //     url: "/listing/booking",
+        //     method: "GET",
+        //     data: {username: username , subject: subject},
+        //     success: function(result){
+        //         console.log(result);
+        //         $.get("user/tutorSchedule/booking",{username: username , subject: subject});
+        //     }});
+    })
+    console.log($("select")[0].value);
+</script>
 </html>

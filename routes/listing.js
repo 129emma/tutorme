@@ -7,8 +7,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const router = express.Router();
 const ListingSQL = require("../javascript/ListingSQL");
-
-
+//const weekly = require("../../javascript/tutorSchedule3WeekPreRendering");
+const weekly1 = require("../javascript/tutorSchedule3WeekPreRendering1");
 router.get('/', function (req, res) {
     console.log("listing");
     //the limit for number of display per page
@@ -26,11 +26,17 @@ router.get('/', function (req, res) {
      }
      }]
      */
-    const promiseForListing = ListingSQL.listingSQLDEC(limit);
-    const promiseForAllcourses = ListingSQL.allTableCourses();
-    Promise.all([promiseForListing,promiseForAllcourses]).then(function (value) {
-        res.render("listing", {tutors: value[0], courses: value[1]});
-    });
+    // const connectNow = con.method();
+    // connectNow.connect(function (err) {
+    //     if (err) {
+    //         connectNow.end();
+    //         throw err
+    //     }
+    // });
+    const joinedPromises= ListingSQL.joinedSQLListingCall(limit);
+    joinedPromises.then(function (value) {
+        res.render("listing",value)
+    })
 
 });
 
@@ -65,28 +71,43 @@ router.get('/search', function (req, res) {
      }
      }]
      */
-    // connectNow.query("SELECT * FROM tableCapabilities LIMIT ?"
-    //     , [limit], function (err, resultTutor) {
-    //         const resultDetails = JSON.parse(JSON.stringify(resultTutor));
-    //         const courses = Array.from(new Set(resultDetails.map(function (p1) { return p1.courseID;  })));
-    //         console.log(courses);
-    //         connectNow.end();
-    //         if (err) {
-    //             throw err;
-    //         } else {
-    //             // DB connection to get course list to display in dropdown
-    //             console.log("this is going back to the listing");
-    //             res.render("listing", {cap: resultDetails, courses: courses});
-    //         }
-    //     });
-
-    const promiseForSelection = ListingSQL.listingSQLDEC(limit,id);
-    const promiseForAllcourses = ListingSQL.allTableCourses();
-    Promise.all([promiseForSelection,promiseForAllcourses]).then(function (value) {
-
-        res.render("listing", {tutors: value[0], courses: value[1]});
-    });
+    const joinedPromises= ListingSQL.joinedSQLListingCall(limit, id);
+    joinedPromises.then(function (value) {
+        res.render("listing",value)
+    })
 });
 
+router.get("/booking",function (req, res) {
+    console.log(req.query);
+    const listOfPromises = [weekly1.Oneweek,weekly1.tutorbooked];
+    console.log("list of Promises");
+    const promise = weekly1.joinedScheduleCalls(listOfPromises, undefined, undefined, req.query.username,'tableTime','timeStart');
+    promise.then(function (value) {
+
+
+        const tutor = {
+            "userName": [req.query.username],
+            "bookedTime": [],
+            "course": [],
+            "tutee": [],
+            "location": [],
+            "availableTime": [],
+            "bookingID": []
+        };
+
+
+        for(var i = 0; i< value[0].length;i++){
+            tutor.availableTime.push(String(value[0][i].timeStart))
+        }
+        for(var i = 0; i< value[1].length;i++){
+            const numbering = (tutor.availableTime.indexOf(String(value[1][i])));
+            tutor.availableTime.splice(numbering, 1);
+        }
+        //res.render("listing",value);
+        console.log(tutor.availableTime);
+        console.log("what the fuck man");
+        res.render("./userView/tutorSchedule.ejs", {value:tutor, userDetails: req.query.username, sess: req.session});
+    });
+});
 
 module.exports = router;
