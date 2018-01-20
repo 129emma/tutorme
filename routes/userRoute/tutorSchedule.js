@@ -4,11 +4,11 @@ const con = require('../../javascript/connection');
 const weekly = require("../../javascript/tutorSchedule3WeekPreRendering");
 
 router.get('/', function (req, res) {
-    var promise = weekly.Oneweek(undefined, "jojo",'tableTime','timeStart');
+    var promise = weekly.Oneweek(undefined, req.session.username,'tableTime','timeStart');
 
     promise.then(function (value) {
         console.log(value);
-        res.render("./userView/tutorSchedule.ejs", {value:value, userDetails: "jojo", sess: req.session});
+        res.render("./userView/tutorSchedule.ejs", {value:value, userDetails: req.session.username, sess: req.session});
     })
 });
 

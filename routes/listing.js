@@ -96,7 +96,7 @@ router.get("/booking",function (req, res) {
 
 
         const tutor = {
-            "userName": [req.query.username],
+            "userName": [req.session.username],
             "bookedTime": [],
             "course": [],
             "tutee": [],
@@ -112,12 +112,19 @@ router.get("/booking",function (req, res) {
         for(var i = 0; i< value[1].length;i++){
             const numbering = (tutor.availableTime.indexOf(String(value[1][i])));
             tutor.availableTime.splice(numbering, 1);
+
         }
         //res.render("listing",value);
         console.log(tutor.availableTime);
         console.log("what the fuck man");
-        res.render("./userView/tutorSchedule.ejs", {value:tutor, userDetails: req.query.username, sess: req.session});
+        res.render("./userView/tutorScheduleBooking.ejs", {value:tutor, userDetails: req.query.username, sess: req.session});
     });
+});
+
+router.get("/booking/modal", function (req, res) {
+    console.log(req.query);
+    var rawObject ="";
+    res.render("./userView/tutorBooking", {userDetails: req.session.userDetails, bookingData: rawObject});
 });
 
 module.exports = router;
