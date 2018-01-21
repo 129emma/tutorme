@@ -10,6 +10,8 @@
 <head>
     <title>ERROR!</title>
 </head>
+
+
 <body>
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
 <% include ./templates/navbar.ejs %>
@@ -25,14 +27,28 @@
     <p>Be a honey badger and go debug! :p</p>
     <br>
 
-    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Click to see more error info</button>
-    <div id="demo" class="collapse">
-        <p>Error message: <%= message %></p>
-        <p><%= error.status %></p>
+    <!--<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Click to see more error info</button>-->
+    <div class="ui styled fluid accordion">
+        <div class="title">
+            <i class="dropdown icon"></i>
+            Click for more debugging information
+        </div>
+        <div class="content">
+            <div class="transition hidden">
+                <p>Error message: <%= message %></p>
+                <p><%= error.status %></p>
 
-        <pre>To help you the stack is as follows:
-            <%= error.stack %></pre>
+                <pre>To help you the stack is as follows:
+                    <%= error.stack %></pre>
+            </div>
+        </div>
     </div>
+
+
+
+    <!--<div id="demo" class="collapse">-->
+
+    <!--</div>-->
 
 
 
@@ -40,6 +56,12 @@
 </div>
 
 </body>
+
+<script>
+    $('.ui.accordion')
+        .accordion()
+    ;
+</script>
 </html>
 
 

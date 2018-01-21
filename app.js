@@ -10,23 +10,17 @@ const index = require('./routes/index');
 const registration = require('./routes/registration');
 const login = require('./routes/login');
 const user = require('./routes/user');
+const listing = require('./routes/listing');
+const publicProfile = require('./routes/publicProfile');
+
 const aboutUs = require('./routes/aboutUs');
 const contactUs = require('./routes/contactUs');
-
-// requiring tutor.js which contains requires to all the tutor specific routes, used below.
-// const tutor = require('./routes/tutor');
-
-// requiring tutee.js which contains requires to all the tutee specific routes, used below.
-const tutee = require('./routes/tutee');
 
 //requiring Mozilla session module
 var session = require('express-session');
 
 //require ajaxexpresso
 const ajaxhandler = require('./routes/ajaxhandler');
-
-//require listing
-const listing = require('./routes/listing');
 
 // Lamlam and Vanie needs to add comments
 const tutorSchedule = require('./javascript/tutorSchedule3WeekPreRendering');
@@ -69,24 +63,15 @@ app.use('/registration', registration);
 app.use('/login', login);
 // user routes, see routes/userRoutes/* for all the various specific end routes.
 app.use('/user', user);
+app.use('/listing', listing);
+app.use('/publicProfile', publicProfile);
+
 app.use('/aboutus', aboutUs);
 app.use('/contactus', contactUs);
-// //use of tutor routes, see routes/tutorRoute/* for all the different routes inside of tutorRoutes
-// app.use('/tutor', tutor);
-//
-// //use of tutee routes, see routes/tuteeRoute/* for all the different routes inside of tutorRoutes
-// app.use('/tutee', tutee);
 
 //ajax handler router
 app.use('/ajaxhandler', ajaxhandler);
 
-//use of tutor routes, see routes/tutorRoute/* for all the different routes inside of tutorRoutes
-// app.use('/tutor', tutor);
-
-//use of tutee routes, see routes/tuteeRoute/* for all the different routes inside of tutorRoutes
-// app.use('/tutee', tutee);
-
-app.use('/listing', listing);
 
 app.use(session({
     genid: function (req) {
@@ -126,6 +111,7 @@ io.on('connection', function (socket) {
         //console.log(typeof msg);
         //console.log(msg.userName);
         const presetDate = new Date(msg.day);
+        console.log(presetDate);
         const date = new Date(presetDate.getFullYear(),presetDate.getMonth(),(presetDate.getDate()),-11);
         //console.log(date);
         console.log("Is this tutee: "+ msg.tuteeBoolean + " "+ (typeof msg.tuteeBoolean));

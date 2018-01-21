@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- The included template contains all the links, JS and Styling files to be included in the pages, to alter the contents please refer to templates/included.html file -->
+    <% include ../templates/included.html %>
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/tutorSchedule.css">
+
+    <script>
+        $(function () {
+            $('.info-modal-link').each(function () {
+                $(this).on('click', function (e) {
+                    e.preventDefault();
+                    var url = $(this).attr('href');
+                    $.get(url, function (data) {
+                        $('.info.modal .content').html(data);
+                        $(".info.modal").modal({closable: true, observeChanges: true}).modal('show');
+                    });
+                });
+            });
+
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+<!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
+<% include ../templates/navbar.ejs %>
+
+<div class="ui center aligned container">
+
+    <div class="ui info modal">
+        <div class="content" id="info"></div>
+
+
+    </div>
+
+
+    <h1 align="center"><%= userDetails %>'s weekly schedule</h1>
+    <div class="ui center aligned container">
+        <div class="column">
+            <button class="icon button" id="button2" style="border: none">
+                <i class="chevron left icon"></i>
+            </button>
+            <button class="icon button" id="button1" style="border: none">
+                <i class="chevron right icon"></i></button>
+        </div>
+
+        <!--<div class="column" style="padding: 10px">-->
+        <!--<div class="ui buttons" >-->
+        <!--<button class="ui button unclickButton" id="edit" onclick="editCalendar()" >Edit</button>-->
+        <!--<div class="or"></div>-->
+        <!--<button class="ui positive button" id="save" onclick="saveCalendar()">Save</button>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+
+    <div style="padding: 20px">
+        <table id="scheduleTable" class="ui orange celled center aligned table calendar">
+            <thead>
+            <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+</body>
+
+
+<!--This is the script to load semantic model content from another webpage-->
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+
+
+    var ListOfDates = [];
+    var ListToDelete = [];
+    const userName = "<%= userDetails %>";
+
+    //rendering calendar
+    var cale = document.getElementsByClassName("calendar")[0];
+    for (var i = 7; i < 24; i++) {
+        var newRow = document.createElement('tr');
+        var firstTd = document.createElement('td');
+        firstTd.innerHTML = i + ':00';
+        newRow.appendChild(document.createElement('td').appendChild(firstTd));
+        for (var j = 1; j < 8; j++) {
+
+            var newtd = document.createElement('td');
+            newtd.id = j + "." + i;
+            newtd.className = "empty";
+            newtd.innerHTML = "..";
+            // newtd.onclick = onClickOfTD();
+            newtd.addEventListener("click", onClickOfTD);
+            newRow.appendChild(newtd);
+        }
+        cale.appendChild(newRow);
+    }
+
+    var date = new Date();
+    var day = new Date(date.getFullYear(), (date.getMonth()), date.getDate());
+    const weekdays = $("th");
+    const table = $("#scheduleTable")[0];
+    const availableTime = ("<%= value.availableTime %>").split(",");
+    //list of jsons {Time: date, id: BookingId}
+    renderDays();
+
+    var weeklisting = preRenderWeeks(date, availableTime, "available");
+
+    //
+
+    $("#button1").on("click", function () {
+        $(table).fadeOut("fast", function () {
+            day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
+            console.log(day)
+            if (typeof tuteeBoolean !== "undefined" && tuteeBoolean !== "" && tuteeBoolean === "true") {
+
+                socket.emit('nextnextweek', {userName: userName, day: day, tuteeBoolean: true});
+            } else {
+                socket.emit('nextnextweek', {userName: userName, day: day, tuteeBoolean: false});
+            }
+            socket.on('nextnextweek', function (value) {
+                // weeklisting.weeknext = value
+                renderDays()
+                for (var i = 0; i < value.bookedTime.length; i++) {
+                    const numbering = (value.availableTime.indexOf(value.bookedTime[i]));
+                    value.availableTime.splice(numbering, 1);
+                }
+                weeklisting = preRenderWeeks(day, value.availableTime, "available")
+                // switchingWeeks(weeklisting.availableTime)
+                $(table).fadeIn("fast", function () {
+                })
+            })
+        })
+    });
+
+    $("#button2").on("click", function () {
+        $(table).fadeOut("fast", function () {
+            day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
+            //
+            if (typeof tuteeBoolean !== "undefined" && tuteeBoolean !== "" && tuteeBoolean === "true") {
+
+                socket.emit('lastlastweek', {userName: userName, day: day, tuteeBoolean: true});
+            } else {
+                socket.emit('lastlastweek', {userName: userName, day: day, tuteeBoolean: false});
+            }
+            socket.on('lastlastweek', function (value) {
+
+                console.log(value)
+                for (var i = 0; i < value.bookedTime.length; i++) {
+                    const numbering = (value.availableTime.indexOf(value.bookedTime[i]));
+                    value.availableTime.splice(numbering, 1);
+                }
+                renderDays()
+                console.log(value.availableTime)
+                weeklisting = preRenderWeeks(day, value.availableTime, "available")
+                $(table).fadeIn("fast", function () {
+                })
+            })
+        })
+    });
+
+    function switch12(num) {
+        if (num === 0) {
+            num = 12
+        }
+        return num;
+    }
+
+    function switch7(num) {
+        if (num === 0) {
+            num = 7
+        }
+        return num;
+    }
+
+    function preRenderWeeks(date, timing, className) {
+
+
+        var weekListing = []
+
+        timing.map(function (value) {
+
+            if (value !== "") {
+                value = new Date(value)
+                value.setTime(value.getTime() + value.getTimezoneOffset() * 60 * 1000);
+                weekListing.push(value)
+            }
+        })
+
+        switchingWeeks(weekListing, className);
+        return weekListing;
+    }
+
+    function renderDays() {
+        var availableTimeCells = document.getElementsByClassName("available");
+        while (availableTimeCells.length > 0) {
+            for (var aCells = 0; aCells < availableTimeCells.length; aCells++) {
+                availableTimeCells[aCells].className = "empty";
+            }
+            availableTimeCells = document.getElementsByClassName("available");
+        }
+
+        for (var i = 1; i < weekdays.length; i++) {
+            // date + i - day.weekday
+            var d = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + i - day.getDay()));
+            // thisWeekDays.push({year:d.getFullYear(), month: d.getMonth(), date: d.getDate()});
+            var counterDay = {
+                weekDay: d.getDay(),
+                date: d.getDate(),
+                month: switch12(d.getMonth() + 1),
+                year: d.getFullYear()
+            };
+
+            var weekDayString;
+
+            switch (counterDay.weekDay) {
+                case 1:
+                    weekDayString = "Monday"
+                    break;
+                case 2:
+                    weekDayString = "Tuesday"
+                    break;
+                case 3:
+                    weekDayString = "Wednesday"
+                    break;
+                case 4:
+                    weekDayString = "Thursday"
+                    break;
+                case 5:
+                    weekDayString = "Friday"
+                    break;
+                case 6:
+                    weekDayString = "Saturday"
+                    break;
+                case 0:
+                    weekDayString = "Sunday"
+                    break;
+            }
+            weekdays[i].innerHTML = switch7(weekDayString) + "<br>" + counterDay.date + "/" + counterDay.month;
+        }
+    }
+
+    function switchingWeeks(msg, className) {
+        //renderDays()
+
+        if (msg.length > 0) {
+            for (var i = 0; i < msg.length; i++) {
+                const value = msg[i]
+                const selectedTime = document.getElementById(((value.getDay() === 0) ? 7 : value.getDay()) + "." + value.getHours());
+                selectedTime.className = className;
+                const classId = selectedTime.id.split(".")
+                const classIdDay = classId[0]
+                const classIdHour = classId[1]
+                var Clickdate = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - (day.getDay()) + classIdDay * 1), classIdHour);
+                Clickdate.setTime(Clickdate.getTime() - Clickdate.getTimezoneOffset() * 60 * 1000);
+                //document.createElement("a").href = '/listing/booking/modal?username='+userName+"&&subject=<%= subject%>"+"&&time="+String(Clickdate);
+                selectedTime.innerHTML ="<a href='/listing/booking/modal?username=" + userName+"&&subject=<%=subject%>"+"&&time="+String(Clickdate) + "' id='myDetail' class='info-modal-link'>" + userName + "<br></a>";
+            }
+        }
+    }
+
+    //made a socket based on the http/ url address hence it is app.js
+    // var socket = io("http://localhost:3000/");
+    var socket = io.connect(window.location.origin);
+    // the on connect is going to trigger the .on('connection') for the backend IO.
+    socket.on('connect', function () {
+    })
+    socket.on('disconnect', function () {
+    });
+
+
+    function onClickOfTD() {
+        var classname = this.className;
+        const classId = this.id.split(".")
+        const classIdDay = classId[0]
+        const classIdHour = classId[1]
+
+        if (classname === "available") {
+            document.getElementById(this.id).className = 'deleting';
+            var Clickdate = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - (day.getDay()) + classIdDay * 1), classIdHour);
+            Clickdate.setTime(Clickdate.getTime() - Clickdate.getTimezoneOffset() * 60 * 1000);
+            console.log(this);
+            window.location.href = '/listing/booking/modal?username='+userName+"&&subject=<%= subject%>"+"&&time="+String(Clickdate);
+        }
+    }
+</script>
+</html>
