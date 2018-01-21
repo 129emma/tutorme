@@ -9,6 +9,7 @@ const router = express.Router();
 const ListingSQL = require("../javascript/ListingSQL");
 //const weekly = require("../../javascript/tutorSchedule3WeekPreRendering");
 const weekly1 = require("../javascript/tutorSchedule3WeekPreRendering1");
+const updateTime = require("../javascript/UpdatingTime");
 router.get('/', function (req, res) {
     console.log("listing");
     //the limit for number of display per page
@@ -123,7 +124,14 @@ router.get("/booking/confirm", function (req, res) {
     console.log("booking confirm");
     console.log(req.query);
     const Clickdate = new Date(req.query.time);
-
+    Clickdate.setTime(Clickdate.getTime() + Clickdate.getTimezoneOffset() * 60 * 1000);
+//    console.log(req.query.time);
+    console.log(Clickdate);
+//    updateTime.convert(Clickdate)
+    const promise = updateTime.bookingAvailableTime(Clickdate,req.query.tutee,req.query.tutor,req.query.subject);
+    promise.then(function (value) {
+        console.log("Added to database plz check");
+    })
 });
 
 module.exports = router;

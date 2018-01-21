@@ -161,7 +161,6 @@ function JoinedScheduleCalls(ListOfPromises,connectNow, date, username, timeTabl
             for(var i = 0; i< value[1].length;i++){
                 const numbering = (tutor.availableTime.indexOf(String(value[1][i])));
                 tutor.availableTime.splice(numbering, 1);
-
             }
             resolve(tutor);
         });
