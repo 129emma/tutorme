@@ -145,7 +145,25 @@ function JoinedScheduleCalls(ListOfPromises,connectNow, date, username, timeTabl
             connectNow.end();}
             console.log("joined done!!");
             console.log(value);
-            resolve(value);
+            const tutor = {
+                "userName": [],
+                "bookedTime": [],
+                "course": [],
+                "tutee": [],
+                "location": [],
+                "availableTime": [],
+                "bookingID": []
+            };
+
+            for(var i = 0; i< value[0].length;i++){
+                tutor.availableTime.push(String(value[0][i].timeStart))
+            }
+            for(var i = 0; i< value[1].length;i++){
+                const numbering = (tutor.availableTime.indexOf(String(value[1][i])));
+                tutor.availableTime.splice(numbering, 1);
+
+            }
+            resolve(tutor);
         });
     });
     return promise;

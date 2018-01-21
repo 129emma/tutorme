@@ -90,41 +90,19 @@ router.get("/booking",function (req, res) {
         // });
 
     const listOfPromises = [weekly1.Oneweek,weekly1.tutorbooked];
-    console.log("list of Promises");
     const promise = weekly1.joinedScheduleCalls(listOfPromises, undefined, undefined, req.query.username,'tableTime','timeStart');
     promise.then(function (value) {
-
-
-        const tutor = {
-            "userName": [req.session.username],
-            "bookedTime": [],
-            "course": [],
-            "tutee": [],
-            "location": [],
-            "availableTime": [],
-            "bookingID": []
-        };
-
-
-        for(var i = 0; i< value[0].length;i++){
-            tutor.availableTime.push(String(value[0][i].timeStart))
-        }
-        for(var i = 0; i< value[1].length;i++){
-            const numbering = (tutor.availableTime.indexOf(String(value[1][i])));
-            tutor.availableTime.splice(numbering, 1);
-
-        }
-        //res.render("listing",value);
-        console.log(tutor.availableTime);
-        console.log("what the fuck man");
-        res.render("./userView/tutorScheduleBooking.ejs", {value:tutor, userDetails: req.query.username, sess: req.session});
+        console.log(value.availableTime);
+        value.userName = req.session.username;
+        res.render("./userView/tutorScheduleBooking.ejs", {value:value, userDetails: req.query.username, sess: req.session, subject:req.query.subject});
     });
 });
 
 router.get("/booking/modal", function (req, res) {
     console.log(req.query);
-    var rawObject ="";
-    res.render("./userView/tutorBooking", {userDetails: req.session.userDetails, bookingData: rawObject});
+    console.log(req.session.username);
+    console.log(req.session.userDetails.userName);
+    res.render("./userView/tuteeBooking", {userDetails: req.session.userDetails});
 });
 
 module.exports = router;
