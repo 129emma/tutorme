@@ -139,8 +139,7 @@ function JoinedScheduleCalls(ListOfPromises,connectNow, date, username, timeTabl
         console.log(ListOfPromises);
      const promise = new Promise(function (resolve, reject) {
         Promise.all(ListOfPromises).then(function (value) {
-            console.log(ListOfPromises);
-            console.log("hello there");
+            console.log(value)
             if (connectNow !== undefined){
             connectNow.end();}
             console.log("joined done!!");
@@ -157,9 +156,10 @@ function JoinedScheduleCalls(ListOfPromises,connectNow, date, username, timeTabl
 
             for(var i = 0; i< value[0].length;i++){
                 tutor.availableTime.push(String(value[0][i].timeStart))
+
             }
             for(var i = 0; i< value[1].length;i++){
-                const numbering = (tutor.availableTime.indexOf(String(value[1][i])));
+                const numbering = (tutor.availableTime.indexOf(String(value[1][i].timeStart)));
                 tutor.availableTime.splice(numbering, 1);
             }
             resolve(tutor);

@@ -131,6 +131,7 @@ router.get("/booking/confirm", function (req, res) {
     const promise = updateTime.bookingAvailableTime(Clickdate,req.query.tutee,req.query.tutor,req.query.subject);
     promise.then(function (value) {
         console.log("Added to database plz check");
+
     })
 });
 
