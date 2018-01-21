@@ -1,93 +1,44 @@
-<!--<nav class="navbar navbar-default" style="background-color: #F1A829">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">Tutorme</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
-
-            <% if (typeof userDetails !== 'undefined') { %>
-            <li><a href="/tutor/profile">Profile</a></li>
-            <li><a href="/tutor/feedback">Feedback</a></li>
-            <% if(userDetails[0].tutor_activation === 1 && (typeof userDetails) !== "undefined" && ((typeof tuteeBoolean) === "undefined" || tuteeBoolean === false)){ %>
-            <li><a href="/tutor/tutorSchedule">Tutor Schedule</a></li>
-            <% } %>
-            <li><a href="/login/logout">logout</a></li>
-            <% } else { %>
-
-            <li><a href="/login">Login</a></li>
-
-            <% } %>
-        </ul>
-    </div>
-</nav>-->
 <link rel='stylesheet' type='text/css' href='/stylesheets/navbar.css'/>
-<div>
-    <div class="ui secondary orange inverted segment">
-        <div class="ui middle aligned grid">
-            <div class="row">
-                <div class="two wide column">
-                    <h1>Tutorme</h1>
-                </div>
-                <div class="two wide column">
-                </div>
-                <div class="eight wide column">
-                    <div class="ui four column grid">
-                        <div class="column">
-                            <a href="/">Home</a>
-                        </div>
-                        <% if (typeof userDetails !== 'undefined') { %>
-                        <div class="column"><a href="/user/profile">Profile</a></div>
-                        <div class="column"><a href="/user/feedback">Feedback</a></div>
-                        <% if(userDetails[0].tutor_activation === 1){ %>
-                        <div class="column"><a href="/user/tutorSchedule">Tutor Schedule</a></div>
-                        <% } %>
-                        <!--About us / policy static pages in dropdown -->
 
-                    </div>
-                </div>
-                <div class="center aligned four wide column">
-                    <div class="column">
-                        <a href="/login/logout">logout</a></div>
-                    <% } else { %>
-                    <div class="column">
-                        <a href="/login">Login</a>
-                        <% } %>
-                    </div>
+<body>
+<div class="ui large secondary pointing menu" id="menu">
+    <a class="item" href="/">
+        <img src="https://i.imgur.com/FjQFqbU.jpg" class="ui centered mini image">
+    </a>
 
-                    <div class="column">
-                        <div class="ui orange buttons">
-                            <div class="ui button">About us</div>
-                            <div class="ui floating dropdown icon button">
-                                <i class="dropdown icon"></i>
-                                <div class="menu">
-                                    <a class="item" href="/aboutus">About our team</a>
-                                    <a class="item" href="/contactus">Contact us</a>
-                                    <a class="item" href="#link3">Policy</a>
-                                </div>
-                            </div>
-                        </div>
 
-                    </div>
-                </div>
-            </div>
+    <div class="item">
+        <div class="ui icon input" id="searchBar">
+            <input type="text" placeholder="Search tutor">
+            <i class="search link icon"></i>
         </div>
     </div>
+
+
+    <a class="right item">
+        <% if (typeof userDetails !== 'undefined') { %>
+        <a class="item" href="/user/profile">
+            Profile
+        </a>
+        <a class="item" href="/user/feedback">
+            Feedback
+        </a>
+        <% if(userDetails[0].tutor_activation === 1){ %>
+        <a class="item" href="/user/tutorSchedule">
+            Tutor Schedule
+        </a>
+        <% } %>
+        <a class="item" href="/login/logout">logout</a>
+        <% } else { %>
+        <a class="item" href="/login/logout">
+            Login
+        </a>
+        <% } %>
+    </a>
 </div>
 
 <script>
-    $('.dropdown')
-        .dropdown({
-            // you can use any ui transition
-            transition: 'drop'
-        })
-    ;
-    $('.link.example .dropdown')
-        .dropdown({
-            action: 'hide'
-        })
-    ;
+
 </script>
 
 </body>
-</html>
