@@ -1,5 +1,6 @@
 const con = require("./connection");
 const mysql = require("mysql");
+
 function insertDate(date,username,timeTable) {
     const connectNow = con.method();
     const promise = new Promise(function (resolve, reject) {
@@ -62,5 +63,27 @@ function deleteDate(date, username, timeTable) {
     })
     return promise;
 };
+function bookingAvaibleTime(date, tutee, tutor,course) {
+    const connectNow = con.method();
+    const promise = new Promise(function (resolve, reject) {
+        connectNow.connect(function (err) {
+            if (err) {
+                connectNow.end();
+                throw err;
+            }
+            connectNow.query(" INSERT INTO `tableBooking` (`bookingID`, `tuteeID`, `tutorID`, `courseID`, `description`, `location`, `totalPrice`, `complete`, `tutorFeedback`, `tutorRating`, `tuteeFeedback`, `tuteeRating`) VALUES (NULL, ?, ?, ?, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL); ", [tutee,tutor,course], function(err, result) {
+                connectNow.end();
+                if (err) {
+                    connectNow.end();
+                    throw err;
+                } else {
+                    console.log(result);
+                }
+                resolve(result);
+            })
+        })
+    })
+    return promise;
 
+}
 module.exports = {Insert: insertDate, Delete: deleteDate};

@@ -265,8 +265,13 @@
                 const value = msg[i]
                 const selectedTime = document.getElementById(((value.getDay() === 0) ? 7 : value.getDay()) + "." + value.getHours());
                 selectedTime.className = className;
-                // weekdays[i].innerHTML ="<a href='/booking/modal?tutor="+userName+"'' id='myDetail' class='info-modal-link'>"+ switch7(weekDayString) + "<br>" + counterDay.date + "/" + counterDay.month+"</a>";
-                // selectedTime.innerHTML ="<a href='/listing/booking/modal?tutor="+userName+"'' id='myDetail' class='info-modal-link'>"+userName+"<br></a>"
+                const classId = selectedTime.id.split(".")
+                const classIdDay = classId[0]
+                const classIdHour = classId[1]
+                var Clickdate = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - (day.getDay()) + classIdDay * 1), classIdHour);
+                Clickdate.setTime(Clickdate.getTime() - Clickdate.getTimezoneOffset() * 60 * 1000);
+                //document.createElement("a").href = '/listing/booking/modal?username='+userName+"&&subject=<%= subject%>"+"&&time="+String(Clickdate);
+                selectedTime.innerHTML ="<a href='/listing/booking/modal?username=" + userName+"&&subject=<%=subject%>"+"&&time="+String(Clickdate) + "' id='myDetail' class='info-modal-link'>" + userName + "<br></a>";
             }
         }
     }
@@ -292,7 +297,7 @@
             var Clickdate = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - (day.getDay()) + classIdDay * 1), classIdHour);
             Clickdate.setTime(Clickdate.getTime() - Clickdate.getTimezoneOffset() * 60 * 1000);
             console.log(this);
-            window.location.href = '/listing/booking?username='+username+"&&subject="+subject+"&&time="+String(Clickdate);
+            window.location.href = '/listing/booking/modal?username='+userName+"&&subject=<%= subject%>"+"&&time="+String(Clickdate);
         }
     }
 </script>

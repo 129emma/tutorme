@@ -33,9 +33,9 @@ router.get('/', function (req, res) {
     //         throw err
     //     }
     // });
-    const joinedPromises= ListingSQL.joinedSQLListingCall(limit);
+    const joinedPromises = ListingSQL.joinedSQLListingCall(limit);
     joinedPromises.then(function (value) {
-        res.render("listing",value)
+        res.render("listing", value)
     })
 
 });
@@ -71,38 +71,59 @@ router.get('/search', function (req, res) {
      }
      }]
      */
-    const joinedPromises= ListingSQL.joinedSQLListingCall(limit, id);
+    const joinedPromises = ListingSQL.joinedSQLListingCall(limit, id);
     joinedPromises.then(function (value) {
-        res.render("listing",value)
+        res.render("listing", value)
     })
 });
 
-router.get("/booking",function (req, res) {
+router.get("/booking", function (req, res) {
     console.log(req.query);
 
 
-        // connectNow = con.method();
-        // connectNow.connect(function (err) {
-        //     if (err) {
-        //         connectNow.end();
-        //         throw err;
-        //     }
-        // });
+    // connectNow = con.method();
+    // connectNow.connect(function (err) {
+    //     if (err) {
+    //         connectNow.end();
+    //         throw err;
+    //     }
+    // });
 
-    const listOfPromises = [weekly1.Oneweek,weekly1.tutorbooked];
-    const promise = weekly1.joinedScheduleCalls(listOfPromises, undefined, undefined, req.query.username,'tableTime','timeStart');
+    const listOfPromises = [weekly1.Oneweek, weekly1.tutorbooked];
+    const promise = weekly1.joinedScheduleCalls(listOfPromises, undefined, undefined, req.query.username, 'tableTime', 'timeStart');
     promise.then(function (value) {
         console.log(value.availableTime);
         value.userName = req.session.username;
-        res.render("./userView/tutorScheduleBooking.ejs", {value:value, userDetails: req.query.username, sess: req.session, subject:req.query.subject});
+        res.render("./userView/tutorScheduleBooking.ejs", {
+            value: value,
+            userDetails: req.query.username,
+            sess: req.session,
+            subject: req.query.subject
+        });
     });
 });
 
 router.get("/booking/modal", function (req, res) {
     console.log(req.query);
-    console.log(req.session.username);
-    console.log(req.session.userDetails.userName);
-    res.render("./userView/tuteeBooking", {userDetails: req.session.userDetails});
+    console.log(req.session.userDetails[0].userName);
+    var Clickdate = new Date(req.query.time);
+
+    // console.log(Clickdate)
+    // Clickdate = new Date(Clickdate);
+    Clickdate.setTime(Clickdate.getTime() + Clickdate.getTimezoneOffset() * 60 * 1000);
+    console.log(Clickdate);
+    res.render("./userView/tuteeBooking", {
+        userDetails: req.session.userDetails[0],
+        subject: req.query.subject,
+        time: Clickdate,
+        tutor: req.query.username
+    });
+});
+router.get("/booking/confirm", function (req, res) {
+    console.log("booking confirm");
+    console.log(req.query);
+    const Clickdate = new Date(req.query.time);
+
 });
 
 module.exports = router;
