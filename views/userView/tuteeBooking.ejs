@@ -10,20 +10,23 @@
         </div>
     </div>
     <div class="fourteen wide column">
-
-        <p>Tutee Name: <%= userDetails.userName %> </p>
-        <p>Subject: <%= bookingData.courseID %> </p>
-        <p>Date: <%= bookingData.timeStart %></p>
-        <p>Location: <%= bookingData.location %> </p>
-        <p>Requirements specified: <%= bookingData.description %></p>
-        <p>Attachment: </p>
-
+            <p>Tutor Name: <%= tutor %> </p>
+            <p>Subject: <%= subject %> </p>
+            <p>Date:
+                <%
+                Clickdate = new Date(time);
+                Clickdate.setTime(Clickdate.getTime() + Clickdate.getTimezoneOffset() * 60 * 1000);
+                %>
+                <%= Clickdate %></p>
+            <p>Location: </p>
+            <p>Requirements specified:</p>
+            <p>Attachment: </p>
     </div>
 </div>
 <div class="ui grid">
     <div class="right floated five wide column">
-        <button class="ui positive right labeled icon button">
-            Info
+        <button class="ui positive right labeled icon button" onclick="submition()">
+            submit
             <i class="info icon"></i>
         </button>
         <button class="ui black deny button">
@@ -36,7 +39,17 @@
 
 <script>
     $(function () {
-        $('.ui.info.modal').modal('attach events','.ui.deny.button','hide');
+        $('.ui.info.modal').modal('attach events', '.ui.deny.button', 'hide');
     })
+    document.getElementById("submitButton").onclick = function () {
+        console.log("click");
+            window.location.href="/listing/booking/confirm?tutor=<%= tutor%>&&tutee=<%=userDetails.userName%>&&time=<%=time%>"
+    }
+
+    function submition() {
+        console.log("click");
+        window.location.href="/listing/booking/confirm?tutor=<%= tutor%>&&tutee=<%=userDetails.userName%>&&time=<%=time%>&&subject=<%=subject%>"
+    }
+
 </script>
 
