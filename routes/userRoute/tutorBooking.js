@@ -6,7 +6,7 @@ const router = express.Router();
 const con = require('../../javascript/connection');
 const updateTime = require('../../javascript/UpdatingTime');
 
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
 
     //booking ID should be provided by the click on the schedule, currently dummy data 1 inserted for testing purposes.
     var bookingID = req.query.bookingID;
@@ -24,23 +24,37 @@ router.get('/', function(req, res) {
             if (err) {
                 throw err;
             } else {
-                console.log(result);
+                console.log(JSON.stringify(result));
+                if ((JSON.stringify(result)).length > 2) {
+                    const rawObject = JSON.parse(JSON.stringify(result[0]));
+                    console.log("RAW: " + rawObject.tuteeID);
+                    res.render("./userView/tutorBooking", {
+                        userDetails: req.session.userDetails,
+                        bookingData: rawObject
+                    });
+                }
+                else {
+                    console.log("errorr occured needed to render back to schedule but not in modal");
+                    res.redirect('/user/tutorSchedule');
+                }
 
-                const rawObject = JSON.parse(JSON.stringify(result[0]));
-
-                console.log("RAW: " + rawObject.tuteeID);
-
-                res.render("./userView/tutorBooking", {userDetails: req.session.userDetails, bookingData: rawObject});
             }
         });
     });
 
 
 });
-router.get("/deleting",function (req, resp) {
+router.get("/deleting", function (req, resp) {
     console.log(req.query);
-    updateTime.deleteAppointment(req.query.bookingID);
-    resp.json({name: "hello there"});
+    const promise = updateTime.deleteAppointment(req.query.bookingID);
+    promise.then(function (value) {
+        console.log(value);
+        resp.json({name: "rows affected"});
+    }, function (reason) {
+        console.log(reason);
+        resp.json({name: "error occured"});
+    });
+
 });
 
 

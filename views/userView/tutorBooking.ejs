@@ -23,7 +23,7 @@
 <div class="ui grid">
     <div class="right floated five wide column">
         <button onclick="deleting()" id="delete" class="ui positive right labeled icon button">
-            Delete appointment
+            Delete<br>appointment
             <i class="info icon"></i>
         </button>
         <button class="ui positive right labeled icon button">
@@ -54,6 +54,9 @@ $(function () {
                data: {bookingID: "<%= bookingData.bookingID%>"},
                success: function (msg) {
                    console.log(msg);
+               },
+               error: function (msg) {
+                 console.log("error");
                }
            })
        }

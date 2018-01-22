@@ -20,7 +20,17 @@
         <entry file="file://$PROJECT_DIR$/javascript/UpdatingTime.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="327">
-              <caret line="172" column="137" lean-forward="false" selection-start-line="172" selection-start-column="137" selection-end-line="172" selection-end-column="137" />
+              <caret line="188" column="102" lean-forward="false" selection-start-line="188" selection-start-column="102" selection-end-line="188" selection-end-column="102" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navbar.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/templates/navbar.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="26" column="49" lean-forward="false" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -31,16 +41,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2100">
               <caret line="97" column="33" lean-forward="false" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tutorSchedule3WeekPreRendering1.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/javascript/tutorSchedule3WeekPreRendering1.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="62" column="489" lean-forward="false" selection-start-line="62" selection-start-column="489" selection-end-line="62" selection-end-column="489" />
               <folding />
             </state>
           </provider>
@@ -69,7 +69,7 @@
       <file leaf-file-name="tutorSchedule.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/userView/tutorSchedule.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
+            <state relative-caret-position="687">
               <caret line="331" column="26" lean-forward="false" selection-start-line="331" selection-start-column="22" selection-end-line="331" selection-end-column="26" />
               <folding />
             </state>
@@ -79,8 +79,8 @@
       <file leaf-file-name="tutorBooking.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/userRoute/tutorBooking.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="41" column="54" lean-forward="true" selection-start-line="41" selection-start-column="54" selection-end-line="41" selection-end-column="54" />
+            <state relative-caret-position="361">
+              <caret line="36" column="101" lean-forward="false" selection-start-line="36" selection-start-column="101" selection-end-line="36" selection-end-column="101" />
               <folding />
             </state>
           </provider>
@@ -89,18 +89,8 @@
       <file leaf-file-name="tutorBooking.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/userView/tutorBooking.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="53" column="64" lean-forward="false" selection-start-line="53" selection-start-column="64" selection-end-line="53" selection-end-column="64" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tutorSchedule.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/tutorSchedule.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+            <state relative-caret-position="525">
+              <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -109,8 +99,18 @@
       <file leaf-file-name="tutorSchedule.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/userRoute/tutorSchedule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-81">
-              <caret line="2" column="51" lean-forward="false" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
+            <state relative-caret-position="168">
+              <caret line="19" column="11" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="registration.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/registration.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="92" column="64" lean-forward="true" selection-start-line="92" selection-start-column="35" selection-end-line="92" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -128,8 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>end</find>
-      <find>edit</find>
       <find>console.+</find>
       <find>a</find>
       <find>next</find>
@@ -150,7 +148,6 @@
       <find>week</find>
       <find>myDetail</find>
       <find>userDet</find>
-      <find>'s</find>
       <find>&quot;SELECT tableBooking.tuteeID, tableBooking.courseID, tableBooking.location, tableTime.timeStart, tableTimeOccupation.bookingID  FROM tableBooking, tableTime, tableTimeOccupation WHERE tableTimeOccupation.timeID = tableTime.timeID AND tableTimeOccupation.bookingID = tableBooking.bookingID And tableTime.timeStart&gt;=? AND tableTime.timeStart&lt;=? AND tableBooking.tuteeID=?&quot;</find>
       <find>booking</find>
       <find>booked</find>
@@ -158,6 +155,9 @@
       <find>RAW</find>
       <find>book</find>
       <find>Date</find>
+      <find>error no</find>
+      <find>error</find>
+      <find>'s</find>
     </findStrings>
     <replaceStrings>
       <replace>value.timeStart</replace>
@@ -421,7 +421,7 @@
       <workItem from="1516492911790" duration="12800000" />
       <workItem from="1516569414181" duration="2540000" />
       <workItem from="1516584336254" duration="746000" />
-      <workItem from="1516592136097" duration="10735000" />
+      <workItem from="1516592136097" duration="12471000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;added sockets and the sql call related&quot;">
       <created>1513386883857</created>
@@ -689,11 +689,18 @@
       <option name="project" value="LOCAL" />
       <updated>1516657420168</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="&quot;delete from the database is done for appoints needed the bookid&quot;">
+      <created>1516661791422</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1516661791422</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="177387000" />
+    <option name="totallyTimeSpent" value="179123000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -706,13 +713,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.49505603" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998413" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20838052" sideWeight="0.5319936" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41789356" sideWeight="0.45848757" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41789356" sideWeight="0.45848757" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21404304" sideWeight="0.46800634" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22919042" sideWeight="0.48598626" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21152829" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -787,7 +793,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="&quot;needed to deal with animation delay and refresh&quot;" />
     <MESSAGE value="&quot;dealed with the rendering delay and leakyness&quot;" />
     <MESSAGE value="&quot;added table selection and one col speific sql calls&quot;" />
     <MESSAGE value="&quot;fixed timeoffset&quot;" />
@@ -812,7 +817,8 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <MESSAGE value="&quot;split the tutor and tutee booking and refactor the app and schedule&quot;" />
     <MESSAGE value="&quot;sync databased data call for the schedule&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;sync databased data call for the schedule&quot;" />
+    <MESSAGE value="&quot;delete from the database is done for appoints needed the bookid&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;delete from the database is done for appoints needed the bookid&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -963,14 +969,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/registration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="87" column="42" lean-forward="false" selection-start-line="87" selection-start-column="42" selection-end-line="87" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/listing.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -991,14 +989,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
           <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="42" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/templates/navbar.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="11" column="50" lean-forward="false" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -1028,14 +1018,6 @@
             <element signature="n#style#0;n#button#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/userRoute/tutorSchedule.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-81">
-          <caret line="2" column="51" lean-forward="false" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1079,34 +1061,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/javascript/UpdatingTime.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="188" column="102" lean-forward="false" selection-start-line="188" selection-start-column="102" selection-end-line="188" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/userView/tutorSchedule.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
+        <state relative-caret-position="687">
           <caret line="331" column="26" lean-forward="false" selection-start-line="331" selection-start-column="22" selection-end-line="331" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/registration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="92" column="64" lean-forward="true" selection-start-line="92" selection-start-column="35" selection-end-line="92" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/templates/navbar.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="26" column="49" lean-forward="false" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/userRoute/tutorSchedule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="19" column="11" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/userView/tutorBooking.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="53" column="64" lean-forward="false" selection-start-line="53" selection-start-column="64" selection-end-line="53" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/UpdatingTime.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="172" column="137" lean-forward="false" selection-start-line="172" selection-start-column="137" selection-end-line="172" selection-end-column="137" />
+        <state relative-caret-position="525">
+          <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/userRoute/tutorBooking.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="41" column="54" lean-forward="true" selection-start-line="41" selection-start-column="54" selection-end-line="41" selection-end-column="54" />
+        <state relative-caret-position="361">
+          <caret line="36" column="101" lean-forward="false" selection-start-line="36" selection-start-column="101" selection-end-line="36" selection-end-column="101" />
           <folding />
         </state>
       </provider>
