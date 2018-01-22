@@ -36,7 +36,8 @@ router.get('/', function (req, res) {
     // });
     const joinedPromises = ListingSQL.joinedSQLListingCall(limit);
     joinedPromises.then(function (value) {
-        res.render("listing", value)
+        console.log(req.session.userDetails[0].tutor_activation);
+        res.render("listing", {value:value, userDetails: req.session.userDetails })
     })
 
 });
@@ -74,7 +75,7 @@ router.get('/search', function (req, res) {
      */
     const joinedPromises = ListingSQL.joinedSQLListingCall(limit, id);
     joinedPromises.then(function (value) {
-        res.render("listing", value)
+        res.render("listing", {value:value, userDetails: req.session.userDetails })
     })
 });
 
