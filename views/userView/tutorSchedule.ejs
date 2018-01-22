@@ -68,7 +68,20 @@
 
 
 <!--This is the script to load semantic model content from another webpage-->
-
+<script>
+    $(function () {
+        $('.info-modal-link').each(function () {
+            $(this).on('click', function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                $.get(url, function (data) {
+                    $('.info.modal .content').html(data);
+                    $(".info.modal").modal({closable: true, observeChanges: true}).modal('show');
+                });
+            });
+        });
+    })
+</script>
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
@@ -402,19 +415,6 @@
         }
     }
 
-    $(document).ready(function () {
-        $('.info-modal-link').each(function () {
-            $(this).on('click', function (e) {
-                e.preventDefault();
-                var url = $(this).attr('href');
-                $.get(url, function (data) {
-                    $('.info.modal .content').html(data);
-                    $(".info.modal").modal({closable: true, observeChanges: true}).modal('show');
-                });
-            });
-        });
-
-    })
 
 
 </script>
