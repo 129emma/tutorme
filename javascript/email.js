@@ -2,9 +2,19 @@
  * Created by Administer on 22/01/2018.
  */
 const mailer = require('nodemailer');
+const fs = require('fs');
+//function se(receiver, subject, msg ) {
 
-//function sendmail(receiver, subject, msg ) {
 
+    var content = "";
+
+    fs.readFile('../email_template/confirmation.html', function(err, data) {
+    if(err){
+        throw err;
+        
+    }
+    return res.end();
+    });
 
     var transporter = mailer.createTransport({
         service: 'gmail',
