@@ -11,7 +11,7 @@ const fs = require('fs');
     fs.readFile('../email_template/confirmation.html', function(err, data) {
     if(err){
         throw err;
-        
+
     }
     return res.end();
     });
