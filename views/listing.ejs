@@ -12,19 +12,17 @@
         .ui.text.center.aligned.container {
             padding-top: 3%;
             width: 600px;
-
         }
-
-        .ui.card, .ui.cards > .card {
+        .ui.card, .ui.cards>.card{
             width: 100%;
             text-align: left;
             flex-direction: row;
         }
-
-        .ui.card > .image {
+        .ui.card>.image{
             width: 20%;
             height: 100%;
         }
+
 
 
     </style>
@@ -76,7 +74,9 @@
                     <button type="submit" class="ui icon button"><i class="right arrow icon"></i></button>
                 </div>
             </form>
-
+            <div class="description">
+                <%=tutors[i].selfIntroduction%>
+            </div>
         </div>
         <div class="extra content" style="text-align: right">
             rating: <%= tutors[i].rating %>
@@ -88,11 +88,11 @@
 </body>
 <script>
     console.log($("div.ui.action.input > div.ui.button"))
-    $("div.ui.action.input > div.ui.button").on("click", function () {
-        const subject = $(this).siblings("select.ui.compact.selection.dropdown")[0].value;
+    $("div.ui.action.input > div.ui.button").on("click",function () {
+       const subject = $(this).siblings("select.ui.compact.selection.dropdown")[0].value;
         const username = ($(this).parent().parent().siblings("a.header")[0].innerHTML);
         // $.get("/listing/booking",{username: username , subject: subject});
-        window.location.href = '/listing/booking?username=' + username + "&&subject=" + subject;
+        window.location.href = '/listing/booking?username='+username+"&&subject="+subject;
 
         // $.ajax({
         //     url:   "/listing/booking",
@@ -109,7 +109,7 @@
         //     }});
     })
     console.log($("select")[0].value);
-    
+
    $(function () {
        $('.ui.dropdown').dropdown();
    })
