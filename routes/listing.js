@@ -36,8 +36,7 @@ router.get('/', function (req, res) {
     // });
     const joinedPromises = ListingSQL.joinedSQLListingCall(limit);
     joinedPromises.then(function (value) {
-        console.log(req.session.userDetails[0].tutor_activation);
-        res.render("listing", {value:value, userDetails: req.session.userDetails })
+        res.render("listing", {value: value, userDetails: req.session.userDetails})
     })
 
 });
@@ -75,7 +74,7 @@ router.get('/search', function (req, res) {
      */
     const joinedPromises = ListingSQL.joinedSQLListingCall(limit, id);
     joinedPromises.then(function (value) {
-        res.render("listing", {value:value, userDetails: req.session.userDetails })
+        res.render("listing",  {value: value, userDetails: req.session.userDetails})
     })
 });
 
@@ -94,13 +93,13 @@ router.get("/booking", function (req, res) {
     const listOfPromises = [weekly1.Oneweek, weekly1.tutorbooked];
     const promise = weekly1.joinedScheduleCalls(listOfPromises, undefined, undefined, req.query.username, 'tableTime', 'timeStart');
     promise.then(function (value) {
-        console.log(value.availableTime);
+        console.log(value);
         value.userName = req.session.username;
         res.render("./userView/tutorScheduleBooking.ejs", {
             value: value,
-            userDetails: req.query.username,
+            userDetailsName: req.query.username,
             sess: req.session,
-            subject: req.query.subject
+            subject: req.query.subject,userDetails: req.session.userDetails
         });
     });
 });
@@ -115,10 +114,11 @@ router.get("/booking/modal", function (req, res) {
     Clickdate.setTime(Clickdate.getTime() + Clickdate.getTimezoneOffset() * 60 * 1000);
     console.log(Clickdate);
     res.render("./userView/tuteeBooking", {
-        userDetails: req.session.userDetails[0],
+        userDetailsName: req.session.userDetails[0],
         subject: req.query.subject,
         time: Clickdate,
-        tutor: req.query.username
+        tutor: req.query.username,
+        userDetails: req.session.userDetails
     });
 });
 router.get("/booking/confirm", function (req, res) {
