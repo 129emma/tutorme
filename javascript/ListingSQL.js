@@ -19,7 +19,7 @@ function listingSQLDEC(connectNow,limit,subject) {
         var preparedStatments = [limit];
         if (subject !== undefined && subject !== null && subject !==""){
             console.log("there is an subject");
-            initalQuery = "SELECT tutor.username as userName, tutor.selfintroduction as selfintroduction, cap.`courseID` as courses, GROUP_CONCAT(cap.grade) as grades,AVG( booking.tutorRating) as rating FROM `tableTutor` as tutor, `tableCapabilities` as cap, `tableBooking` as booking WHERE cap.courseID = ? GROUP BY tutor.username ORDER BY rating DESC LIMIT ?";
+            initalQuery = "SELECT tutor.`userName`, tutor.`selfIntroduction`, GROUP_CONCAT(distinct cap.`courseID`) as courses, GROUP_CONCAT( cap.`grade`) as grades, b.rating FROM `tableTutor` as tutor inner join `tableCapabilities` as cap on tutor.`userName` = cap.`userName` join( SELECT a.`userName`, COALESCE(AVG(book.`tuteeRating`),0) as rating FROM `tableTutor` as a join `tableBooking` as book on a.`userName` = book.`tutorID` GROUP BY a.`userName`) as b on tutor.`userName` = b.`userName` WHERE cap.`courseID` = ? GROUP BY  tutor.userName ORDER BY rating DESC LIMIT ?";
             preparedStatments =[subject, limit]
         }
 

@@ -1,8 +1,9 @@
-.column > a:hover {
-    color: #FFF6F9;
-    text-decoration: none;
+div#menu {
+    background-color: #fbfbfb;
+    margin-top: 0;
 }
-.column > a {
-    color: #E2F6F9;
-    font-size: 20px;
+div#searchBar {
+    max-width: 100%;
+    width: 600px;
 }
+

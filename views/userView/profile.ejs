@@ -9,14 +9,16 @@
 <head>
     <title>Tutor Profile page</title>
     <link rel="stylesheet" href="/stylesheets/profile.css"/>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
 </head>
 <body>
 
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
-<% include ../templates/navbar.ejs %>
 <% include ../../javascript/ajaxDatabaseExpresso.ejs %>
 
 
+<% include ../templates/navbar.ejs %>
 <div class="ui grid" id="profile">
     <div class="ui text container">
         <h1>Welcome to your profile, <%= userDetails[0].firstName %></h1>
@@ -26,7 +28,7 @@
         </div>
         <div id="generalProfileDetails">
             <form class="ui equal width form">
-                <div class="inline two fields">
+                <div class="two fields">
                     <div class="field">
                         <label>Username</label>
                         <input type="hidden" name="formUsername"
@@ -59,7 +61,7 @@
                     <label>Address</label>
                     <input type="text" name="formAddress" value="<%= userDetails[0].address %>" placeholder="Address">
                 </div>
-                <div class="inline two fields">
+                <div class="two fields">
                     <div class="field">
                         <label>Student ID</label>
                         <input type="text" name="formID" value="<%= userDetails[0].studentID %>">
@@ -69,7 +71,7 @@
                         <input type="text" name="formSchool" value="<%= userDetails[0].studySchool %>">
                     </div>
                 </div>
-                <div class="inline two fields">
+                <div class="two fields">
                     <div class="field">
                         <label>Joined Tutorme</label>
                         <input type="text" value="<%= userDetails[0].joinDate %>" disabled>
