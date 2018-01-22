@@ -8,8 +8,7 @@
     <% include ../templates/included.html %>
 
     <link rel="stylesheet" type="text/css" href="/stylesheets/tutorSchedule.css">
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
 
 
 </head>
@@ -28,7 +27,7 @@
     </div>
 
 
-    <h1 align="center"><%=  userDetailsName %>'s weekly schedule</h1>
+    <h1 align="center"><%= userDetailsName %>'s weekly schedule</h1>
     <div class="ui center aligned container">
         <div class="column">
             <button class="icon button" id="button2" style="border: none">
@@ -39,8 +38,8 @@
         </div>
 
         <div class="column" style="padding: 10px">
-            <div class="ui buttons" >
-                <button class="ui button unclickButton" id="edit" onclick="editCalendar()" >Edit</button>
+            <div class="ui buttons">
+                <button class="ui button unclickButton" id="edit" onclick="editCalendar()">Edit</button>
                 <div class="or"></div>
                 <button class="ui positive button" id="save" onclick="saveCalendar()">Save</button>
             </div>
@@ -71,19 +70,18 @@
 <!--This is the script to load semantic model content from another webpage-->
 
 
-
 <script src="/socket.io/socket.io.js"></script>
 <script>
 
 
     const tuteeBoolean = "<%= sess.tuteeBoolean %>";
-    if (typeof tuteeBoolean !== "undefined" && tuteeBoolean !== "" && tuteeBoolean === "true"){
+    if (typeof tuteeBoolean !== "undefined" && tuteeBoolean !== "" && tuteeBoolean === "true") {
         console.log("This is tutee");
     }
 
     var ListOfDates = [];
     var ListToDelete = [];
-    const userName = "<%= userDetails %>";
+    const userName = "<%= userDetailsName %>";
 
     const course = ("<%= value.course %>").split(",");
     console.log(course);
@@ -97,14 +95,22 @@
     const bookingID = ("<%= value.bookingID %>").split(",");
     console.log(bookingID);
 
-    const bookingDetails = bookingDetailJSON(tuteeName, course, bookingLocation, bookingID);
+    const tutorName = ("<%= value.tutor %>").split(",");
+    console.log(tutorName)
+    const bookingDetails = bookingDetailJSON(tuteeName, course, bookingLocation, bookingID, tutorName);
 
     //console.log(BookingDetails);
 
-    function bookingDetailJSON(tutee, course, location, bookingID) {
+    function bookingDetailJSON(tutee, course, location, bookingID, tutor) {
         var bookingDetail = [];
         for (var i = 0; i < course.length; i++) {
-            const myJSON = {tutee: tutee[i], course: course[i], location: location[i], bookingID: bookingID[i]}
+            const myJSON = {
+                tutee: tutee[i],
+                course: course[i],
+                location: location[i],
+                bookingID: bookingID[i],
+                tutor: tutor[i]
+            }
             bookingDetail.push(myJSON)
         }
         return bookingDetail;
@@ -150,16 +156,16 @@
     $("#button1").on("click", function () {
         $(table).fadeOut("fast", function () {
             day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() + 7));
-            if (typeof tuteeBoolean !== "undefined" && tuteeBoolean !== "" && tuteeBoolean === "true"){
+            if (typeof tuteeBoolean !== "undefined" && tuteeBoolean !== "" && tuteeBoolean === "true") {
                 console.log("This is tutee");
                 socket.emit('nextnextweek', {userName: userName, day: day, tuteeBoolean: true});
-            }else{
+            } else {
                 socket.emit('nextnextweek', {userName: userName, day: day, tuteeBoolean: false});
             }
             socket.on('nextnextweek', function (value) {
                 // weeklisting.weeknext = value
                 renderDays()
-                const bookingDetailsFornextWeek = bookingDetailJSON(value.tutee, value.course, value.location, value.bookingID)
+                const bookingDetailsFornextWeek = bookingDetailJSON(value.tutee, value.course, value.location, value.bookingID, value.tutor)
                 weeklisting = preRenderWeeks(day, value.availableTime, "available")
                 weeklisting1 = preRenderWeeks(day, value.bookedTime, "booked", bookingDetailsFornextWeek)
                 // switchingWeeks(weeklisting.availableTime)
@@ -173,15 +179,15 @@
         $(table).fadeOut("fast", function () {
             day = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - 7));
             //console.log(day)
-            if (typeof tuteeBoolean !== "undefined" && tuteeBoolean !== "" && tuteeBoolean === "true"){
+            if (typeof tuteeBoolean !== "undefined" && tuteeBoolean !== "" && tuteeBoolean === "true") {
                 console.log("This is tutee");
                 socket.emit('lastlastweek', {userName: userName, day: day, tuteeBoolean: true});
-            }else{
+            } else {
                 socket.emit('lastlastweek', {userName: userName, day: day, tuteeBoolean: false});
             }
             socket.on('lastlastweek', function (value) {
                 renderDays()
-                const bookingDetailsFornextWeek = bookingDetailJSON(value.tutee, value.course, value.location, value.bookingID)
+                const bookingDetailsFornextWeek = bookingDetailJSON(value.tutee, value.course, value.location, value.bookingID, value.tutor)
                 weeklisting = preRenderWeeks(day, value.availableTime, "available")
                 weeklisting1 = preRenderWeeks(day, value.bookedTime, "booked", bookingDetailsFornextWeek)
 
@@ -287,8 +293,14 @@
                 const selectedTime = document.getElementById(((value.getDay() === 0) ? 7 : value.getDay()) + "." + value.getHours());
                 selectedTime.className = className;
                 if (bookingDetail !== undefined) {
-                    console.log(bookingDetail)
-                    selectedTime.innerHTML = "<a href='/user/tutorBooking?bookingID=" + bookingDetail[i].bookingID + "' id='myDetail' class='info-modal-link'>" + bookingDetail[i].course + "<br>" + "Tutee: " + bookingDetail[i].tutee + "<br>" + "Location: " + bookingDetail[i].location + "</a>";
+                    if ((bookingDetail[i].tutor !== userName)) {
+                        console.log(userName)
+                        selectedTime.className = "booking";
+                        selectedTime.innerHTML = "<a href='/user/tutorBooking?bookingID=" + bookingDetail[i].bookingID + "' id='myDetail' class='info-modal-link'>" + bookingDetail[i].course + "<br>" + "Tutor: " + bookingDetail[i].tutor + "<br>" + "Location: " + bookingDetail[i].location + "</a>";
+                    } else {
+                        selectedTime.className = "booked";
+                        selectedTime.innerHTML = "<a href='/user/tutorBooking?bookingID=" + bookingDetail[i].bookingID + "' id='myDetail' class='info-modal-link'>" + bookingDetail[i].course + "<br>" + "Tutee: " + bookingDetail[i].tutee + "<br>" + "Location: " + bookingDetail[i].location + "</a>";
+                    }
                 }
             }
         }
@@ -403,10 +415,6 @@
         });
 
     })
-
-
-
-
 
 
 </script>

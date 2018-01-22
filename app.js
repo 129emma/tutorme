@@ -23,7 +23,7 @@ var session = require('express-session');
 const ajaxhandler = require('./routes/ajaxhandler');
 
 // Lamlam and Vanie needs to add comments
-const tutorSchedule = require('./javascript/tutorSchedule3WeekPreRendering');
+const tutorSchedule = require('./javascript/tutorSchedule3WeekPreRendering1');
 const UpdatingTime = require('./javascript/UpdatingTime');
 
 
@@ -113,13 +113,16 @@ io.on('connection', function (socket) {
         const presetDate = new Date(msg.day);
         console.log(presetDate);
         const date = new Date(presetDate.getFullYear(),presetDate.getMonth(),(presetDate.getDate()),-11);
-        //console.log(date);
+        console.log(date);
+        console.log(msg)
+        console.log("after dates");
+        console.log(String(msg.userName));
         console.log("Is this tutee: "+ msg.tuteeBoolean + " "+ (typeof msg.tuteeBoolean));
         var promise;
         if (msg.tuteeBoolean){
-            promise = tutorSchedule.tuteeSQLBookingCall(date,String(msg.userName),'tableTime','timeStart');
+            promise = tutorSchedule.joinedScheduleCalls([tutorSchedule.tutorbooked], undefined, date, String(msg.userName), 'tableTime', 'timeStart');
         }else{
-            promise = tutorSchedule.Oneweek(date,String(msg.userName),'tableTime','timeStart');
+            promise = tutorSchedule.joinedScheduleCalls([tutorSchedule.Oneweek,tutorSchedule.tutorbooked], undefined, date, String(msg.userName), 'tableTime', 'timeStart');
         }
         promise.then(function (value) {
             //console.log("promising");
@@ -132,12 +135,14 @@ io.on('connection', function (socket) {
         //console.log(typeof msg);
         const presetDate = new Date(msg.day);
         const date = new Date(presetDate.getFullYear(),presetDate.getMonth(),(presetDate.getDate()),-11);
-        //console.log(date);
+        console.log(date);
+
+        console.log(String(msg.userName));
         var promise;
         if (msg.tuteeBoolean){
-            promise = tutorSchedule.tuteeSQLBookingCall(date,String(msg.userName),'tableTime','timeStart');
+            promise = tutorSchedule.joinedScheduleCalls([tutorSchedule.tutorbooked], undefined, date, String(msg.userName), 'tableTime', 'timeStart');
         }else{
-            promise = tutorSchedule.Oneweek(date,String(msg.userName),'tableTime','timeStart');
+            promise = tutorSchedule.joinedScheduleCalls([tutorSchedule.Oneweek,tutorSchedule.tutorbooked], undefined, date, String(msg.userName), 'tableTime', 'timeStart');
         }
         promise.then(function (value) {
             //console.log("promising");
