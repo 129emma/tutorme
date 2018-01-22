@@ -91,7 +91,7 @@ function bookingAvailableTime(date, tutee, tutor, course) {
                         });
                     }
                     date.setTime(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
-                    connectNow.query("INSERT INTO `tableTimeOccupation` (`bookingID`,`timeID`) VALUES(LAST_INSERT_ID(),(SELECT `timeID` FROM tableTime WHERE timeStart ="+ mysql.escape(date)+"));",[], function (error, results, fields) {
+                    connectNow.query("INSERT INTO `tableTimeOccupation` (`bookingID`,`timeID`) VALUES(LAST_INSERT_ID(),(SELECT `timeID` FROM tableTime WHERE timeStart ="+ mysql.escape(date)+" AND tableTime.userName = ?));",[tutor], function (error, results, fields) {
                         if (error) {
                             return connectNow.rollback(function () {
                                 connectNow.end();

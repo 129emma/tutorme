@@ -60,7 +60,7 @@ function tutorBooked(connectNow, startOfWeek, endOfWeek, username, timeTable, wh
     }
     console.log("tutor booked");
     const promise = new Promise(function (resolve, reject) {
-        connectNow.query("SELECT tableBooking.tuteeID, tableBooking.tutorID, tableBooking.courseID, tableBooking.location, tableTime.timeStart, tableTimeOccupation.bookingID  FROM tableBooking, tableTime, tableTimeOccupation WHERE tableTimeOccupation.timeID = tableTime.timeID AND tableTimeOccupation.bookingID = tableBooking.bookingID And tableTime.timeStart>=? AND tableTime.timeStart<=? AND tableTime.username=?", [startOfWeek, endOfWeek, username], function (err, result) {
+        connectNow.query("SELECT tableBooking.tuteeID, tableBooking.tutorID, tableBooking.courseID, tableBooking.location, tableTime.timeStart, tableTimeOccupation.bookingID  FROM tableBooking, tableTime, tableTimeOccupation WHERE tableTimeOccupation.timeID = tableTime.timeID AND tableTimeOccupation.bookingID = tableBooking.bookingID And tableTime.timeStart>=? AND tableTime.timeStart<=? AND (tableBooking.tuteeID=? OR tableBooking.tutorID=?)", [startOfWeek, endOfWeek, username,username], function (err, result) {
             if (connection) {
                 connectNow.end();
             }
