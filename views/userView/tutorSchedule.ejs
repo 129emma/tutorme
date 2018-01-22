@@ -8,24 +8,9 @@
     <% include ../templates/included.html %>
 
     <link rel="stylesheet" type="text/css" href="/stylesheets/tutorSchedule.css">
-
-    <script>
-        $(function () {
-            $('.info-modal-link').each(function () {
-                $(this).on('click', function (e) {
-                    e.preventDefault();
-                    var url = $(this).attr('href');
-                    $.get(url, function (data) {
-                        $('.info.modal .content').html(data);
-                        $(".info.modal").modal({closable: true, observeChanges: true}).modal('show');
-                    });
-                });
-            });
+    <link rel="stylesheet" href="/stylesheets/style.css" />
 
 
-
-        });
-    </script>
 
 </head>
 
@@ -33,8 +18,6 @@
 
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
 <% include ../templates/navbar.ejs %>
-
-
 
 <div class="ui center aligned container">
 
@@ -407,9 +390,21 @@
         }
     }
 
-    function closepopup() {
+    $(document).ready(function () {
+        $('.info-modal-link').each(function () {
+            $(this).on('click', function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                $.get(url, function (data) {
+                    $('.info.modal .content').html(data);
+                    $(".info.modal").modal({closable: true, observeChanges: true}).modal('show');
+                });
+            });
+        });
 
-    }
+    })
+
+
 
 
 
