@@ -156,12 +156,19 @@ function JoinedScheduleCalls(ListOfPromises,connectNow, date, username, timeTabl
 
             for(var i = 0; i< value[0].length;i++){
                 tutor.availableTime.push(String(value[0][i].timeStart))
-
             }
             for(var i = 0; i< value[1].length;i++){
                 const numbering = (tutor.availableTime.indexOf(String(value[1][i].timeStart)));
                 tutor.availableTime.splice(numbering, 1);
             }
+            value[1].map(function (value) {
+                tutor.bookedTime.push(value.timeStart);
+                tutor.location.push(value.location);
+                tutor.course.push(value.courseID);
+                tutor.tutee.push(value.tuteeID);
+                tutor.bookingID.push(value.bookingID)
+            });
+            console.log("rendering of tutor");
             resolve(tutor);
         });
     });

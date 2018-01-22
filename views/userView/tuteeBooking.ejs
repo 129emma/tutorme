@@ -1,6 +1,6 @@
 <body>
 <h3 class="header">
-    Booking from <%= userDetails.userName %>
+    Booking from <%= userDetailsName.userName %>
 </h3>
 <div class="ui divider"></div>
 <div class="ui grid">
@@ -38,17 +38,13 @@
 </body>
 
 <script>
-    $(function () {
-        $('.ui.info.modal').modal('attach events', '.ui.deny.button', 'hide');
-    })
-    document.getElementById("submitButton").onclick = function () {
-        console.log("click");
-            window.location.href="/listing/booking/confirm?tutor=<%= tutor%>&&tutee=<%=userDetails.userName%>&&time=<%=time%>"
-    }
+    // $(function () {
+    //     $('.ui.info.modal').modal('attach events', '.ui.deny.button', 'hide');
+    // })
 
     function submition() {
         console.log("click");
-        window.location.href="/listing/booking/confirm?tutor=<%= tutor%>&&tutee=<%=userDetails.userName%>&&time=<%=time%>&&subject=<%=subject%>"
+        window.location.href="/listing/booking/confirm?tutor=<%= tutor%>&&tutee=<%=userDetailsName.userName%>&&time=<%=time%>&&subject=<%=subject%>"
     }
 
 </script>

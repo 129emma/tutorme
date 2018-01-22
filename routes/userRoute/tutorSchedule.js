@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
 
     promise.then(function (value) {
         console.log(value);
-        res.render("./userView/tutorSchedule.ejs", {value:value, userDetails:  req.session.userDetails[0].userName, sess: req.session});
+        res.render("./userView/tutorSchedule.ejs", {value:value, userDetailsName:  req.session.userDetails[0].userName, sess: req.session, userDetails: req.session.userDetails});
     })
 });
 

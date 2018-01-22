@@ -42,7 +42,7 @@
     </div>
 
 
-    <h1 align="center"><%= userDetails %>'s weekly schedule</h1>
+    <h1 align="center"><%= userDetailsName %>'s weekly schedule</h1>
     <div class="ui center aligned container">
         <div class="column">
             <button class="icon button" id="button2" style="border: none">
@@ -91,7 +91,7 @@
 
     var ListOfDates = [];
     var ListToDelete = [];
-    const userName = "<%= userDetails %>";
+    const userName = "<%= userDetailsName %>";
 
     //rendering calendar
     var cale = document.getElementsByClassName("calendar")[0];
