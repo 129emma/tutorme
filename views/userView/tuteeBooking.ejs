@@ -1,0 +1,42 @@
+<body>
+<h3 class="header">
+    Booking from <%= userDetails.userName %>
+</h3>
+<div class="ui divider"></div>
+<div class="ui grid">
+    <div class="two wide column">
+        <div class="ui small image">
+            <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png"/>
+        </div>
+    </div>
+    <div class="fourteen wide column">
+
+        <p>Tutee Name: <%= userDetails.userName %> </p>
+        <p>Subject: <%= bookingData.courseID %> </p>
+        <p>Date: <%= bookingData.timeStart %></p>
+        <p>Location: <%= bookingData.location %> </p>
+        <p>Requirements specified: <%= bookingData.description %></p>
+        <p>Attachment: </p>
+
+    </div>
+</div>
+<div class="ui grid">
+    <div class="right floated five wide column">
+        <button class="ui positive right labeled icon button">
+            Info
+            <i class="info icon"></i>
+        </button>
+        <button class="ui black deny button">
+            Close
+        </button>
+
+    </div>
+</div>
+</body>
+
+<script>
+    $(function () {
+        $('.ui.info.modal').modal('attach events','.ui.deny.button','hide');
+    })
+</script>
+

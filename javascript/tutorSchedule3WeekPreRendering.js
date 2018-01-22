@@ -18,8 +18,8 @@ function renderingOneweek(date,username,timeTable,whatWanted) {
     (date === undefined) ? today = new Date() : today = new Date(date);
     var startOfWeek = new Date(today.getFullYear(), today.getMonth(), (today.getDate() - (today.getDay() - 2)-1));
     const endOfWeek = new Date(today.getFullYear(), today.getMonth(), (today.getDate() + (7 - today.getDay() + 1)));
-    // console.log("Start date: "+ startOfWeek);
-    // console.log("End date: "+ endOfWeek);
+    console.log("Start date: "+ startOfWeek);
+    console.log("End date: "+ endOfWeek);
     const connectNow = con.method();
     const promise = new Promise(function (resolve, reject) {
         connectNow.connect(function (err) {

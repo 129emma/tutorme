@@ -111,6 +111,7 @@ io.on('connection', function (socket) {
         //console.log(typeof msg);
         //console.log(msg.userName);
         const presetDate = new Date(msg.day);
+        console.log(presetDate);
         const date = new Date(presetDate.getFullYear(),presetDate.getMonth(),(presetDate.getDate()),-11);
         //console.log(date);
         console.log("Is this tutee: "+ msg.tuteeBoolean + " "+ (typeof msg.tuteeBoolean));
