@@ -43,13 +43,13 @@
                 <button class="ui icon button" type="submit">Search</button>
             </div>
             <datalist id="courses">
-                <% for (var j = 0; j < courses.length; j++){ %>
-                <option value="<%= courses[j].courseID %>"></option>
+                <% for (var j = 0; j < value.courses.length; j++){ %>
+                <option value="<%= value.courses[j].courseID %>"></option>
                 <% } %>
             </datalist>
         </form>
     </div>
-    <% for (var i = 0; i < tutors.length; i++){ %>
+    <% for (var i = 0; i < value.tutors.length; i++){ %>
     <div class="ui card">
         <div class="image" style="float: left">
             <img src="https://www.w3schools.com/w3images/avatar2.png">
@@ -57,12 +57,12 @@
         <div class="content" style="float: right">
 
             <%
-                var cap = tutors[i].courses.split(",");
-                var grades = tutors[i].grades.split(",").sort();
+                var cap = value.tutors[i].courses.split(",");
+                var grades = value.tutors[i].grades.split(",").sort();
             %>
-            <div class="header"><%= tutors[i].userName %></div>
+            <div class="header"><%= value.tutors[i].userName %></div>
             <div class="description">
-                <%= tutors[i].selfIntroduction %>
+                <%= value.tutors[i].selfIntroduction %>
             </div>
             <form>
                 <div class="ui mini action input">
@@ -75,11 +75,11 @@
                 </div>
             </form>
             <div class="description">
-                <%=tutors[i].selfIntroduction%>
+                <%=value.tutors[i].selfIntroduction%>
             </div>
         </div>
         <div class="extra content" style="text-align: right">
-            rating: <%= tutors[i].rating %>
+            rating: <%= value.tutors[i].rating %>
         </div>
     </div>
     <% } %>
