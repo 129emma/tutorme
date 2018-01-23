@@ -118,34 +118,50 @@ function deleteAppointment(bookID) {
         connectNow.connect(function (err) {
             if (err) {
                 connectNow.end();
+                reject(err);
                 throw err;
             }
             connectNow.beginTransaction(function (err) {
                 if (err) {
                     connectNow.end();
+                    reject(err);
                     throw err;
                 }
                 connectNow.query("DELETE FROM `tableTimeOccupation` WHERE tableTimeOccupation.bookingID = ?", [bookID], function (error, results, fields) {
+
+                    console.log(results.affectedRows);
+                    if (results.affectedRows < 1){
+                        console.log("less than one row is affected");
+                        reject("less than one row is affected");
+                    }
                     if (error) {
                         return connectNow.rollback(function () {
                             connectNow.end();
+                            reject(error);
                             throw error;
                         });
                     }
                     console.log("Q 1");
                     connectNow.query("DELETE FROM `tableBooking` WHERE tableBooking.bookingID = ?;",[bookID], function (error, results, fields) {
+                        console.log(results);
+                        if (results.affectedRows < 1){
+                            console.log("less than one row is affected");
+                            reject("less than one row is affected");
+                        }
                         if (error) {
                             return connectNow.rollback(function () {
                                 connectNow.end();
+                                reject(error);
                                 throw error;
                             });
                         }
                     });
-                    console.log("Q 2")
+                    console.log(results.affectedRows);
                     connectNow.commit(function (err) {
                         if (err) {
                             return connectNow.rollback(function () {
                                 connectNow.end();
+                                reject(err);
                                 throw err;
                             });
                         }
