@@ -37,7 +37,6 @@ router.get('/', function (req, res) {
                     console.log("errorr occured needed to render back to schedule but not in modal");
                     res.redirect('/user/tutorSchedule');
                 }
-
             }
         });
     });
