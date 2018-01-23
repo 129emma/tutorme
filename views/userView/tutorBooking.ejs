@@ -22,6 +22,10 @@
 </div>
 <div class="ui grid">
     <div class="right floated five wide column">
+        <button onclick="deleting()" id="delete" class="ui positive right labeled icon button">
+            Delete<br>appointment
+            <i class="info icon"></i>
+        </button>
         <button class="ui positive right labeled icon button">
             Info
             <i class="info icon"></i>
@@ -38,5 +42,27 @@
 $(function () {
     $('.ui.info.modal').modal('attach events','.ui.deny.button','hide');
 })
+    const deleteButton = document.getElementById("delete");
+   function deleting () {
+       console.log("clicked deleted");
+       const confirming = window.confirm("Confirm to delete this appointment?")
+       if (confirming){
+           console.log("yes")
+           console.log("<%= bookingData.bookingID%>")
+           $.ajax({
+               url:"/user/tutorBooking/deleting",
+               data: {bookingID: "<%= bookingData.bookingID%>"},
+               success: function (msg) {
+                   console.log(msg);
+               },
+               error: function (msg) {
+                 console.log("error");
+               }
+           })
+       }
+       else {
+           console.log("no")
+       }
+   };
 </script>
 
