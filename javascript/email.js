@@ -47,6 +47,10 @@ function normal_email(receiver, subject, template, context ) {
 
 //this is the multiple customized emai function, the receiver should an array of useremails, and the context should also be an JSON object that contains the context of multiple user info.
 function mult_email(receiver, subject, template, context ) {
+
+    if(receiver.length !== context.length){ throw "receiver length and context info length does not match";}
+
+
     var transporter = trans_setup();
 
     const compiled = ejs.compile(fs.readFileSync('../email_template/' + template, 'utf8'));
@@ -73,7 +77,7 @@ function mult_email(receiver, subject, template, context ) {
     Promise.all(promises).then(function(infos) { console.log(infos) }, function(err) { console.log(err) });
 }
 
-/*mult_email(["mrknight21@hotmail.com", "mche618@aucklanduni.ac.nz", "yzhb363@aucklanduni.ac.nz", "ljam763@aucklanduni.ac.nz", "jwon117@aucklanduni.ac.nz", "vugn217@aucklanduni.ac.nz", "xche824@aucklanduni.ac.nz"], "Come join Tutorme!!", "ad.ejs", [{username: "hansomeman"}, {username: "better man!"}, {username:"Emma Zhao"}, {username:"James Lam"}, {username:"Fab Fat Flat woo"}, {username:"Vanie Nguyen"}, {username:"XinJian Che"}]);*/
+mult_email(["mrknight21@hotmail.com", "mche618@aucklanduni.ac.nz", "yzhb363@aucklanduni.ac.nz", "ljam763@aucklanduni.ac.nz", "jwon117@aucklanduni.ac.nz", "vugn217@aucklanduni.ac.nz", "xche824@aucklanduni.ac.nz"], "Come join Tutorme!!", "ad.ejs", [{username: "hansomeman"}, {username: "better man!"}, {username:"Emma Zhao"}, {username:"James Lam"}, {username:"Fab Fat Flat woo"}, {username:"Vanie Nguyen"}]);
 
 module.exports = {
     "normal_email": normal_email,
