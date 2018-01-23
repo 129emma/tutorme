@@ -1,0 +1,34 @@
+<div style="padding: 20px">
+    <table id="scheduleTable" class="ui orange celled center aligned table calendar">
+        <thead>
+        <tr>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<script>    var cale = document.getElementsByClassName("calendar")[0];
+for (var i = 7; i < 24; i++) {
+    var newRow = document.createElement('tr');
+    var firstTd = document.createElement('td');
+    firstTd.innerHTML = i + ':00';
+    newRow.appendChild(document.createElement('td').appendChild(firstTd));
+    for (var j = 1; j < 8; j++) {
+
+        var newtd = document.createElement('td');
+        newtd.id = j + "." + i;
+        newtd.className = "empty";
+        newtd.innerHTML = "..";
+        // newtd.onclick = onClickOfTD();
+        newtd.addEventListener("click", onClickOfTD);
+        newRow.appendChild(newtd);
+    }
+    cale.appendChild(newRow);
+}</script>

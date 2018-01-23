@@ -9,29 +9,12 @@
 
     <link rel="stylesheet" type="text/css" href="/stylesheets/tutorSchedule.css">
 
-    <script>
-        $(function () {
-            $('.info-modal-link').each(function () {
-                $(this).on('click', function (e) {
-                    e.preventDefault();
-                    var url = $(this).attr('href');
-                    $.get(url, function (data) {
-                        $('.info.modal .content').html(data);
-                        $(".info.modal").modal({closable: true, observeChanges: true}).modal('show');
-                    });
-                });
-            });
-
-
-        });
-    </script>
 
 </head>
 
 <body>
 
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
-<% include ../templates/navbar.ejs %>
 
 <div class="ui center aligned container">
 
@@ -297,7 +280,6 @@
             var Clickdate = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - (day.getDay()) + classIdDay * 1), classIdHour);
             Clickdate.setTime(Clickdate.getTime() - Clickdate.getTimezoneOffset() * 60 * 1000);
             console.log(this);
-            window.location.href = '/listing/booking/modal?username='+userName+"&&subject=<%= subject%>"+"&&time="+String(Clickdate);
         }
     }
 </script>
