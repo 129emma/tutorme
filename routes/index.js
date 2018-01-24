@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
 
   if (typeof req.session.userDetails !== 'undefined') {
     console.log("YES" + req.session.userDetails);
-    res.redirect('/tutor/home');
+    res.redirect('/user/home');
       // res.render('index', { title: 'Tutorme' });
 
   } else {

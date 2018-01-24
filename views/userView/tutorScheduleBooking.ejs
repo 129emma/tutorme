@@ -9,23 +9,6 @@
 
     <link rel="stylesheet" type="text/css" href="/stylesheets/tutorSchedule.css">
 
-    <script>
-        $(function () {
-            $('.info-modal-link').each(function () {
-                $(this).on('click', function (e) {
-                    e.preventDefault();
-                    var url = $(this).attr('href');
-                    $.get(url, function (data) {
-                        $('.info.modal .content').html(data);
-                        $(".info.modal").modal({closable: true, observeChanges: true}).modal('show');
-                    });
-                });
-            });
-
-
-        });
-    </script>
-
 </head>
 
 <body>
@@ -81,14 +64,25 @@
 
 </body>
 
-
-<!--This is the script to load semantic model content from another webpage-->
-
+<!--The following script opens up modal within the modal class div in the html-->
+<script>
+    $(document).ready(function () {
+        $('.info-modal-link').each(function () {
+            $(this).on('click', function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                $.get(url, function (data) {
+                    $('.info.modal .content').html(data);
+                    $(".info.modal").modal({closable: true, observeChanges: true}).modal('show');
+                });
+            });
+        });
+    });
+</script>
 
 <script src="/socket.io/socket.io.js"></script>
+
 <script>
-
-
     var ListOfDates = [];
     var ListToDelete = [];
     const userName = "<%= userDetailsName %>";
@@ -297,8 +291,10 @@
             var Clickdate = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - (day.getDay()) + classIdDay * 1), classIdHour);
             Clickdate.setTime(Clickdate.getTime() - Clickdate.getTimezoneOffset() * 60 * 1000);
             console.log(this);
-            window.location.href = '/listing/booking/modal?username='+userName+"&&subject=<%= subject%>"+"&&time="+String(Clickdate);
         }
     }
 </script>
+
+
+
 </html>
