@@ -32,7 +32,12 @@
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
 <% include templates/navbar.ejs %>
 
+
 <div class="ui text center aligned container">
+    <div class="ui info modal">
+        <div class="content" id="info"></div>
+    </div>
+
     <h1 class="ui center aligned header">
         Listing
     </h1>
@@ -43,13 +48,13 @@
                 <button class="ui icon button" type="submit">Search</button>
             </div>
             <datalist id="courses">
-                <% for (var j = 0; j < courses.length; j++){ %>
-                <option value="<%= courses[j].courseID %>"></option>
+                <% for (var j = 0; j < value.courses.length; j++){ %>
+                <option value="<%= value.courses[j].courseID %>"></option>
                 <% } %>
             </datalist>
         </form>
     </div>
-    <% for (var i = 0; i < tutors.length; i++){ %>
+    <% for (var i = 0; i < value.tutors.length; i++){ %>
     <div class="ui card">
         <div class="image" style="float: left">
             <img src="https://www.w3schools.com/w3images/avatar2.png">
@@ -57,12 +62,12 @@
         <div class="content" style="float: right">
 
             <%
-                var cap = tutors[i].courses.split(",");
-                var grades = tutors[i].grades.split(",").sort();
+                var cap = value.tutors[i].courses.split(",");
+                var grades = value.tutors[i].grades.split(",").sort();
             %>
-            <div class="header"><%= tutors[i].userName %></div>
+            <div class="header"><%= value.tutors[i].userName %></div>
             <div class="description">
-                <%= tutors[i].selfIntroduction %>
+                <%= value.tutors[i].selfIntroduction %>
             </div>
             <form>
                 <div class="ui mini action input">
@@ -75,24 +80,37 @@
                 </div>
             </form>
             <div class="description">
-                <%=tutors[i].selfIntroduction%>
+                <%=value.tutors[i].selfIntroduction%>
             </div>
         </div>
         <div class="extra content" style="text-align: right">
-            rating: <%= tutors[i].rating %>
+            rating: <%= value.tutors[i].rating %>
         </div>
     </div>
     <% } %>
 
 </div>
 </body>
+
 <script>
-    console.log($("div.ui.action.input > div.ui.button"))
-    $("div.ui.action.input > div.ui.button").on("click",function () {
-       const subject = $(this).siblings("select.ui.compact.selection.dropdown")[0].value;
-        const username = ($(this).parent().parent().siblings("a.header")[0].innerHTML);
+    $("div.ui.mini.action.input > button.ui.icon.button").on("click",function () {
+        event.preventDefault()
+        console.log(this)
+        const form = $(this).parent().parent()[0];
+        const username =  $(form).siblings("div.header")[0].innerHTML
+        const selection = $(this).siblings()[0];
+        const subject = selection.children[0].options[selection.children[0].selectedIndex].value;
+        const a = document.createElement("a")
+        a.href  = "/listing/booking?username=" + username+"&&subject="+subject;
+        a.className = 'info-modal-link';
+        a.id = 'myDetail'
+       //window.location.href= a;
+        $(this).parent()[0].appendChild(a)
+        a.appendChild(this);
+        this.innerHTML = "<a href='/listing/booking?username=" + username+"&&subject="+subject+"' class='info-modal-link'></a>";
+
+        console.log(this.href)
         // $.get("/listing/booking",{username: username , subject: subject});
-        window.location.href = '/listing/booking?username='+username+"&&subject="+subject;
 
         // $.ajax({
         //     url:   "/listing/booking",
@@ -113,5 +131,19 @@
    $(function () {
        $('.ui.dropdown').dropdown();
    })
+</script>
+<script>
+    $(function () {
+        $('.info-modal-link').each(function () {
+            $(this).on('click', function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                $.get(url, function (data) {
+                    $('.info.modal .content').html(data);
+                    $(".info.modal").modal({closable: true, observeChanges: true}).modal('show');
+                });
+            });
+        });
+    })
 </script>
 </html>
