@@ -174,6 +174,70 @@ function deleteAppointment(bookID) {
         })
     });
 }
+
+function updateAppoint(bookID, time,updateJSON) {
+    console.log("update connection");
+    const connectNow = con.method();
+    const promise = new Promise(function (resolve, reject) {
+        connectNow.connect(function (err) {
+            if (err) {
+                connectNow.end();
+                reject(err);
+                throw err;
+            }
+            connectNow.beginTransaction(function (err) {
+                if (err) {
+                    connectNow.end();
+                    reject(err);
+                    throw err;
+                }
+                connectNow.query("UPDATE `tableTimeOccupation` SET timeID=(SELECT timeID FROM `tableTime` WHERE timeStart=?) WHERE bookingID=?", [bookID, time], function (error, results, fields) {
+
+                    console.log(results.affectedRows);
+                    if (results.affectedRows < 1){
+                        console.log("less than one row is affected");
+                        reject("less than one row is affected");
+                    }
+                    if (error) {
+                        return connectNow.rollback(function () {
+                            connectNow.end();
+                            reject(error);
+                            throw error;
+                        });
+                    }
+                    console.log("Q 1");
+                    connectNow.query("UPDATE `tableBooking` SET ? WHERE bookingID=?",[updateJSON,bookID], function (error, results, fields) {
+                        console.log(results);
+                        if (results.affectedRows < 1){
+                            console.log("less than one row is affected");
+                            reject("less than one row is affected");
+                        }
+                        if (error) {
+                            return connectNow.rollback(function () {
+                                connectNow.end();
+                                reject(error);
+                                throw error;
+                            });
+                        }
+                    });
+                    console.log(results.affectedRows);
+                    connectNow.commit(function (err) {
+                        if (err) {
+                            return connectNow.rollback(function () {
+                                connectNow.end();
+                                reject(err);
+                                throw err;
+                            });
+                        }
+                        console.log("done updating");
+                        connectNow.end();
+                        resolve()
+                    })
+                })
+            });
+        })
+    });
+}
 function convert(date) {
     console.log(date);
     console.log(mysql.escape(date));
