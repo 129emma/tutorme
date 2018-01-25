@@ -32,10 +32,7 @@ a#myDetail {
     color: #fff4f9;
 }
 
+/*column width*/
 td{
     width: 12.5% !important;
-}
-
-button.ui.black.deny.button {
-    margin-left: 40px;
 }
