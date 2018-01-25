@@ -23,7 +23,11 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="10b13aad-a5ea-4294-984d-40d2a025e214">
+        <schema name="tutorme" object-types="column, constraint, function, index, procedure, table, dataset trigger, view" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="10b13aad-a5ea-4294-984d-40d2a025e214">
@@ -37,6 +41,9 @@ GROUP BY  tutor.userName
 ORDER BY rating DESC
 LIMIT 10;]]></console>
     </connection>
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-list connection-id="10b13aad-a5ea-4294-984d-40d2a025e214" dataset="tutorme.tableBooking" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
