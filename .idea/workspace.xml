@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66d2b2d6-f8a2-4f67-8d60-a1b0ffb1f515" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/public/stylesheets/navbar.css" afterPath="$PROJECT_DIR$/public/stylesheets/navbar.css" />
-      <change beforePath="$PROJECT_DIR$/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" />
-      <change beforePath="$PROJECT_DIR$/public/stylesheets/tutorBooking.css" afterPath="$PROJECT_DIR$/public/stylesheets/tutorBooking.css" />
-      <change beforePath="$PROJECT_DIR$/public/stylesheets/tutorSchedule.css" afterPath="$PROJECT_DIR$/public/stylesheets/tutorSchedule.css" />
-      <change beforePath="$PROJECT_DIR$/routes/user.js" afterPath="$PROJECT_DIR$/routes/user.js" />
-      <change beforePath="$PROJECT_DIR$/views/aboutUs.ejs" afterPath="$PROJECT_DIR$/views/aboutUs.ejs" />
-      <change beforePath="$PROJECT_DIR$/views/listing.ejs" afterPath="$PROJECT_DIR$/views/listing.ejs" />
-      <change beforePath="$PROJECT_DIR$/views/userView/tutorBooking.ejs" afterPath="$PROJECT_DIR$/views/userView/tutorBooking.ejs" />
-      <change beforePath="$PROJECT_DIR$/views/userView/tutorSchedule.ejs" afterPath="$PROJECT_DIR$/views/userView/tutorSchedule.ejs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,7 +26,7 @@
       <file leaf-file-name="tutorBooking.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/userRoute/tutorBooking.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-283">
+            <state relative-caret-position="540">
               <caret line="36" column="68" lean-forward="false" selection-start-line="36" selection-start-column="68" selection-end-line="36" selection-end-column="68" />
               <folding />
             </state>
@@ -46,8 +36,8 @@
       <file leaf-file-name="tutorBooking.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/userView/tutorBooking.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="39" column="18" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="13" />
+            <state relative-caret-position="396">
+              <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -106,7 +96,7 @@
       <file leaf-file-name="registration.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/registration.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
+            <state relative-caret-position="300">
               <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="41" />
               <folding />
             </state>
@@ -250,7 +240,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
@@ -325,8 +315,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -429,6 +419,7 @@
       <workItem from="1516758873078" duration="329000" />
       <workItem from="1516759989695" duration="48000" />
       <workItem from="1516844017724" duration="159000" />
+      <workItem from="1516846969416" duration="533000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;added sockets and the sql call related&quot;">
       <created>1513386883857</created>
@@ -710,11 +701,18 @@
       <option name="project" value="LOCAL" />
       <updated>1516760026426</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Merge branch 'master' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;views/listing.ejs">
+      <created>1516847299239</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1516847299239</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="184901000" />
+    <option name="totallyTimeSpent" value="185434000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -731,34 +729,24 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14235377" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.49505603" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22853687" sideWeight="0.5250176" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21404304" sideWeight="0.46800634" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20838052" sideWeight="0.5319936" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2140266" sideWeight="0.46800634" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41789356" sideWeight="0.45848757" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22853687" sideWeight="0.47498238" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23458283" sideWeight="0.48598626" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997735" sideWeight="0.49814913" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.49505603" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998413" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20838052" sideWeight="0.5319936" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41789356" sideWeight="0.45848757" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21404304" sideWeight="0.46800634" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24168798" sideWeight="0.48598626" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14235377" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997735" sideWeight="0.49814913" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.49505603" order="7" side_tool="false" content_ui="tabs" />
@@ -817,7 +805,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="&quot;fixed timeoffset&quot;" />
     <MESSAGE value="&quot;insert avi time&quot;" />
     <MESSAGE value="&quot;fixed the sunday&quot;" />
     <MESSAGE value="Merge branch 'James' of https://github.com/jwwnz/tutorme into vanies&#10;&#10;# Conflicts:&#10;#&#9;javascript/tutorSchedule3WeekPreRendering.js&#10;gg" />
@@ -842,7 +829,8 @@
     <MESSAGE value="&quot;delete from the database is done for appoints needed the bookid&quot;" />
     <MESSAGE value="Styling popup window" />
     <MESSAGE value="Merge branch 'master' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;views/userView/tutorBooking.ejs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;views/userView/tutorBooking.ejs" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;views/listing.ejs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/jwwnz/tutorme&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;views/listing.ejs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1049,8 +1037,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/userView/tutorBooking.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="18" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="13" />
+        <state relative-caret-position="396">
+          <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1129,7 +1117,7 @@
     <entry file="file://$PROJECT_DIR$/routes/userRoute/testPage.js" />
     <entry file="file://$PROJECT_DIR$/routes/userRoute/tutorBooking.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-283">
+        <state relative-caret-position="540">
           <caret line="36" column="68" lean-forward="false" selection-start-line="36" selection-start-column="68" selection-end-line="36" selection-end-column="68" />
           <folding />
         </state>
@@ -1186,7 +1174,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/registration.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
+        <state relative-caret-position="300">
           <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="41" />
           <folding />
         </state>
