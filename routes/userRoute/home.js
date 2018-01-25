@@ -19,7 +19,7 @@ router.get('/', function (req, res){
 
 console.log("ready to make query to database");
 
-    res.render("./tutorView/home", req.session);
+    res.render("./userView/home", req.session);
 
 })
 ;

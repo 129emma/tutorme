@@ -97,5 +97,39 @@ function joinedSQLListingCall(limit, subject) {
     return promise;
 }
 
-module.exports = {listingSQLDEC: listingSQLDEC, allTableCourses: allTableCourseListing, joinedSQLListingCall : joinedSQLListingCall};
+function singleCap(connectNow , username) {
+    var connection= false;
+    if (connectNow === undefined){
+        console.log("No connection, now making one");
+        connectNow = con.method();
+        connectNow.connect(function (err) {
+            if (err) {
+                connectNow.end();
+                throw err
+            }
+        });
+        connection = true
+    }
+    const promise = new Promise(function (resolve, reject) {
+        connectNow.query("SELECT courseID FROM `tableCapabilities` WHERE username = ?", [username], function (err, courselist) {
+            if (connection){
+                connectNow.end()
+            }
+            if (err) {
+                connectNow.end();
+                throw err;
+            } else {
+
+                // DB connection to get course list to display in dropdown
+                const courses = JSON.parse(JSON.stringify(courselist));
+                // res.render("listing", {tutors: resultDetails, courses: courses});
+                console.log(courses);
+                resolve(courses);
+            }
+        });
+    });
+    return promise;
+}
+
+module.exports = {listingSQLDEC: listingSQLDEC, allTableCourses: allTableCourseListing, joinedSQLListingCall : joinedSQLListingCall, singleTutorCap : singleCap};
 

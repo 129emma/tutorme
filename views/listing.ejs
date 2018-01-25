@@ -98,7 +98,7 @@
         const selection = $(this).siblings()[0];
         const subject = selection.children[0].options[selection.children[0].selectedIndex].value;
         const a = document.createElement("a")
-        a.href  = "/listing/booking?username=" + username+"&&subject="+subject;
+        a.href  = "/listing/booking?username=" + username +"&&subject="+subject;
         a.className = 'info-modal-link';
         a.id = 'myDetail'
        //window.location.href= a;
