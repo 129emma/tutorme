@@ -1,7 +1,15 @@
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/tutorBooking.css"/>
 <body>
-<h3 class="header">
+<i class="close link icon" onclick="closeModal()"></i>
+
+<h3 class="header" id="modalHeader">
     Booking from <%= bookingData.tuteeID %>
+
 </h3>
+
+
+
 <div class="ui divider"></div>
 <div class="ui grid">
     <div class="two wide column">
@@ -21,48 +29,48 @@
     </div>
 </div>
 <div class="ui grid">
-    <div class="right floated five wide column">
-        <button onclick="deleting()" id="delete" class="ui positive right labeled icon button">
-            Delete<br>appointment
-            <i class="info icon"></i>
-        </button>
+    <div class="right floated seven wide column">
         <button class="ui positive right labeled icon button">
             Info
             <i class="info icon"></i>
         </button>
-        <button class="ui black deny button">
-            Close
+        <button onclick="deleting()" id="delete" class="right floated ui negative right labeled icon button">
+            Delete appointment
+            <i class="remove icon"></i>
         </button>
-
     </div>
 </div>
 </body>
 
 <script>
-$(function () {
-    $('.ui.info.modal').modal('attach events','.ui.deny.button','hide');
-})
+
+    function closeModal() {
+        $('.ui.info.modal').modal('hide')
+
+    }
+
     const deleteButton = document.getElementById("delete");
-   function deleting () {
-       console.log("clicked deleted");
-       const confirming = window.confirm("Confirm to delete this appointment?")
-       if (confirming){
-           console.log("yes")
-           console.log("<%= bookingData.bookingID%>")
-           $.ajax({
-               url:"/user/tutorBooking/deleting",
-               data: {bookingID: "<%= bookingData.bookingID%>"},
-               success: function (msg) {
-                   console.log(msg);
-               },
-               error: function (msg) {
-                 console.log("error");
-               }
-           })
-       }
-       else {
-           console.log("no")
-       }
-   };
+
+    function deleting() {
+        console.log("clicked deleted");
+        const confirming = window.confirm("Confirm to delete this appointment?")
+        if (confirming) {
+            console.log("yes")
+            console.log("<%= bookingData.bookingID %>")
+            $.ajax({
+                url: "/user/tutorBooking/deleting",
+                data: {bookingID: "<%= bookingData.bookingID %>"},
+                success: function (msg) {
+                    console.log(msg);
+                },
+                error: function (msg) {
+                    console.log("error");
+                }
+            })
+        }
+        else {
+            console.log("no")
+        }
+    };
 </script>
 

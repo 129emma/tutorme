@@ -1,0 +1,10 @@
+/*header position*/
+h3#modalHeader {
+    margin-top: 0;
+}
+
+/*close icon position*/
+i.close.icon {
+    position: absolute;
+    right: 20px;
+}
