@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Tutor XYZ page</title>
+    <title>Tutor <%= tutorDetails[0].userName %> page</title>
 </head>
 
 <body>
@@ -19,109 +19,51 @@
 
 <div class="ui middle aligned grid" id="profile">
     <div class="ui text container">
-        <h1>Welcome to XYZ's profile</h1>
+        <h1>Welcome to <%= tutorDetails[0].userName %>'s profile</h1>
         <p>Edit your general Profile Details</p>
         <div>
             <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png" style="width: 100px;"/>
         </div>
 
         <div class="ui raised segment">
-            <p>This is XYZ's introduction... Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+            <p><%= tutorDetails[0].selfIntroduction %></p>
         </div>
 
         <div class="ui styled accordion">
+
+            <!--getting all the courses-->
+
+            <% for (var i = 0; i < capabilityDetails.length; i++){ %>
+
+            <% if (capabilityDetails[i].courseID === selectedCourseId) { %>
             <div class="active title">
                 <i class="dropdown icon"></i>
-                Level 1
+                <%= capabilityDetails[i].courseID %>
             </div>
             <div class="active content">
-                Welcome to level 1
-                <div class="accordion">
-                    <div class="active title">
-                        <i class="dropdown icon"></i>
-                        Level 1A
-                    </div>
-                    <div class="active content">
-                        <p>Level 1A Contents</p>
-                        <div class="accordion">
-                            <div class="title">
-                                <i class="dropdown icon"></i>
-                                Level 1A-A
-                            </div>
-                            <div class="content">
-                                Level 1A-A Contents
-                            </div>
-                            <div class="title">
-                                <i class="dropdown icon"></i>
-                                Level 1A-B
-                            </div>
-                            <div class="content">
-                                Level 1A-B Contents
-                            </div>
-                        </div>
-                    </div>
-                    <div class="title">
-                        <i class="dropdown icon"></i>
-                        Level 1B
-                    </div>
-                    <div class="content">
-                        Level 1B Contents
-                    </div>
-                    <div class="title">
-                        <i class="dropdown icon"></i>
-                        Level 1C
-                    </div>
-                    <div class="content">
-                        Level 1C Contents
-                    </div>
-                </div>
+                <ul>
+                    <li>Description: <%= capabilityDetails[i].description %></li>
+                    <li>Experience: <%= capabilityDetails[i].experience %></li>
+                    <li>Grade: <%= capabilityDetails[i].grade %></li>
+                    <li><a href="/listing/booking?username=<%= tutorDetails[0].userName %>&capability=<%= capabilityDetails[i].courseID %>">BOOK NOW!</a></li>
+                </ul>
             </div>
+            <% } else { %>
             <div class="title">
                 <i class="dropdown icon"></i>
-                Level 2
+                <%= capabilityDetails[i].courseID %>
             </div>
             <div class="content">
-                <p>Welcome to level 2</p>
-                <div class="accordion">
-                    <div class="active title">
-                        <i class="dropdown icon"></i>
-                        Level 2A
-                    </div>
-                    <div class="active content">
-                        <p>Level 2A Contents</p>
-                        <div class="accordion">
-                            <div class="title">
-                                <i class="dropdown icon"></i>
-                                Level 2A-A
-                            </div>
-                            <div class="content">
-                                Level 2A-A Contents
-                            </div>
-                            <div class="title">
-                                <i class="dropdown icon"></i>
-                                Level 2A-B
-                            </div>
-                            <div class="content">
-                                Level 2A-B Contents
-                            </div>
-                        </div>
-                    </div>
-                    <div class="title">
-                        <i class="dropdown icon"></i>
-                        Level 2B
-                    </div>
-                    <div class="content">
-                        Level 2B Contents
-                    </div>
-                    <div class="title">
-                        <i class="dropdown icon"></i>
-                        Level 2C
-                    </div>
-                    <div class="content">
-                        Level 2C Contents
-                    </div>
-                </div>
+                <ul>
+                    <li>Description: <%= capabilityDetails[i].description %></li>
+                    <li>Experience: <%= capabilityDetails[i].experience %></li>
+                    <li>Grade: <%= capabilityDetails[i].grade %></li>
+                    <li><a href="/listing/booking?username=<%= tutorDetails[0].userName %>&capability=<%= capabilityDetails[i].courseID %>">BOOK NOW!</a></li>
+                </ul>
             </div>
+            <% } %>
+
+            <% } %>
         </div>
 
     </div>
