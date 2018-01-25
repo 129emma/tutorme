@@ -9,7 +9,9 @@ router.use(bodyParser.urlencoded({extended: false}));
 router.get('/', function (req, res) {
 
     //Set up tutorUsername const of the tutor we are viewing, currently hardwired as Jojo need to link up to listing
-    const tutorUsername = "jojo";
+    const tutorUsername = req.query.userName;
+    var selectedCourseId = req.query.courseId;
+
 
     //connect to the database
     const connectNow = con.method();
@@ -19,52 +21,41 @@ router.get('/', function (req, res) {
     });
 
     /* first query to get Tutor details*/
-    connectNow.query("SELECT tutor.userName, tutor.selfIntroduction, cap.courseID, cap.experience, cap.description, cap.verification, cap.grade FROM tableTutor AS tutor, tableCapabilities AS cap WHERE tutor.userName = ? AND tutor.userName = cap.userName"
+    connectNow.query("SELECT userName, selfIntroduction FROM tableTutor WHERE userName = ?"
         , [tutorUsername], function (err, resultTutor) {
 
-            const resultDetails = JSON.parse(JSON.stringify(resultTutor));
+            const tutorDetails = JSON.parse(JSON.stringify(resultTutor));
+            console.log(tutorDetails);
 
             if (err) {
 
+                console.log("Error with Database in publicProfile")
                 connectNow.end();
                 throw err;
 
             } else {
 
                 // DB connection to get capability list
-                connectNow.query("SELECT * FROM tableCourseList"
-                    , [], function (err, resultCourse) {
+                connectNow.query("SELECT * FROM tableCapabilities WHERE userName = ?"
+                    , [tutorUsername], function (err, resultCourse) {
                         connectNow.end();
                         if (err) {
                             throw err
                         } else {
-                            const courseDetails = JSON.parse(JSON.stringify(resultCourse));
-                            const currentCourse = resultDetails.map(function(cap){return cap.courseID;});
-                            const availableCourse = courseDetails.filter(function (curV) { return !currentCourse.includes(curV.courseID);});
 
-                            var Co_id = [];
-                            var Co_name = [];
-                            var Co_description = [];
-                            availableCourse.map(function(Co){
-                                Co_id.push(Co.courseID);
-                                Co_name.push(Co.courseName);
-                                Co_description.push(Co.courseDescription);
+                            const capabilityDetails = JSON.parse(JSON.stringify(resultCourse));
+                            console.log(capabilityDetails);
+
+                            res.render('./publicProfile.ejs', {
+                                userDetails: req.session.userDetails,
+                                tutorDetails: tutorDetails,
+                                capabilityDetails: capabilityDetails,
+                                selectedCourseId: selectedCourseId
                             });
-                            Co_id = JSON.stringify(Co_id);
-                            Co_name = JSON.stringify(Co_name);
-                            Co_description = JSON.stringify(Co_description);
-
-
-                            res.render('./userView/profile.ejs', {userDetails: req.session.userDetails, Data: resultDetails, CourseList: availableCourse, Co_id: Co_id, Co_name: Co_name, Co_description: Co_description});
                         }
                     });
             }
         });
-
-
-
-
-    res.render('./publicProfile.ejs');
 
 });
 
