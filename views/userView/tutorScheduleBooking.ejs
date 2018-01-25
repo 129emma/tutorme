@@ -9,12 +9,12 @@
 
     <link rel="stylesheet" type="text/css" href="/stylesheets/tutorSchedule.css">
 
+
 </head>
 
 <body>
 
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
-<% include ../templates/navbar.ejs %>
 
 <div class="ui center aligned container">
 
@@ -64,25 +64,14 @@
 
 </body>
 
-<!--The following script opens up modal within the modal class div in the html-->
-<script>
-    $(document).ready(function () {
-        $('.info-modal-link').each(function () {
-            $(this).on('click', function (e) {
-                e.preventDefault();
-                var url = $(this).attr('href');
-                $.get(url, function (data) {
-                    $('.info.modal .content').html(data);
-                    $(".info.modal").modal({closable: true, observeChanges: true}).modal('show');
-                });
-            });
-        });
-    });
-</script>
+
+<!--This is the script to load semantic model content from another webpage-->
+
 
 <script src="/socket.io/socket.io.js"></script>
-
 <script>
+
+
     var ListOfDates = [];
     var ListToDelete = [];
     const userName = "<%= userDetailsName %>";
@@ -294,7 +283,4 @@
         }
     }
 </script>
-
-
-
 </html>

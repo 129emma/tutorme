@@ -7,7 +7,7 @@
 
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="/stylesheets/loginPage.css"/>
+
     <style>
         .ui.text.center.aligned.container {
             padding-top: 3%;
@@ -33,20 +33,25 @@
 <% include templates/navbar.ejs %>
 
 
-
 <div class="ui text center aligned container">
+    <div class="ui info modal">
+        <div class="content" id="info"></div>
+    </div>
+
     <h1 class="ui center aligned header">
         Listing
     </h1>
     <div class="ui fluid action input">
         <form action="/listing/search" method="get">
-        <input list="courses" name="search" placeholder="Search...">
-        <input type="submit"  class="ui button">Search</input>
-        <datalist id="courses">
-            <% for (var j = 0; j < value.courses.length; j++){ %>
-            <option value="<%=value.courses[j].courseID%>"></option>
-            <%}%>
-        </datalist>
+            <div class="ui action input">
+                <input list="courses" name="search" placeholder="Search...">
+                <button class="ui icon button" type="submit">Search</button>
+            </div>
+            <datalist id="courses">
+                <% for (var j = 0; j < value.courses.length; j++){ %>
+                <option value="<%= value.courses[j].courseID %>"></option>
+                <% } %>
+            </datalist>
         </form>
     </div>
     <% for (var i = 0; i < value.tutors.length; i++){ %>
@@ -57,39 +62,55 @@
         <div class="content" style="float: right">
 
             <%
-              var cap = value.tutors[i].courses.split(",");
-              var grades = value.tutors[i].grades.split(",").sort();
+                var cap = value.tutors[i].courses.split(",");
+                var grades = value.tutors[i].grades.split(",").sort();
             %>
-            <a class="header"><%= value.tutors[i].userName%></a>
+            <div class="header"><%= value.tutors[i].userName %></div>
+            <div class="description">
+                <%= value.tutors[i].selfIntroduction %>
+            </div>
             <form>
-                <div class="ui action input">
+                <div class="ui mini action input">
                     <select class="ui compact selection dropdown">
                         <% for (var k = 0; k < cap.length; k++){ %>
-                        <option value="<%=cap[k]%>"><%=cap[k]%>   <%=grades[k]%></option>
-                        <%} %>
+                        <option value="<%= cap[k] %>"><%= cap[k] %>   <%= grades[k] %></option>
+                        <% } %>
                     </select>
-                    <div type="submit" class="ui button"><i class="right arrow icon"></i></div>
+                    <button type="submit" class="ui icon button"><i class="right arrow icon"></i></button>
                 </div>
             </form>
             <div class="description">
                 <%=value.tutors[i].selfIntroduction%>
             </div>
         </div>
-        <div class="ui extra content" style="text-align: right">
-            rating: <%=value.tutors[i].rating%>
+        <div class="extra content" style="text-align: right">
+            rating: <%= value.tutors[i].rating %>
         </div>
     </div>
-    <%}%>
+    <% } %>
 
 </div>
 </body>
+
 <script>
-    console.log($("div.ui.action.input > div.ui.button"))
-    $("div.ui.action.input > div.ui.button").on("click",function () {
-       const subject = $(this).siblings("select.ui.compact.selection.dropdown")[0].value;
-        const username = ($(this).parent().parent().siblings("a.header")[0].innerHTML);
+    $("div.ui.mini.action.input > button.ui.icon.button").on("click",function () {
+        event.preventDefault()
+        console.log(this)
+        const form = $(this).parent().parent()[0];
+        const username =  $(form).siblings("div.header")[0].innerHTML
+        const selection = $(this).siblings()[0];
+        const subject = selection.children[0].options[selection.children[0].selectedIndex].value;
+        const a = document.createElement("a")
+        a.href  = "/listing/booking?username=" + username+"&&subject="+subject;
+        a.className = 'info-modal-link';
+        a.id = 'myDetail'
+       //window.location.href= a;
+        $(this).parent()[0].appendChild(a)
+        a.appendChild(this);
+        this.innerHTML = "<a href='/listing/booking?username=" + username+"&&subject="+subject+"' class='info-modal-link'></a>";
+
+        console.log(this.href)
         // $.get("/listing/booking",{username: username , subject: subject});
-        window.location.href = '/listing/booking?username='+username+"&&subject="+subject;
 
         // $.ajax({
         //     url:   "/listing/booking",
@@ -106,5 +127,23 @@
         //     }});
     })
     console.log($("select")[0].value);
+
+   $(function () {
+       $('.ui.dropdown').dropdown();
+   })
+</script>
+<script>
+    $(function () {
+        $('.info-modal-link').each(function () {
+            $(this).on('click', function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                $.get(url, function (data) {
+                    $('.info.modal .content').html(data);
+                    $(".info.modal").modal({closable: true, observeChanges: true}).modal('show');
+                });
+            });
+        });
+    })
 </script>
 </html>

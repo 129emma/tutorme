@@ -81,7 +81,7 @@ router.get('/search', function (req, res) {
 router.get("/booking", function (req, res) {
     console.log(req.query);
 
-
+    console.log("joined booking and listing");
     // connectNow = con.method();
     // connectNow.connect(function (err) {
     //     if (err) {
@@ -95,11 +95,12 @@ router.get("/booking", function (req, res) {
     promise.then(function (value) {
         console.log(value);
         value.userName = req.session.username;
-        res.render("./userView/tutorScheduleBooking.ejs", {
+        res.render("./userView/tuteeBooking.ejs", {
             value: value,
             userDetailsName: req.query.username,
             sess: req.session,
-            subject: req.query.subject,userDetails: req.session.userDetails
+            subject: req.query.subject,userDetails: req.session.userDetails,
+            tutor: req.query.username
         });
     });
 });
@@ -112,14 +113,14 @@ router.get("/booking/modal", function (req, res) {
     // console.log(Clickdate)
     // Clickdate = new Date(Clickdate);
     Clickdate.setTime(Clickdate.getTime() + Clickdate.getTimezoneOffset() * 60 * 1000);
-    console.log(Clickdate);
-    res.render("./userView/tuteeBooking", {
-        userDetailsName: req.session.userDetails[0],
-        subject: req.query.subject,
-        time: Clickdate,
-        tutor: req.query.username,
-        userDetails: req.session.userDetails
-    });
+    // console.log(Clickdate);
+    // res.render("./userView/tuteeBooking", {
+    //     userDetailsName: req.session.userDetails[0],
+    //     subject: req.query.subject,
+    //     time: Clickdate,
+    //     tutor: req.query.username,
+    //     userDetails: req.session.userDetails
+    // });
 });
 router.get("/booking/confirm", function (req, res) {
     console.log("booking confirm");
