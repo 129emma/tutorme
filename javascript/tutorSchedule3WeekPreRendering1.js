@@ -143,7 +143,7 @@ function JoinedScheduleCalls(ListOfPromises, connectNow, date, username, timeTab
     console.log(ListOfPromises);
     const promise = new Promise(function (resolve, reject) {
         Promise.all(ListOfPromises).then(function (value) {
-            console.log(value)
+            console.log(value);
             if (connectNow !== undefined) {
                 connectNow.end();
             }
@@ -161,8 +161,18 @@ function JoinedScheduleCalls(ListOfPromises, connectNow, date, username, timeTab
             };
 
             for (var i = 0; i < value[0].length; i++) {
-                tutor.availableTime.push(String(value[0][i].timeStart))
+                tutor.availableTime.push((value[0][i].timeStart))
             }
+            tutor.availableTime.sort(function (a,b) {
+                return a-b;
+            });
+            console.log(tutor.availableTime);
+            tutor.availableTime.map(function (value2) {
+                value2 = String(value2);
+                return value2;
+            });
+            console.log("sorting");
+            console.log(tutor.availableTime);
             if (value.length > 1) {
                 for (var i = 0; i < value[1].length; i++) {
                     const numbering = (tutor.availableTime.indexOf(String(value[1][i].timeStart)));
