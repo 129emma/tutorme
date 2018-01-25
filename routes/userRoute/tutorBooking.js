@@ -5,7 +5,8 @@ var express = require('express');
 const router = express.Router();
 const con = require('../../javascript/connection');
 const updateTime = require('../../javascript/UpdatingTime');
-
+const weekly1 = require("../../javascript/tutorSchedule3WeekPreRendering1");
+const Listing = require("../../javascript/ListingSQL");
 router.get('/', function (req, res) {
 
     //booking ID should be provided by the click on the schedule, currently dummy data 1 inserted for testing purposes.
@@ -13,35 +14,59 @@ router.get('/', function (req, res) {
 
     const connectNow = con.method();
 
-    connectNow.connect(function (err) {
-        if (err) {
-            connectNow.end();
-            throw err;
-        }
-        connectNow.query("SELECT tableBooking.tuteeID, tableBooking.courseID, tableBooking.location, tableBooking.description, tableBooking.totalPrice, tableTime.timeStart,  tableBooking.bookingID FROM tableBooking, tableTime, tableTimeOccupation WHERE tableTimeOccupation.timeID = tableTime.timeID AND tableTimeOccupation.bookingID = tableBooking.bookingID AND tableBooking.bookingID = ?", [bookingID], function (err, result) {
-            connectNow.end();
-            console.log('Database Connected!');
+    const promise = new Promise(function (resolve, reject) {
+        connectNow.connect(function (err) {
             if (err) {
+                connectNow.end();
                 throw err;
-            } else {
-                console.log(JSON.stringify(result));
-                if ((JSON.stringify(result)).length > 2) {
-                    const rawObject = JSON.parse(JSON.stringify(result[0]));
-                    console.log("RAW: " + rawObject.tuteeID);
-                    res.render("./userView/tutorBooking", {
-                        userDetails: req.session.userDetails,
-                        bookingData: rawObject
-                    });
-                }
-                else {
-                    console.log("errorr occured needed to render back to schedule but not in modal");
-                    res.redirect('/user/tutorSchedule');
-                }
             }
+
+            connectNow.query("SELECT tableBooking.tutorID, tableBooking.tuteeID, tableBooking.courseID, tableBooking.location, tableBooking.description, tableBooking.totalPrice, tableTime.timeStart,  tableBooking.bookingID FROM tableBooking, tableTime, tableTimeOccupation WHERE tableTimeOccupation.timeID = tableTime.timeID AND tableTimeOccupation.bookingID = tableBooking.bookingID AND tableBooking.bookingID = ?", [bookingID], function (err, result) {
+                connectNow.end();
+                console.log('Database Connected!');
+                if (err) {
+                    throw err;
+                } else {
+                    console.log(JSON.stringify(result));
+                    if ((JSON.stringify(result)).length > 2) {
+                        const rawObject = JSON.parse(JSON.stringify(result[0]));
+                        console.log("RAW: " + rawObject.tuteeID);
+
+                        resolve(rawObject);
+                        // res.render("./userView/tutorBooking", {
+                        //     userDetails: req.session.userDetails,
+                        //     bookingData: rawObject
+                        // });
+                    }
+                    else {
+                        console.log("errorr occured needed to render back to schedule but not in modal");
+                        reject("here is an error");
+                        // res.render("./userView/tutorBooking", {
+                        //     userDetails: req.session.userDetails,
+                        //     bookingData: rawObject
+                        // });
+                    }
+                }
+            });
         });
-    });
-
-
+    })
+    promise.then(function (value) {
+        const listOfPromises = [weekly1.Oneweek, weekly1.tutorbooked];
+        const promise = weekly1.joinedScheduleCalls(listOfPromises, undefined, undefined, value.tutorID, 'tableTime', 'timeStart');
+        const promise2 = Listing.singleTutorCap(undefined,value.tutorID);
+        const ListingOfPromises = [promise,promise2];
+        Promise.all(ListingOfPromises).then(function (value2) {
+            console.log("value");
+            console.log(value);
+            console.log(value2[0].availableTime);
+            console.log(value2);
+            res.render("./userView/tutorBooking", {
+                userDetails: req.session.userDetails,
+                bookingData: value,
+                availableTime: String(value2[0].availableTime)
+             });
+        })
+    })
 });
 router.get("/deleting", function (req, resp) {
     console.log(req.query);
@@ -55,6 +80,11 @@ router.get("/deleting", function (req, resp) {
     });
 
 });
+router.get("/alt",function (req, resp) {
+    console.log(req.query);
+
+
+})
 
 
 module.exports = router;
