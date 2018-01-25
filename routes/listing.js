@@ -110,17 +110,17 @@ router.get("/booking/modal", function (req, res) {
     console.log(req.session.userDetails[0].userName);
     var Clickdate = new Date(req.query.time);
 
-    // console.log(Clickdate)
-    // Clickdate = new Date(Clickdate);
+    console.log(Clickdate)
+    Clickdate = new Date(Clickdate);
     Clickdate.setTime(Clickdate.getTime() + Clickdate.getTimezoneOffset() * 60 * 1000);
-    // console.log(Clickdate);
-    // res.render("./userView/tuteeBooking", {
-    //     userDetailsName: req.session.userDetails[0],
-    //     subject: req.query.subject,
-    //     time: Clickdate,
-    //     tutor: req.query.username,
-    //     userDetails: req.session.userDetails
-    // });
+    console.log(Clickdate);
+    res.render("./userView/tuteeBooking", {
+        userDetailsName: req.session.userDetails[0],
+        subject: req.query.subject,
+        time: Clickdate,
+        tutor: req.query.username,
+        userDetails: req.session.userDetails
+    });
 });
 router.get("/booking/confirm", function (req, res) {
     console.log("booking confirm");
