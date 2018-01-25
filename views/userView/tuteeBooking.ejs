@@ -1,6 +1,5 @@
 <body>
 
-
 <div class="ui top attached tabular menu">
     <a class="item active" data-tab="first">First</a>
     <a class="item" data-tab="second">Second</a>
@@ -49,6 +48,12 @@
 </body>
 
 <script>
+
+    $(function () {
+        $('.ui.info.modal').modal('attach events', '.ui.deny.button', 'hide');
+    });
+
+
     // $(function () {
     //     $('.ui.info.modal').modal('attach events', '.ui.deny.button', 'hide');
     // })

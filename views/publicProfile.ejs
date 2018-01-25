@@ -17,7 +17,13 @@
 <% include ./templates/navbar.ejs %>
 <% include ./../javascript/ajaxDatabaseExpresso.ejs %>
 
+
 <div class="ui middle aligned grid" id="profile">
+
+    <div class="ui info modal">
+        <div class="content" id="info"></div>
+    </div>
+
     <div class="ui text container">
         <h1>Welcome to <%= tutorDetails[0].userName %>'s profile</h1>
         <p>Edit your general Profile Details</p>
@@ -45,7 +51,7 @@
                     <li>Description: <%= capabilityDetails[i].description %></li>
                     <li>Experience: <%= capabilityDetails[i].experience %></li>
                     <li>Grade: <%= capabilityDetails[i].grade %></li>
-                    <li><a href="/listing/booking?username=<%= tutorDetails[0].userName %>&capability=<%= capabilityDetails[i].courseID %>">BOOK NOW!</a></li>
+                    <li><a href="/listing/booking?username=<%= tutorDetails[0].userName %>&capability=<%= capabilityDetails[i].courseID %>" class='info-modal-link'>BOOK NOW!</a></li>
                 </ul>
             </div>
             <% } else { %>
@@ -58,7 +64,7 @@
                     <li>Description: <%= capabilityDetails[i].description %></li>
                     <li>Experience: <%= capabilityDetails[i].experience %></li>
                     <li>Grade: <%= capabilityDetails[i].grade %></li>
-                    <li><a href="/listing/booking?username=<%= tutorDetails[0].userName %>&capability=<%= capabilityDetails[i].courseID %>">BOOK NOW!</a></li>
+                    <li><a href="/listing/booking?username=<%= tutorDetails[0].userName %>&capability=<%= capabilityDetails[i].courseID %>" class='info-modal-link'>BOOK NOW!</a></li>
                 </ul>
             </div>
             <% } %>
@@ -76,5 +82,20 @@
     $('.ui.accordion')
         .accordion()
     ;
+</script>
+
+<script>
+    $(function () {
+        $('.info-modal-link').each(function () {
+            $(this).on('click', function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                $.get(url, function (data) {
+                    $('.info.modal .content').html(data);
+                    $(".info.modal").modal({closable: true, observeChanges: true}).modal('show');
+                });
+            });
+        });
+    })
 </script>
 </html>
