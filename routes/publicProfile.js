@@ -9,7 +9,7 @@ router.use(bodyParser.urlencoded({extended: false}));
 router.get('/', function (req, res) {
 
     //Set up tutorUsername const of the tutor we are viewing, currently hardwired as Jojo need to link up to listing
-    const tutorUsername = req.query.userName;
+    const tutorUsername = req.query.tutorUserName;
     var selectedCourseId = req.query.courseId;
 
 

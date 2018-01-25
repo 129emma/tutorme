@@ -69,18 +69,28 @@
             <div class="description">
                 <%= value.tutors[i].selfIntroduction %>
             </div>
-            <form>
-                <div class="ui mini action input">
-                    <select class="ui compact selection dropdown">
+            <form class="ui form">
+                <div class="field">
+                    <label></label>
+                </div>
+            </form>
+
+
+            <form class="ui form" action="/publicProfile" method="get">
+
+                <div class="field">
+
+                    <input type="hidden" name="tutorUserName" value="<%= value.tutors[i].userName %>">
+                    <select class="ui compact selection dropdown" name="courseId">
                         <% for (var k = 0; k < cap.length; k++){ %>
-                        <option value="<%= cap[k] %>"><%= cap[k] %>   <%= grades[k] %></option>
+                        <option value="<%= cap[k] %>"><%= cap[k] %> <%= grades[k] %></option>
                         <% } %>
                     </select>
                     <button type="submit" class="ui icon button"><i class="right arrow icon"></i></button>
                 </div>
             </form>
             <div class="description">
-                <%=value.tutors[i].selfIntroduction%>
+                <%=value.tutors[i].selfIntroduction %>
             </div>
         </div>
         <div class="extra content" style="text-align: right">
@@ -128,22 +138,26 @@
     })
     console.log($("select")[0].value);
 
-   $(function () {
-       $('.ui.dropdown').dropdown();
-   })
+    $('select.dropdown')
+        .dropdown()
+    ;
+
+   // $(function () {
+   //     $('.ui.dropdown').dropdown();
+   // })
 </script>
-<script>
-    $(function () {
-        $('.info-modal-link').each(function () {
-            $(this).on('click', function (e) {
-                e.preventDefault();
-                var url = $(this).attr('href');
-                $.get(url, function (data) {
-                    $('.info.modal .content').html(data);
-                    $(".info.modal").modal({closable: true, observeChanges: true}).modal('show');
-                });
-            });
-        });
-    })
-</script>
+<!--<script>-->
+    <!--$(function () {-->
+        <!--$('.info-modal-link').each(function () {-->
+            <!--$(this).on('click', function (e) {-->
+                <!--e.preventDefault();-->
+                <!--var url = $(this).attr('href');-->
+                <!--$.get(url, function (data) {-->
+                    <!--$('.info.modal .content').html(data);-->
+                    <!--$(".info.modal").modal({closable: true, observeChanges: true}).modal('show');-->
+                <!--});-->
+            <!--});-->
+        <!--});-->
+    <!--})-->
+<!--</script>-->
 </html>
