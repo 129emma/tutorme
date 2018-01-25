@@ -15,29 +15,53 @@
         </div>
     </div>
     <div class="fourteen wide column">
-        <form class="ui equal width form" action="/user/tutorBooking/alt" method="get">
-            <label for="tuteeID">Tutor</label>
-                <input id="tuteeID" type="text" name="tuteeID" value="<%= bookingData.tuteeID %>">
+
+        <form action="/user/tutorBooking/alt" method="get">
+            <p><label for="tuteeID">Tutor</label>
+                <input id="tuteeID" type="text" name="tuteeID" value="<%= bookingData.tuteeID %>" disabled></p>
             <p>
-                <label for="subject">Subject</label>
-                <input id="subject" type="text" name="subject" value="<%= bookingData.courseID %>"></p>
+                <label for="capabilities">Subject</label>
+            <div class="ui mini action input">
+                <% const cap = capabilies.split(",");
+                const bookedtime1 = (new Date(bookingData.timeStart));
+                const bookedTime = bookedtime1.setTime(bookedtime1.getTime() + bookedtime1.getTimezoneOffset() * 60 * 1000);
+                %>
+                <select id="capabilities" name="capabilities" class="ui compact selection dropdown">
+                    <% for (var n = 0; n < cap.length; n++){
+                    if (cap[n] === bookingData.courseID){ %>
+                    <option value="<%= cap[n] %>" selected><%= cap[n] %></option>
+                    <%
+                    } else{
+                    %>
+                    <option value="<%= cap[n] %>"><%= cap[n] %></option>
+                    <% }
+                    } %>
+                </select>
+            </div>
+            </p>
             <p>
+                <%= bookingData.timeStart%>
+                <%= bookedtime1%>
                 <label for="time">Time Selection</label>
             <div class="ui mini action input">
                 <% const ava = availableTime.split(",");
-
                 %>
                 <select id="time" name="time" class="ui compact selection dropdown">
                     <% for (var k = 0; k < ava.length; k++){
-                            Clickdate = new Date(ava[k]);
-                            Clickdate.setTime(Clickdate.getTime() + Clickdate.getTimezoneOffset() * 60 * 1000);
-                            ava[k]= String(Clickdate);
+                        Clickdate = new Date(ava[k]);
+                        Clickdate.setTime(Clickdate.getTime() + Clickdate.getTimezoneOffset() * 60 * 1000);
+                        ava[k] = Clickdate;
+                    if (ava[k] === bookedtime1){
+                    console.log("hello there")%>
+                    <option value="<%= ava[k] %>" selected><%= ava[k] %></option>
+                    <%
+                    } else{
                     %>
                     <option value="<%= ava[k] %>"><%= ava[k] %></option>
-                    <% } %>
+                    <% }} %>
                 </select>
-                <button type="submit" class="ui icon button"><i class="right arrow icon"></i></button>
             </div>
+
             </p>
             <p>
                 <label for="location">Location</label>
@@ -63,11 +87,13 @@
             Delete appointment
             <i class="remove icon"></i>
         </button>
+
     </div>
 </div>
 </body>
 
 <script>
+
 
     function closeModal() {
         $('.ui.info.modal').modal('hide')

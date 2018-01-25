@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
 
     //booking ID should be provided by the click on the schedule, currently dummy data 1 inserted for testing purposes.
     var bookingID = req.query.bookingID;
-
+    console.log(bookingID)
     const connectNow = con.method();
 
     const promise = new Promise(function (resolve, reject) {
@@ -29,8 +29,10 @@ router.get('/', function (req, res) {
                 } else {
                     console.log(JSON.stringify(result));
                     if ((JSON.stringify(result)).length > 2) {
+                        console.log(result);
                         const rawObject = JSON.parse(JSON.stringify(result[0]));
-                        console.log("RAW: " + rawObject.tuteeID);
+                        console.log("rAW")
+                        console.log( rawObject);
 
                         resolve(rawObject);
                         // res.render("./userView/tutorBooking", {
@@ -57,13 +59,19 @@ router.get('/', function (req, res) {
         const ListingOfPromises = [promise,promise2];
         Promise.all(ListingOfPromises).then(function (value2) {
             console.log("value");
-            console.log(value);
+            console.log( value.timeStart);
             console.log(value2[0].availableTime);
             console.log(value2);
+            const listOfCap = [];
+            value2[1].map(function (value3) {
+                listOfCap.push(value3.courseID)
+            });
+            console.log(listOfCap)
             res.render("./userView/tutorBooking", {
                 userDetails: req.session.userDetails,
                 bookingData: value,
-                availableTime: String(value2[0].availableTime)
+                availableTime: String(value2[0].availableTime),
+                capabilies: String(listOfCap)
              });
         })
     })
