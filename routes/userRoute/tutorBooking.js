@@ -2,16 +2,25 @@
  * Created by Administer on 7/12/2017.
  */
 var express = require('express');
+var app = express();
+var server = require('http').Server(app);
 const router = express.Router();
 const con = require('../../javascript/connection');
 const updateTime = require('../../javascript/UpdatingTime');
 const weekly1 = require("../../javascript/tutorSchedule3WeekPreRendering1");
 const Listing = require("../../javascript/ListingSQL");
-router.get('/', function (req, res) {
+const socketList = [];
 
+router.get('/', function (req, res) {
+    io.on("connection",function (socket) {
+        console.log("connected to the socket within the tutorbooking");
+        console.log(req);
+        socketList.push(socket)
+        // socket.emit('blah', {name:"blahing"})
+    });
     //booking ID should be provided by the click on the schedule, currently dummy data 1 inserted for testing purposes.
     var bookingID = req.query.bookingID;
-    console.log(bookingID)
+    console.log(bookingID);
     const connectNow = con.method();
 
     const promise = new Promise(function (resolve, reject) {
@@ -66,7 +75,7 @@ router.get('/', function (req, res) {
             value2[1].map(function (value3) {
                 listOfCap.push(value3.courseID)
             });
-            console.log(listOfCap)
+            console.log(listOfCap);
             res.render("./userView/tutorBooking", {
                 userDetails: req.session.userDetails,
                 bookingData: value,
@@ -89,10 +98,29 @@ router.get("/deleting", function (req, resp) {
 
 });
 router.get("/alt",function (req, resp) {
-    console.log(req.query);
+    io.on("connection",function (socket) {
+        console.log("tutor schedule has sockets123");
+        socket.emit('blah', {name:"blahing"})
+    });
+    const time = req.query.time;
+    const username = req.query.tutorID;
+    delete req.query.time;
+    delete req.query.tutorID;
+    const bookedtime1 = (new Date(time));
+    bookedtime1.setTime(bookedtime1.getTime() - bookedtime1.getTimezoneOffset() * 60 * 1000);
+    const promise = updateTime.updateAppointment(bookedtime1, req.query, req.query.bookingID, username);
+    io.on("connection",function (socket) {
+        console.log("tutor schedule has sockets");
+        socket.emit('blah', {name:"blahing"})
+    });
+    console.log("how many sockets");
+    console.log(socketList);
+    promise.then(function (value) {
+        console.log("done updating promise done");
+        resp.json({name: "udapted"});
+    });
 
-
-})
+});
 
 
 module.exports = router;

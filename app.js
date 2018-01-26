@@ -32,7 +32,8 @@ const app = express();
 
 //using the server for socket.io purpose and in general nothing had changed.
 var server = require('http').Server(app);
-var io = require('socket.io')(server);
+global.io = require('socket.io')(server);
+// var io = require('socket.io')(server);
 
 //Setup to listen to port 3000
 server.listen(process.env.port || 3000);
@@ -103,7 +104,7 @@ const con = require("./javascript/connection.js");
 //The socket's entry point the .on event is based on the other's end .emit event in this given case it is 'hello' from
 //the tutorSchedule.ejs. The .on event will be trigger by the .emit events speifically given like an eventListener
 io.on('connection', function (socket) {
-    //console.log("connected");
+    console.log("connected to app sockets");
     //socket itself could be collected to be broadcasted, or there is an function  socket.broadcast.emit to emit to all,
     // apart from itself.
     //msg is the given JSON Object from the emitter.

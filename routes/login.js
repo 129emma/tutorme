@@ -26,7 +26,9 @@ router.post('/logging', function (req, res) {
     const connectMethod = con.method();
 
     connectMethod.connect(function (err) {
-        if (err) throw err;
+        if (err){
+            connectMethod.end()
+            throw err};
         console.log("Connected and online!");
     });
 
@@ -38,6 +40,7 @@ router.post('/logging', function (req, res) {
     connectMethod.query("SELECT * FROM tablePassword WHERE userName = ? ", [un], function (err, result) {
 
         if (err) {
+            connectMethod.end();
             throw err
         } else {
             console.log(result);

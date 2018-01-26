@@ -16,9 +16,9 @@
     </div>
     <div class="fourteen wide column">
 
-        <form action="/user/tutorBooking/alt" method="get">
-            <p><label for="tuteeID">Tutor</label>
-                <input id="tuteeID" type="text" name="tuteeID" value="<%= bookingData.tuteeID %>" disabled></p>
+        <form id="ajaxFrom" action="/user/tutorBooking/alt" method="get">
+            <p><label for="tutorID">Tutor</label>
+                <input id="tutorID" type="text" name="tutorID" value="<%= bookingData.tutorID %>" readonly></p>
             <p>
                 <label for="capabilities">Subject</label>
             <div class="ui mini action input">
@@ -26,7 +26,7 @@
                 const bookedtime1 = (new Date(bookingData.timeStart));
                 const bookedTime = bookedtime1.setTime(bookedtime1.getTime() + bookedtime1.getTimezoneOffset() * 60 * 1000);
                 %>
-                <select id="capabilities" name="capabilities" class="ui compact selection dropdown">
+                <select id="capabilities" name="courseID" class="ui compact selection dropdown">
                     <% for (var n = 0; n < cap.length; n++){
                     if (cap[n] === bookingData.courseID){ %>
                     <option value="<%= cap[n] %>" selected><%= cap[n] %></option>
@@ -68,8 +68,9 @@
                 <input id="location" type="text" name="location" value="<%= bookingData.location %>"></p>
             <p>
                 <label for="des">Description</label>
-                <input id="des" type="text" name="des" value="<%= bookingData.description %>">
+                <input id="des" type="text" name="description" value="<%= bookingData.description %>">
             </p>
+            <input name="bookingID" type="text" value="<%= bookingData.bookingID%>" hidden>
             <button type="submit" value="alteration">Alt</button>
 
         </form>
@@ -91,10 +92,15 @@
     </div>
 </div>
 </body>
-
+<script src="/socket.io/socket.io.js"></script>
 <script>
 
-
+    var socket = io.connect(window.location.href);
+    console.log(window.location)
+    // the on connect is going to trigger the .on('connection') for the backend IO.
+    socket.on('connect', function () {
+        console.log("connecting to tutorschedule")
+    })
     function closeModal() {
         $('.ui.info.modal').modal('hide')
 
@@ -122,6 +128,33 @@
         else {
             console.log("no")
         }
-    };
+    }
+    $("#ajaxFrom").submit(function (event) {
+        event.preventDefault();
+        const form = $( this );
+        const  url = form.attr( 'action' );
+        var formAssets = $(this).find(":input:not(button)");
+        const JSONObject ={};
+
+        for (var i = 0 ; i <formAssets.length ; i++){
+            JSONObject[formAssets[i].name] = formAssets[i].value;
+            console.log(formAssets[i].name);
+            console.log(formAssets[i].value);
+        }
+        console.log(JSONObject);
+
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: JSONObject,
+            success: function(result){
+                console.log(result);
+                alert("update done");
+            }});
+    })
+    socket.on('blah',function (value) {
+        console.log(value);
+    })
+
 </script>
 
