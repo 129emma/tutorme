@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+var app = express();
+var server = require('http').Server(app);
+
 const con = require('../../javascript/connection');
 const weekly1 = require("../../javascript/tutorSchedule3WeekPreRendering1");
 router.get('/', function (req, res) {
@@ -27,8 +30,12 @@ router.get('/', function (req, res) {
 });
 
 router.get('/booking',function (req, res) {
+
+
     console.log(req.query);
     console.log("from listing");
 });
+
+
 
 module.exports = router;

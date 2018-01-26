@@ -175,8 +175,10 @@ function deleteAppointment(bookID) {
     });
 }
 
-function updateAppoint(bookID, time,updateJSON) {
+function updateAppoint(time,updateJSON, bookingID, tutorID) {
     console.log("update connection");
+    console.log(time);
+    console.log(bookingID)
     const connectNow = con.method();
     const promise = new Promise(function (resolve, reject) {
         connectNow.connect(function (err) {
@@ -191,13 +193,13 @@ function updateAppoint(bookID, time,updateJSON) {
                     reject(err);
                     throw err;
                 }
-                connectNow.query("UPDATE `tableTimeOccupation` SET timeID=(SELECT timeID FROM `tableTime` WHERE timeStart=?) WHERE bookingID=?", [bookID, time], function (error, results, fields) {
-
-                    console.log(results.affectedRows);
-                    if (results.affectedRows < 1){
-                        console.log("less than one row is affected");
-                        reject("less than one row is affected");
-                    }
+                connectNow.query("UPDATE `tableTimeOccupation` SET timeID=(SELECT timeID FROM `tableTime` WHERE timeStart=? AND userName=?) WHERE bookingID=?", [time, tutorID, bookingID], function (error, results, fields) {
+                    console.log(results);
+                    // console.log(results.affectedRows);
+                    // if (results.affectedRows < 1){
+                    //     console.log("less than one row is affected");
+                    //     reject("less than one row is affected");
+                    // }
                     if (error) {
                         return connectNow.rollback(function () {
                             connectNow.end();
@@ -206,12 +208,12 @@ function updateAppoint(bookID, time,updateJSON) {
                         });
                     }
                     console.log("Q 1");
-                    connectNow.query("UPDATE `tableBooking` SET ? WHERE bookingID=?",[updateJSON,bookID], function (error, results, fields) {
-                        console.log(results);
-                        if (results.affectedRows < 1){
-                            console.log("less than one row is affected");
-                            reject("less than one row is affected");
-                        }
+                    connectNow.query("UPDATE `tableBooking` SET ? WHERE bookingID=?",[updateJSON,bookingID], function (error, results, fields) {
+                        // console.log(results);
+                        // if (results.affectedRows < 1){
+                        //     console.log("less than one row is affected");
+                        //     reject("less than one row is affected");
+                        // }
                         if (error) {
                             return connectNow.rollback(function () {
                                 connectNow.end();
@@ -220,7 +222,7 @@ function updateAppoint(bookID, time,updateJSON) {
                             });
                         }
                     });
-                    console.log(results.affectedRows);
+                    console.log(results);
                     connectNow.commit(function (err) {
                         if (err) {
                             return connectNow.rollback(function () {
@@ -231,12 +233,13 @@ function updateAppoint(bookID, time,updateJSON) {
                         }
                         console.log("done updating");
                         connectNow.end();
-                        resolve()
+                        resolve();
                     })
                 })
             });
         })
     });
+    return promise;
 }
 function convert(date) {
     console.log(date);
@@ -250,4 +253,4 @@ function convert(date) {
     console.log(String(date));
     console.log(mysql.escape(String(date)));
 }
-module.exports = {Insert: insertDate, Delete: deleteDate, bookingAvailableTime: bookingAvailableTime, deleteAppointment:deleteAppointment};
+module.exports = {Insert: insertDate, Delete: deleteDate, bookingAvailableTime: bookingAvailableTime, deleteAppointment:deleteAppointment, updateAppointment: updateAppoint};
