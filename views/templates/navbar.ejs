@@ -1,47 +1,67 @@
 <link rel='stylesheet' type='text/css' href='/stylesheets/navbar.css'/>
 
 <body>
-<div class="ui large secondary pointing menu" id="menu">
-    <a class="item" href="/">
-        <img src="https://preview.ibb.co/f8gi1w/Untitled_Artwork.png" class="ui centered tiny image">
-    </a>
 
 
-    <div class="item">
-        <div class="ui icon input" id="searchBar">
-            <input type="text" placeholder="Search tutor">
-            <i class="search link icon"></i>
+<div class="ui large secondary pointing menu" id="navbar">
+    <div class="ui container">
+        <a class="item" href="/">
+            <img src="https://preview.ibb.co/f8gi1w/Untitled_Artwork.png" class="ui centered tiny image">
+        </a>
+        <a class="item">
+            <div class="ui icon input" id="searchBar">
+                <input type="text" placeholder="Search tutor">
+                <i class="search link icon"></i>
+            </div>
+        </a>
+
+        <div class="right item">
+            <img class="ui mini circular image" src="https://www.w3schools.com/w3images/avatar2.png" >
+            <div class="ui dropdown" id="dropdownMenu">
+                <%= userDetails[0].firstName %>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <% if (typeof userDetails !== 'undefined') { %>
+                    <a class="item" href="/user/profile">
+                        Profile
+                    </a>
+                    <a class="item" href="/user/feedback">
+                        Feedback
+                    </a>
+                    <% if(userDetails[0].tutor_activation === 1){ %>
+                    <a class="item" href="/user/tutorSchedule">
+                        Tutor Schedule
+                    </a>
+                    <a class="item" href="/listing">
+                        Listing
+                    </a>
+                    <% } %>
+                    <a class="item" href="/login/logout">Logout</a>
+                    <% } else { %>
+                    <a class="item" href="/login/logout">
+                        Login
+                    </a>
+
+                    <% } %>
+                </div>
+            </div>
         </div>
+
     </div>
-
-
-    <a class="right item">
-        <% if (typeof userDetails !== 'undefined') { %>
-        <a class="item" href="/user/profile">
-            Profile
-        </a>
-        <a class="item" href="/user/feedback">
-            Feedback
-        </a>
-        <% if(userDetails[0].tutor_activation === 1){ %>
-        <a class="item" href="/user/tutorSchedule">
-            Tutor Schedule
-        </a>
-        <a class="item" href="/listing">
-            Listing
-        </a>
-        <% } %>
-        <a class="item" href="/login/logout">Logout</a>
-        <% } else { %>
-        <a class="item" href="/login/logout">
-            Login
-        </a>
-        <% } %>
-    </a>
 </div>
 
-<script>
-
-</script>
-
 </body>
+
+<script>
+    $(function () {
+        $('#dropdownMenu').dropdown();
+
+        $('#navbar').visibility({
+            type:'fixed'
+        })
+    })
+
+    function iconChange() {
+        document.getElementsByClassName()
+    }
+</script>

@@ -1,5 +1,8 @@
-<body>
+<link rel="stylesheet" type="text/css" href="/stylesheets/tuteeBooking.css"/>
 
+
+<body>
+<i class="close link icon" onclick="closeModal()"></i>
 <div class="ui top attached tabular menu">
     <a class="item active" data-tab="first">First</a>
     <a class="item" data-tab="second">Second</a>
@@ -26,14 +29,10 @@
     </div>
     <div class="ui grid">
         <div class="right floated five wide column">
-            <button class="ui positive right labeled icon button" onclick="submition()">
+            <button class="right floated ui positive right labeled icon button" onclick="submition()">
                 submit
                 <i class="info icon"></i>
             </button>
-            <button class="ui black deny button">
-                Close
-            </button>
-
         </div>
     </div>
 </div>
@@ -49,9 +48,10 @@
 
 <script>
 
-    $(function () {
-        $('.ui.info.modal').modal('attach events', '.ui.deny.button', 'hide');
-    });
+    function closeModal() {
+        $('.ui.info.modal').modal('hide')
+
+    }
 
 
     // $(function () {

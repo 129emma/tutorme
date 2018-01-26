@@ -1,10 +1,18 @@
-div#menu {
-    background-color: #fbfbfb;
-    margin-top: 0;
-}
+
 /*Searchbar width*/
 div#searchBar {
     max-width: 100%;
     width: 600px;
 }
 
+div#navbar, div#dropdownMenu,.menu.transition.visible {
+    background-color: #fbfbfb;
+}
+
+div#navbar{
+    margin-top: 0;
+}
+.ui.mini.circular.image{
+    right: 3px;
+    width: 25px;
+}
