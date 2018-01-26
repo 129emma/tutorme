@@ -14,11 +14,7 @@
 
 <body>
 
-<!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
-
 <div class="ui center aligned container">
-
-
     <h1 align="center"><%= userDetailsName %>'s weekly schedule</h1>
     <div class="ui center aligned container">
         <div class="column">
@@ -28,18 +24,10 @@
             <button class="icon button" id="button1" style="border: none">
                 <i class="chevron right icon"></i></button>
         </div>
-
-        <!--<div class="column" style="padding: 10px">-->
-        <!--<div class="ui buttons" >-->
-        <!--<button class="ui button unclickButton" id="edit" onclick="editCalendar()" >Edit</button>-->
-        <!--<div class="or"></div>-->
-        <!--<button class="ui positive button" id="save" onclick="saveCalendar()">Save</button>-->
-        <!--</div>-->
-        <!--</div>-->
     </div>
 
     <div style="padding: 20px">
-        <table id="scheduleTable" class="ui orange celled center aligned table calendar">
+        <table id="scheduleTable" class="ui celled center aligned table calendar">
             <thead>
             <tr>
                 <th>Time</th>

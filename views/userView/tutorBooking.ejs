@@ -1,6 +1,11 @@
-
 <link rel="stylesheet" type="text/css" href="/stylesheets/tutorBooking.css"/>
+
+
 <body>
+<% include ../templates/navbar.ejs%>
+
+
+
 <i class="close link icon" onclick="closeModal()"></i>
 
 <h3 class="header" id="modalHeader">
@@ -16,80 +21,85 @@
     </div>
     <div class="fourteen wide column">
 
-        <form action="/user/tutorBooking/alt" method="get">
-            <p><label for="tuteeID">Tutor</label>
-                <input id="tuteeID" type="text" name="tuteeID" value="<%= bookingData.tuteeID %>" disabled></p>
-            <p>
-                <label for="capabilities">Subject</label>
-            <div class="ui mini action input">
-                <% const cap = capabilies.split(",");
-                const bookedtime1 = (new Date(bookingData.timeStart));
-                const bookedTime = bookedtime1.setTime(bookedtime1.getTime() + bookedtime1.getTimezoneOffset() * 60 * 1000);
-                %>
-                <select id="capabilities" name="capabilities" class="ui compact selection dropdown">
-                    <% for (var n = 0; n < cap.length; n++){
-                    if (cap[n] === bookingData.courseID){ %>
-                    <option value="<%= cap[n] %>" selected><%= cap[n] %></option>
-                    <%
-                    } else{
-                    %>
-                    <option value="<%= cap[n] %>"><%= cap[n] %></option>
-                    <% }
-                    } %>
-                </select>
-            </div>
-            </p>
-            <p>
-                <%= bookingData.timeStart%>
-                <%= bookedtime1%>
-                <label for="time">Time Selection</label>
-            <div class="ui mini action input">
-                <% const ava = availableTime.split(",");
-                %>
-                <select id="time" name="time" class="ui compact selection dropdown">
-                    <% for (var k = 0; k < ava.length; k++){
-                        Clickdate = new Date(ava[k]);
-                        Clickdate.setTime(Clickdate.getTime() + Clickdate.getTimezoneOffset() * 60 * 1000);
-                        ava[k] = Clickdate;
-                    if (ava[k] === bookedtime1){
-                    console.log("hello there")%>
-                    <option value="<%= ava[k] %>" selected><%= ava[k] %></option>
-                    <%
-                    } else{
-                    %>
-                    <option value="<%= ava[k] %>"><%= ava[k] %></option>
-                    <% }} %>
-                </select>
+        <form class="ui equal width form" action="/user/tutorBooking/alt" method="get">
+            <div class="field"><label for="tuteeID">Tutor</label>
+                <input id="tuteeID" type="text" name="tuteeID" value="<%= bookingData.tuteeID %>" disabled>
             </div>
 
-            </p>
-            <p>
+            <div class="field">
+                <label for="capabilities">Subject</label>
+                <div class="ui mini action input">
+                    <% const cap = capabilies.split(",");
+                    const bookedtime1 = (new Date(bookingData.timeStart));
+                    const bookedTime = bookedtime1.setTime(bookedtime1.getTime() + bookedtime1.getTimezoneOffset() * 60 * 1000);
+                    %>
+                    <select id="capabilities" name="capabilities" class="ui compact selection dropdown">
+                        <% for (var n = 0; n < cap.length; n++){
+                        if (cap[n] === bookingData.courseID){ %>
+                        <option value="<%= cap[n] %>" selected><%= cap[n] %></option>
+                        <%
+                        } else{
+                        %>
+                        <option value="<%= cap[n] %>"><%= cap[n] %></option>
+                        <% }
+                        } %>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field">
+                <%= bookingData.timeStart %>
+                <%= bookedtime1 %>
+                <label for="time">Time Selection</label>
+
+                <div class="ui mini action input">
+                    <% const ava = availableTime.split(",");
+                    %>
+                    <select id="time" name="time" class="ui compact selection dropdown">
+                        <% for (var k = 0; k < ava.length; k++){
+                            Clickdate = new Date(ava[k]);
+                            Clickdate.setTime(Clickdate.getTime() + Clickdate.getTimezoneOffset() * 60 * 1000);
+                            ava[k] = Clickdate;
+                        if (ava[k] === bookedtime1){
+                            console.log("hello there") %>
+                        <option value="<%= ava[k] %>" selected><%= ava[k] %></option>
+                        <%
+                        } else{
+                        %>
+                        <option value="<%= ava[k] %>"><%= ava[k] %></option>
+                        <% }} %>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="field">
                 <label for="location">Location</label>
-                <input id="location" type="text" name="location" value="<%= bookingData.location %>"></p>
-            <p>
+                <input id="location" type="text" name="location" value="<%= bookingData.location %>">
+            </div>
+            <div class="field">
                 <label for="des">Description</label>
                 <input id="des" type="text" name="des" value="<%= bookingData.description %>">
-            </p>
-            <button type="submit" value="alteration">Alt</button>
+            </div>
 
+            <div class="ui grid">
+                <div class="right floated eight wide column">
+                    <button class="ui positive right labeled icon button" type="submit" value="alteration">
+                        Update
+                        <i class="info icon"></i>
+                    </button>
+                    <button onclick="deleting()" id="delete" class="right floated ui negative right labeled icon button">
+                        Delete appointment
+                        <i class="remove icon"></i>
+                    </button>
+                </div>
+            </div>
         </form>
 
-
     </div>
 </div>
-<div class="ui grid">
-    <div class="right floated seven wide column">
-        <button class="ui positive right labeled icon button">
-            Info
-            <i class="info icon"></i>
-        </button>
-        <button onclick="deleting()" id="delete" class="right floated ui negative right labeled icon button">
-            Delete appointment
-            <i class="remove icon"></i>
-        </button>
 
-    </div>
-</div>
+
 </body>
 
 <script>

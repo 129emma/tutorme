@@ -30,7 +30,7 @@
 <body>
 
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
-<% include templates/navbar.ejs %>
+<% include ../templates/navbar.ejs%>
 
 
 <div class="ui text center aligned container">
@@ -89,9 +89,6 @@
                     <button type="submit" class="ui icon button"><i class="right arrow icon"></i></button>
                 </div>
             </form>
-            <div class="description">
-                <%=value.tutors[i].selfIntroduction %>
-            </div>
         </div>
         <div class="extra content" style="text-align: right">
             rating: <%= value.tutors[i].rating %>

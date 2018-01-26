@@ -9,16 +9,17 @@
 <head>
     <title>Tutor Profile page</title>
     <link rel="stylesheet" href="/stylesheets/profile.css"/>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
 
 </head>
+
 <body>
 
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
 <% include ../../javascript/ajaxDatabaseExpresso.ejs %>
+<% include ../templates/navbar.ejs%>
 
-
-<% include ../templates/navbar.ejs %>
+<div>
 <div class="ui grid" id="profile">
     <div class="ui text container">
         <h1>Welcome to your profile, <%= userDetails[0].firstName %></h1>
@@ -103,11 +104,11 @@
                         <!--courselist generated from DB table of courseList and datalist options listed for all existing instances of courses-->
                         <select id="myInput">
                             <% for (var i = 0; i < CourseList.length; i++) { %>
-                            <option value="<%=i%>"><%= CourseList[i].courseID %></option>
-                                <% } %>
+                            <option value="<%= i %>"><%= CourseList[i].courseID %></option>
+                            <% } %>
                         </select>
 
-                        <button type="button" onclick="coursePopup()" >Add</button>
+                        <button type="button" onclick="coursePopup()">Add</button>
 
 
                         <div class="ui tutorCourseList relaxed divided list">
@@ -116,7 +117,9 @@
                             <div class="item">
                                 <i class="large middle aligned icon"></i>
                                 <div class="content">
-                            <a class="header" ><span onclick="console.log(this.innerHTML)"><%= Data[i].courseID %></span><span style="float: right"><%= Data[i].grade%></span></a>
+                                    <a class="header"><span
+                                                onclick="console.log(this.innerHTML)"><%= Data[i].courseID %></span><span
+                                                style="float: right"><%= Data[i].grade %></span></a>
                                 </div>
                             </div>
                             <% } %>
@@ -129,71 +132,72 @@
         </div>
     </div>
 </div>
-<% include ../templates/footer.ejs%>
+</div>
+<% include ../templates/footer.ejs %>
 
 <!-- Modal -->
 <div id="myModal" class="ui modal fade" role="dialog">
-        <!-- Modal content-->
-        <i class="close icon"></i>
-            <div class="header">
-                <h4 class="modal-title"></h4>
-            </div>
-            <div class="scrolling content">
-                <h3>About the course: </h3>
-                <p></p>
-                <form method="POST" action="/user/profile/create_cap" >
-                    <fieldset>
-                        <legend>About yourself:</legend>
+    <!-- Modal content-->
+    <i class="close icon"></i>
+    <div class="header">
+        <h4 class="modal-title"></h4>
+    </div>
+    <div class="scrolling content">
+        <h3>About the course: </h3>
+        <p></p>
+        <form method="POST" action="/user/profile/create_cap">
+            <fieldset>
+                <legend>About yourself:</legend>
 
-                        <input type="hidden" id = "courseID" value="none" name="courseID">
-                        Your experience:<br>
-                        <textarea name="experience" rows="4" cols="70">Your experience in this course.</textarea>
-                        <br>
+                <input type="hidden" id="courseID" value="none" name="courseID">
+                Your experience:<br>
+                <textarea name="experience" rows="4" cols="70">Your experience in this course.</textarea>
+                <br>
 
-                        Describe what you can do?<br>
-                        <textarea name="description" rows="4" cols="70">What can you teach in regard to this course?</textarea><br>
-                        grade: <br>
-                        <select name="grade">
-                            <option value="A+">A+</option>
-                            <option value="A">A</option>
-                            <option value="A-">A-</option>
-                            <option value="B+">B+</option>
-                            <option value="B">B</option>
-                            <option value="B-">B-</option>
-                            <option value="N/A">N/A</option>
-                        </select>
-                    <br><br>
-                        Verification: <br>
-                        <input type="radio" name="verification" value="1"> Verified
-                        <input type="radio" name="verification" value="0" checked> Unverified<br>
-                    </fieldset>
-                    <div class="actions">
-                        <input type="submit" class="btn btn-default" value="create">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </form>
+                Describe what you can do?<br>
+                <textarea name="description" rows="4"
+                          cols="70">What can you teach in regard to this course?</textarea><br>
+                grade: <br>
+                <select name="grade">
+                    <option value="A+">A+</option>
+                    <option value="A">A</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B">B</option>
+                    <option value="B-">B-</option>
+                    <option value="N/A">N/A</option>
+                </select>
+                <br><br>
+                Verification: <br>
+                <input type="radio" name="verification" value="1"> Verified
+                <input type="radio" name="verification" value="0" checked> Unverified<br>
+            </fieldset>
+            <div class="actions">
+                <input type="submit" class="btn btn-default" value="create">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
+        </form>
+    </div>
 </div>
 
 
-
 <script>
-        // Create a new list item when clicking on the "Add" button
-        String.prototype.replaceAll = function(search, replacement) {
-            var target = this;
-            return target.replace(new RegExp(search, 'g'), replacement);
-        };
+    // Create a new list item when clicking on the "Add" button
+    String.prototype.replaceAll = function (search, replacement) {
+        var target = this;
+        return target.replace(new RegExp(search, 'g'), replacement);
+    };
 
-        var index = 0;
-        var Co_id = JSON.parse("<%= Co_id%>".replaceAll("&#34;", '\"'));
-        var Co_name = JSON.parse("<%= Co_name%>".replaceAll("&#34;", '\"'));
-        var Co_description = JSON.parse("<%= Co_description%>".replaceAll("&#34;", '\"'));
+    var index = 0;
+    var Co_id = JSON.parse("<%= Co_id %>".replaceAll("&#34;", '\"'));
+    var Co_name = JSON.parse("<%= Co_name %>".replaceAll("&#34;", '\"'));
+    var Co_description = JSON.parse("<%= Co_description %>".replaceAll("&#34;", '\"'));
 
 
-    function coursePopup (){
+    function coursePopup() {
 
         index = parseInt(document.getElementById("myInput").value);
-        document.getElementsByClassName('modal-title')[0].innerHTML = Co_id[index]+ ": "+ Co_name[index];
+        document.getElementsByClassName('modal-title')[0].innerHTML = Co_id[index] + ": " + Co_name[index];
         document.getElementById('courseID').value = Co_id[index];
         document.querySelector(".scrolling p").innerHTML = Co_description[index];
 
