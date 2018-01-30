@@ -263,7 +263,7 @@
             console.log(Clickdate)
             ListOfDates.push(String(Clickdate));
             console.log(ListOfDates);
-        }else{
+        }else if (classname ==="deleting"){
             document.getElementById(this.id).className = "available";
             var Clickdate = new Date(day.getFullYear(), day.getMonth(), (day.getDate() - (day.getDay()) + classIdDay * 1), classIdHour);
             // Clickdate.setTime(Clickdate.getTime() - Clickdate.getTimezoneOffset() * 60 * 1000);

@@ -128,19 +128,14 @@ router.get("/booking/confirm", function (req, res) {
     // const Clickdate = new Date(req.query.time);
     const item  =[];
     req.query.time.map(function (value) {
-        value = new Date(value);
-        value.setTime(value.getTime() - value.getTimezoneOffset() * 60 * 1000);
-        console.log(value);
         const json = JSON.parse(JSON.stringify(req.query));
         json.time = value;
         item.push(json);
-        return value;
     });
-console.log(item);
-    const promise = updateTime.bookingAvailableTime(Clickdate,req.query.tutee,req.query.tutor,req.query.subject,item);
+    const promise = updateTime.bookingAvailableTime(item);
     promise.then(function (value) {
         console.log("Added to database plz check");
-
+        res.json({name: "booked"});
     })
 });
 

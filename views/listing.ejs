@@ -14,11 +14,11 @@
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
 <% include ./templates/navbar.ejs %>
 
+
 <div class="ui text center aligned container">
     <div class="ui info modal">
         <div class="content" id="info"></div>
     </div>
-
 
     <h1 class="ui center aligned header">
         Listing
@@ -98,7 +98,7 @@
         const username = $(form).siblings("div.header")[0].innerHTML
         const selection = $(this).siblings()[0];
         const subject = selection.children[0].options[selection.children[0].selectedIndex].value;
-        const tutorDetails = document.createElement("tutorDetails")
+        const tutorDetails = document.createElement("a")
         tutorDetails.href = "/listing/booking?username=" + username + "&&subject=" + subject;
         tutorDetails.className = 'info-modal-link';
         tutorDetails.id = 'myDetail'

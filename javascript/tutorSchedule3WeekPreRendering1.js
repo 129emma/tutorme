@@ -167,10 +167,9 @@ function JoinedScheduleCalls(ListOfPromises, connectNow, date, username, timeTab
                 return a-b;
             });
             console.log(tutor.availableTime);
-            tutor.availableTime.map(function (value2) {
-                value2 = String(value2);
-                return value2;
-            });
+            for (var m =0; m< tutor.availableTime.length; m++){
+                tutor.availableTime[m] = String(tutor.availableTime[m]);
+            }
             console.log("sorting");
             console.log(tutor.availableTime);
             if (value.length > 1) {
