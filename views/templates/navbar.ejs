@@ -17,11 +17,10 @@
 
         <div class="right item">
 
+
+            <img class="ui mini circular image" src="https://www.w3schools.com/w3images/avatar2.png">
             <div class="ui inline dropdown" id="dropdownMenu">
-                <div class="text">
-                    <img class="ui mini circular image" src="https://www.w3schools.com/w3images/avatar2.png" >
-                    <%= userDetails[0].firstName %>
-                </div>
+                <%= userDetails[0].firstName %>
                 <i class="dropdown icon"></i>
                 <div class="menu" id="menuDropdown" style="">
                     <% if (typeof userDetails !== 'undefined') { %>
@@ -33,7 +32,7 @@
                     </a>
                     <% if(userDetails[0].tutor_activation === 1){ %>
                     <a class="item" href="/user/tutorSchedule">
-                        Tutor Schedule
+                        Schedule
                     </a>
                     <a class="item" href="/listing">
                         Listing
@@ -60,7 +59,7 @@
         $('#dropdownMenu').dropdown();
 
         $('#navbar').visibility({
-            type:'fixed'
+            type: 'fixed'
         })
     })
 

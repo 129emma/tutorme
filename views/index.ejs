@@ -6,7 +6,6 @@
 
 <head>
     <title><%= title %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/stylesheets/index.css"/>
 </head>
 <body>
@@ -53,7 +52,7 @@
 </div>
 
 <div class="ui tiny modal" id="loginModal" style="background-color: #fbfbfb">
-    <div class="ui text center aligned container">
+    <div class="ui text center aligned container" id="popupWindowa">
         <h1 class="ui header">
             Login in to TutorMe!
         </h1>
@@ -78,10 +77,6 @@
     </div>
 </div>
 
-</body>
-
-
-</html>
 <script>
     $(document).ready(function () {
         $('#loginButton').click(function () {
@@ -92,3 +87,7 @@
     })
 
 </script>
+</body>
+
+
+</html>

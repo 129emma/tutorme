@@ -1,9 +1,10 @@
+body{
+    background-color: #FBFBFB;
+}
+
 div#header {
     padding-bottom: 0;
     background-color: #FBFBFB;
-
-}
-h1#header{
     color: #756C83;
 }
 
@@ -21,13 +22,10 @@ div#middle {
     bottom: 50%;
 }
 
-
-body{
-    background-color: #FBFBFB;
-}
-
-.ui.text.center.aligned.container{
-    padding-top: 30px;
+div#popupWindowa{
+    padding-top: 1.5em;
     width: 100%;
 }
+
+
 

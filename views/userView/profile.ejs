@@ -17,123 +17,121 @@
 
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
 <% include ../../javascript/ajaxDatabaseExpresso.ejs %>
-<% include ../templates/navbar.ejs%>
+<% include ../templates/navbar.ejs %>
 
-<div>
-<div class="ui grid" id="profile">
-    <div class="ui text container">
-        <h1>Welcome to your profile, <%= userDetails[0].firstName %></h1>
-        <p>Edit your general Profile Details</p>
-        <div>
-            <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png" style="width: 100px;"/>
-        </div>
-        <div id="generalProfileDetails">
-            <form class="ui equal width form">
-                <div class="two fields">
-                    <div class="field">
-                        <label>Username</label>
-                        <input type="hidden" name="formUsername"
-                               value="<%= userDetails[0].userName %>"><%= userDetails[0].userName %>
-                    </div>
-                    <div class="field">
-                        <label>Date of birth</label>
-                        <input type="date" name="formDOB" value="<%= userDetails[0].dob %>" disabled>
-                    </div>
+<div class="ui text container">
+    <h1>Welcome to your profile, <%= userDetails[0].firstName %></h1>
+    <p>Edit your general Profile Details</p>
+    <div>
+        <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png" style="width: 100px;"/>
+    </div>
+    <div id="generalProfileDetails">
+        <form class="ui equal width form">
+            <div class="two fields">
+                <div class="field">
+                    <label>Username</label>
+                    <input type="hidden" name="formUsername"
+                           value="<%= userDetails[0].userName %>"><%= userDetails[0].userName %>
                 </div>
                 <div class="field">
-                    <label>Name</label>
-                    <div class="two fields">
-                        <div class="field">
-                            <input type="text" name="formFirstname" value="<%= userDetails[0].firstName %>"
-                                   placeholder="First Name">
-                        </div>
-                        <div class="field">
-                            <input type="text" name="formLastname" value="<%= userDetails[0].lastName %>"
-                                   placeholder="Last Name">
-                        </div>
-                    </div>
+                    <label>Date of birth</label>
+                    <input type="date" name="formDOB" value="<%= userDetails[0].dob %>" disabled>
                 </div>
-                <div class="field">
-                    <label>Email</label>
-                    <input type="text" name="formEmail" value="<%= userDetails[0].email %>" disabled
-                           placeholder="Email">
-                </div>
-                <div class="field">
-                    <label>Address</label>
-                    <input type="text" name="formAddress" value="<%= userDetails[0].address %>" placeholder="Address">
-                </div>
+            </div>
+            <div class="field">
+                <label>Name</label>
                 <div class="two fields">
                     <div class="field">
-                        <label>Student ID</label>
-                        <input type="text" name="formID" value="<%= userDetails[0].studentID %>">
+                        <input type="text" name="formFirstname" value="<%= userDetails[0].firstName %>"
+                               placeholder="First Name">
                     </div>
                     <div class="field">
-                        <label>Study Institution</label>
-                        <input type="text" name="formSchool" value="<%= userDetails[0].studySchool %>">
+                        <input type="text" name="formLastname" value="<%= userDetails[0].lastName %>"
+                               placeholder="Last Name">
                     </div>
                 </div>
-                <div class="two fields">
-                    <div class="field">
-                        <label>Joined Tutorme</label>
-                        <input type="text" value="<%= userDetails[0].joinDate %>" disabled>
-                    </div>
-                    <div class="field">
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <input type="text" name="formEmail" value="<%= userDetails[0].email %>" disabled
+                       placeholder="Email">
+            </div>
+            <div class="field">
+                <label>Address</label>
+                <input type="text" name="formAddress" value="<%= userDetails[0].address %>"
+                       placeholder="Address">
+            </div>
+            <div class="two fields">
+                <div class="field">
+                    <label>Student ID</label>
+                    <input type="text" name="formID" value="<%= userDetails[0].studentID %>">
+                </div>
+                <div class="field">
+                    <label>Study Institution</label>
+                    <input type="text" name="formSchool" value="<%= userDetails[0].studySchool %>">
+                </div>
+            </div>
+            <div class="two fields">
+                <div class="field">
+                    <label>Joined Tutorme</label>
+                    <input type="text" value="<%= userDetails[0].joinDate %>" disabled>
+                </div>
+                <div class="field">
 
 
-                        <div class="ui toggle checkbox">
-                            <input type="checkbox" tabindex="0" alue="<% if (userDetails[0].tutor_activation === 1) { %>
+                    <div class="ui toggle checkbox">
+                        <input type="checkbox" tabindex="0"
+                               alue="<% if (userDetails[0].tutor_activation === 1) { %>
                 Yes
                 <% } else { %>
                 No
                 <% } %>">
-                            <label>Activated as a tutor</label>
-                        </div>
+                        <label>Activated as a tutor</label>
                     </div>
                 </div>
+            </div>
+            <div class="field">
                 <div class="field">
-                    <div class="field">
-                        <label>Introduction</label>
-                        <input type="text" name="formUsername" value="<%= Data[0].selfIntroduction %>" disabled>
-                    </div>
+                    <label>Introduction</label>
+                    <input type="text" name="formUsername" value="<%= Data[0].selfIntroduction %>" disabled>
                 </div>
+            </div>
 
-                <div id="tutorCourseDetails">
-                    <h4 class="ui dividing header">Courses you can tutor</h4>
-                    <div class="card" style="width: 50rem;">
+            <div id="tutorCourseDetails">
+                <h4 class="ui dividing header">Courses you can tutor</h4>
+                <div class="card" style="width: 50rem;">
 
-                        <!--courselist generated from DB table of courseList and datalist options listed for all existing instances of courses-->
-                        <select id="myInput">
-                            <% for (var i = 0; i < CourseList.length; i++) { %>
-                            <option value="<%= i %>"><%= CourseList[i].courseID %></option>
-                            <% } %>
-                        </select>
+                    <!--courselist generated from DB table of courseList and datalist options listed for all existing instances of courses-->
+                    <select id="myInput">
+                        <% for (var i = 0; i < CourseList.length; i++) { %>
+                        <option value="<%= i %>"><%= CourseList[i].courseID %></option>
+                        <% } %>
+                    </select>
 
-                        <button type="button" onclick="coursePopup()">Add</button>
+                    <button type="button" onclick="coursePopup()">Add</button>
 
 
-                        <div class="ui tutorCourseList relaxed divided list">
-                            <% for (var i = 0; i < Data.length; i++){ %>
+                    <div class="ui tutorCourseList relaxed divided list">
+                        <% for (var i = 0; i < Data.length; i++){ %>
 
-                            <div class="item">
-                                <i class="large middle aligned icon"></i>
-                                <div class="content">
-                                    <a class="header"><span
-                                                onclick="console.log(this.innerHTML)"><%= Data[i].courseID %></span><span
-                                                style="float: right"><%= Data[i].grade %></span></a>
-                                </div>
+                        <div class="item">
+                            <i class="large middle aligned icon"></i>
+                            <div class="content">
+                                <a class="header"><span
+                                            onclick="console.log(this.innerHTML)"><%= Data[i].courseID %></span><span
+                                            style="float: right"><%= Data[i].grade %></span></a>
                             </div>
-                            <% } %>
                         </div>
-
+                        <% } %>
                     </div>
+
                 </div>
-                <input type="submit" value="Submit" class="ui teal submit button">
-            </form>
-        </div>
+            </div>
+            <input type="submit" value="Submit" class="ui teal submit button">
+        </form>
     </div>
 </div>
-</div>
-<% include ../templates/footer.ejs %>
+
 
 <!-- Modal -->
 <div id="myModal" class="ui modal fade" role="dialog">
@@ -180,6 +178,7 @@
     </div>
 </div>
 
+<% include ../templates/footer.ejs %>
 
 <script>
     // Create a new list item when clicking on the "Add" button
@@ -209,6 +208,7 @@
 
 
 </script>
-
 </body>
+
+
 </html>

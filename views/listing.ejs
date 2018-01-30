@@ -2,119 +2,110 @@
 <html>
 
 <!-- The included template contains all the links, JS and Styling files to be included in the pages, to alter the contents please refer to templates/included.html file -->
-<% include ../templates/included.html %>
+<% include ./templates/included.html %>
 <html lang="en">
 
 <head>
-    <title>Login</title>
-
-    <style>
-        .ui.text.center.aligned.container {
-            padding-top: 3%;
-            width: 600px;
-        }
-        .ui.card, .ui.cards>.card{
-            width: 100%;
-            text-align: left;
-            flex-direction: row;
-        }
-        .ui.card>.image{
-            width: 20%;
-            height: 100%;
-        }
-
-
-
-    </style>
+    <title>Listing</title>
+    <link rel="stylesheet" href="/stylesheets/listing.css">
 </head>
 <body>
 
 <!--The navbar template included below, to alter the contents please refer to templates/navbar.ejs file-->
-<% include ./templates/navbar.ejs%>
-
+<% include ./templates/navbar.ejs %>
 
 <div class="ui text center aligned container">
     <div class="ui info modal">
         <div class="content" id="info"></div>
     </div>
 
+
     <h1 class="ui center aligned header">
         Listing
     </h1>
     <div class="ui fluid action input">
         <form action="/listing/search" method="get">
-            <div class="ui action input">
-                <input list="courses" name="search" placeholder="Search...">
-                <button class="ui icon button" type="submit">Search</button>
+
+            <div class="ui selection dropdown">
+                <input list="courses" name="search" >
+                <i class="dropdown icon"></i>
+                <div class="default text">Select Course</div>
+                <div class="menu">
+                    <% for (var j = 0; j < value.courses.length; j++){ %>
+                    <div class="item" data-valu="<%= value.courses[j].courseID %>">
+                        <%= value.courses[j].courseID %>
+                    </div>
+                    <% } %>
+                </div>
             </div>
-            <datalist id="courses">
-                <% for (var j = 0; j < value.courses.length; j++){ %>
-                <option value="<%= value.courses[j].courseID %>"></option>
-                <% } %>
-            </datalist>
+            <button class="ui icon button" type="submit">Search</button>
         </form>
     </div>
-    <% for (var i = 0; i < value.tutors.length; i++){ %>
-    <div class="ui card">
-        <div class="image" style="float: left">
-            <img src="https://www.w3schools.com/w3images/avatar2.png">
-        </div>
-        <div class="content" style="float: right">
 
-            <%
-                var cap = value.tutors[i].courses.split(",");
-                var grades = value.tutors[i].grades.split(",").sort();
-            %>
-            <div class="header"><%= value.tutors[i].userName %></div>
-            <div class="description">
-                <%= value.tutors[i].selfIntroduction %>
+    <div class="ui middle aligned three column grid">
+        <% for (var i = 0; i < value.tutors.length; i++){ %>
+        <div class="column">
+            <div class="ui fluid card">
+                <div class="image" style="float: left">
+                    <img src="https://www.w3schools.com/w3images/avatar2.png">
+                </div>
+                <div class="content" style="float: right">
+
+                    <%
+                        var cap = value.tutors[i].courses.split(",");
+                        var grades = value.tutors[i].grades.split(",").sort();
+                    %>
+                    <div class="header"><%= value.tutors[i].userName %></div>
+                    <div class="description">
+                        <%= value.tutors[i].selfIntroduction %>
+                    </div>
+                    <form class="ui form">
+                        <div class="field">
+                            <label></label>
+                        </div>
+                    </form>
+
+
+                    <form class="ui form" action="/publicProfile" method="get">
+                        <div class="field">
+                            <input type="hidden" name="tutorUserName" value="<%= value.tutors[i].userName %>">
+                            <select class="ui compact selection dropdown" name="courseId">
+                                <% for (var k = 0; k < cap.length; k++){ %>
+                                <option value="<%= cap[k] %>"><%= cap[k] %> <%= grades[k] %></option>
+                                <% } %>
+                            </select>
+                            <button type="submit" class="ui icon button">Go</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="extra content" style="text-align: right">
+                    rating: <%= value.tutors[i].rating %>
+                </div>
             </div>
-            <form class="ui form">
-                <div class="field">
-                    <label></label>
-                </div>
-            </form>
-
-
-            <form class="ui form" action="/publicProfile" method="get">
-
-                <div class="field">
-
-                    <input type="hidden" name="tutorUserName" value="<%= value.tutors[i].userName %>">
-                    <select class="ui compact selection dropdown" name="courseId">
-                        <% for (var k = 0; k < cap.length; k++){ %>
-                        <option value="<%= cap[k] %>"><%= cap[k] %> <%= grades[k] %></option>
-                        <% } %>
-                    </select>
-                    <button type="submit" class="ui icon button"><i class="right arrow icon"></i></button>
-                </div>
-            </form>
         </div>
-        <div class="extra content" style="text-align: right">
-            rating: <%= value.tutors[i].rating %>
-        </div>
+        <% } %>
     </div>
-    <% } %>
-
 </div>
+
+<% include ./templates/footer.ejs %>
 </body>
 
 <script>
-    $("div.ui.mini.action.input > button.ui.icon.button").on("click",function () {
+    $("div.ui.mini.action.input > button.ui.icon.button").on("click", function () {
         event.preventDefault()
         console.log(this)
         const form = $(this).parent().parent()[0];
-        const username =  $(form).siblings("div.header")[0].innerHTML
+        const username = $(form).siblings("div.header")[0].innerHTML
         const selection = $(this).siblings()[0];
         const subject = selection.children[0].options[selection.children[0].selectedIndex].value;
-        const a = document.createElement("a")
-        a.href  = "/listing/booking?username=" + username +"&&subject="+subject;
-        a.className = 'info-modal-link';
-        a.id = 'myDetail'
-       //window.location.href= a;
-        $(this).parent()[0].appendChild(a)
-        a.appendChild(this);
-        this.innerHTML = "<a href='/listing/booking?username=" + username+"&&subject="+subject+"' class='info-modal-link'></a>";
+        const tutorDetails = document.createElement("tutorDetails")
+        tutorDetails.href = "/listing/booking?username=" + username + "&&subject=" + subject;
+        tutorDetails.className = 'info-modal-link';
+        tutorDetails.id = 'myDetail'
+        //window.location.href= a;
+        $(this).parent()[0].appendChild(tutorDetails)
+        tutorDetails.appendChild(this);
+        this.innerHTML = "<a href='/listing/booking?username=" + username + "&&subject=" + subject + "' class='info-modal-link'></a>";
 
         console.log(this.href)
         // $.get("/listing/booking",{username: username , subject: subject});
@@ -139,8 +130,12 @@
         .dropdown()
     ;
 
-   // $(function () {
-   //     $('.ui.dropdown').dropdown();
-   // })
+    $('.selection.dropdown').dropdown();
+
+    // $(function () {
+    //     $('.ui.dropdown').dropdown();
+    // })
+
+
 </script>
 </html>

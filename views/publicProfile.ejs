@@ -17,8 +17,7 @@
 <% include ./templates/navbar.ejs %>
 <% include ./../javascript/ajaxDatabaseExpresso.ejs %>
 
-
-<div class="ui middle aligned grid" id="profile">
+<div class="ui grid">
 
     <div class="ui info modal">
         <div class="content" id="info"></div>
@@ -26,16 +25,12 @@
 
     <div class="ui text container">
         <h1>Welcome to <%= tutorDetails[0].userName %>'s profile</h1>
-        <p>Edit your general Profile Details</p>
-        <div>
-            <img src="https://www.w3schools.com/w3images/avatar2.png" style="width: 100px;"/>
-        </div>
 
-        <div class="ui raised segment">
-            <p><%= tutorDetails[0].selfIntroduction %></p>
-        </div>
+        <img class="ui tiny left floated image" src="https://www.w3schools.com/w3images/avatar2.png"/>
+        <p><%= tutorDetails[0].selfIntroduction %></p>
 
-        <div class="ui styled accordion">
+
+        <div class="ui styled accordion" style="padding-top: 5em">
 
             <!--getting all the courses-->
 
@@ -51,7 +46,9 @@
                     <li>Description: <%= capabilityDetails[i].description %></li>
                     <li>Experience: <%= capabilityDetails[i].experience %></li>
                     <li>Grade: <%= capabilityDetails[i].grade %></li>
-                    <li><a href="/listing/booking?username=<%= tutorDetails[0].userName %>&capability=<%= capabilityDetails[i].courseID %>" class='info-modal-link'>BOOK NOW!</a></li>
+                    <li>
+                        <a href="/listing/booking?username=<%= tutorDetails[0].userName %>&capability=<%= capabilityDetails[i].courseID %>"
+                           class='info-modal-link'>BOOK NOW!</a></li>
                 </ul>
             </div>
             <% } else { %>
@@ -64,7 +61,9 @@
                     <li>Description: <%= capabilityDetails[i].description %></li>
                     <li>Experience: <%= capabilityDetails[i].experience %></li>
                     <li>Grade: <%= capabilityDetails[i].grade %></li>
-                    <li><a href="/listing/booking?username=<%= tutorDetails[0].userName %>&capability=<%= capabilityDetails[i].courseID %>" class='info-modal-link'>BOOK NOW!</a></li>
+                    <li>
+                        <a href="/listing/booking?username=<%= tutorDetails[0].userName %>&capability=<%= capabilityDetails[i].courseID %>"
+                           class='info-modal-link'>BOOK NOW!</a></li>
                 </ul>
             </div>
             <% } %>
@@ -75,7 +74,7 @@
     </div>
 </div>
 
-
+<% include ./templates/footer.ejs %>
 </body>
 
 <script>
