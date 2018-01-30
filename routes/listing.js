@@ -74,13 +74,11 @@ router.get('/search', function (req, res) {
      */
     const joinedPromises = ListingSQL.joinedSQLListingCall(limit, id);
     joinedPromises.then(function (value) {
-        res.render("listing",  {value: value, userDetails: req.session.userDetails})
+        res.render("listing", {value: value, userDetails: req.session.userDetails})
     })
 });
 
 router.get("/booking", function (req, res) {
-    console.log(req.query);
-
     console.log("joined booking and listing");
     // connectNow = con.method();
     // connectNow.connect(function (err) {
@@ -94,12 +92,14 @@ router.get("/booking", function (req, res) {
     const promise = weekly1.joinedScheduleCalls(listOfPromises, undefined, undefined, req.query.username, 'tableTime', 'timeStart');
     promise.then(function (value) {
         console.log(value);
+
         value.userName = req.session.username;
         res.render("./userView/tuteeBooking.ejs", {
             value: value,
             userDetailsName: req.query.username,
             sess: req.session,
-            subject: req.query.subject,userDetails: req.session.userDetails,
+            subject: req.query.capability
+            , userDetails: req.session.userDetails,
             tutor: req.query.username
         });
     });
@@ -110,7 +110,7 @@ router.get("/booking/modal", function (req, res) {
     console.log(req.session.userDetails[0].userName);
     var Clickdate = new Date(req.query.time);
 
-    console.log(Clickdate)
+    console.log(Clickdate);
     Clickdate = new Date(Clickdate);
     Clickdate.setTime(Clickdate.getTime() + Clickdate.getTimezoneOffset() * 60 * 1000);
     console.log(Clickdate);
@@ -125,12 +125,19 @@ router.get("/booking/modal", function (req, res) {
 router.get("/booking/confirm", function (req, res) {
     console.log("booking confirm");
     console.log(req.query);
-    const Clickdate = new Date(req.query.time);
-    Clickdate.setTime(Clickdate.getTime() + Clickdate.getTimezoneOffset() * 60 * 1000);
-//    console.log(req.query.time);
-    console.log(Clickdate);
-//    updateTime.convert(Clickdate)
-    const promise = updateTime.bookingAvailableTime(Clickdate,req.query.tutee,req.query.tutor,req.query.subject);
+    // const Clickdate = new Date(req.query.time);
+    const item  =[];
+    req.query.time.map(function (value) {
+        value = new Date(value);
+        value.setTime(value.getTime() - value.getTimezoneOffset() * 60 * 1000);
+        console.log(value);
+        const json = JSON.parse(JSON.stringify(req.query));
+        json.time = value;
+        item.push(json);
+        return value;
+    });
+console.log(item);
+    const promise = updateTime.bookingAvailableTime(Clickdate,req.query.tutee,req.query.tutor,req.query.subject,item);
     promise.then(function (value) {
         console.log("Added to database plz check");
 

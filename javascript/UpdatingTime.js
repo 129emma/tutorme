@@ -64,8 +64,10 @@ function deleteDate(date, username, timeTable) {
     return promise;
 };
 
-function bookingAvailableTime(date, tutee, tutor, course) {
+function bookingAvailableTime(date, tutee, tutor, course, json) {
     const connectNow = con.method();
+    console.log("booking an ava time")
+    console.log(json);
     const promise = new Promise(function (resolve, reject) {
         connectNow.connect(function (err) {
             if (err) {
@@ -78,22 +80,24 @@ function bookingAvailableTime(date, tutee, tutor, course) {
                     connectNow.end();
                     throw err;
                 }
-                connectNow.query("INSERT INTO `tableBooking` (`bookingID`, `tuteeID`, `tutorID`, `courseID`, `description`, `location`, `totalPrice`, `complete`, `tutorFeedback`, `tutorRating`, `tuteeFeedback`, `tuteeRating`) VALUES (NULL, ?, ?, ?, NULL, NULL,(SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'tableBooking'), 0, NULL, NULL, NULL, NULL);", [tutee, tutor, course], function (error, results, fields) {
+                // "INSERT INTO `tableBooking` (`bookingID`, `tuteeID`, `tutorID`, `courseID`, `description`, `location`, `totalPrice`, `complete`, `tutorFeedback`, `tutorRating`, `tuteeFeedback`, `tuteeRating`) VALUES (NULL, ?, ?, ?, NULL, NULL,(SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'tableBooking'), 0, NULL, NULL, NULL, NULL);"
+                connectNow.query("INSERT INTO `tableBooking` ?", [json], function (error, results, fields) {
+                    console.log(results);
                     if (error) {
                         return connectNow.rollback(function () {
                             connectNow.end();
                             throw error;
                         });
                     }
-                    date.setTime(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
-                    connectNow.query("INSERT INTO `tableTimeOccupation` (`bookingID`,`timeID`) VALUES(LAST_INSERT_ID(),(SELECT `timeID` FROM tableTime WHERE timeStart ="+ mysql.escape(date)+" AND tableTime.userName = ?));",[tutor], function (error, results, fields) {
-                        if (error) {
-                            return connectNow.rollback(function () {
-                                connectNow.end();
-                                throw error;
-                            });
-                        }
-                    });
+                    // date.setTime(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
+                    // connectNow.query("INSERT INTO `tableTimeOccupation` (`bookingID`,`timeID`) VALUES(LAST_INSERT_ID(),(SELECT `timeID` FROM tableTime WHERE timeStart ="+ mysql.escape(date)+" AND tableTime.userName = ?));",[tutor], function (error, results, fields) {
+                    //     if (error) {
+                    //         return connectNow.rollback(function () {
+                    //             connectNow.end();
+                    //             throw error;
+                    //         });
+                    //     }
+                    // });
                     connectNow.commit(function (err) {
                         if (err) {
                             return connectNow.rollback(function () {

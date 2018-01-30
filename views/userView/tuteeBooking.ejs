@@ -20,11 +20,16 @@
             </div>
         </div>
         <div class="fourteen wide column">
-            <p>Tutor Name: <%= tutor %> </p>
-            <p>Subject: <%= subject %> </p>
-            <p>Location: </p>
-            <p>Requirements specified:</p>
-            <p>Attachment: </p>
+            <form id="ajaxForm" action="/listing/booking/confirm" method="get">
+                <p><input name="tutorID" value="<%= tutor %>" readonly>Tutor Name: <%= tutor %> </p>
+                <p><input name="tuteeID" value="<%= userDetails[0].firstName %>" readonly>Tutee
+                    Name: <%= userDetailsName[0].firstName %></p>
+                <p><input name="courseID" value="<%= subject %>" readonly> Subject: <%= subject %> </p>
+                <p><input type="text" name="location">Location: </p>
+                <p> <input type="text" name="description"> Requirements specified:</p>
+                <p>Attachment: </p>
+                <input type="submit" value="submit">
+            </form>
         </div>
     </div>
     <div class="ui grid">
@@ -64,6 +69,30 @@
     function submition() {
         console.log("click");
     }
+
+    $("#ajaxForm").submit(function (event) {
+        event.preventDefault();
+        const form = $( this );
+        const  url = form.attr( 'action' );
+        var formAssets = $(this).find(":input:not(button)");
+        const JSONObject ={};
+
+        for (var i = 0 ; i <formAssets.length ; i++){
+            JSONObject[formAssets[i].name] = formAssets[i].value;
+            console.log(formAssets[i].name);
+            console.log(formAssets[i].value);
+        }
+        JSONObject.time = ListOfDates;
+        console.log(JSONObject);
+
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: JSONObject,
+            success: function(result){
+                console.log(result);
+            }});
+    })
 
 </script>
 
