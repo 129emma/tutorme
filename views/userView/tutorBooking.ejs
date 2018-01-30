@@ -95,7 +95,7 @@
 <script src="/socket.io/socket.io.js"></script>
 <script>
 
-    var socket = io.connect(window.location.href);
+    var socket = io.connect(window.location.origin);
     console.log(window.location)
     // the on connect is going to trigger the .on('connection') for the backend IO.
     socket.on('connect', function () {
@@ -149,7 +149,6 @@
             data: JSONObject,
             success: function(result){
                 console.log(result);
-                alert("update done");
             }});
     })
     socket.on('blah',function (value) {

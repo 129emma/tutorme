@@ -10,12 +10,12 @@ const updateTime = require('../../javascript/UpdatingTime');
 const weekly1 = require("../../javascript/tutorSchedule3WeekPreRendering1");
 const Listing = require("../../javascript/ListingSQL");
 const socketList = [];
-
+var sockets;
 router.get('/', function (req, res) {
-    io.on("connection",function (socket) {
+    io.on("connection", function (socket) {
         console.log("connected to the socket within the tutorbooking");
-        console.log(req);
-        socketList.push(socket)
+        socketList.push(socket);
+        sockets = socket;
         // socket.emit('blah', {name:"blahing"})
     });
     //booking ID should be provided by the click on the schedule, currently dummy data 1 inserted for testing purposes.
@@ -41,7 +41,7 @@ router.get('/', function (req, res) {
                         console.log(result);
                         const rawObject = JSON.parse(JSON.stringify(result[0]));
                         console.log("rAW")
-                        console.log( rawObject);
+                        console.log(rawObject);
 
                         resolve(rawObject);
                         // res.render("./userView/tutorBooking", {
@@ -64,11 +64,11 @@ router.get('/', function (req, res) {
     promise.then(function (value) {
         const listOfPromises = [weekly1.Oneweek, weekly1.tutorbooked];
         const promise = weekly1.joinedScheduleCalls(listOfPromises, undefined, undefined, value.tutorID, 'tableTime', 'timeStart');
-        const promise2 = Listing.singleTutorCap(undefined,value.tutorID);
-        const ListingOfPromises = [promise,promise2];
+        const promise2 = Listing.singleTutorCap(undefined, value.tutorID);
+        const ListingOfPromises = [promise, promise2];
         Promise.all(ListingOfPromises).then(function (value2) {
             console.log("value");
-            console.log( value.timeStart);
+            console.log(value.timeStart);
             console.log(value2[0].availableTime);
             console.log(value2);
             const listOfCap = [];
@@ -81,7 +81,7 @@ router.get('/', function (req, res) {
                 bookingData: value,
                 availableTime: String(value2[0].availableTime),
                 capabilies: String(listOfCap)
-             });
+            });
         })
     })
 });
@@ -97,11 +97,8 @@ router.get("/deleting", function (req, resp) {
     });
 
 });
-router.get("/alt",function (req, resp) {
-    io.on("connection",function (socket) {
-        console.log("tutor schedule has sockets123");
-        socket.emit('blah', {name:"blahing"})
-    });
+router.get("/alt", function (req, resp) {
+
     const time = req.query.time;
     const username = req.query.tutorID;
     delete req.query.time;
@@ -109,14 +106,16 @@ router.get("/alt",function (req, resp) {
     const bookedtime1 = (new Date(time));
     bookedtime1.setTime(bookedtime1.getTime() - bookedtime1.getTimezoneOffset() * 60 * 1000);
     const promise = updateTime.updateAppointment(bookedtime1, req.query, req.query.bookingID, username);
-    io.on("connection",function (socket) {
-        console.log("tutor schedule has sockets");
-        socket.emit('blah', {name:"blahing"})
-    });
+
     console.log("how many sockets");
     console.log(socketList);
     promise.then(function (value) {
         console.log("done updating promise done");
+        if (socketList.length >0){
+            console.log("socketListing");
+            socketList[0].emit("blah", {name: "blah"})
+        }
+        sockets.emit("blah",{nasd: "asdasd"});
         resp.json({name: "udapted"});
     });
 
