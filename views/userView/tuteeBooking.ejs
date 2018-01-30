@@ -26,7 +26,7 @@
                     Name: <%= userDetailsName[0].firstName %></p>
                 <p><input name="courseID" value="<%= subject %>" readonly> Subject: <%= subject %> </p>
                 <p><input type="text" name="location">Location: </p>
-                <p> <input type="text" name="description"> Requirements specified:</p>
+                <p><input type="text" name="description"> Requirements specified:</p>
                 <p>Attachment: </p>
                 <input type="submit" value="submit">
             </form>
@@ -72,26 +72,28 @@
 
     $("#ajaxForm").submit(function (event) {
         event.preventDefault();
-        const form = $( this );
-        const  url = form.attr( 'action' );
+        const form = $(this);
+        const url = form.attr('action');
         var formAssets = $(this).find(":input:not(button)");
-        const JSONObject ={};
+        const JSONObject = {};
 
-        for (var i = 0 ; i <formAssets.length ; i++){
+        for (var i = 0; i < formAssets.length; i++) {
             JSONObject[formAssets[i].name] = formAssets[i].value;
             console.log(formAssets[i].name);
             console.log(formAssets[i].value);
         }
         JSONObject.time = ListOfDates;
         console.log(JSONObject);
-
-        $.ajax({
-            url: url,
-            method: "GET",
-            data: JSONObject,
-            success: function(result){
-                console.log(result);
-            }});
+        if (ListOfDates > 0) {
+            $.ajax({
+                url: url,
+                method: "GET",
+                data: JSONObject,
+                success: function (result) {
+                    console.log(result);
+                }
+            });
+        }
     })
 
 </script>

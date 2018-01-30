@@ -125,7 +125,6 @@ router.get("/booking/modal", function (req, res) {
 router.get("/booking/confirm", function (req, res) {
     console.log("booking confirm");
     console.log(req.query);
-    if (req.query.time >0){
     // const Clickdate = new Date(req.query.time);
     const item  =[];
     req.query.time.map(function (value) {
@@ -136,11 +135,8 @@ router.get("/booking/confirm", function (req, res) {
     const promise = updateTime.bookingAvailableTime(item);
     promise.then(function (value) {
         console.log("Added to database plz check");
-        resp.json({name: "booked"});
-    })}
-    else{
-        resp.json({name:"fucking empty"})
-    }
+        res.json({name: "booked"});
+    })
 });
 
 module.exports = router;
