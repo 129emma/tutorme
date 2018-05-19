@@ -7,4 +7,4 @@
 - Semantic UI
 
 ## Authors
-See also the list of __contributors__ who participated in this project.
+See the list of __contributors__ who participated in this project.
